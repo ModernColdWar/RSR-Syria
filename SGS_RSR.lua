@@ -107,7 +107,7 @@ if file_exists("SaveUnits_RSR.lua") then --Script has been run before, so we nee
   env.info("Existing database, loading from File.")
 --  AllGroups = SET_GROUP:New():FilterCategories("ground"):FilterActive(true):FilterStart()
   --AllGroups = SET_GROUP:New():FilterPrefixes( "Re-enforcements " ):FilterActive(true):FilterStart()
-  AllGroups = SET_GROUP:New():FilterPrefixes( {"Red Start ","Blue Start ", "CTLD_ "} ):FilterActive(true):FilterStart()
+  AllGroups = SET_GROUP:New():FilterPrefixes( {"Red Start ","Blue Start ", "CTLD_"} ):FilterActive(true):FilterStart()
   
     AllGroups:ForEachGroup(function (grp)
       grp:Destroy()
@@ -172,7 +172,7 @@ else --Save File does not exist we start a fresh table, no spawns needed
 --  AllGroups = SET_GROUP:New():FilterCategories("ground"):FilterActive(true):FilterStart()
 --  AllGroups = SET_GROUP:New():FilterPrefixes( {"SAM", "MBT", "APC", "IFV"} ):FilterActive(true):FilterStart()
   AllGroups = SET_GROUP:New()
-    :FilterPrefixes( {"Red Start ", "Blue Start ", "CTLD_ "} )
+    :FilterPrefixes( {"Red Start ", "Blue Start ", "CTLD_"} )
  --   :FilterPrefixes( {"Re-enforcements "} )
 --    :FilterPrefixes( {"Re-enforcements ", "Blue Campaign Start ", "Red Campaign Start "} )
 --    :FilterActive(true)
