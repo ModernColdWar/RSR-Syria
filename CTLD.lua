@@ -928,13 +928,6 @@ ctld.spawnableCrates = {
         { weight = 905, desc = "PATRIOT Launcher", unit = "Patriot ln", side = 2, internal = 0 },
 		{ weight = 906, desc = "PATRIOT Repair", unit = "PATRIOT Repair", side = 2, internal = 1 },
  
-		-- S-300
-		{ weight = 907, desc = "S-300PS 64H6E sr", unit = "S-300PS 64H6E sr", side = 1, internal = 0 },
-		{ weight = 908, desc = "S-300PS 40B6M tr", unit = "S-300PS 40B6M tr", side = 1, internal = 0 },
-		{ weight = 909, desc = "S-300PS 54K6 cp", unit = "S-300PS 54K6 cp", side = 1, internal = 0 },
-		{ weight = 910, desc = "S-300PS 5P85D ln", unit = "S-300PS 5P85D ln", side = 1, internal = 0 },
-		{ weight = 911, desc = "S-300PS 5P85C ln", unit = "S-300PS 5P85C ln", side = 1, internal = 0 },
-
 		-- SA-10 GRUMBLE 
         { weight = 907, desc = "SA-10 Search Radar", unit = "S-300PS 64H6E sr", side = 1, internal = 0 },
         { weight = 908, desc = "SA-10 Track Radar", unit = "S-300PS 40B6M tr", side = 1, internal = 0 },
