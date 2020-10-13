@@ -934,7 +934,6 @@ ctld.spawnableCrates = {
 		{ weight = 909, desc = "SA-10 Alt Radar", unit = "S-300PS 40B6MD sr", side = 1, internal = 0 },
         { weight = 910, desc = "SA-10 CP", unit = "S-300PS 54K6 cp", side = 1, internal = 1 },
 		{ weight = 911, desc = "SA-10 Launcher", unit = "S-300PS 5P85C ln", side = 1, internal = 0},
-		{ weight = 912, desc = "SA-10 Repair", unit = "SA-10 Repair", side = 1, internal = 1 },
     
 		--[[
         -- SA-3 system
@@ -976,13 +975,16 @@ ctld.spawnableCrates = {
         { weight = 611, desc = "M-818 Ammo Truck", unit = "M 818", side = 2, cratesRequired = 1, internal = 0 },
 
         { weight = 620, desc = "SA-2 Repair", unit = "SA-2 Repair", side = 1, internal = 0 },
-        { weight = 621, desc = "SA-10 Repair", unit = "SA-10 Repair", side = 1, internal = 0 },
+--        { weight = 621, desc = "SA-10 Repair", unit = "SA-10 Repair", side = 1, internal = 0 },
+		{ weight = 621, desc = "SA-10 Repair", unit = "SA-10 Repair", side = 1, internal = 1 },
         { weight = 622, desc = "Kub Repair", unit = "Kub Repair", side = 1, internal = 0 },
         { weight = 623, desc = "Buk Repair", unit = "Buk Repair", side = 1, internal = 0 },
         { weight = 624, desc = "Hawk Repair", unit = "Hawk Repair", side = 2, internal = 0 },
         { weight = 625, desc = "Roland Repair", unit = "Roland Repair", side = 2, internal = 0 },
-        { weight = 626, desc = "Patriot repair", unit = "Patriot repair", side = 2, internal = 0 },
+--        { weight = 626, desc = "Patriot repair", unit = "Patriot repair", side = 2, internal = 0 },
+		{ weight = 626, desc = "PATRIOT Repair", unit = "PATRIOT Repair", side = 2, internal = 1 },
         { weight = 627, desc = "Early Warning Radar", unit = "1L13 EWR", internal = 0 },
+
     },
     ["Internal Cargo"] = {
         { weight = 501, desc = "HMMWV - JTAC", unit = "Hummer", side = 2, cratesRequired = 1, internal = 1 }, -- used as jtac and unarmed, not on the crate list if JTAC is disabled
@@ -1860,35 +1862,34 @@ ctld.AASystemTemplate = {
         repair = "KUB Repair",
     },
 	{
-		name = "PATRIOT SAM System",
+		name = "PATRIOT AA System",
 		count = 6,
 		parts = {
-			{ name = "Patriot str", desc = "PATRIOT Search/Track Radar",  side = 2, internal = 0},
-			{ name = "Patriot ECS", desc = "PATRIOT ECS (internal)",  side = 2, internal = 1 },
-			{ name = "Patriot EPP", desc = "PATRIOT EPP", side = 2, internal = 0 },
-			{ name = "Patriot cp", desc = "PATRIOT CP (internal)",  side = 2, internal = 1 },
-			{ name = "Patriot AMG", desc = "PATRIOT AMG",  side = 2, internal = 0},
-			{ name = "Patriot ln", desc = "PATRIOT Launcher",  side = 2, internal = 0, launcher = true },
+			{name = "Patriot ln", desc = "PATRIOT Launcher", launcher = true },
+			{name = "Patriot str", desc = "PATRIOT Search/Track Radar"},
+			{name = "Patriot ECS", desc = "PATRIOT ECS"},
+			{name = "Patriot EPP", desc = "PATRIOT EPP"},
+			{name = "Patriot cp", desc = "PATRIOT CP (internal)"},
+			{name = "Patriot AMG", desc = "PATRIOT AMG"},
 		},
 		repair = "PATRIOT Repair",
 		systemType = "LR",
 	},
 	{
-		name = "SA-10 SAM System",
-		count = 6,
+		name = "SA-10 AA System",
+		count = 5,
 		parts = {
-			{ name = "S-300PS 64H6E sr", desc = "SA-10 Search Radar",  side = 1, internal = 0},
-			{ name = "Patriot ECS", desc = "S-300PS 40B6M tr",  side = 1, internal = 0 },
-			{ name = "Patriot EPP", desc = "S-300PS 40B6MD sr", side = 1, internal = 0 },
-			{ name = "Patriot cp", desc = "S-300PS 54K6 cp (internal)",  side = 1, internal = 1 },
-			{ name = "Patriot ln", desc = "S-300PS 5P85C ln",  side = 1, internal = 0, launcher = true },
+			{name = "S-300PS 5P85C ln", desc = "SA-10 Launcher", launcher = true },
+			{name = "S-300PS 64H6E sr", desc = "SA-10 Search Radar"},
+			{name = "S-300PS 40B6M tr", desc = "SA-10 Track Radar"},
+			{name = "S-300PS 40B6MD sr", desc = "SA-10 Alt Radar"},
+			{name = "S-300PS 54K6 cp", desc = "SA-10 CP"},
 		},
 		repair = "SA-10 Repair",
 		systemType = "LR",
 	},	
 }
-
-
+ 
 ctld.crateWait = {}
 ctld.crateMove = {}
 
