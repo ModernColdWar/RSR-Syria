@@ -4689,9 +4689,24 @@ end
 
 -- spawn normal group
 --function ctld.spawnDroppedGroup(_point, _details, _spawnBehind, _maxSearch)
-function ctld.spawnDroppedGroup(_point, _details, _spawnBehind, _maxSearch, _formation)
+--[[
+placed here for reference from line 2270
+function ctld.getPlayerNameOrType(_heli)
 
-    local _groupName = _details.groupName
+    if _heli:getPlayerName() == nil then
+
+        return _heli:getTypeName()
+    else
+        return _heli:getPlayerName()
+    end
+end
+--]]
+function ctld.spawnDroppedGroup(_point, _details, _spawnBehind, _maxSearch, _formation)
+--function ctld.spawnDroppedGroup(_heli, _point, _details, _spawnBehind, _maxSearch, _formation)
+
+    local _groupName = 'CTLD_' .. _details.groupName
+--    local _groupName = (' .. _playerName .. ')' .. _details.groupName-- 
+--    local _groupName = 'CTLD_' .. _types[1].. '_' .. _id .. ' (' .. _playerName .. ')'  -- encountered some issues with using "type #number" on some servers
 
 	if _formation == nil then
 		_formation = "Off Road"
