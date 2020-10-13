@@ -4420,8 +4420,8 @@ function ctld.unpackAASystem(_heli, _nearestCrate, _nearbyCrates, _aaSystemTempl
 
                     -- spawn in a circle around the crate
                     local _angle = math.pi * 2 * (_i - 1) / _launchers
-                    local _xOffset = math.cos(_angle) * 12
-                    local _yOffset = math.sin(_angle) * 12
+                    local _xOffset = math.cos(_angle) * 24
+                    local _yOffset = math.sin(_angle) * 24
 
                     local _point = _systemPart.crate.crateUnit:getPoint()
 
