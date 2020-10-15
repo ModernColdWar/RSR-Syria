@@ -236,10 +236,57 @@ function Zone1CaptureZone:OnEnterAttacked()
   local Coalition = self:GetCoalition()
   self:E({Coalition = Coalition})
   if Coalition == coalition.side.BLUE then
-  trigger.action.outText("RED coalition attacking Aleppo Airbase", 10 , false)
+	trigger.action.outText("RED coalition attacking Aleppo Airbase", 10 , false)
+	
+--Spawn_Strela_Manpads_MM54_1 = SPAWN:New( "MM54-Kaspi FARP AD #001" ):InitLimit( 2, 4 ):InitRandomizeTemplate( Spawn_Strela_Manpads ):SpawnScheduled( 1800, 0.1 ):InitRandomizePosition( 'DOESNOTMATTER', 100, 1 )
+	Blue_Aleppo_UAV = SPAWN
+		:NewWithAlias("UAV Blue Aleppo","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_Aleppo_UAV = SPAWN
+		:NewWithAlias("UAV Red Aleppo","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to Aleppo Airbase", 10 , false)		
   else
   Zone1CaptureZone:Smoke( SMOKECOLOR.White )
-  trigger.action.outText("BLUE coalition attacking Aleppo Airbase", 10 , false)
+	Blue_Aleppo_UAV = SPAWN
+		:NewWithAlias("UAV Blue Aleppo","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_Aleppo_UAV = SPAWN
+		:NewWithAlias("UAV Red Aleppo","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)
+	trigger.action.outText("UAV FAC Dispatched to Aleppo Airbase", 10 , false)
   end
 end
 
@@ -391,8 +438,54 @@ function Zone2CaptureZone:OnEnterAttacked()
   self:E({Coalition = Coalition})
   if Coalition == coalition.side.BLUE then
   trigger.action.outText("RED coalition attacking Abu al-Duhur Airbase", 10 , false)
+	Blue_Abu_al-Duhur_UAV = SPAWN
+		:NewWithAlias("UAV Blue Abu al-Duhur","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_Abu_al-Duhur_UAV = SPAWN
+		:NewWithAlias("UAV Red Abu al-Duhur","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to Abu al-Duhur Airbase", 10 , false)	  
   else
   trigger.action.outText("BLUE coalition attacking Abu al-Duhur Airbase", 10 , false)
+	Blue_Abu_al-Duhur_UAV = SPAWN
+		:NewWithAlias("UAV Blue Abu al-Duhur","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_Abu_al-Duhur_UAV = SPAWN
+		:NewWithAlias("UAV Red Abu al-Duhur","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to Abu al-Duhur Airbase", 10 , false)	  
   end
 end
 
@@ -545,8 +638,54 @@ function Zone3CaptureZone:OnEnterAttacked()
   self:E({Coalition = Coalition})
   if Coalition == coalition.side.BLUE then
   trigger.action.outText("RED coalition attacking Minakh Airbase", 10 , false)
+	Blue_Minakh_UAV = SPAWN
+		:NewWithAlias("UAV Blue Minakh","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_Minakh_UAV = SPAWN
+		:NewWithAlias("UAV Red Minakh","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to Minakh Airbase", 10 , false)  
   else
   trigger.action.outText("BLUE coalition attacking Minakh Airbase", 10 , false)
+	Blue_Minakh_UAV = SPAWN
+		:NewWithAlias("UAV Blue Minakh","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_Minakh_UAV = SPAWN
+		:NewWithAlias("UAV Red Minakh","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to Minakh Airbase", 10 , false)  
   end
 end
 
@@ -660,8 +799,54 @@ function Zone4CaptureZone:OnEnterAttacked()
   self:E({Coalition = Coalition})
   if Coalition == coalition.side.BLUE then
   trigger.action.outText("RED coalition attacking Kuweires Airbase", 10 , false)
+	Blue_Kuweires_UAV = SPAWN
+		:NewWithAlias("UAV Blue Kuweires","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_Kuweires_UAV = SPAWN
+		:NewWithAlias("UAV Red Kuweires","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to Kuweires Airbase", 10 , false)    
   else
   trigger.action.outText("BLUE coalition attacking Kuweires Airbase", 10 , false)
+	Blue_Kuweires_UAV = SPAWN
+		:NewWithAlias("UAV Blue Kuweires","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_Kuweires_UAV = SPAWN
+		:NewWithAlias("UAV Red Kuweires","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to Kuweires Airbase", 10 , false)    
   end
 end
 
@@ -775,8 +960,54 @@ function Zone5CaptureZone:OnEnterAttacked()
   self:E({Coalition = Coalition})
   if Coalition == coalition.side.BLUE then
   trigger.action.outText("RED coalition attacking Jirah Airbase", 10 , false)
+	Blue_Jirah_UAV = SPAWN
+		:NewWithAlias("UAV Blue Jirah","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_Jirah_UAV = SPAWN
+		:NewWithAlias("UAV Red Jirah","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to Jirah Airbase", 10 , false)    
   else
   trigger.action.outText("BLUE coalition attacking Jirah Airbase", 10 , false)
+	Blue_Jirah_UAV = SPAWN
+		:NewWithAlias("UAV Blue Jirah","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_Jirah_UAV = SPAWN
+		:NewWithAlias("UAV Red Jirah","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to Jirah Airbase", 10 , false)    
   end
 end
 
@@ -949,8 +1180,54 @@ function Zone7CaptureZone:OnEnterAttacked()
   self:E({Coalition = Coalition})
   if Coalition == coalition.side.BLUE then
   trigger.action.outText("RED coalition attacking Taftanaz Airbase", 10 , false)
+	Blue_Taftanaz_UAV = SPAWN
+		:NewWithAlias("UAV Blue Taftanaz","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_Taftanaz_UAV = SPAWN
+		:NewWithAlias("UAV Red Taftanaz","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to Taftanaz Airbase", 10 , false)     
   else
   trigger.action.outText("BLUE coalition attacking Taftanaz Airbase", 10 , false)
+	Blue_Taftanaz_UAV = SPAWN
+		:NewWithAlias("UAV Blue Taftanaz","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_Taftanaz_UAV = SPAWN
+		:NewWithAlias("UAV Red Taftanaz","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to Taftanaz Airbase", 10 , false)     
   end
 end
 
@@ -1087,8 +1364,54 @@ function Zone8CaptureZone:OnEnterAttacked()
   self:E({Coalition = Coalition})
   if Coalition == coalition.side.BLUE then
   trigger.action.outText("RED coalition attacking Hatay Airbase", 10 , false)
+	Blue_Hatay_UAV = SPAWN
+		:NewWithAlias("UAV Blue Hatay","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_Hatay_UAV = SPAWN
+		:NewWithAlias("UAV Red Hatay","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to Hatay Airbase", 10 , false)   
   else
   trigger.action.outText("BLUE coalition attacking Hatay Airbase", 10 , false)
+	Blue_Hatay_UAV = SPAWN
+		:NewWithAlias("UAV Blue Hatay","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_Hatay_UAV = SPAWN
+		:NewWithAlias("UAV Red Hatay","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to Hatay Airbase", 10 , false)   
   end
 end
 
@@ -1233,8 +1556,54 @@ function Zone9CaptureZone:OnEnterAttacked()
   self:E({Coalition = Coalition})
   if Coalition == coalition.side.BLUE then
   trigger.action.outText("RED coalition attacking Bassel Al-Assad Airbase", 10 , false)
+	Blue_UAV_Red_Bassel_Al-Assad_UAV = SPAWN
+		:NewWithAlias("UAV Blue Bassel Al-Assad","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_Red_Bassel_Al-Assad_UAV = SPAWN
+		:NewWithAlias("UAV Red Bassel Al-Assad","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to Bassel Al-Assad Airbase", 10 , false)     
   else
   trigger.action.outText("BLUE coalition attacking Bassel Al-Assad Airbase", 10 , false)
+	Blue_Red_Bassel_Al-Assad_UAV = SPAWN
+		:NewWithAlias("UAV Blue Bassel Al-Assad","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_Red_Bassel_Al-Assad_UAV = SPAWN
+		:NewWithAlias("UAV Red Bassel Al-Assad","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to Bassel Al-Assad Airbase", 10 , false)     
   end
 end
 
@@ -1413,8 +1782,54 @@ function Zone11CaptureZone:OnEnterAttacked()
   self:E({Coalition = Coalition})
   if Coalition == coalition.side.BLUE then
   trigger.action.outText("RED coalition attacking Rene Mouawad Airbase", 10 , false)
+	Blue_Rene_Mouawad_UAV = SPAWN
+		:NewWithAlias("UAV Blue Rene Mouawad","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_Rene_Mouawad_UAV = SPAWN
+		:NewWithAlias("UAV Red Rene Mouawad","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to Rene Mouawad Airbase", 10 , false)   
   else
   trigger.action.outText("BLUE coalition attacking Rene Mouawad Airbase", 10 , false)
+	Blue_Rene_Mouawad_UAV = SPAWN
+		:NewWithAlias("UAV Blue Rene Mouawad","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_Rene_Mouawad_UAV = SPAWN
+		:NewWithAlias("UAV Red Rene Mouawad","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to Rene Mouawad Airbase", 10 , false)   
   end
 end
 
@@ -1463,14 +1878,14 @@ function Zone12CaptureZone:OnEnterGuarded( From, Event, To )
 	trigger.action.setUserFlag("Al Qusayr Red AF-18",100)
 	trigger.action.setUserFlag("Al Qusayr Red AF-19",100)
 	trigger.action.setUserFlag("Al Qusayr Red AF-20",100)
-	trigger.action.setUserFlag("Al Qusayr Red Cargo-1",100)
-	trigger.action.setUserFlag("Al Qusayr Red Cargo-2",100)
-	trigger.action.setUserFlag("Al Qusayr Red Cargo-3",100)
-	trigger.action.setUserFlag("Al Qusayr Red Cargo-4",100)
-	trigger.action.setUserFlag("Al Qusayr Red Cargo-5",100)
-	trigger.action.setUserFlag("Al Qusayr Red Cargo-6",100)
-	trigger.action.setUserFlag("Al Qusayr Red Cargo-7",100)
-	trigger.action.setUserFlag("Al Qusayr Red Cargo-8",100)
+	trigger.action.setUserFlag("Al Qusayr Red Cargo-1",0)
+	trigger.action.setUserFlag("Al Qusayr Red Cargo-2",0)
+	trigger.action.setUserFlag("Al Qusayr Red Cargo-3",0)
+	trigger.action.setUserFlag("Al Qusayr Red Cargo-4",0)
+	trigger.action.setUserFlag("Al Qusayr Red Cargo-5",0)
+	trigger.action.setUserFlag("Al Qusayr Red Cargo-6",0)
+	trigger.action.setUserFlag("Al Qusayr Red Cargo-7",0)
+	trigger.action.setUserFlag("Al Qusayr Red Cargo-8",0)
 	trigger.action.setUserFlag("Al Qusayr Blue AF-1",0)
 	trigger.action.setUserFlag("Al Qusayr Blue AF-2",0)
 	trigger.action.setUserFlag("Al Qusayr Blue AF-3",0)
@@ -1567,8 +1982,54 @@ function Zone12CaptureZone:OnEnterAttacked()
   self:E({Coalition = Coalition})
   if Coalition == coalition.side.BLUE then
   trigger.action.outText("RED coalition attacking Al Qusayr Airbase", 10 , false)
+	Blue_Al_Qusayr_UAV = SPAWN
+		:NewWithAlias("UAV Blue Al Qusayr","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_Al_Qusayr_UAV = SPAWN
+		:NewWithAlias("UAV Red Al Qusayr","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to Al Qusayr Airbase", 10 , false)    
   else
   trigger.action.outText("BLUE coalition attacking Al Qusayr Airbase", 10 , false)
+	Blue_Al_Qusayr_UAV = SPAWN
+		:NewWithAlias("UAV Blue Al Qusayr","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_Al_Qusayr_UAV = SPAWN
+		:NewWithAlias("UAV Red Al Qusayr","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to Al Qusayr Airbase", 10 , false)    
   end
 end
 
@@ -1684,8 +2145,54 @@ function Zone14CaptureZone:OnEnterAttacked()
   self:E({Coalition = Coalition})
   if Coalition == coalition.side.BLUE then
   trigger.action.outText("RED coalition attacking An Nasiriyah Airbase", 10 , false)
+	Blue_An_Nasiriyah_UAV = SPAWN
+		:NewWithAlias("UAV Blue An Nasiriyah","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_An_Nasiriyah_UAV = SPAWN
+		:NewWithAlias("UAV Red An Nasiriyah","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to An Nasiriyah Airbase", 10 , false)  
   else
   trigger.action.outText("BLUE coalition attacking An Nasiriyah Airbase", 10 , false)
+	Blue_An_Nasiriyah_UAV = SPAWN
+		:NewWithAlias("UAV Blue An Nasiriyah","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_An_Nasiriyah_UAV = SPAWN
+		:NewWithAlias("UAV Red An Nasiriyah","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to An Nasiriyah Airbase", 10 , false)  
   end
 end
 
@@ -1758,8 +2265,54 @@ function Zone15CaptureZone:OnEnterAttacked()
   self:E({Coalition = Coalition})
   if Coalition == coalition.side.BLUE then
   trigger.action.outText("RED coalition attacking Al-Dumayr Airbase", 10 , false)
+	Blue_Al-Dumayr_UAV = SPAWN
+		:NewWithAlias("UAV Blue Al-Dumayr","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_Al-Dumayr_UAV = SPAWN
+		:NewWithAlias("UAV Red Al-Dumayr","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to Al-Dumayr Airbase", 10 , false)   
   else
   trigger.action.outText("BLUE coalition attacking Al-Dumayr Airbase", 10 , false)
+	Blue_Al-Dumayr_UAV = SPAWN
+		:NewWithAlias("UAV Blue Al-Dumayr","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_Al-Dumayr_UAV = SPAWN
+		:NewWithAlias("UAV Red Al-Dumayr","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to Al-Dumayr Airbase", 10 , false)   
   end
 end
 
@@ -1864,8 +2417,54 @@ function Zone16CaptureZone:OnEnterAttacked()
   self:E({Coalition = Coalition})
   if Coalition == coalition.side.BLUE then
   trigger.action.outText("RED coalition attacking Marj as Sultan North Airbase", 10 , false)
+	Blue_Marj_as_Sultan_North_UAV = SPAWN
+		:NewWithAlias("UAV Blue Marj as Sultan North","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_Marj_as_Sultan_North_UAV = SPAWN
+		:NewWithAlias("UAV Red Marj as Sultan North","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to Marj as Sultan North Airbase", 10 , false)  
   else
   trigger.action.outText("BLUE coalition attacking Marj as Sultan North Airbase", 10 , false)
+	Blue_Marj_as_Sultan_North_UAV = SPAWN
+		:NewWithAlias("UAV Blue Marj as Sultan North","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_Marj_as_Sultan_North_UAV = SPAWN
+		:NewWithAlias("UAV Red Marj as Sultan North","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to Marj as Sultan North Airbase", 10 , false) 
   end
 end
 
@@ -1970,8 +2569,54 @@ function Zone17CaptureZone:OnEnterAttacked()
   self:E({Coalition = Coalition})
   if Coalition == coalition.side.BLUE then
   trigger.action.outText("RED coalition attacking Marj as Sultan South Airbase", 10 , false)
+	Blue_Marj_as_Sultan_South_UAV = SPAWN
+		:NewWithAlias("UAV Blue Marj as Sultan South","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_Marj_as_Sultan_South_UAV = SPAWN
+		:NewWithAlias("UAV Red Marj as Sultan South","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to Marj as Sultan South Airbase", 10 , false)  
   else
   trigger.action.outText("BLUE coalition attacking Marj as Sultan South Airbase", 10 , false)
+	Blue_Marj_as_Sultan_South_UAV = SPAWN
+		:NewWithAlias("UAV Blue Marj as Sultan South","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_Marj_as_Sultan_South_UAV = SPAWN
+		:NewWithAlias("UAV Red Marj as Sultan South","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to Marj as Sultan South Airbase", 10 , false)  
   end
 end
 
@@ -2268,8 +2913,54 @@ function Zone18CaptureZone:OnEnterAttacked()
   self:E({Coalition = Coalition})
   if Coalition == coalition.side.BLUE then
   trigger.action.outText("RED coalition attacking Damascus Airbase", 10 , false)
+	Blue_Damascus_UAV = SPAWN
+		:NewWithAlias("UAV Blue Damascus","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_Damascus_UAV = SPAWN
+		:NewWithAlias("UAV Red Damascus","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to Damascus Airbase", 10 , false)   
   else
   trigger.action.outText("BLUE coalition attacking Damascus Airbase", 10 , false)
+	Blue_Damascus_UAV = SPAWN
+		:NewWithAlias("UAV Blue Damascus","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_Damascus_UAV = SPAWN
+		:NewWithAlias("UAV Red Damascus","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to Damascus Airbase", 10 , false)   
   end
 end
 
@@ -2342,8 +3033,54 @@ function Zone19CaptureZone:OnEnterAttacked()
   self:E({Coalition = Coalition})
   if Coalition == coalition.side.BLUE then
   trigger.action.outText("RED coalition attacking Qabr as Sitt Airbase", 10 , false)
+	Blue_Qabr_as_Sitt_UAV = SPAWN
+		:NewWithAlias("UAV Blue Qabr as Sitt","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_Qabr_as_Sitt_UAV = SPAWN
+		:NewWithAlias("UAV Red Qabr as Sitt","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to Qabr as Sitt Airbase", 10 , false)     
   else
   trigger.action.outText("BLUE coalition attacking Qabr as Sitt Airbase", 10 , false)
+	Blue_Qabr_as_Sitt_UAV = SPAWN
+		:NewWithAlias("UAV Blue Qabr as Sitt","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_Qabr_as_Sitt_UAV = SPAWN
+		:NewWithAlias("UAV Red Qabr as Sitt","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to Qabr as Sitt Airbase", 10 , false)     
   end
 end
 
@@ -2416,8 +3153,54 @@ function Zone20CaptureZone:OnEnterAttacked()
   self:E({Coalition = Coalition})
   if Coalition == coalition.side.BLUE then
   trigger.action.outText("RED coalition attacking Mezzeh Airbase", 10 , false)
+	Blue_Mezzeh_UAV = SPAWN
+		:NewWithAlias("UAV Blue Mezzeh","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_Mezzeh_UAV = SPAWN
+		:NewWithAlias("UAV Red Mezzeh","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to Mezzeh Airbase", 10 , false)    
   else
   trigger.action.outText("BLUE coalition attacking Mezzeh Airbase", 10 , false)
+	Blue_Mezzeh_UAV = SPAWN
+		:NewWithAlias("UAV Blue Mezzeh","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_Mezzeh_UAV = SPAWN
+		:NewWithAlias("UAV Red Mezzeh","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to Mezzeh Airbase", 10 , false)    
   end
 end
 
@@ -2554,8 +3337,54 @@ function Zone21CaptureZone:OnEnterAttacked()
   self:E({Coalition = Coalition})
   if Coalition == coalition.side.BLUE then
   trigger.action.outText("RED coalition attacking Marj Ruhayyil Airbase", 10 , false)
+	Blue_Marj_Ruhayyil_UAV = SPAWN
+		:NewWithAlias("UAV Blue Marj Ruhayyil","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_Marj_Ruhayyil_UAV = SPAWN
+		:NewWithAlias("UAV Red Marj Ruhayyil","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to Marj Ruhayyil Airbase", 10 , false)     
   else
   trigger.action.outText("BLUE coalition attacking Marj Ruhayyil Airbase", 10 , false)
+	Blue_Marj_Ruhayyil_UAV = SPAWN
+		:NewWithAlias("UAV Blue Marj Ruhayyil","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_Marj_Ruhayyil_UAV = SPAWN
+		:NewWithAlias("UAV Red Marj Ruhayyil","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to Marj Ruhayyil Airbase", 10 , false)     
   end
 end
 
@@ -2565,7 +3394,7 @@ function Zone21CaptureZone:OnEnterCaptured()
   local Coalition = self:GetCoalition()
   self:E({Coalition = Coalition})
   if Coalition == coalition.side.BLUE then
-  trigger.action.outText("BLUE coalition captured Marj Ruhayyil Airbase", 10 , false)
+  trigger.action.outText("BLUE coalition captured Marj Ruhayyil Airbase", 10 , false)  
   else
   trigger.action.outText("RED coalition captured Marj Ruhayyil Airbase", 10 , false)
   end
@@ -2628,8 +3457,54 @@ function Zone22CaptureZone:OnEnterAttacked()
   self:E({Coalition = Coalition})
   if Coalition == coalition.side.BLUE then
   trigger.action.outText("RED coalition attacking Khalkhalah Airbase", 10 , false)
+	Blue_Khalkhalah_UAV = SPAWN
+		:NewWithAlias("UAV Blue Khalkhalah","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_Khalkhalah_UAV = SPAWN
+		:NewWithAlias("UAV Red Khalkhalah","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to Khalkhalah Airbase", 10 , false)   
   else
   trigger.action.outText("BLUE coalition attacking Khalkhalah Airbase", 10 , false)
+	Blue_Khalkhalah_UAV = SPAWN
+		:NewWithAlias("UAV Blue Khalkhalah","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_Khalkhalah_UAV = SPAWN
+		:NewWithAlias("UAV Red Khalkhalah","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to Khalkhalah Airbase", 10 , false)   
   end
 end
 
@@ -2774,8 +3649,54 @@ function Zone23CaptureZone:OnEnterAttacked()
   self:E({Coalition = Coalition})
   if Coalition == coalition.side.BLUE then
   trigger.action.outText("RED coalition attacking King Hussein Air College Airbase", 10 , false)
+	Blue_King_Hussein_Air_College_UAV = SPAWN
+		:NewWithAlias("UAV Blue King Hussein Air College","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_King_Hussein_Air_College_UAV = SPAWN
+		:NewWithAlias("UAV Red King Hussein Air College","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to King Hussein Air College Airbase", 10 , false)   
   else
   trigger.action.outText("BLUE coalition attacking King Hussein Air College Airbase", 10 , false)
+	Blue_King_Hussein_Air_College_UAV = SPAWN
+		:NewWithAlias("UAV Blue King Hussein Air College","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_King_Hussein_Air_College_UAV = SPAWN
+		:NewWithAlias("UAV Red King Hussein Air College","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to King Hussein Air College Airbase", 10 , false)   
   end
 end
 
@@ -2896,8 +3817,54 @@ function Zone24CaptureZone:OnEnterAttacked()
   self:E({Coalition = Coalition})
   if Coalition == coalition.side.BLUE then
   trigger.action.outText("RED coalition attacking Wujah Al Hajar Airbase", 10 , false)
+	Blue_Wujah_Al_Hajar_UAV = SPAWN
+		:NewWithAlias("UAV Blue Wujah Al Hajar","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_Wujah_Al_Hajare_UAV = SPAWN
+		:NewWithAlias("UAV Red Wujah Al Hajar","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to Wujah Al Hajar Airbase", 10 , false)    
   else
   trigger.action.outText("BLUE coalition attacking Wujah Al Hajar Airbase", 10 , false)
+	Blue_Wujah_Al_Hajar_UAV = SPAWN
+		:NewWithAlias("UAV Blue Wujah Al Hajar","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_Wujah_Al_Hajar_UAV = SPAWN
+		:NewWithAlias("UAV Red Wujah Al Hajar","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to Wujah Al Hajar Airbase", 10 , false)    
   end
 end
 
@@ -3018,8 +3985,54 @@ function Zone25CaptureZone:OnEnterAttacked()
   self:E({Coalition = Coalition})
   if Coalition == coalition.side.BLUE then
   trigger.action.outText("RED coalition attacking Rayak Airbase", 10 , false)
+	Blue_Rayak_UAV = SPAWN
+		:NewWithAlias("UAV Blue Rayak","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_Rayak_UAV = SPAWN
+		:NewWithAlias("UAV Red Rayak","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to Rayak Airbase", 10 , false)    
   else
   trigger.action.outText("BLUE coalition attacking Rayak Airbase", 10 , false)
+	Blue_Rayak_UAV = SPAWN
+		:NewWithAlias("UAV Blue Rayak","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_Rayak_UAV = SPAWN
+		:NewWithAlias("UAV Red Rayak","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to Rayak Airbase", 10 , false)    
   end
 end
 
@@ -3156,8 +4169,54 @@ function Zone26CaptureZone:OnEnterAttacked()
   self:E({Coalition = Coalition})
   if Coalition == coalition.side.BLUE then
   trigger.action.outText("RED coalition attacking Beirut-Rafic Hariri Airbase", 10 , false)
+	Blue_Beirut-Rafic_Hariri_UAV = SPAWN
+		:NewWithAlias("UAV Blue Beirut-Rafic Hariri","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_Beirut-Rafic_Hariri_UAV = SPAWN
+		:NewWithAlias("UAV Red Beirut-Rafic Hariri","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to Beirut-Rafic Hariri Airbase", 10 , false)    
   else
   trigger.action.outText("BLUE coalition attacking Beirut-Rafic Hariri Airbase", 10 , false)
+	Blue_Beirut-Rafic_Hariri_UAV = SPAWN
+		:NewWithAlias("UAV Blue Beirut-Rafic Hariri","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_Beirut-Rafic_Hariri_UAV = SPAWN
+		:NewWithAlias("UAV Red Beirut-Rafic Hariri","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to Beirut-Rafic Hariri Airbase", 10 , false)    
   end
 end
 
@@ -3294,8 +4353,54 @@ function Zone27CaptureZone:OnEnterAttacked()
   self:E({Coalition = Coalition})
   if Coalition == coalition.side.BLUE then
   trigger.action.outText("RED coalition attacking Kiryat Shmona Airbase", 10 , false)
+	Blue_Kiryat_Shmona_UAV = SPAWN
+		:NewWithAlias("UAV Blue Kiryat Shmona","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_Kiryat_Shmona_UAV = SPAWN
+		:NewWithAlias("UAV Red Kiryat Shmona","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to Kiryat Shmona Airbase", 10 , false)   
   else
   trigger.action.outText("BLUE coalition attacking Kiryat Shmona Airbase", 10 , false)
+	Blue_Kiryat_Shmona_UAV = SPAWN
+		:NewWithAlias("UAV Blue Kiryat Shmona","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_Kiryat_Shmona_UAV = SPAWN
+		:NewWithAlias("UAV Red Kiryat Shmona","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to Kiryat Shmona Airbase", 10 , false)   
   end
 end
 
@@ -3476,8 +4581,54 @@ function Zone29CaptureZone:OnEnterAttacked()
   self:E({Coalition = Coalition})
   if Coalition == coalition.side.BLUE then
   trigger.action.outText("RED coalition attacking Ramat David Airbase", 10 , false)
+	Blue_Ramat_David_UAV = SPAWN
+		:NewWithAlias("UAV Blue Ramat David","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_Ramat_David_UAV = SPAWN
+		:NewWithAlias("UAV Red Ramat David","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to Ramat David Airbase", 10 , false)   
   else
   trigger.action.outText("BLUE coalition attacking Ramat David Airbase", 10 , false)
+	Blue_Ramat_David_UAV = SPAWN
+		:NewWithAlias("UAV Blue Ramat David","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_Ramat_David_UAV = SPAWN
+		:NewWithAlias("UAV Red Ramat David","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to Ramat David Airbase", 10 , false)   
   end
 end
 
@@ -3622,8 +4773,54 @@ function Zone30CaptureZone:OnEnterAttacked()
   self:E({Coalition = Coalition})
   if Coalition == coalition.side.BLUE then
   trigger.action.outText("RED coalition attacking Megiddo Airbase", 10 , false)
+	Blue_Megiddo_UAV = SPAWN
+		:NewWithAlias("UAV Blue Megiddo","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_Megiddo_UAV = SPAWN
+		:NewWithAlias("UAV Red Megiddo","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to Megiddo Airbase", 10 , false)    
   else
   trigger.action.outText("BLUE coalition attacking Megiddo Airbase", 10 , false)
+	Blue_Megiddo_UAV = SPAWN
+		:NewWithAlias("UAV Blue Megiddo","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_Megiddo_UAV = SPAWN
+		:NewWithAlias("UAV Red Megiddo","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to Megiddo Airbase", 10 , false)    
   end
 end
 
@@ -3963,8 +5160,54 @@ function Zone32CaptureZone:OnEnterAttacked()
   self:E({Coalition = Coalition})
   if Coalition == coalition.side.BLUE then
   trigger.action.outText("RED coalition attacking Incirlik Airbase", 10 , false)
+	Blue_Incirlik_UAV = SPAWN
+		:NewWithAlias("UAV Blue Incirlik","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_Incirlik_UAV = SPAWN
+		:NewWithAlias("UAV Red Incirlik","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to Incirlik Airbase", 10 , false)  
   else
   trigger.action.outText("BLUE coalition attacking Incirlik Airbase", 10 , false)
+	Blue_Incirlik_UAV = SPAWN
+		:NewWithAlias("UAV Blue Incirlik","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
+			end)	
+		:SpawnScheduled(30,0)
+	Red_Incirlik_UAV = SPAWN
+		:NewWithAlias("UAV Red Incirlik","PONTIAC 6-1")
+		:InitLimit(1,0)
+		:InitKeepUnitNames(true)
+		:InitCleanUp(30)
+		:OnSpawnGroup(
+			function(SpawnedGroup)
+				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
+				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToRed()
+			end)	
+		:SpawnScheduled(30,0)		
+	trigger.action.outText("UAV FAC Dispatched to Incirlik Airbase", 10 , false)  
   end
 end
 
