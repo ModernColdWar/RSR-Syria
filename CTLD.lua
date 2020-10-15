@@ -964,7 +964,7 @@ ctld.spawnableCrates = {
 
 -- if the unit is on this list, it will be made into a JTAC when deployed
 ctld.jtacUnitTypes = {
-    "Tigr_233036", "Hummer", "Soldier M4", "Soldier AK", "T-55", "Leopard1A3" -- there are some wierd encoding issues so if you write SKP-11 it wont match as the - sign is encoded differently...
+    "Tigr_233036", "Hummer", "Soldier M4", "Infantry AK", "T-55", "Leopard1A3" -- there are some wierd encoding issues so if you write SKP-11 it wont match as the - sign is encoded differently...
 }
 
 
@@ -2373,7 +2373,7 @@ function ctld.generateTroopTypes(_side, _countOrTemplate, _country)
             if _side == 2 then
                 _troops = ctld.insertIntoTroopsArray("Soldier M4", _countOrTemplate.inf, _troops)
             else
-                _troops = ctld.insertIntoTroopsArray("Soldier AK", _countOrTemplate.inf, _troops)
+                _troops = ctld.insertIntoTroopsArray("Infantry AK", _countOrTemplate.inf, _troops)
             end
         end
 
