@@ -1,21 +1,15 @@
 --[[
     Combat Troop and Logistics Drop
-
     Allows Huey, Mi-8 and C130 to transport troops internally and Helicopters to transport Logistic / Vehicle units to the field via sling-loads
     without requiring external mods.
-
     Supports all of the original CTTS functionality such as AI auto troop load and unload as well as group spawning and preloading of troops into units.
-
     Supports deployment of Auto Lasing JTAC to the field
-
     See https://github.com/ciribob/DCS-CTLD for a user manual and the latest version
-
 	Contributors:
 	    - Steggles - https://github.com/Bob7heBuilder
 	    - mvee - https://github.com/mvee
 	    - jmontleon - https://github.com/jmontleon
 	    - emilianomolina - https://github.com/emilianomolina
-
     Version: 1.73 - 15/04/2018
       - Allow minimum distance from friendly logistics to be set
  ]]
@@ -139,11 +133,8 @@ ctld.JTAC_lock = "all" -- "vehicle" OR "troop" OR "all" forces JTAC to only lock
 
 --[[
 ctld.JTAC_invisible = false -- JTAC units are invisible to enemy AI
-
 ctld.JTAC_startLaserCode = 1611 -- starting Laser Code for JTACs
-
 ctld.JTAC_BDA = true -- set true to get Coalition BDA (target destroyed) messages from JTAC(s)
-
 ctld.JTAC_targetNotifications = true -- set true to get Coalition notifications of new JTAC targets
 --]]
 -- ***************** Pickup, dropoff and waypoint zones *****************
@@ -1877,7 +1868,6 @@ function ctld.spawnCrateStatic(_country, _unitId, _point, _name, _weight, _side,
 			
 			["shape_name"] = "barrels_cargo",
                         ["type"] = "barrels_cargo",
-
                         ["shape_name"] = "bw_container_cargo",
                         ["type"] = "container_cargo",
 			
@@ -1986,7 +1976,6 @@ end
 
 --[[
 function ctld.spawnFOB(_country, _unitId, _point, _name)
-
     local _crate = {
         ["category"] = "Fortifications",
         ["type"] = "outpost",
@@ -2392,7 +2381,7 @@ function ctld.generateTroopTypes(_side, _countOrTemplate, _country)
     else
         for _i = 1, _countOrTemplate do
 
-            local _unitType = "Soldier AK"
+            local _unitType = "Infantry AK"
 
             if _side == 2 then
                 _unitType = "Soldier M4"
@@ -3449,9 +3438,7 @@ function ctld.unpackCrates(_arguments)
 
 --[[																									   
             if ctld.inLogisticsZone(_heli) == true  or  ctld.farEnoughFromLogisticZone(_heli) == false then
-
                 ctld.displayMessageToGroup(_heli, "You can't unpack that here! Take it to where it's needed!", 20)
-
                 return
             end
 ]]--
@@ -4548,7 +4535,6 @@ function ctld.unpackMultiCrate(_heli, _nearestCrate, _nearbyCrates)
 
 --[[		
 		if ctld.isJTACUnitType(_nearestCrate.details.unit) and ctld.JTAC_dropEnabled then
-
             local _code = table.remove(ctld.jtacGeneratedLaserCodes, 1)
             --put to the end
             table.insert(ctld.jtacGeneratedLaserCodes, _code)
@@ -4634,9 +4620,7 @@ end
 --[[
 placed here for reference from line 2270
 function ctld.getPlayerNameOrType(_heli)
-
     if _heli:getPlayerName() == nil then
-
         return _heli:getTypeName()
     else
         return _heli:getPlayerName()
