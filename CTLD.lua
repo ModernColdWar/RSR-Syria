@@ -41,8 +41,8 @@ ctld.enableSmokeDrop = true -- if false, helis and c-130 will not be able to dro
 
 ctld.maxExtractDistance = 125 -- max distance from vehicle to troops to allow a group extraction
 ctld.maximumDistanceLogistic = 200 -- max distance from vehicle to logistics to allow a loading or spawning operation
-ctld.maximumSearchDistance = 4000 -- max distance for troops to search for enemy
-ctld.maximumMoveDistance = 2000 -- max distance for troops to move from drop point if no enemy is nearby
+ctld.maximumSearchDistance = 1000 -- max distance for troops to search for enemy
+ctld.maximumMoveDistance = 500 -- max distance for troops to move from drop point if no enemy is nearby
 
 ctld.minimumDeployDistance = 600 -- minimum distance from a friendly pickup zone where you can deploy a crate
 
@@ -822,9 +822,9 @@ ctld.unitActions = {
 -- You can also add an optional coalition side to limit the group to one side
 -- for the side - 2 is BLUE and 1 is RED
 ctld.loadableGroups = {
-    {name = "Standard Group", inf = 6, mg = 2, at = 2 }, -- will make a loadable group with 5 infantry, 2 MGs and 2 anti-tank for both coalitions
-    {name = "Anti Air", inf = 2, aa = 3  },
-    {name = "Anti Tank", inf = 2, at = 6  },
+    {name = "Standard Group", inf = 2, mg = 1, at = 1 }, -- will make a loadable group with 5 infantry, 2 MGs and 2 anti-tank for both coalitions
+    {name = "Anti Air", inf = 2, aa = 2  },
+    {name = "Anti Tank", inf = 2, at = 2  },
     {name = "Mortar Squad", mortar = 6 },
 --    {name = "Recon", inf = 1 },
     -- {name = "Mortar Squad Red", inf = 2, mortar = 5, side =1 }, --would make a group loadable by RED only
