@@ -15,16 +15,16 @@ Incirlik_NorthCAPZone = ZONE_POLYGON:New( "Incirlik CAP Zone", GROUP:FindByName(
 TEXACOTankerBlue = SPAWN
   :NewWithAlias("B_TANKER_KC135MPRS_1","TEXACO Blue 1-1")
   :InitLimit(1,3)
-  :InitCleanUp(30)
+--  :InitCleanUp(30)
   :OnSpawnGroup(function(SpawnedGroup)
   MESSAGE:New("TEXACO Blue 1-1 is back on station",25,"TEXACO Blue 1-1"):ToBlue()
   end)
   :SpawnScheduled(3600,0.1) 
 
-TEXACOTankerBlue = SPAWN
+SHELLTankerBlue = SPAWN
   :NewWithAlias("B_TANKER_KC135_1","SHELL Blue 1-1")
   :InitLimit(1,3)
-  :InitCleanUp(30)
+--  :InitCleanUp(30)
   :OnSpawnGroup(function(SpawnedGroup)
   MESSAGE:New("SHELL Blue 1-1 is back on station",25,"SHELL Blue 1-1"):ToBlue()
   end)
