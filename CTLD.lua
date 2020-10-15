@@ -853,7 +853,7 @@ ctld.spawnableCrates = {
 		--Blue
 		--Moved Leo1 to internal cargo as a JTAC for the time being
         --{ weight = 830, desc = "Leopard 1A3", unit = "Leopard1A3", side = 2, cratesRequired = 1, unitQuantity = 2, internal = 0 },
-        { weight = 830, desc = "Merkava", unit = "Merkava_Mk4", side = 2, cratesRequired = 1, unitQuantity = 1, internal = 0 },
+        { weight = 834, desc = "Merkava", unit = "Merkava_Mk4", side = 2, cratesRequired = 1, unitQuantity = 1, internal = 0 },
         { weight = 831, desc = "Leopard-2", unit = "Leopard-2", side = 2, cratesRequired = 2, unitQuantity = 1, internal = 0 },
         { weight = 832, desc = "Challenger II", unit = "Challenger2", side = 2, cratesRequired = 2, unitQuantity = 1, internal = 0 },
         { weight = 833, desc = "M1A2 Abrams", unit = "M-1 Abrams", side = 2, cratesRequired = 3, unitQuantity = 1, internal = 0 },
