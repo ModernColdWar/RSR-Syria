@@ -438,18 +438,8 @@ function Zone2CaptureZone:OnEnterAttacked()
   self:E({Coalition = Coalition})
   if Coalition == coalition.side.BLUE then
   trigger.action.outText("RED coalition attacking Abu al-Duhur Airbase", 10 , false)
-	Blue_Abu_al-Duhur_UAV = SPAWN
-		:NewWithAlias("UAV Blue Abu al-Duhur","PONTIAC 6-1")
-		:InitLimit(1,0)
-		:InitKeepUnitNames(true)
-		:InitCleanUp(30)
-		:OnSpawnGroup(
-			function(SpawnedGroup)
-				ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
-				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
-			end)	
-		:SpawnScheduled(30,0)
-	Red_Abu_al-Duhur_UAV = SPAWN
+	Blue_Abu_al_Duhur_UAV = SPAWN:NewWithAlias("UAV Blue Abu al-Duhur","PONTIAC 6-1"):InitLimit(1,0):InitKeepUnitNames(true):InitCleanUp(30):OnSpawnGroup(function(SpawnedGroup)ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()end):SpawnScheduled(30,0)
+	Red_Abu_al_Duhur_UAV = SPAWN
 		:NewWithAlias("UAV Red Abu al-Duhur","PONTIAC 6-1")
 		:InitLimit(1,0)
 		:InitKeepUnitNames(true)
@@ -463,7 +453,7 @@ function Zone2CaptureZone:OnEnterAttacked()
 	trigger.action.outText("UAV FAC Dispatched to Abu al-Duhur Airbase", 10 , false)	  
   else
   trigger.action.outText("BLUE coalition attacking Abu al-Duhur Airbase", 10 , false)
-	Blue_Abu_al-Duhur_UAV = SPAWN
+	Blue_Abu_al_Duhur_UAV = SPAWN
 		:NewWithAlias("UAV Blue Abu al-Duhur","PONTIAC 6-1")
 		:InitLimit(1,0)
 		:InitKeepUnitNames(true)
@@ -474,7 +464,7 @@ function Zone2CaptureZone:OnEnterAttacked()
 				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
 			end)	
 		:SpawnScheduled(30,0)
-	Red_Abu_al-Duhur_UAV = SPAWN
+	Red_Abu_al_Duhur_UAV = SPAWN
 		:NewWithAlias("UAV Red Abu al-Duhur","PONTIAC 6-1")
 		:InitLimit(1,0)
 		:InitKeepUnitNames(true)
@@ -1556,7 +1546,7 @@ function Zone9CaptureZone:OnEnterAttacked()
   self:E({Coalition = Coalition})
   if Coalition == coalition.side.BLUE then
   trigger.action.outText("RED coalition attacking Bassel Al-Assad Airbase", 10 , false)
-	Blue_UAV_Red_Bassel_Al-Assad_UAV = SPAWN
+	Blue_UAV_Red_Bassel_Al_Assad_UAV = SPAWN
 		:NewWithAlias("UAV Blue Bassel Al-Assad","PONTIAC 6-1")
 		:InitLimit(1,0)
 		:InitKeepUnitNames(true)
@@ -1567,7 +1557,7 @@ function Zone9CaptureZone:OnEnterAttacked()
 				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
 			end)	
 		:SpawnScheduled(30,0)
-	Red_Red_Bassel_Al-Assad_UAV = SPAWN
+	Red_Red_Bassel_Al_Assad_UAV = SPAWN
 		:NewWithAlias("UAV Red Bassel Al-Assad","PONTIAC 6-1")
 		:InitLimit(1,0)
 		:InitKeepUnitNames(true)
@@ -1581,7 +1571,7 @@ function Zone9CaptureZone:OnEnterAttacked()
 	trigger.action.outText("UAV FAC Dispatched to Bassel Al-Assad Airbase", 10 , false)     
   else
   trigger.action.outText("BLUE coalition attacking Bassel Al-Assad Airbase", 10 , false)
-	Blue_Red_Bassel_Al-Assad_UAV = SPAWN
+	Blue_Red_Bassel_Al_Assad_UAV = SPAWN
 		:NewWithAlias("UAV Blue Bassel Al-Assad","PONTIAC 6-1")
 		:InitLimit(1,0)
 		:InitKeepUnitNames(true)
@@ -1592,7 +1582,7 @@ function Zone9CaptureZone:OnEnterAttacked()
 				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
 			end)	
 		:SpawnScheduled(30,0)
-	Red_Red_Bassel_Al-Assad_UAV = SPAWN
+	Red_Red_Bassel_Al_Assad_UAV = SPAWN
 		:NewWithAlias("UAV Red Bassel Al-Assad","PONTIAC 6-1")
 		:InitLimit(1,0)
 		:InitKeepUnitNames(true)
@@ -2265,7 +2255,7 @@ function Zone15CaptureZone:OnEnterAttacked()
   self:E({Coalition = Coalition})
   if Coalition == coalition.side.BLUE then
   trigger.action.outText("RED coalition attacking Al-Dumayr Airbase", 10 , false)
-	Blue_Al-Dumayr_UAV = SPAWN
+	Blue_Al_Dumayr_UAV = SPAWN
 		:NewWithAlias("UAV Blue Al-Dumayr","PONTIAC 6-1")
 		:InitLimit(1,0)
 		:InitKeepUnitNames(true)
@@ -2276,7 +2266,7 @@ function Zone15CaptureZone:OnEnterAttacked()
 				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
 			end)	
 		:SpawnScheduled(30,0)
-	Red_Al-Dumayr_UAV = SPAWN
+	Red_Al_Dumayr_UAV = SPAWN
 		:NewWithAlias("UAV Red Al-Dumayr","PONTIAC 6-1")
 		:InitLimit(1,0)
 		:InitKeepUnitNames(true)
@@ -2290,7 +2280,7 @@ function Zone15CaptureZone:OnEnterAttacked()
 	trigger.action.outText("UAV FAC Dispatched to Al-Dumayr Airbase", 10 , false)   
   else
   trigger.action.outText("BLUE coalition attacking Al-Dumayr Airbase", 10 , false)
-	Blue_Al-Dumayr_UAV = SPAWN
+	Blue_Al_Dumayr_UAV = SPAWN
 		:NewWithAlias("UAV Blue Al-Dumayr","PONTIAC 6-1")
 		:InitLimit(1,0)
 		:InitKeepUnitNames(true)
@@ -2301,7 +2291,7 @@ function Zone15CaptureZone:OnEnterAttacked()
 				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
 			end)	
 		:SpawnScheduled(30,0)
-	Red_Al-Dumayr_UAV = SPAWN
+	Red_Al_Dumayr_UAV = SPAWN
 		:NewWithAlias("UAV Red Al-Dumayr","PONTIAC 6-1")
 		:InitLimit(1,0)
 		:InitKeepUnitNames(true)
@@ -4169,7 +4159,7 @@ function Zone26CaptureZone:OnEnterAttacked()
   self:E({Coalition = Coalition})
   if Coalition == coalition.side.BLUE then
   trigger.action.outText("RED coalition attacking Beirut-Rafic Hariri Airbase", 10 , false)
-	Blue_Beirut-Rafic_Hariri_UAV = SPAWN
+	Blue_Beirut_Rafic_Hariri_UAV = SPAWN
 		:NewWithAlias("UAV Blue Beirut-Rafic Hariri","PONTIAC 6-1")
 		:InitLimit(1,0)
 		:InitKeepUnitNames(true)
@@ -4180,7 +4170,7 @@ function Zone26CaptureZone:OnEnterAttacked()
 				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
 			end)	
 		:SpawnScheduled(30,0)
-	Red_Beirut-Rafic_Hariri_UAV = SPAWN
+	Red_Beirut_Rafic_Hariri_UAV = SPAWN
 		:NewWithAlias("UAV Red Beirut-Rafic Hariri","PONTIAC 6-1")
 		:InitLimit(1,0)
 		:InitKeepUnitNames(true)
@@ -4194,7 +4184,7 @@ function Zone26CaptureZone:OnEnterAttacked()
 	trigger.action.outText("UAV FAC Dispatched to Beirut-Rafic Hariri Airbase", 10 , false)    
   else
   trigger.action.outText("BLUE coalition attacking Beirut-Rafic Hariri Airbase", 10 , false)
-	Blue_Beirut-Rafic_Hariri_UAV = SPAWN
+	Blue_Beirut_Rafic_Hariri_UAV = SPAWN
 		:NewWithAlias("UAV Blue Beirut-Rafic Hariri","PONTIAC 6-1")
 		:InitLimit(1,0)
 		:InitKeepUnitNames(true)
@@ -4205,7 +4195,7 @@ function Zone26CaptureZone:OnEnterAttacked()
 				MESSAGE:New("PONTIAC 6-1 is back in action",25,"MQ-9 Reaper"):ToBlue()
 			end)	
 		:SpawnScheduled(30,0)
-	Red_Beirut-Rafic_Hariri_UAV = SPAWN
+	Red_Beirut_Rafic_Hariri_UAV = SPAWN
 		:NewWithAlias("UAV Red Beirut-Rafic Hariri","PONTIAC 6-1")
 		:InitLimit(1,0)
 		:InitKeepUnitNames(true)
