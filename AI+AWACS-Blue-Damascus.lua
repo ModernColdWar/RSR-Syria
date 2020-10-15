@@ -13,16 +13,16 @@ Damascus_SouthCAPZone = ZONE_POLYGON:New( "Damascus CAP Zone", GROUP:FindByName(
 TEXACOTankerBlue3 = SPAWN
   :NewWithAlias("B_TANKER_KC135MPRS_5","TEXACO Blue 3")
   :InitLimit(1,3)
-  :InitCleanUp(30)
+--  :InitCleanUp(30)
   :OnSpawnGroup(function(SpawnedGroup)
   MESSAGE:New("TEXACO Blue 3-1 is back on station",25,"TEXACO Blue 3-1"):ToBlue()
   end)
   :SpawnScheduled(3600,0.1) 
 
-TEXACOTankerBlue3 = SPAWN
+SHELLTankerBlue3 = SPAWN
   :NewWithAlias("B_TANKER_KC135_5","SHELL Blue 3")
   :InitLimit(1,3)
-  :InitCleanUp(30)
+--  :InitCleanUp(30)
   :OnSpawnGroup(function(SpawnedGroup)
   MESSAGE:New("SHELL Blue 3-1 is back on station",25,"SHELL Blue 3-1"):ToBlue()
   end)
