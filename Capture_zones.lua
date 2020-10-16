@@ -1,5 +1,75 @@
+--Turns on SimpleSlotBlocker
 trigger.action.setUserFlag("SSB",100)
+--[[
+--Restart Messages
+function getRestartHours(firstRestart, missionDuration)
+    local restartHours = {}
+    local nextRestart = firstRestart
+    while nextRestart < 24 do
+        table.insert(restartHours, nextRestart)
+        nextRestart = nextRestart + missionDuration
+    end
+    return restartHours
+end
 
+firstRestartHour = 5
+missionDurationInHours = 6
+restartHours = getRestartHours(firstRestartHour, missionDurationInHours)
+
+restartWarningMinutes = { 60, 45, 30, 20, 15, 10, 5, 3, 1 } -- times in minutes before restart to broadcast message
+
+function addMenu(playerGroup, restartHours)
+    local infoMenu = MENU_GROUP:New(playerGroup, "Mission info")
+    MENU_GROUP_COMMAND:New(playerGroup, "Time until restart", infoMenu, function()
+        local secondsUntilRestart = getSecondsUntilRestart(os.date("*t"), restartHours)
+        MESSAGE:New(string.format("The server will restart in %s", getSecondsAsString(secondsUntilRestart)), 5):ToGroup(playerGroup)
+    end)
+end
+
+return addMenu(playerGroup, restartHours)
+
+trigger.action.outText("test1", 10)
+
+
+startTime = timer.getTime()
+finishTime = timer.getTime()
+elapsedTime = finishTime - startTime          --  Total Seconds between
+elapsedMin = math.floor (elapsedTime / 60)    --  Whole Minutes between
+elapsedSec = elapsedTime - (elapsedMin * 60)  --  Extra Seconds after Minutes
+
+--[[
+local tData = {}
+function timeCheck()
+   if whateverCondition == true then
+      tData.startTime = timer.getTime()
+   end
+   if whateverStopCondition == true then
+     tData.endTime = timer.getTime()
+   end 
+   if endTime then 
+      --- do your code to display it
+   else -- keep checking
+       timer.scheduleFunction(timeCheck, {}, timer.getTime() + 0.1) -- runs at tenth of second.
+   end 
+end
+--]]
+--[[
+function restartMessages()
+	if missionTime = 60 then
+	trigger.action.outText("test", 10)
+	end
+end	
+--]] 
+--]]
+
+
+--Zones for AI-CAP
+Incirlik_NorthCAPZone = ZONE_POLYGON:New( "Incirlik CAP Zone", GROUP:FindByName( "Incirlik CAP Zone" ) )
+Damascus_SouthCAPZone = ZONE_POLYGON:New( "Damascus CAP Zone", GROUP:FindByName( "Damascus CAP Zone" ) )
+RamatDavid_SouthCAPZone = ZONE_POLYGON:New( "Ramat David CAP Zone", GROUP:FindByName( "Ramat David CAP Zone" ) )
+
+
+--Zones for Base Capture
 Zone1Zone = ZONE:FindByName( "Aleppo Airbase Zone" )
 Zone1CaptureZone = ZONE_CAPTURE_COALITION:New( Zone1Zone, coalition.side.RED, {Unit.Category.GROUND_UNIT, Unit.Category.HELICOPTER})
 
@@ -104,6 +174,21 @@ Zone32CaptureZone = ZONE_CAPTURE_COALITION:New( Zone32Zone, coalition.side.BLUE,
 Zone33Zone = ZONE:FindByName( "Adana Sakirpasa Airbase Zone" )
 Zone33CaptureZone = ZONE_CAPTURE_COALITION:New( Zone33Zone, coalition.side.BLUE, {Unit.Category.GROUND_UNIT, Unit.Category.HELICOPTER})
 --]]
+
+
+BlueDetectionSetGroup = SET_GROUP:New()
+BlueDetectionSetGroup:FilterCoalitions("blue")
+BlueDetectionSetGroup:FilterPrefixes( { "EWR", "AWACS" } )
+BlueDetectionSetGroup:FilterStart()
+BlueDetection = DETECTION_AREAS:New( BlueDetectionSetGroup, 50000 )
+BlueA2ADispatcher = AI_A2A_DISPATCHER:New( BlueDetection )
+
+RedDetectionSetGroup = SET_GROUP:New()
+RedDetectionSetGroup:FilterCoalitions("red")
+RedDetectionSetGroup:FilterPrefixes( { "EWR", "AWACS" } )
+RedDetectionSetGroup:FilterStart()
+RedDetection = DETECTION_AREAS:New( RedDetectionSetGroup, 50000 )
+RedA2ADispatcher = AI_A2A_DISPATCHER:New( RedDetection )
 
 ---- ZONE1 ALEPPO ----
 --- @param Functional.ZoneCaptureCoalition#ZONE_CAPTURE_COALITION self
@@ -2756,7 +2841,38 @@ function Zone18CaptureZone:OnEnterGuarded( From, Event, To )
 	trigger.action.setUserFlag("Damascus Blue Cargo-5",0)
 	trigger.action.setUserFlag("Damascus Blue Cargo-6",0)
 	trigger.action.setUserFlag("Damascus Blue Cargo-7",0)
-	trigger.action.setUserFlag("Damascus Blue Cargo-8",0)    
+	trigger.action.setUserFlag("Damascus Blue Cargo-8",0)
+	AWACS_Blue_Damascus = SPAWN
+		:NewWithAlias("AWACS Blue Damascus", "Magic 3-1")
+		:InitKeepUnitNames(true)
+		:InitLimit(1,4)
+		:OnSpawnGroup(function(magic_31)
+			magic_31:CommandSetCallsign(2, 2)
+			MESSAGE:New("Magic 3-1 is on station contact on channel 253.000 MHz",25,"Magic 3-1"):ToBlue()end)
+		:SpawnScheduled(3600,0.1)		 
+	ARCOTankerBlue = SPAWN
+		:NewWithAlias("B_TANKER_KC135MPRS_5","Arco 1-1")
+		:InitKeepUnitNames(true)
+		:InitLimit(1,4)
+		-- :InitCleanUp(30)
+		:OnSpawnGroup(function(Arco_11)
+			Arco_11:CommandSetCallsign(2, 1)
+			MESSAGE:New("Arco 1-1 is on station, contact on channel 143.000 MHz",25,"Arco 1-1"):ToBlue()end)			
+		:SpawnScheduled(3600,0.1)
+	ARCOTankerBlue2 = SPAWN
+		:NewWithAlias("B_TANKER_KC135_5","Arco 2-1")
+		:InitKeepUnitNames(true)
+		:InitLimit(1,4)
+		--:InitCleanUp(30)
+		:OnSpawnGroup(function(arco_21)
+			arco_21:CommandSetCallsign(2, 2)
+			MESSAGE:New("Arco 2-1 is on station, contact on channel 143.500 MHz",25,"Arco 2-1"):ToBlue()end)	
+		:SpawnScheduled(3600,0.1)
+	BlueA2ADispatcher:SetSquadron( "315th Tactical Fighter Squadron", AIRBASE.Syria.Damascus, { "315th Tactical Fighter Squadron" }, 12 ) --F4 Squadron
+	BlueA2ADispatcher:SetSquadronCap( "315th Tactical Fighter Squadron", Damascus_SouthCAPZone, 1000, 12000, 600, 800, 800, 1200, "BARO" )
+	BlueA2ADispatcher:SetSquadronCapInterval( "315th Tactical Fighter Squadron", 2, 180, 540, 1 )
+	BlueA2ADispatcher:SetDefaultTakeoffInAir()
+	BlueA2ADispatcher:SetDefaultLandingAtEngineShutdown()	
     else
     trigger.action.outText("RED coalition protecting Damascus Airbase", 10 , false)
 	trigger.action.setUserFlag("Damascus Red AF-1",0)
@@ -2887,6 +3003,37 @@ function Zone18CaptureZone:OnEnterGuarded( From, Event, To )
 	trigger.action.setUserFlag("Damascus Blue Cargo-6",100)
 	trigger.action.setUserFlag("Damascus Blue Cargo-7",100)
 	trigger.action.setUserFlag("Damascus Blue Cargo-8",100)
+	AWACS_Red_Damascus = SPAWN
+		:NewWithAlias("AWACS Red Damascus", "Magic 3-1")
+		:InitKeepUnitNames(true)
+		:InitLimit(1,4)
+		:OnSpawnGroup(function(magic_31)
+			magic_31:CommandSetCallsign(2, 3)
+			MESSAGE:New("Magic 3-1 is on station contact on channel 123.000 MHz",25,"Magic 3-1"):ToRed()end)
+		:SpawnScheduled(3600,0.1)		 
+	ARCOTankerRed = SPAWN
+		:NewWithAlias("B_TANKER_KC135MPRS_6","Arco 1-1")
+		:InitKeepUnitNames(true)
+		:InitLimit(1,4)
+		-- :InitCleanUp(30)
+		:OnSpawnGroup(function(Arco_11)
+			Arco_11:CommandSetCallsign(2, 1)
+			MESSAGE:New("Arco 1-1 is on station, contact on channel 143.000 MHz",25,"Arco 1-1"):ToBlue()end)			
+		:SpawnScheduled(3600,0.1)
+	ARCOTankerRed2 = SPAWN
+		:NewWithAlias("B_TANKER_KC135_6","Arco 2-1")
+		:InitKeepUnitNames(true)
+		:InitLimit(1,4)
+		--:InitCleanUp(30)
+		:OnSpawnGroup(function(arco_21)
+			arco_21:CommandSetCallsign(2, 2)
+			MESSAGE:New("Arco 2-1 is on station, contact on channel 143.500 MHz",25,"Arco 2-1"):ToBlue()end)	
+		:SpawnScheduled(3600,0.1)
+	RedA2ADispatcher:SetSquadron( "24th Fighter Aviation Regiment", AIRBASE.Syria.Damascus, { "24th Fighter Aviation Regiment" }, 24 ) --MiG-31 Squadron
+	RedA2ADispatcher:SetSquadronCap( "24th Fighter Aviation Regiment", Damascus_SouthCAPZone, 1000, 12000, 600, 800, 800, 1200, "BARO" )
+	RedA2ADispatcher:SetSquadronCapInterval( "24th Fighter Aviation Regiment", 4, 180, 540, 1 )
+	RedA2ADispatcher:SetDefaultTakeoffInAir()
+	RedA2ADispatcher:SetDefaultLandingAtEngineShutdown()	
     end
   end
 end
@@ -4506,6 +4653,37 @@ function Zone29CaptureZone:OnEnterGuarded( From, Event, To )
 	trigger.action.setUserFlag("Ramat David Blue Cargo-6",0)
 	trigger.action.setUserFlag("Ramat David Blue Cargo-7",0)
 	trigger.action.setUserFlag("Ramat David Blue Cargo-8",0)   
+	AWACS_Blue_RamatDavid = SPAWN
+		:NewWithAlias("AWACS Blue Ramat David", "Magic 2-1")
+		:InitKeepUnitNames(true)
+		:InitLimit(1,4)
+		:OnSpawnGroup(function(magic_21)
+			magic_21:CommandSetCallsign(2, 2)
+			MESSAGE:New("Magic 2-1 is on station contact on channel 252.000 MHz",25,"Magic 2-1"):ToBlue()end			)
+		:SpawnScheduled(3600,0.1)		 
+	SHELLTankerBlue = SPAWN
+		:NewWithAlias("B_TANKER_KC135MPRS_3","Shell 1-1")
+		:InitKeepUnitNames(true)
+		:InitLimit(1,4)
+		-- :InitCleanUp(30)
+		:OnSpawnGroup(function(shell_11)
+			shell_11:CommandSetCallsign(3, 1)
+			MESSAGE:New("Shell 1-1 is on station, contact on channel 142.000 MHz",25,"Shell 1-1"):ToBlue()end)			
+		:SpawnScheduled(3600,0.1)
+	SHELLTankerBlue2 = SPAWN
+		:NewWithAlias("B_TANKER_KC135_3","Shell 2-1")
+		:InitKeepUnitNames(true)
+		:InitLimit(1,4)
+		--:InitCleanUp(30)
+		:OnSpawnGroup(function(shell_21)
+			shell_21:CommandSetCallsign(3, 2)
+			MESSAGE:New("Shell 2-1 is on station, contact on channel 142.500 MHz",25,"Shell 2-1"):ToBlue()end)	
+		:SpawnScheduled(3600,0.1)
+	BlueA2ADispatcher:SetSquadron( "314th Tactical Fighter Squadron", AIRBASE.Syria.Ramat_David, { "314th Tactical Fighter Squadron" }, 12 ) --F4 Squadron
+	BlueA2ADispatcher:SetSquadronCap( "314th Tactical Fighter Squadron", RamatDavid_SouthCAPZone, 1000, 12000, 600, 800, 800, 1200, "BARO" )
+	BlueA2ADispatcher:SetSquadronCapInterval( "314th Tactical Fighter Squadron", 2, 180, 540, 1 )
+	BlueA2ADispatcher:SetDefaultTakeoffInAir()
+	BlueA2ADispatcher:SetDefaultLandingAtEngineShutdown()	
     else
     trigger.action.outText("RED coalition protecting Ramat David Airbase", 10 , false)
 	trigger.action.setUserFlag("Ramat David Red AF-1",0)
@@ -4551,7 +4729,39 @@ function Zone29CaptureZone:OnEnterGuarded( From, Event, To )
 	trigger.action.setUserFlag("Ramat David Blue Cargo-5",100)
 	trigger.action.setUserFlag("Ramat David Blue Cargo-6",100)
 	trigger.action.setUserFlag("Ramat David Blue Cargo-7",100)
-	trigger.action.setUserFlag("Ramat David Blue Cargo-8",100)     
+	trigger.action.setUserFlag("Ramat David Blue Cargo-8",100)
+	AWACS_Red_RamatDavid = SPAWN
+		:NewWithAlias("AWACS Red Ramat David", "Magic 2-1")
+		:InitKeepUnitNames(true)
+		:InitLimit(1,4)
+		:OnSpawnGroup(function(magic_21)
+			magic_21:CommandSetCallsign(2, 2)
+			MESSAGE:New("Magic 2-1 is on station contact on channel 122.000 MHz",25,"Magic 2-1"):ToRed()end)
+		:SpawnScheduled(3600,0.1)		 
+	SHELLTankerRed = SPAWN
+		:NewWithAlias("B_TANKER_KC135MPRS_4","Shell 1-1")
+		:InitKeepUnitNames(true)
+		:InitLimit(1,4)
+		-- :InitCleanUp(30)
+		:OnSpawnGroup(function(shell_11)
+			shell_11:CommandSetCallsign(3, 1)
+			MESSAGE:New("Shell 1-1 is on station, contact on channel 142.000 MHz",25,"Shell 1-1"):ToRed()end)			
+		:SpawnScheduled(3600,0.1)
+	SHELLTankerRed2 = SPAWN
+		:NewWithAlias("B_TANKER_KC135_3","Shell 2-1")
+		:InitKeepUnitNames(true)
+		:InitLimit(1,4)
+		--:InitCleanUp(30)
+		:OnSpawnGroup(function(shell_21)
+			shell_21:CommandSetCallsign(3, 2)
+			MESSAGE:New("Shell 2-1 is on station, contact on channel 142.500 MHz",25,"Shell 2-1"):ToRed()end)	
+		:SpawnScheduled(3600,0.1)
+	
+	RedA2ADispatcher:SetSquadron( "23rd Fighter Aviation Regiment", AIRBASE.Syria.Ramat_David, { "23rd Fighter Aviation Regiment" }, 12 )--MiG-31 Squadron
+	RedA2ADispatcher:SetSquadronCap( "23rd Fighter Aviation Regiment", RamatDavid_SouthCAPZone, 1000, 12000, 600, 800, 800, 1200, "BARO" )
+	RedA2ADispatcher:SetSquadronCapInterval( "23rd Fighter Aviation Regiment", 2, 180, 540, 1 )
+	RedA2ADispatcher:SetDefaultTakeoffInAir()
+	RedA2ADispatcher:SetDefaultLandingAtEngineShutdown()	
     end
   end
 end
@@ -4997,7 +5207,42 @@ function Zone32CaptureZone:OnEnterGuarded( From, Event, To )
 	trigger.action.setUserFlag("Incirlik Blue Cargo-5",0)
 	trigger.action.setUserFlag("Incirlik Blue Cargo-6",0)
 	trigger.action.setUserFlag("Incirlik Blue Cargo-7",0)
-	trigger.action.setUserFlag("Incirlik Blue Cargo-8",0)       
+	trigger.action.setUserFlag("Incirlik Blue Cargo-8",0)
+	--[[
+	Spawns AWACs, Tanker, and AI-CAP if controlled by blue
+	For the numbers after the moose CommandSetCallsign refer to https://wiki.hoggitworld.com/view/DCS_command_setCallsign
+	--]]
+	AWACS_Blue_Incirlik = SPAWN
+		:NewWithAlias("AWACS Blue Incirlik", "Magic 1-1")
+		:InitKeepUnitNames(true)
+		:InitLimit(1,4)
+		:OnSpawnGroup(function(magic_11)
+			magic_11:CommandSetCallsign(2, 1)
+			MESSAGE:New("Magic 1-1 is on station contact on channel 251.000 MHz",25,"Magic 1-1"):ToBlue()end)
+		:SpawnScheduled(3600,0.1)
+	TEXACOTankerBlue = SPAWN
+		:NewWithAlias("B_TANKER_KC135MPRS_1","Texaco 1-1")
+		:InitKeepUnitNames(true)
+		:InitLimit(1,4)
+		-- :InitCleanUp(30)
+		:OnSpawnGroup(function(texaco_11)
+			texaco_11:CommandSetCallsign(1, 1)
+			MESSAGE:New("Texaco 1-1 is on station, contact on channel 141.000 MHz",25,"Texaco 1-1"):ToBlue()end)	
+		:SpawnScheduled(3600,0.1)
+	TEXACOTankerBlue2 = SPAWN
+		:NewWithAlias("B_TANKER_KC135_1","Texaco 2-1")
+		:InitKeepUnitNames(true)
+		:InitLimit(1,4)
+		--:InitCleanUp(30)
+		:OnSpawnGroup(function(texaco_21)
+			texaco_21:CommandSetCallsign(1, 2)
+			MESSAGE:New("Texaco 2-1 is on station, contact on channel 141.500 MHz",25,"Texaco 2-1"):ToBlue()end)	
+		:SpawnScheduled(3600,0.1)	
+	BlueA2ADispatcher:SetSquadron( "313th Tactical Fighter Squadron", AIRBASE.Syria.Incirlik, { "313th Tactical Fighter Squadron" }, 12 ) --F4 Squadron
+	BlueA2ADispatcher:SetSquadronCap( "313th Tactical Fighter Squadron", Incirlik_NorthCAPZone, 1000, 12000, 600, 800, 800, 1200, "BARO" )
+	BlueA2ADispatcher:SetSquadronCapInterval( "313th Tactical Fighter Squadron", 2, 180, 540, 1 )
+	BlueA2ADispatcher:SetDefaultTakeoffInAir()
+	BlueA2ADispatcher:SetDefaultLandingAtEngineShutdown()
     else
     trigger.action.outText("RED coalition protecting Incirlik Airbase", 10 , false)
 	trigger.action.setUserFlag("Incirlik Red AF-1",0)
@@ -5127,7 +5372,42 @@ function Zone32CaptureZone:OnEnterGuarded( From, Event, To )
 	trigger.action.setUserFlag("Incirlik Blue Cargo-5",100)
 	trigger.action.setUserFlag("Incirlik Blue Cargo-6",100)
 	trigger.action.setUserFlag("Incirlik Blue Cargo-7",100)
-	trigger.action.setUserFlag("Incirlik Blue Cargo-8",100)      
+	trigger.action.setUserFlag("Incirlik Blue Cargo-8",100)
+	--[[
+	Spawns Tanker, AWACS and AI-CAP if controlled by Red
+	--]]	
+	AWACS_Red_Incirlik = SPAWN
+		:NewWithAlias("AWACS Red Incirlik", "Magic 1-1")
+		:InitKeepUnitNames(true)
+		:InitLimit( 1, 4 )
+		--  :InitCleanUp(30)
+		:OnSpawnGroup(function(magic_11)
+			magic_11:CommandSetCallsign(1, 1)
+			MESSAGE:New("MAGIC 1-1 is on station contact on channel 121.000 MHz",25,"Magic 1-1"):ToRed()end)	
+		:SpawnScheduled(3600, 0.1)
+	TEXACOTankerRed = SPAWN
+		:NewWithAlias("B_TANKER_KC135MPRS_2","Texaco 1-1")
+		:InitKeepUnitNames(true)
+		:InitLimit(1,4)
+		--  :InitCleanUp(30)
+		:OnSpawnGroup(function(texaco_11)
+			texaco_11:CommandSetCallsign(1, 1)
+			MESSAGE:New("Texaco 1-1 is on station contact on channel 141.000 MHz",25,"Texaco 1-1"):ToRed()end)			
+		:SpawnScheduled(3600,0.1)
+	SHELLTankerRed = SPAWN
+		:NewWithAlias("B_TANKER_KC135_2","Texaco 2-1")
+		:InitKeepUnitNames(true)
+		:InitLimit(1,4)
+		--:InitCleanUp(30)
+		:OnSpawnGroup(function(texaco_21)
+			texaco_21:CommandSetCallsign(1, 2)
+			MESSAGE:New("Texaco 2-1 is on station, contact on channel 141.500 MHz",25,"Texaco 2-1"):ToRed()end)						
+		:SpawnScheduled(3600,0.1)
+	RedA2ADispatcher:SetSquadron( "22nd Fighter Aviation Regiment", AIRBASE.Syria.Incirlik, { "22nd Fighter Aviation Regiment" }, 12 ) --Mig31 Squadron
+	RedA2ADispatcher:SetSquadronCap( "22nd Fighter Aviation Regiment", Incirlik_NorthCAPZone, 1000, 12000, 600, 800, 800, 1200, "BARO" )
+	RedA2ADispatcher:SetSquadronCapInterval( "22nd Fighter Aviation Regiment", 2, 180, 540, 1 )
+	RedA2ADispatcher:SetDefaultTakeoffInAir()
+	RedA2ADispatcher:SetDefaultLandingAtEngineShutdown()	
     end
   end
 end
