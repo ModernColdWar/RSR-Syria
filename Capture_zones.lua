@@ -53,7 +53,6 @@ function timeCheck()
    end 
 end
 --]]
---[[
 function restartMessages()
 	if missionTime = 60 then
 	trigger.action.outText("test", 10)
