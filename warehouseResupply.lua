@@ -293,6 +293,17 @@ if file_exists("WarehouseAleppo") then --Script has been run before, so we need 
   warehouse.KingHusseinAirCollege:AddAsset("Resupply SAM Avenger", 40) --Counted as SAM in stock
   warehouse.KingHusseinAirCollege:AddAsset("Resupply SAM Hawk", 20)    --Counted as SAM in stock
   --warehouse.KingHusseinAirCollege:AddAsset("Red C-130", 2, nil, 1777000, nil, 10000)  warehouse.KiryatShmona
+  warehouse.KiryatShmona:AddAsset("Resupply MBT T72B", 30)    --counted as tank  in stock
+  warehouse.KiryatShmona:AddAsset("Resupply IFV BMP-3", 20)   --counted as APC in stock
+  warehouse.KiryatShmona:AddAsset("Resupply AAA Shilka", 40)  --counted as AAA in stock
+  warehouse.KiryatShmona:AddAsset("Resupply SAM SA-13", 40)   --Counted as SAM in stock
+  warehouse.KiryatShmona:AddAsset("Resupply SAM SA-11", 20)   --Counted as SAM in stock
+  warehouse.KiryatShmona:AddAsset("Resupply MBT Merkava", 30) --Counted as tank  in stock
+  warehouse.KiryatShmona:AddAsset("Resupply IFV M2A1", 20)    --Counted as APC in stock
+  warehouse.KiryatShmona:AddAsset("Resupply AAA Vulcan", 40)  --counted as AAA in stock
+  warehouse.KiryatShmona:AddAsset("Resupply SAM Avenger", 40) --Counted as SAM in stock
+  warehouse.KiryatShmona:AddAsset("Resupply SAM Hawk", 20)    --Counted as SAM in stock
+  --warehouse.KiryatShmona:AddAsset("Red C-130", 2, nil, 1777000, nil, 10000)  warehouse.KiryatShmona
   warehouse.Kuweires:AddAsset("Resupply MBT T72B", 30)    --counted as tank  in stock
   warehouse.Kuweires:AddAsset("Resupply IFV BMP-3", 20)   --counted as APC in stock
   warehouse.Kuweires:AddAsset("Resupply AAA Shilka", 40)  --counted as AAA in stock
