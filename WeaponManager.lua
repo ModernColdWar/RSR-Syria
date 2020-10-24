@@ -68,7 +68,7 @@ limitations[12] = {
 }
 limitations[13] = {
    WP_NAME = "weapons.missiles.AGM_154",
-   QTY = 0,
+   QTY = 20,
    DISPLAY_NAME = "AGM-154C"
 }
 limitations[14] = {
