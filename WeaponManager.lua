@@ -21,87 +21,87 @@ limitations[3] = {
   QTY = 36,
   DISPLAY_NAME = "SD-10"
 }
+--limitations[4] = {
+--  WP_NAME = "P_27TE",
+--  QTY = 36,
+--  DISPLAY_NAME = "R-27ET"
+--}
+--limitations[5] = {
+--  WP_NAME = "P_27PE",
+--  QTY = 36,
+--  DISPLAY_NAME = "R-27ER"
+--}
 limitations[4] = {
-  WP_NAME = "P_27TE",
-  QTY = 36,
-  DISPLAY_NAME = "R-27ET"
-}
-limitations[5] = {
-  WP_NAME = "P_27PE",
-  QTY = 36,
-  DISPLAY_NAME = "R-27ER"
-}
-limitations[6] = {
   WP_NAME = "P_77",
   QTY = 36,
   DISPLAY_NAME = "R-77"
 }
-limitations[7] = {
+limitations[5] = {
   WP_NAME = "AIM_54A_Mk47",
   QTY = 36,
   DISPLAY_NAME = "AIM 54A-Mk47"
 }
-limitations[8] = {
+limitations[6] = {
   WP_NAME = "AIM_54A_Mk60",
   QTY = 36,
   DISPLAY_NAME = "AIM 54A-Mk60"
 }
-limitations[9] = {
+limitations[7] = {
   WP_NAME = "AIM_54C_Mk47",
   QTY = 36,
   DISPLAY_NAME = "AIM 54C-Mk47"
 }
-limitations[10] = {
+limitations[8] = {
    WP_NAME = "weapons.bombs.RN-24",
    QTY = 0,
    DISPLAY_NAME = "RN-24"
 }
-limitations[11] = {
+limitations[9] = {
    WP_NAME = "weapons.bombs.RN-28",
    QTY = 0,
    DISPLAY_NAME = "RN-28"
 }
-limitations[12] = {
+limitations[10] = {
    WP_NAME = "SD-10",
    QTY = 24,
    DISPLAY_NAME = "SD-10"
 }
-limitations[13] = {
+limitations[11] = {
    WP_NAME = "weapons.missiles.AGM_154",
    QTY = 20,
    DISPLAY_NAME = "AGM-154C"
 }
-limitations[14] = {
+limitations[12] = {
    WP_NAME = "weapons.missiles.GB-6",
    QTY = 20,
    DISPLAY_NAME = "GB-6"
 }
-limitations[15] = {
+limitations[13] = {
    WP_NAME = "weapons.missiles.GB-6-HE",
    QTY = 20,
    DISPLAY_NAME = "GB-6-HE"
 }
-limitations[16] = {
+limitations[14] = {
    WP_NAME = "weapons.missiles.GB-6-SFW",
    QTY = 20,
    DISPLAY_NAME = "GB-6-SFW"
 }
-limitations[17] = {
+limitations[15] = {
    WP_NAME = "weapons.bombs.GBU_31",
    QTY = 20,
    DISPLAY_NAME = "GBU-31"
 }
-limitations[18] = {
+limitations[16] = {
    WP_NAME = "weapons.bombs.GBU_31_V_3B",
    QTY = 20,
    DISPLAY_NAME = "GBU-31(V)3/B"
 }
-limitations[19] = {
+limitations[17] = {
    WP_NAME = "weapons.bombs.GBU_38",
    QTY = 20,
    DISPLAY_NAME = "GBU-38"
 }
-limitations[20] = {
+limitations[18] = {
    WP_NAME = "weapons.missiles.LD-10",
    QTY = 20,
    DISPLAY_NAME = "LD-10"
