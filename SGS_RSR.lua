@@ -32,7 +32,7 @@
  --route, only for the original route it recieved from the Mission Editor. Therefore a DCS limitation.
  -----------------------------------
  --Configurable for user:
- SaveScheduleUnits=60 --how many seconds between each check of all the units.
+ SaveScheduleUnits=300 --how many seconds between each check of all the units.
  -----------------------------------
  --Do not edit below here
  -----------------------------------
@@ -107,7 +107,7 @@ if file_exists("SaveUnits_RSR.lua") then --Script has been run before, so we nee
   env.info("Existing database, loading from File.")
 --  AllGroups = SET_GROUP:New():FilterCategories("ground"):FilterActive(true):FilterStart()
   --AllGroups = SET_GROUP:New():FilterPrefixes( "Re-enforcements " ):FilterActive(true):FilterStart()
-  AllGroups = SET_GROUP:New():FilterPrefixes( {"Red Start ","Blue Start ", "CTLD_", "Resupply "} ):FilterActive(true):FilterStart()
+  AllGroups = SET_GROUP:New():FilterPrefixes( {"Red Start","Blue Start", "CTLD_", "Resupply "} ):FilterActive(true):FilterStart()
   
     AllGroups:ForEachGroup(function (grp)
       grp:Destroy()
@@ -172,7 +172,7 @@ else --Save File does not exist we start a fresh table, no spawns needed
 --  AllGroups = SET_GROUP:New():FilterCategories("ground"):FilterActive(true):FilterStart()
 --  AllGroups = SET_GROUP:New():FilterPrefixes( {"SAM", "MBT", "APC", "IFV"} ):FilterActive(true):FilterStart()
   AllGroups = SET_GROUP:New()
-    :FilterPrefixes( {"Red Start ", "Blue Start ", "CTLD_", "Resupply "} )
+    :FilterPrefixes( {"Red Start", "Blue Start", "CTLD_", "Resupply "} )
  --   :FilterPrefixes( {"Re-enforcements "} )
 --    :FilterPrefixes( {"Re-enforcements ", "Blue Campaign Start ", "Red Campaign Start "} )
 --    :FilterActive(true)
