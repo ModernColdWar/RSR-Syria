@@ -76,7 +76,7 @@ ctld.buildTimeFOB = 60 --time in seconds for the FOB to be built
 
 ctld.crateWaitTime = 5 -- time in seconds to wait before you can spawn another crate
 
-ctld.forceCrateToBeMoved = false -- a crate must be picked up at least once and moved before it can be unpacked. Helps to reduce crate spam
+ctld.forceCrateToBeMoved = true -- a crate must be picked up at least once and moved before it can be unpacked. Helps to reduce crate spam
 
 ctld.radioSound = "beacon.ogg" -- the name of the sound file to use for the FOB radio beacons. If this isnt added to the mission BEACONS WONT WORK!
 ctld.radioSoundFC3 = "beaconsilent.ogg" -- name of the second silent radio file, used so FC3 aircraft dont hear ALL the beacon noises... :)
@@ -1742,12 +1742,12 @@ ctld.AASystemTemplate = {
         name = "BUK AA System",
         count = 3,
         parts = {
-            {name = "SA-11 Buk LN 9A310M1", desc = "BUK Launcher" , launcher = true},
-            {name = "SA-11 Buk CC 9S470M1", desc = "BUK CC Radar"},
-            {name = "SA-11 Buk SR 9S18M1", desc = "BUK Search Radar"},
+            {name = "SA-11 Buk LN 9A310M1", desc = "Buk Launcher" , launcher = true},
+            {name = "SA-11 Buk CC 9S470M1", desc = "Buk CC Radar"},
+            {name = "SA-11 Buk SR 9S18M1", desc = "Buk Search Radar"},
         },
         repair = "BUK Repair",
-		sytemType = "MR"				 
+		systemType = "MR"				 
     },
     {
         name = "KUB AA System",
