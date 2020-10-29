@@ -45,7 +45,7 @@ ctld.maximumDistanceLogistic = 200 -- max distance from vehicle to logistics to 
 ctld.maximumSearchDistance = 1000 -- max distance for troops to search for enemy
 ctld.maximumMoveDistance = 500 -- max distance for troops to move from drop point if no enemy is nearby
 
-ctld.minimumDeployDistance = 600 -- minimum distance from a friendly pickup zone where you can deploy a crate
+ctld.minimumDeployDistance = 1000 -- minimum distance from a friendly pickup zone where you can deploy a crate
 
 ctld.numberOfTroops = 10 -- default number of troops to load on a transport heli or C-130 
 							-- also works as maximum size of group that'll fit into a helicopter unless overridden
@@ -76,7 +76,7 @@ ctld.buildTimeFOB = 60 --time in seconds for the FOB to be built
 
 ctld.crateWaitTime = 5 -- time in seconds to wait before you can spawn another crate
 
-ctld.forceCrateToBeMoved = true -- a crate must be picked up at least once and moved before it can be unpacked. Helps to reduce crate spam
+ctld.forceCrateToBeMoved = false -- a crate must be picked up at least once and moved before it can be unpacked. Helps to reduce crate spam
 
 ctld.radioSound = "beacon.ogg" -- the name of the sound file to use for the FOB radio beacons. If this isnt added to the mission BEACONS WONT WORK!
 ctld.radioSoundFC3 = "beaconsilent.ogg" -- name of the second silent radio file, used so FC3 aircraft dont hear ALL the beacon noises... :)
@@ -725,19 +725,17 @@ ctld.extractableGroups = {
 -- When a logistic unit is destroyed, you will no longer be able to spawn crates
 
 ctld.logisticUnits = {
-    "Aleppo CC",
+  "Aleppo CC",
 	"Minakh CC",
-    "Abu al-Duhur CC",
-    "Kuweires CC",
-    "Jirah CC",
---    "Tabqa CC",
-    "Taftanaz CC",
-    "Hatay CC",
-    "Bassel Al-Assad CC",
-    "Hama CC",
+  "Abu al-Duhur CC",
+  "Kuweires CC",
+  "Jirah CC",
+  "Taftanaz CC",
+  "Hatay CC",
+  "Bassel Al-Assad CC",
+  "Hama CC",
 	"Rene Mouawad CC",
-    "Al Qusayr CC",
---	"Palmyra CC",
+  "Al Qusayr CC",
 	"An Nasiriyah CC",
 	"Al-Dumayr CC",
 	"Marj as Sultan North CC",
@@ -752,12 +750,9 @@ ctld.logisticUnits = {
 	"Rayak CC",
 	"Beirut-Rafic Hariri CC",
 	"Kiryat Shmona CC",
---	"Haifa CC",
 	"Ramat David CC",
 	"Megiddo CC",
---	"Eyn Shemer CC",
 	"Incirlik CC",
---	"Adana Sakirpasa CC",
 }
 
 -- ************** UNITS ABLE TO TRANSPORT VEHICLES ******************
@@ -843,24 +838,26 @@ ctld.spawnableCrates = {
         --Red
 		--Moved the T-55 to Internal Cargo as a JTAC for the time being
 		--{ weight = 820, desc = "T-55", unit = "T-55", side = 1, cratesRequired = 1, unitQuantity = 2, internal = 0 },
-        { weight = 821, desc = "T-72", unit = "T-72B", side = 1, cratesRequired = 1, unitQuantity = 1, internal = 0 },
-        { weight = 822, desc = "T-80UD", unit = "T-80UD", side = 1, cratesRequired = 2, unitQuantity = 1, internal = 0 },
-        { weight = 823, desc = "T-90", unit = "T-90", side = 1, cratesRequired = 2, unitQuantity = 1, internal = 0 },
-        { weight = 825, desc = "ZTZ-96B", unit = "ZTZ96B", side = 1, cratesRequired = 2, unitQuantity = 1, internal = 0 },
- 		{ weight = 824, desc = "LeClerc", unit = "Leclerc", side = 1, cratesRequired = 3, unitQuantity = 1, internal = 0 },
-        { weight = 802, desc = "IFV BMP-2", unit = "BMP-2", side = 1, cratesRequired = 1, unitQuantity = 2, internal = 0 },
+		{ weight = 802, desc = "IFV BMP-2", unit = "BMP-2", side = 1, cratesRequired = 1, unitQuantity = 2, internal = 0 },
         { weight = 803, desc = "IFV BMP-3", unit = "BMP-3", side = 1, cratesRequired = 2, unitQuantity = 1, internal = 0 },
-        { weight = 804, desc = "IFV ZBD04A", unit = "ZBD04A", side = 1, cratesRequired = 2, unitQuantity = 1, internal = 0 },		
+        { weight = 804, desc = "IFV ZBD04A", unit = "ZBD04A", side = 1, cratesRequired = 2, unitQuantity = 1, internal = 0 },
+        { weight = 821, desc = "T-72", unit = "T-72B", side = 1, cratesRequired = 2, unitQuantity = 1, internal = 0 },
+        { weight = 822, desc = "T-80UD", unit = "T-80UD", side = 1, cratesRequired = 3, unitQuantity = 1, internal = 0 },
+        { weight = 823, desc = "T-90", unit = "T-90", side = 1, cratesRequired = 3, unitQuantity = 1, internal = 0 },
+        { weight = 825, desc = "ZTZ-96B", unit = "ZTZ96B", side = 1, cratesRequired = 3, unitQuantity = 1, internal = 0 },
+		{ weight = 824, desc = "LeClerc", unit = "Leclerc", side = 1, cratesRequired = 4, unitQuantity = 1, internal = 0 },
+        		
 		--Blue
 		--Moved Leo1 to internal cargo as a JTAC for the time being
         --{ weight = 830, desc = "Leopard 1A3", unit = "Leopard1A3", side = 2, cratesRequired = 1, unitQuantity = 2, internal = 0 },
-        { weight = 834, desc = "Merkava", unit = "Merkava_Mk4", side = 2, cratesRequired = 1, unitQuantity = 1, internal = 0 },
-        { weight = 831, desc = "Leopard-2", unit = "Leopard-2", side = 2, cratesRequired = 2, unitQuantity = 1, internal = 0 },
-        { weight = 832, desc = "Challenger II", unit = "Challenger2", side = 2, cratesRequired = 2, unitQuantity = 1, internal = 0 },
-        { weight = 833, desc = "M1A2 Abrams", unit = "M-1 Abrams", side = 2, cratesRequired = 3, unitQuantity = 1, internal = 0 },
-        { weight = 812, desc = "Stryker ATGM", unit = "M1134 Stryker ATGM", side = 2, cratesRequired = 1, unitQuantity = 1, internal = 0 },
+		{ weight = 812, desc = "Stryker ATGM", unit = "M1134 Stryker ATGM", side = 2, cratesRequired = 1, unitQuantity = 1, internal = 0 },
         { weight = 813, desc = "Stryker MGS", unit = "M1128 Stryker MGS", side = 2, cratesRequired = 1, unitQuantity = 2, internal = 0 },
-        { weight = 814, desc = "IFV BRADLEY", unit = "M-2 Bradley", side = 2, cratesRequired = 2, internal = 0 },		
+        { weight = 814, desc = "IFV BRADLEY", unit = "M-2 Bradley", side = 2, cratesRequired = 2, internal = 0 },
+        { weight = 834, desc = "Merkava", unit = "Merkava_Mk4", side = 2, cratesRequired = 2, unitQuantity = 1, internal = 0 },
+        { weight = 831, desc = "Leopard-2", unit = "Leopard-2", side = 2, cratesRequired = 3, unitQuantity = 1, internal = 0 },
+        { weight = 832, desc = "Challenger II", unit = "Challenger2", side = 2, cratesRequired = 3, unitQuantity = 1, internal = 0 },
+        { weight = 833, desc = "M1A2 Abrams", unit = "M-1 Abrams", side = 2, cratesRequired = 4, unitQuantity = 1, internal = 0 },
+		
     },
     ["Artillery"] = {
 		--Red
@@ -3468,7 +3465,7 @@ function ctld.unpackCrates(_arguments)
                     ctld.displayMessageToGroup(_heli,"Sorry you must move this crate before you unpack it!", 20)
                     return
                 end
-
+                
 
                 local _aaTemplate = ctld.getAATemplate(_crate.details.unit)
 
@@ -5076,19 +5073,19 @@ function ctld.farEnoughFromLogisticZone(_heli)
     for _, _name in pairs(ctld.logisticUnits) do
 
         local _logistic = StaticObject.getByName(_name)
-
         if _logistic ~= nil and _logistic:getCoalition() == _heli:getCoalition() then
-
             --get distance
             local _dist = ctld.getDistance(_heliPoint, _logistic:getPoint())
             -- env.info("DIST ".._dist)
             if _dist <= ctld.minimumDeployDistance then
                 -- env.info("TOO CLOSE ".._dist)
                 _farEnough = false
+                ctld.displayMessageToGroup(_heli, "Not far enough from Logistics Center ".._dist.." meters, need to be greater than "..ctld.minimumDeployDistance.." meters", 10)
+--              env:info("DEBUG-1: Is LC Distance less than or equal to minimum deploy distance (1500m)?")
+--              log:info("DEBUG-1: Is LC Distance less than or equal to minimum deploy distance (1500m)?")
             end
         end
     end
-
     return _farEnough
 end
 
