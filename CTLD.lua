@@ -45,7 +45,7 @@ ctld.maximumDistanceLogistic = 200 -- max distance from vehicle to logistics to 
 ctld.maximumSearchDistance = 1000 -- max distance for troops to search for enemy
 ctld.maximumMoveDistance = 500 -- max distance for troops to move from drop point if no enemy is nearby
 
-ctld.minimumDeployDistance = 1000 -- minimum distance from a friendly pickup zone where you can deploy a crate
+ctld.minimumDeployDistance = 1200 -- minimum distance from a friendly pickup zone where you can deploy a crate
 
 ctld.numberOfTroops = 10 -- default number of troops to load on a transport heli or C-130 
 							-- also works as maximum size of group that'll fit into a helicopter unless overridden
@@ -74,7 +74,7 @@ ctld.troopPickupAtFOB = true -- if true, troops can also be picked up at a creat
 
 ctld.buildTimeFOB = 60 --time in seconds for the FOB to be built
 
-ctld.crateWaitTime = 5 -- time in seconds to wait before you can spawn another crate
+ctld.crateWaitTime = 15 -- time in seconds to wait before you can spawn another crate
 
 ctld.forceCrateToBeMoved = false -- a crate must be picked up at least once and moved before it can be unpacked. Helps to reduce crate spam
 
@@ -918,7 +918,7 @@ ctld.spawnableCrates = {
         { weight = 907, desc = "SA-10 Search Radar", unit = "S-300PS 64H6E sr", side = 1, internal = 0 },
         { weight = 908, desc = "SA-10 Track Radar", unit = "S-300PS 40B6M tr", side = 1, internal = 0 },
 		    { weight = 909, desc = "SA-10 Alt Radar", unit = "S-300PS 40B6MD sr", side = 1, internal = 0 },
-        { weight = 910, desc = "SA-10 CP", unit = "S-300PS 54K6 cp", side = 1, internal = 1 },
+        { weight = 910, desc = "SA-10 CP (internal)", unit = "S-300PS 54K6 cp", side = 1, internal = 1 },
 		    { weight = 911, desc = "SA-10 Launcher", unit = "S-300PS 5P85C ln", side = 1, internal = 0},   
 		--[[
         -- SA-3 system
