@@ -12,7 +12,7 @@ Incirlik_NorthCAPZone = ZONE_POLYGON:New( "Incirlik CAP Zone", GROUP:FindByName(
 
 BlueDetectionSetGroup = SET_GROUP:New()
 BlueDetectionSetGroup:FilterCoalitions("blue")
-BlueDetectionSetGroup:FilterPrefixes( { "EWR", "AWACS" } )
+BlueDetectionSetGroup:FilterPrefixes( { "EWR", "AWACS " } )
 BlueDetectionSetGroup:FilterStart()
 BlueDetection = DETECTION_AREAS:New( BlueDetectionSetGroup, 50000 )
 BlueA2ADispatcher = AI_A2A_DISPATCHER:New( BlueDetection )
@@ -49,5 +49,3 @@ TEXACOTankerBlue2 = SPAWN
     texaco_21:CommandSetCallsign(1, 2)
     MESSAGE:New("Texaco 2-1 is on station, contact on channel 141.500 MHz",25,"Texaco 2-1"):ToBlue()end)  
   :SpawnScheduled(3600,0.1) 
-
-

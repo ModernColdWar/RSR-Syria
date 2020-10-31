@@ -837,15 +837,15 @@ ctld.spawnableCrates = {
 	["Heavy & Light Armor"] = {
         --Red
 		--Moved the T-55 to Internal Cargo as a JTAC for the time being
-		--{ weight = 820, desc = "T-55", unit = "T-55", side = 1, cratesRequired = 1, unitQuantity = 2, internal = 0 },
-		{ weight = 802, desc = "IFV BMP-2", unit = "BMP-2", side = 1, cratesRequired = 1, unitQuantity = 2, internal = 0 },
+--    		{ weight = 820, desc = "T-55", unit = "T-55", side = 1, cratesRequired = 1, unitQuantity = 2, internal = 0 },
+		    { weight = 802, desc = "IFV BMP-2", unit = "BMP-2", side = 1, cratesRequired = 1, unitQuantity = 2, internal = 0 },
         { weight = 803, desc = "IFV BMP-3", unit = "BMP-3", side = 1, cratesRequired = 2, unitQuantity = 1, internal = 0 },
         { weight = 804, desc = "IFV ZBD04A", unit = "ZBD04A", side = 1, cratesRequired = 2, unitQuantity = 1, internal = 0 },
         { weight = 821, desc = "T-72", unit = "T-72B", side = 1, cratesRequired = 2, unitQuantity = 1, internal = 0 },
         { weight = 822, desc = "T-80UD", unit = "T-80UD", side = 1, cratesRequired = 3, unitQuantity = 1, internal = 0 },
         { weight = 823, desc = "T-90", unit = "T-90", side = 1, cratesRequired = 3, unitQuantity = 1, internal = 0 },
         { weight = 825, desc = "ZTZ-96B", unit = "ZTZ96B", side = 1, cratesRequired = 3, unitQuantity = 1, internal = 0 },
-		{ weight = 824, desc = "LeClerc", unit = "Leclerc", side = 1, cratesRequired = 4, unitQuantity = 1, internal = 0 },
+		    { weight = 824, desc = "LeClerc", unit = "Leclerc", side = 1, cratesRequired = 4, unitQuantity = 1, internal = 0 },
         		
 		--Blue
 		--Moved Leo1 to internal cargo as a JTAC for the time being
@@ -889,7 +889,7 @@ ctld.spawnableCrates = {
         { weight = 864, desc = "Buk CC Radar", unit = "SA-11 Buk CC 9S470M1", side = 1, internal = 0 },
 	-- HQ-7 (can also be configured as a system, but not currently doing so; just using the launcher)
     -- HQ-7 launcher has different names per side for immersion sake
-		{ weight = 867, desc = "HQ-7", unit = "HQ-7_LN_SP", side = 1, cratesRequired = 2, unitQuantity = 2, internal = 0 },
+		    { weight = 867, desc = "HQ-7", unit = "HQ-7_LN_SP", side = 1, cratesRequired = 2, unitQuantity = 2, internal = 0 },
 		--Blue
         { weight = 851, desc = "Gepard", unit = "Gepard", side = 2, cratesRequired = 1, unitQuantity = 2, internal = 0 },
         --{ weight = 852, desc = "M48 Chaparral", unit = "M48 Chaparral", side = 2, cratesRequired = 1, unitQuantity = 2, internal = 0 },
@@ -898,7 +898,7 @@ ctld.spawnableCrates = {
         { weight = 878, desc = "Roland Launcher", unit = "Roland ADS", side = 2, internal = 0 },
         { weight = 879, desc = "Roland Radar", unit = "Roland Radar", side = 2, internal = 0 },
         -- HQ-7 launcher has different names per side for immersion sake
-		{ weight = 880, desc = "Crotale", unit = "HQ-7_LN_SP", side = 2, cratesRequired = 2, unitQuantity = 3, internal = 0 },
+    		{ weight = 880, desc = "Crotale", unit = "HQ-7_LN_SP", side = 2, cratesRequired = 2, unitQuantity = 3, internal = 0 },
         { weight = 874, desc = "Hawk Launcher", unit = "Hawk ln", side = 2, internal = 0 },
         { weight = 875, desc = "Hawk Search Radar", unit = "Hawk sr", side = 2, internal = 0 },
         { weight = 876, desc = "Hawk Track Radar", unit = "Hawk tr", side = 2, internal = 0 },
@@ -910,16 +910,16 @@ ctld.spawnableCrates = {
         { weight = 870, desc = "SA-2 Track Radar", unit = "SNR_75V", side = 1, internal = 0 },
         { weight = 900, desc = "PATRIOT Search/Track Radar", unit = "Patriot str", side = 2, internal = 0},
         { weight = 901, desc = "PATRIOT ECS (internal)", unit = "Patriot ECS", side = 2, internal = 1 },
-		{ weight = 902, desc = "PATRIOT EPP", unit = "Patriot EPP", side = 2, internal = 0 },
+		    { weight = 902, desc = "PATRIOT EPP", unit = "Patriot EPP", side = 2, internal = 0 },
         { weight = 903, desc = "PATRIOT CP (internal)", unit = "Patriot cp", side = 2, internal = 1 },
-		{ weight = 904, desc = "PATRIOT AMG", unit = "Patriot AMG", side = 2, internal = 0},
+		    { weight = 904, desc = "PATRIOT AMG", unit = "Patriot AMG", side = 2, internal = 0},
         { weight = 905, desc = "PATRIOT Launcher", unit = "Patriot ln", side = 2, internal = 0 },
-		{ weight = 906, desc = "PATRIOT Repair", unit = "PATRIOT Repair", side = 2, internal = 1 },
+--		    { weight = 906, desc = "PATRIOT Repair", unit = "PATRIOT Repair", side = 2, internal = 1 },
         { weight = 907, desc = "SA-10 Search Radar", unit = "S-300PS 64H6E sr", side = 1, internal = 0 },
         { weight = 908, desc = "SA-10 Track Radar", unit = "S-300PS 40B6M tr", side = 1, internal = 0 },
-		{ weight = 909, desc = "SA-10 Alt Radar", unit = "S-300PS 40B6MD sr", side = 1, internal = 0 },
+		    { weight = 909, desc = "SA-10 Alt Radar", unit = "S-300PS 40B6MD sr", side = 1, internal = 0 },
         { weight = 910, desc = "SA-10 CP", unit = "S-300PS 54K6 cp", side = 1, internal = 1 },
-		{ weight = 911, desc = "SA-10 Launcher", unit = "S-300PS 5P85C ln", side = 1, internal = 0},   
+		    { weight = 911, desc = "SA-10 Launcher", unit = "S-300PS 5P85C ln", side = 1, internal = 0},   
 		--[[
         -- SA-3 system
         { weight = 871, desc = "SA-3 Launcher", unit = "5p73 s-125 ln", side = 1, internal = 0 },
@@ -932,29 +932,28 @@ ctld.spawnableCrates = {
         { weight = 601, desc = "KAMAZ-43101 Ammo Truck", unit = "KAMAZ Truck", side = 1, cratesRequired = 1, internal = 0 },
         { weight = 610, desc = "M978 HEMTT Tanker", unit = "M978 HEMTT Tanker", side = 2, cratesRequired = 1, internal = 0 },
         { weight = 611, desc = "M-818 Ammo Truck", unit = "M 818", side = 2, cratesRequired = 1, internal = 0 },
-        { weight = 620, desc = "SA-2 Repair", unit = "SA-2 Repair", side = 1, internal = 0 },
-		{ weight = 621, desc = "SA-10 Repair", unit = "SA-10 Repair", side = 1, internal = 1 },
-        { weight = 622, desc = "Kub Repair", unit = "Kub Repair", side = 1, internal = 0 },
-        { weight = 623, desc = "Buk Repair", unit = "Buk Repair", side = 1, internal = 0 },
-        { weight = 624, desc = "Hawk Repair", unit = "Hawk Repair", side = 2, internal = 0 },
-        { weight = 625, desc = "Roland Repair", unit = "Roland Repair", side = 2, internal = 0 },
-		{ weight = 626, desc = "PATRIOT Repair", unit = "PATRIOT Repair", side = 2, internal = 1 },
+--        { weight = 620, desc = "SA-2 Repair", unit = "SA-2 Repair", side = 1, internal = 0 },
+--		    { weight = 621, desc = "SA-10 Repair", unit = "SA-10 Repair", side = 1, internal = 1 },
+--        { weight = 622, desc = "Kub Repair", unit = "Kub Repair", side = 1, internal = 0 },
+--        { weight = 623, desc = "Buk Repair", unit = "Buk Repair", side = 1, internal = 0 },
+--        { weight = 624, desc = "Hawk Repair", unit = "Hawk Repair", side = 2, internal = 0 },
+--        { weight = 625, desc = "Roland Repair", unit = "Roland Repair", side = 2, internal = 0 },
+--		    { weight = 626, desc = "PATRIOT Repair", unit = "PATRIOT Repair", side = 2, internal = 1 },
         { weight = 627, desc = "Early Warning Radar", unit = "1L13 EWR", internal = 0 },
     },
     ["Internal Cargo"] = {
-        { weight = 820, desc = "T-55 (Recon)", unit = "T-55", side = 1, cratesRequired = 1, unitQuantity = 1, internal = 1 },		
-		{ weight = 830, desc = "Leopard 1A3 (Recon)", unit = "Leopard1A3", side = 2, cratesRequired = 1, unitQuantity = 1, internal = 1 },
-		--{ weight = 501, desc = "HMMWV - JTAC", unit = "Hummer", side = 2, cratesRequired = 1, internal = 1 }, 
-		-- used as jtac and unarmed, not on the crate list if JTAC is disabled
-        --{ weight = 502, desc = "Tigr - JTAC", unit = "Tigr_233036", side = 1, cratesRequired = 1, internal = 1 }, 
-		-- used as jtac and unarmed, not on the crate list if JTAC is disabled
+--        { weight = 820, desc = "T-55 (Recon)", unit = "T-55", side = 1, cratesRequired = 1, unitQuantity = 1, internal = 1 },		
+--		    { weight = 830, desc = "Leopard 1A3 (Recon)", unit = "Leopard1A3", side = 2, cratesRequired = 1, unitQuantity = 1, internal = 1 },
+		    { weight = 501, desc = "JTAC - HMMWV", unit = "Hummer", side = 2, cratesRequired = 1, internal = 1 }, 
+        { weight = 502, desc = "JTAC - Tigr", unit = "Tigr_233036", side = 1, cratesRequired = 1, internal = 1 }, 
         { weight = 922, desc = "FOB Crate - Large", unit = "FOB", internal = 1 }, -- Builds a FOB! 
     },
 }
 
 -- if the unit is on this list, it will be made into a JTAC when deployed
 ctld.jtacUnitTypes = {
-    "Tigr_233036", "Hummer", "Soldier M4", "Infantry AK", "T-55", "Leopard1A3" -- there are some wierd encoding issues so if you write SKP-11 it wont match as the - sign is encoded differently...
+    "Tigr_233036", "Hummer" -- there are some wierd encoding issues so if you write SKP-11 it wont match as the - sign is encoded 
+--    "Tigr_233036", "Hummer", "T-55", "Leopard1A3" -- there are some wierd encoding issues so if you write SKP-11 it wont match as the - sign is encoded differently...
 }
 
 
@@ -3444,7 +3443,8 @@ function ctld.unpackCrates(_arguments)
             if (ctld.debug == false) then
 				if ctld.inLogisticsZone(_heli) == true  or  ctld.farEnoughFromLogisticZone(_heli) == false then
 
-					ctld.displayMessageToGroup(_heli, "You can't unpack that here! Take it to where it's needed!", 20)
+--					ctld.displayMessageToGroup(_heli, "You can't unpack that here! Take it to where it's needed!", 20)
+          ctld.displayMessageToGroup(_heli, "Not far enough from Logistics Center ".._dist.." meters, need to be greater than "..ctld.minimumDeployDistance.." meters", 10)
 
 					return
 				end
@@ -5551,13 +5551,13 @@ function ctld.addF10MenuOptions()
         end
 
 
-        if ctld.JTAC_jtacStatusF10 then
-            -- get all BLUE players
-            ctld.addJTACRadioCommand(2)
-
-            -- get all RED players
-            ctld.addJTACRadioCommand(1)
-        end
+--        if ctld.JTAC_jtacStatusF10 then
+--            -- get all BLUE players
+--            ctld.addJTACRadioCommand(2)
+--
+--            -- get all RED players
+--            ctld.addJTACRadioCommand(1)
+--        end
 
     end)
 
@@ -5590,40 +5590,40 @@ function ctld.addRadioListCommand(_side)
     end
 end
 
-function ctld.addJTACRadioCommand(_side)
-
-    local _players = coalition.getPlayers(_side)
-
-    if _players ~= nil then
-
-        for _, _playerUnit in pairs(_players) do
-
-            local _groupId = ctld.getGroupId(_playerUnit)
-
-            if _groupId then
-                --   env.info("adding command for "..index)
-                if ctld.jtacRadioAdded[tostring(_groupId)] == nil then
-                    -- env.info("about command for "..index)
-                    missionCommands.addCommandForGroup(_groupId, "JTAC Status", nil, ctld.getJTACStatus, { _playerUnit:getName() })
-                    ctld.jtacRadioAdded[tostring(_groupId)] = true
-                    -- env.info("Added command for " .. index)
-                end
-            end
---[[
-            if _groupId and not ctld.JTAL then
-				-- Ironwulf2000 modified for AutoLase script 
-                --   env.info("adding command for "..index)
-                if ctld.jtacRadioAdded[tostring(_groupId)] == nil then
-                    -- env.info("about command for "..index)
-                    missionCommands.addCommandForGroup(_groupId, "JTAC Status", nil, ctld.getJTACStatus, { _playerUnit:getName() })
-                    ctld.jtacRadioAdded[tostring(_groupId)] = true
-                    -- env.info("Added command for " .. index)
-                end
-            end
---]]
-        end
-    end
-end
+--function ctld.addJTACRadioCommand(_side)
+--
+--    local _players = coalition.getPlayers(_side)
+--
+--    if _players ~= nil then
+--
+--        for _, _playerUnit in pairs(_players) do
+--
+--            local _groupId = ctld.getGroupId(_playerUnit)
+--
+--            if _groupId then
+--                --   env.info("adding command for "..index)
+--                if ctld.jtacRadioAdded[tostring(_groupId)] == nil then
+--                    -- env.info("about command for "..index)
+----                    missionCommands.addCommandForGroup(_groupId, "JTAC Status", nil, ctld.getJTACStatus, { _playerUnit:getName() })
+----                    ctld.jtacRadioAdded[tostring(_groupId)] = true
+--                    -- env.info("Added command for " .. index)
+--                end
+--            end
+----[[
+--            if _groupId and not ctld.JTAL then
+--				-- Ironwulf2000 modified for AutoLase script 
+--                --   env.info("adding command for "..index)
+--                if ctld.jtacRadioAdded[tostring(_groupId)] == nil then
+--                    -- env.info("about command for "..index)
+--                    missionCommands.addCommandForGroup(_groupId, "JTAC Status", nil, ctld.getJTACStatus, { _playerUnit:getName() })
+--                    ctld.jtacRadioAdded[tostring(_groupId)] = true
+--                    -- env.info("Added command for " .. index)
+--                end
+--            end
+----]]
+--        end
+--    end
+--end
 
 function ctld.getGroupId(_unit)
 

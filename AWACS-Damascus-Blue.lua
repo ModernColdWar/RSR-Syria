@@ -11,7 +11,7 @@ Damascus_SouthCAPZone = ZONE_POLYGON:New( "Damascus CAP Zone", GROUP:FindByName(
 
 BlueDetectionSetGroup = SET_GROUP:New()
 BlueDetectionSetGroup:FilterCoalitions("blue")
-BlueDetectionSetGroup:FilterPrefixes( { "EWR", "AWACS" } )
+BlueDetectionSetGroup:FilterPrefixes( { "EWR", "AWACS " } )
 BlueDetectionSetGroup:FilterStart()
 BlueDetection = DETECTION_AREAS:New( BlueDetectionSetGroup, 50000 )
 BlueA2ADispatcher = AI_A2A_DISPATCHER:New( BlueDetection )

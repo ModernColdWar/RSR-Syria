@@ -12,7 +12,7 @@ RamatDavid_SouthCAPZone = ZONE_POLYGON:New( "Ramat David CAP Zone", GROUP:FindBy
 
 BlueDetectionSetGroup = SET_GROUP:New()
 BlueDetectionSetGroup:FilterCoalitions("blue")
-BlueDetectionSetGroup:FilterPrefixes( { "EWR", "AWACS" } )
+BlueDetectionSetGroup:FilterPrefixes( { "EWR", "AWACS " } )
 BlueDetectionSetGroup:FilterStart()
 BlueDetection = DETECTION_AREAS:New( BlueDetectionSetGroup, 50000 )
 BlueA2ADispatcher = AI_A2A_DISPATCHER:New( BlueDetection )

@@ -11,7 +11,7 @@ Damascus_SouthCAPZone = ZONE_POLYGON:New( "Damascus CAP Zone", GROUP:FindByName(
 
 RedDetectionSetGroup = SET_GROUP:New()
 RedDetectionSetGroup:FilterCoalitions("red")
-RedDetectionSetGroup:FilterPrefixes( { "EWR", "AWACS" } )
+RedDetectionSetGroup:FilterPrefixes( { "EWR", "AWACS " } )
 RedDetectionSetGroup:FilterStart()
 RedDetection = DETECTION_AREAS:New( RedDetectionSetGroup, 50000 )
 
@@ -37,7 +37,7 @@ ARCOTankerRed = SPAWN
   -- :InitCleanUp(30)
   :OnSpawnGroup(function(Arco_11)
     Arco_11:CommandSetCallsign(2, 1)
-    MESSAGE:New("Arco 1-1 is on station, contact on channel 143.000 MHz",25,"Arco 1-1"):ToBlue()end)      
+    MESSAGE:New("Arco 1-1 is on station, contact on channel 143.000 MHz",25,"Arco 1-1"):ToRed()end)      
   :SpawnScheduled(3600,0.1)
 ARCOTankerRed2 = SPAWN
   :NewWithAlias("B_TANKER_KC135_6","Arco 2-1")
@@ -46,5 +46,5 @@ ARCOTankerRed2 = SPAWN
   --:InitCleanUp(30)
   :OnSpawnGroup(function(arco_21)
     arco_21:CommandSetCallsign(2, 2)
-    MESSAGE:New("Arco 2-1 is on station, contact on channel 143.500 MHz",25,"Arco 2-1"):ToBlue()end)  
+    MESSAGE:New("Arco 2-1 is on station, contact on channel 143.500 MHz",25,"Arco 2-1"):ToRed()end)  
   :SpawnScheduled(3600,0.1)

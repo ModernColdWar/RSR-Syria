@@ -12,7 +12,7 @@ Incirlik_NorthCAPZone = ZONE_POLYGON:New( "Incirlik CAP Zone", GROUP:FindByName(
 
 RedDetectionSetGroup = SET_GROUP:New()
 RedDetectionSetGroup:FilterCoalitions("red")
-RedDetectionSetGroup:FilterPrefixes( { "EWR", "AWACS" } )
+RedDetectionSetGroup:FilterPrefixes( { "EWR", "AWACS " } )
 RedDetectionSetGroup:FilterStart()
 RedDetection = DETECTION_AREAS:New( RedDetectionSetGroup, 50000 )
 RedA2ADispatcher = AI_A2A_DISPATCHER:New( RedDetection )
