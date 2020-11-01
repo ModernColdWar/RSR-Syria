@@ -1789,7 +1789,7 @@ ctld.AASystemTemplate = {
             {name = "SNR_75V", desc = "SA-2 Track Radar"},
             {name = "p-19 s-125 sr", desc = "SA-2 Search Radar"},
         },
-        repair = "__", (no more repair?)
+        repair = "SA-2 Repair", --(no more repair?)
         systemType = "MR",
     },	
 }
