@@ -3440,14 +3440,12 @@ function ctld.unpackCrates(_arguments)
                 return
             end
 ]]--
-            if (ctld.debug == false) then
-				if ctld.inLogisticsZone(_heli) == true  or  ctld.farEnoughFromLogisticZone(_heli) == false then
+--            if (ctld.debug == false) then
+			if ctld.inLogisticsZone(_heli) == true  or  ctld.farEnoughFromLogisticZone(_heli) == false then
 
 --					ctld.displayMessageToGroup(_heli, "You can't unpack that here! Take it to where it's needed!", 20)
-          ctld.displayMessageToGroup(_heli, "Not far enough from Logistics Center ".._dist.." meters, need to be greater than "..ctld.minimumDeployDistance.." meters", 10)
-
+					ctld.displayMessageToGroup(_heli, "Not far enough from Logistics Center ".._dist.." meters, need to be greater than "..ctld.minimumDeployDistance.." meters", 10)
 					return
-				end
 			end
 
 
