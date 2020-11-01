@@ -45,7 +45,7 @@ ctld.maximumDistanceLogistic = 200 -- max distance from vehicle to logistics to 
 ctld.maximumSearchDistance = 1000 -- max distance for troops to search for enemy
 ctld.maximumMoveDistance = 500 -- max distance for troops to move from drop point if no enemy is nearby
 
-ctld.minimumDeployDistance = 1200 -- minimum distance from a friendly pickup zone where you can deploy a crate
+ctld.minimumDeployDistance = 800 -- minimum distance from a friendly pickup zone where you can deploy a crate
 
 ctld.numberOfTroops = 10 -- default number of troops to load on a transport heli or C-130 
 							-- also works as maximum size of group that'll fit into a helicopter unless overridden
@@ -124,9 +124,9 @@ ctld.JTAC_smokeOn_BLUE = false -- enables marking of target with smoke for BLUE 
 ctld.JTAC_smokeColour_RED = 4 -- RED side smoke colour -- Green = 0 , Red = 1, White = 2, Orange = 3, Blue = 4
 ctld.JTAC_smokeColour_BLUE = 1 -- BLUE side smoke colour -- Green = 0 , Red = 1, White = 2, Orange = 3, Blue = 4
 
-ctld.JTAC_jtacStatusF10 = true -- enables F10 JTAC Status menu
+ctld.JTAC_jtacStatusF10 = false -- enables F10 JTAC Status menu
 
-ctld.JTAC_location = true -- shows location of target in JTAC message
+ctld.JTAC_location = false -- shows location of target in JTAC message
 ctld.location_DMS = false -- shows coordinates as Degrees Minutes Seconds instead of Degrees Decimal minutes
 																									
 
@@ -951,10 +951,12 @@ ctld.spawnableCrates = {
 }
 
 -- if the unit is on this list, it will be made into a JTAC when deployed
+--[[
 ctld.jtacUnitTypes = {
     "Tigr_233036", "Hummer" -- there are some wierd encoding issues so if you write SKP-11 it wont match as the - sign is encoded 
 --    "Tigr_233036", "Hummer", "T-55", "Leopard1A3" -- there are some wierd encoding issues so if you write SKP-11 it wont match as the - sign is encoded differently...
 }
+--]]
 
 
 ctld.nextUnitId = 1;
@@ -2063,6 +2065,7 @@ function ctld.spawnCrate(_arguments)
                 return
             end
 
+--[[
             if ctld.isJTACUnitType(_crateType.unit) then
 
                 local _limitHit = false
@@ -2087,7 +2090,7 @@ function ctld.spawnCrate(_arguments)
                     return
                 end
             end
-
+--]]
             local _position = _heli:getPosition()
 
             -- check crate spam
@@ -3515,6 +3518,7 @@ function ctld.unpackCrates(_arguments)
 
                     trigger.action.outTextForCoalition(_heli:getCoalition(), ctld.getPlayerNameOrType(_heli) .. " successfully deployed " .. _crate.details.desc .. " to the field", 10)
 
+--[[
                     if ctld.isJTACUnitType(_crate.details.unit) and ctld.JTAC_dropEnabled then
 
                         local _code = table.remove(ctld.jtacGeneratedLaserCodes, 1)
@@ -3523,6 +3527,7 @@ function ctld.unpackCrates(_arguments)
 
                         ctld.JTACAutoLase(_spawnedGroups:getName(), _code) --(_jtacGroupName, _laserCode, _smoke, _lock, _colour)
                     end
+--]]					
                 end
 
             else
@@ -5256,6 +5261,7 @@ function ctld.crateValidLoadPoint(_heli, _crate)
 	return true -- Covers models we dont know about yet so they dont break
 end	
 
+--[[
 function ctld.isJTACUnitType(_type)
 
     _type = string.lower(_type)
@@ -5269,7 +5275,7 @@ function ctld.isJTACUnitType(_type)
 
     return false
 end
-
+--]]
 function ctld.updateZoneCounter(_index, _diff)
 
     if ctld.pickupZones[_index] ~= nil then
@@ -5457,7 +5463,7 @@ function ctld.addF10MenuOptions()
 
                                     local _cratePath = missionCommands.addSubMenuForGroup(_groupId, _subMenuName, _rootPath)
                                     for _, _crate in pairs(_crates) do
-
+										--[[			
                                         if ctld.isJTACUnitType(_crate.unit) == false
                                                 or (ctld.isJTACUnitType(_crate.unit) == true and ctld.JTAC_dropEnabled) then
                                             if _crate.side == nil or (_crate.side == _unit:getCoalition()) then
@@ -5474,6 +5480,7 @@ function ctld.addF10MenuOptions()
 												
                                             end
                                         end
+										--]]
                                     end
                                 end
                             end
@@ -5650,7 +5657,7 @@ end
 
 ------------ JTAC -----------
 
-
+--[[
 ctld.jtacLaserPoints = {}
 ctld.jtacIRPoints = {}
 ctld.jtacSmokeMarks = {}
@@ -5663,7 +5670,7 @@ ctld.jtacLaserPointCodes = {}
 
 
 function ctld.JTACAutoLase(_jtacGroupName, _laserCode, _smoke, _lock, _colour)
-
+--]]
 --[[
 if ctld.JTAL then 
 		-- use the JTAL module instead - handy for servers already using AutoLase script in other areas, to keep things unified.
@@ -5671,6 +5678,7 @@ if ctld.JTAL then
 		return
 end
 --]]
+--[[
     if ctld.jtacStop[_jtacGroupName] == true then
         ctld.jtacStop[_jtacGroupName] = nil -- allow it to be started again
         ctld.cleanupJTAC(_jtacGroupName)
@@ -5872,7 +5880,7 @@ function ctld.cleanupJTAC(_jtacGroupName)
 
     ctld.jtacCurrentTargets[_jtacGroupName] = nil
 end
-
+--]]
 
 function ctld.notifyCoalition(_message, _displayFor, _side)
 
@@ -5891,6 +5899,7 @@ function ctld.createSmokeMarker(_enemyUnit, _colour)
     trigger.action.smoke({ x = _enemyPoint.x, y = _enemyPoint.y + 2.0, z = _enemyPoint.z }, _colour)
 end
 
+--[[
 function ctld.cancelLase(_jtacGroupName)
 
     --local index = "JTAC_"..jtacUnit:getID()
@@ -5917,7 +5926,8 @@ function ctld.cancelLase(_jtacGroupName)
         _tempIR = nil
     end
 end
-
+--]]
+--[[
 function ctld.laseUnit(_enemyUnit, _jtacUnit, _jtacGroupName, _laserCode)
 
     --cancelLase(jtacGroupName)
@@ -6111,8 +6121,9 @@ function ctld.findNearestVisibleEnemy(_jtacUnit, _targetType,_distance)
     return nil
 
 end
+--]]
 
-
+--[[
 function ctld.listNearbyEnemies(_jtacUnit)
 
     local _maxDistance =  ctld.JTAC_maxDistance
@@ -6179,7 +6190,7 @@ end
 
 
 -- Returns only alive units from group but the group / unit may not be active
-
+--]]
 function ctld.getGroup(groupName)
 
     local _groupUnits = Group.getByName(groupName)
@@ -6214,6 +6225,7 @@ function ctld.getAliveGroup(_groupName)
     return nil
 end
 
+--[[
 -- gets the JTAC status and displays to coalition units
 function ctld.getJTACStatus(_args)
 
@@ -6274,7 +6286,7 @@ function ctld.getJTACStatus(_args)
 
     ctld.notifyCoalition(_message, 10, _side)
 end
-
+--]]
 
 
 function ctld.isInfantry(_unit)
@@ -6313,6 +6325,7 @@ end
 -- -- and the last three digits must be between 1 and 8.
 --  The range used to be bugged so its not 1 - 8 but 0 - 7.
 -- function below will use the range 1-7 just incase
+--[[
 function ctld.generateLaserCode()
 
     ctld.jtacGeneratedLaserCodes = {}
@@ -6365,6 +6378,7 @@ end
 -- 200 - 400 in 10KHz
 -- 400 - 850 in 10 KHz
 -- 850 - 1250 in 50 KHz
+--]]
 function ctld.generateVHFrequencies()
 
     --ignore list
