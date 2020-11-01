@@ -1780,7 +1780,18 @@ ctld.AASystemTemplate = {
 		},
 		repair = "SA-10 Repair",
 		systemType = "LR",
-	},	
+	},
+	{
+        name = "SA-2 AA System",
+        count = 3,
+        parts = {
+            {name = "S_75M_Volhov", desc = "SA-2 Launcher", launcher = true},
+            {name = "SNR_75V", desc = "SA-2 Track Radar"},
+            {name = "p-19 s-125 sr", desc = "SA-2 Search Radar"},
+        },
+        repair = "__", (no more repair?)
+        systemType = "MR",
+    },	
 }
  
 ctld.crateWait = {}
