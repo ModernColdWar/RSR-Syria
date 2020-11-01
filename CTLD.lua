@@ -725,17 +725,17 @@ ctld.extractableGroups = {
 -- When a logistic unit is destroyed, you will no longer be able to spawn crates
 
 ctld.logisticUnits = {
-  "Aleppo CC",
+	"Aleppo CC",
 	"Minakh CC",
-  "Abu al-Duhur CC",
-  "Kuweires CC",
-  "Jirah CC",
-  "Taftanaz CC",
-  "Hatay CC",
-  "Bassel Al-Assad CC",
-  "Hama CC",
+	"Abu al-Duhur CC",
+	"Kuweires CC",
+	"Jirah CC",
+	"Taftanaz CC",
+	"Hatay CC",
+	"Bassel Al-Assad CC",
+	"Hama CC",
 	"Rene Mouawad CC",
-  "Al Qusayr CC",
+	"Al Qusayr CC",
 	"An Nasiriyah CC",
 	"Al-Dumayr CC",
 	"Marj as Sultan North CC",
@@ -3441,17 +3441,13 @@ function ctld.unpackCrates(_arguments)
                 return
             end
 ]]--
-            --if (ctld.debug == false) then
-			if ctld.inLogisticsZone(_heli) == true  or  ctld.farEnoughFromLogisticZone(_heli) == false then
-
---			  ctld.displayMessageToGroup(_heli, "You can't unpack that here! Take it to where it's needed!", 20)
-			ctld.displayMessageToGroup(_heli, "Not far enough from Logistics Center ".._dist.." meters, need to be greater than "..ctld.minimumDeployDistance.." meters", 10)
-
-			return
+            if (ctld.debug == false) then
+				if ctld.inLogisticsZone(_heli) == true  or  ctld.farEnoughFromLogisticZone(_heli) == false then
+					ctld.displayMessageToGroup(_heli, "Not far enough from Logistics Center ".._dist.." meters, need to be greater than "..ctld.minimumDeployDistance.." meters", 10)
+--					MESSAGE:New( "Test2",3600,"2. Does this Function work?" ):ToAll()
+					return
+				end
 			end
-			--end
-
-
 
             if _crate ~= nil and _crate.dist < 750
                     and (_crate.details.unit == "FOB" or _crate.details.unit == "FOB-SMALL") then
@@ -5076,16 +5072,22 @@ function ctld.farEnoughFromLogisticZone(_heli)
     for _, _name in pairs(ctld.logisticUnits) do
 
         local _logistic = StaticObject.getByName(_name)
-        if _logistic ~= nil and _logistic:getCoalition() == _heli:getCoalition() then
+		--[[
+		Since in our mission the _logistic coalition is set to neutral the below if statement was not running 
+		removed the requirement to have the _logistic coalition to match the heli coalition
+		--]]
+--        if _logistic ~= nil and _logistic:getCoalition() == _heli:getCoalition() then
+        if _logistic ~= nil then
             --get distance
             local _dist = ctld.getDistance(_heliPoint, _logistic:getPoint())
             -- env.info("DIST ".._dist)
             if _dist <= ctld.minimumDeployDistance then
-                -- env.info("TOO CLOSE ".._dist)
+--				env.info("TOO CLOSE ".._dist)
                 _farEnough = false
                 ctld.displayMessageToGroup(_heli, "Not far enough from Logistics Center ".._dist.." meters, need to be greater than "..ctld.minimumDeployDistance.." meters", 10)
---              env:info("DEBUG-1: Is LC Distance less than or equal to minimum deploy distance (1500m)?")
---              log:info("DEBUG-1: Is LC Distance less than or equal to minimum deploy distance (1500m)?")
+--				MESSAGE:New( "Test1",3600,"1. Does this Function work?" ):ToAll()
+--				env:info("DEBUG-1: Is LC Distance less than or equal to minimum deploy distance (800m)?")
+--				log:info("DEBUG-1: Is LC Distance less than or equal to minimum deploy distance (800m)?")
             end
         end
     end
