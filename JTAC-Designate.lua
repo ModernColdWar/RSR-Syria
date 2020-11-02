@@ -1,6 +1,6 @@
-BlueRecceSetGroup = SET_GROUP:New():FilterCoalitions("blue"):FilterPrefixes( {"_M-1 Abrams_"} ):FilterStart()
+BlueRecceSetGroup = SET_GROUP:New():FilterCoalitions("blue"):FilterPrefixes( {"JTAC Test ", "_M1128 Stryker MGS_"} ):FilterStart()
 
-RedRecceSetGroup = SET_GROUP:New():FilterCoalitions("red"):FilterPrefixes( {"_Leclerc_"} ):FilterStart()
+RedRecceSetGroup = SET_GROUP:New():FilterCoalitions("red"):FilterPrefixes( {"JTAC Test ", "_BMP-2_"} ):FilterStart()
 
 BlueHQ = GROUP:FindByName( "Blue HQ" )
 RedHQ = GROUP:FindByName( "Red HQ" )
