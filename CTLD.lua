@@ -940,14 +940,18 @@ ctld.spawnableCrates = {
 --        { weight = 625, desc = "Roland Repair", unit = "Roland Repair", side = 2, internal = 0 },
 --		    { weight = 626, desc = "PATRIOT Repair", unit = "PATRIOT Repair", side = 2, internal = 1 },
         { weight = 627, desc = "Early Warning Radar", unit = "1L13 EWR", internal = 0 },
+        { weight = 922, desc = "FOB Crate - Large (internal)", unit = "FOB", internal = 1 }, -- Builds a FOB! 
+        
     },
+--[[    
     ["Internal Cargo"] = {
 --        { weight = 820, desc = "T-55 (Recon)", unit = "T-55", side = 1, cratesRequired = 1, unitQuantity = 1, internal = 1 },		
 --		    { weight = 830, desc = "Leopard 1A3 (Recon)", unit = "Leopard1A3", side = 2, cratesRequired = 1, unitQuantity = 1, internal = 1 },
 		    { weight = 501, desc = "JTAC - HMMWV", unit = "Hummer", side = 2, cratesRequired = 1, internal = 1 }, 
         { weight = 502, desc = "JTAC - Tigr", unit = "Tigr_233036", side = 1, cratesRequired = 1, internal = 1 }, 
-        { weight = 922, desc = "FOB Crate - Large", unit = "FOB", internal = 1 }, -- Builds a FOB! 
+        { weight = 922, desc = "FOB Crate - Large", unit = "FOB", internal = 1 }, -- Builds a FOB!         
     },
+    --]]
 }
 
 -- if the unit is on this list, it will be made into a JTAC when deployed
