@@ -6,8 +6,8 @@ BlueCommandCenter = COMMANDCENTER
 RedCommandCenter = COMMANDCENTER
   :New( RedHQ, "Allied Command" )
 
-BlueRecceSetGroup = SET_GROUP:New():FilterCoalitions("blue"):FilterPrefixes( {"JTAC Test ", "PONTIAC 5", "PONTIAC 6"} ):FilterStart()
-RedRecceSetGroup = SET_GROUP:New():FilterCoalitions("red"):FilterPrefixes( {"JTAC Test ", "PONTIAC 7", "PONTIAC 8"} ):FilterStart()
+BlueRecceSetGroup = SET_GROUP:New():FilterCoalitions("blue"):FilterPrefixes( {"Pontiac 1"} ):FilterStart()
+RedRecceSetGroup = SET_GROUP:New():FilterCoalitions("red"):FilterPrefixes( {"Pontiac 6"} ):FilterStart()
 
 BLUE_CAS_Set = SET_GROUP:New():FilterPrefixes( {" Blue AF", " Blue Cargo"} ):FilterStart()
 RED_CAS_Set = SET_GROUP:New():FilterPrefixes( {" Red AF", " Red Cargo"} ):FilterStart()

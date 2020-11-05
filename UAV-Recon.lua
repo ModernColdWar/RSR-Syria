@@ -43,11 +43,11 @@ local SetClient = SET_CLIENT:New():FilterCoalitions("blue"):FilterPrefixes({" Bl
 local SetClient2 = SET_CLIENT:New():FilterCoalitions("red"):FilterPrefixes({" Red Cargo"}):FilterStart()
 ----Menus for the client
 local function UAV_MENU()
-  SetClient:ForEachClient(function(client)
-      if (client ~= nil) and (client:IsAlive()) then 
-      local group = client:GetGroup()
-      local groupName = group:GetName()
-            BlueMenuGroup = group
+  SetClient:ForEachClient(function(client1)
+      if (client1 ~= nil) and (client1:IsAlive()) then 
+      local group1 = client1:GetGroup()
+      local groupName = group1:GetName()
+            BlueMenuGroup = group1
             BlueMenuGroupName = BlueMenuGroup:GetName()
             ----Main Menu
             BlueSpawnRECON = MENU_GROUP:New( BlueMenuGroup, "RECON" )
@@ -58,9 +58,9 @@ local function UAV_MENU()
             BlueSpawnRECONrng5 = MENU_GROUP_COMMAND:New( BlueMenuGroup, "5 nmi", BlueSpawnRECON, BlueUAV, BlueMenuGroup, 5)
             BlueSpawnRECONrng10 = MENU_GROUP_COMMAND:New( BlueMenuGroup, "10 nmi", BlueSpawnRECON, BlueUAV, BlueMenuGroup, 10)
             ---- Enters log information
-            env.info("Player name: " ..client:GetPlayerName())
-            env.info("Group Name: " ..group:GetName())
-            SetClient:Remove(client:GetName(), true)
+            env.info("Player name: " ..client1:GetPlayerName())
+            env.info("Group Name: " ..group1:GetName())
+            SetClient:Remove(client1:GetName(), true)
     end
   end)
 timer.scheduleFunction(UAV_MENU,nil,timer.getTime() + 1)
@@ -68,9 +68,9 @@ end
 local function UAV_MENU2()
   SetClient2:ForEachClient(function(client2)
       if (client2 ~= nil) and (client2:IsAlive()) then 
-      local group = client2:GetGroup()
-      local groupName = group:GetName()
-            RedMenuGroup = group
+      local group2 = client2:GetGroup()
+      local groupName = group2:GetName()
+            RedMenuGroup = group2
             RedMenuGroupName = RedMenuGroup:GetName()
             ----Main Menu
             RedSpawnRECON2 = MENU_GROUP:New( RedMenuGroup, "RECON" )
@@ -82,11 +82,11 @@ local function UAV_MENU2()
             RedSpawnRECONrng10 = MENU_GROUP_COMMAND:New( RedMenuGroup, "10 nmi", RedSpawnRECON2, RedUAV, RedMenuGroup, 10)
             ---- Enters log information
             env.info("Player name: " ..client2:GetPlayerName())
-            env.info("Group Name: " ..group:GetName())
+            env.info("Group Name: " ..group2:GetName())
             SetClient2:Remove(client2:GetName(), true)
     end
   end)
---timer.scheduleFunction(UAV_MENU2,nil,timer.getTime() + 1)
+timer.scheduleFunction(UAV_MENU2,nil,timer.getTime() + 1)
 end
 UAV_MENU()
 UAV_MENU2()

@@ -250,6 +250,7 @@ function Zone1CaptureZone:OnEnterAttacked()
   if Coalition == coalition.side.BLUE then
 	trigger.action.outText("RED coalition attacking Aleppo Airbase", 10 , false)	
   else
+  trigger.action.outText("RED coalition attacking Aleppo Airbase", 10 , false)
   end
 end
 
