@@ -5,7 +5,7 @@
 -- Helos
 ---Objects to be spawned with attributes set
 Spawn_Blue_UAV = SPAWN:NewWithAlias("Blue UAV-Recon-FAC","Pontiac 1-1")
-    :InitLimit(2,0)
+    :InitLimit(2,6)
     :InitKeepUnitNames(true)
     :OnSpawnGroup(function(Pontiac_11)
       Pontiac_11:CommandSetCallsign(8, 1)
@@ -13,7 +13,7 @@ Spawn_Blue_UAV = SPAWN:NewWithAlias("Blue UAV-Recon-FAC","Pontiac 1-1")
     --:SpawnScheduled(30,0.5)
 
 Spawn_Red_UAV = SPAWN:NewWithAlias("Red UAV-Recon-FAC","Pontiac 6-1")
-    :InitLimit(2,0)
+    :InitLimit(2,6)
     :InitKeepUnitNames(true)
     :OnSpawnGroup(function(Pontiac_61)
       Pontiac_61:CommandSetCallsign(8, 6)

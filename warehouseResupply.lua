@@ -33,12 +33,13 @@ warehouse.Khalkhalah=WAREHOUSE:New(STATIC:FindByName("Khalkhalah Warehouse"))
 warehouse.KingHusseinAirCollege=WAREHOUSE:New(STATIC:FindByName("King Hussein Air College Warehouse"))
 warehouse.KiryatShmona=WAREHOUSE:New(STATIC:FindByName("Kiryat Shmona Warehouse"))
 warehouse.Kuweires=WAREHOUSE:New(STATIC:FindByName("Kuweires Warehouse"))
-warehouse.Minakh=WAREHOUSE:New(STATIC:FindByName("Minakh Warehouse"))
 warehouse.MarjasSultanNorth=WAREHOUSE:New(STATIC:FindByName("Marj as Sultan North Warehouse"))
 warehouse.MarjasSultanSouth=WAREHOUSE:New(STATIC:FindByName("Marj as Sultan South Warehouse"))
 warehouse.MarjRuhayyil=WAREHOUSE:New(STATIC:FindByName("Marj Ruhayyil Warehouse"))
 warehouse.Megiddo=WAREHOUSE:New(STATIC:FindByName("Megiddo Warehouse"))
 warehouse.Mezzeh=WAREHOUSE:New(STATIC:FindByName("Mezzeh Warehouse"))
+warehouse.Minakh=WAREHOUSE:New(STATIC:FindByName("Minakh Warehouse"))
+warehouse.Palmyra=WAREHOUSE:New(STATIC:FindByName("Palmyra Warehouse"))
 warehouse.QabrasSitt=WAREHOUSE:New(STATIC:FindByName("Qabr as Sitt Warehouse"))
 warehouse.RamatDavid=WAREHOUSE:New(STATIC:FindByName("Ramat David Warehouse"))
 warehouse.Rayak=WAREHOUSE:New(STATIC:FindByName("Rayak Warehouse"))
@@ -72,6 +73,7 @@ if file_exists("WarehouseAleppo") then --Script has been run before, so we need 
   warehouse.Megiddo:Load(nil,"WarehouseMegiddo")
   warehouse.Mezzeh:Load(nil,"WarehouseMezzeh")
   warehouse.Minakh:Load(nil,"WarehouseMinakh")
+  warehouse.Palmyra:Load(nil,"WarehousePalmyra")
   warehouse.QabrasSitt:Load(nil,"WarehouseQabrasSitt")
   warehouse.RamatDavid:Load(nil,"WarehouseRamatDavid")
   warehouse.Rayak:Load(nil,"WarehouseRayak")
@@ -123,6 +125,8 @@ if file_exists("WarehouseAleppo") then --Script has been run before, so we need 
   warehouse.Mezzeh:SetRespawnAfterDestroyed(1800)
   warehouse.Minakh:Start()
   warehouse.Minakh:SetRespawnAfterDestroyed(1800)
+  warehouse.Palmyra:Start()
+  warehouse.Palmyra:SetRespawnAfterDestroyed(1800)
   warehouse.QabrasSitt:Start()
   warehouse.QabrasSitt:SetRespawnAfterDestroyed(1800)
   warehouse.RamatDavid:Start()
@@ -180,6 +184,8 @@ if file_exists("WarehouseAleppo") then --Script has been run before, so we need 
   warehouse.Mezzeh:SetRespawnAfterDestroyed(1800)
   warehouse.Minakh:Start()
   warehouse.Minakh:SetRespawnAfterDestroyed(1800)
+  warehouse.Palmyra:Start()
+  warehouse.Palmyra:SetRespawnAfterDestroyed(1800)
   warehouse.QabrasSitt:Start()
   warehouse.QabrasSitt:SetRespawnAfterDestroyed(1800)
   warehouse.RamatDavid:Start()
@@ -436,6 +442,17 @@ if file_exists("WarehouseAleppo") then --Script has been run before, so we need 
   warehouse.Minakh:AddAsset("Resupply SAM Avenger", 40) --Counted as SAM in stock
   warehouse.Minakh:AddAsset("Resupply SAM Hawk", 20)    --Counted as SAM in stock
   --warehouse.Minakh:AddAsset("Red C-130", 2, nil, 1777000, nil, 10000)  warehouse.KiryatShmona
+  warehouse.Palmyra:AddAsset("Resupply MBT T72B", 30)    --counted as tank  in stock
+  warehouse.Palmyra:AddAsset("Resupply IFV BMP-3", 20)   --counted as APC in stock
+  warehouse.Palmyra:AddAsset("Resupply AAA Shilka", 40)  --counted as AAA in stock
+  warehouse.Palmyra:AddAsset("Resupply SAM SA-13", 40)   --Counted as SAM in stock
+  warehouse.Palmyra:AddAsset("Resupply SAM SA-11", 20)   --Counted as SAM in stock
+  warehouse.Palmyra:AddAsset("Resupply MBT Merkava", 30) --Counted as tank  in stock
+  warehouse.Palmyra:AddAsset("Resupply IFV M2A1", 20)    --Counted as APC in stock
+  warehouse.Palmyra:AddAsset("Resupply AAA Vulcan", 40)  --counted as AAA in stock
+  warehouse.Palmyra:AddAsset("Resupply SAM Avenger", 40) --Counted as SAM in stock
+  warehouse.Palmyra:AddAsset("Resupply SAM Hawk", 20)    --Counted as SAM in stock
+  --warehouse.Palmyra:AddAsset("Red C-130", 2, nil, 1777000, nil, 10000)  warehouse.KiryatShmona
   warehouse.QabrasSitt:AddAsset("Resupply MBT T72B", 30)    --counted as tank  in stock
   warehouse.QabrasSitt:AddAsset("Resupply IFV BMP-3", 20)   --counted as APC in stock
   warehouse.QabrasSitt:AddAsset("Resupply AAA Shilka", 40)  --counted as AAA in stock
@@ -527,6 +544,7 @@ warehouse.MarjRuhayyil:SetSpawnZone(ZONE_POLYGON:New("Marj Ruhayyi Warehouse Spa
 warehouse.Megiddo:SetSpawnZone(ZONE_POLYGON:New("Megiddo Warehouse Spawn Zone #001", GROUP:FindByName("Megiddo Warehouse Spawn Zone #001")))
 warehouse.Mezzeh:SetSpawnZone(ZONE_POLYGON:New("Mezzeh Warehouse Spawn Zone #001", GROUP:FindByName("Mezzeh Warehouse Spawn Zone #001")))
 warehouse.Minakh:SetSpawnZone(ZONE_POLYGON:New("Minakh Warehouse Spawn Zone #001", GROUP:FindByName("Minakh Warehouse Spawn Zone #001")))
+warehouse.Palmyra:SetSpawnZone(ZONE_POLYGON:New("Palmyra Warehouse Spawn Zone #001", GROUP:FindByName("Palmyra Warehouse Spawn Zone #001")))
 warehouse.QabrasSitt:SetSpawnZone(ZONE_POLYGON:New("Qabr as Sitt Warehouse Spawn Zone #001", GROUP:FindByName("Qabr as Sitt Warehouse Spawn Zone #001")))
 warehouse.RamatDavid:SetSpawnZone(ZONE_POLYGON:New("Ramat David Warehouse Spawn Zone #001", GROUP:FindByName("Ramat David Warehouse Spawn Zone #001")))
 warehouse.Rayak:SetSpawnZone(ZONE_POLYGON:New("Rayak Warehouse Spawn Zone #001", GROUP:FindByName("Rayak Warehouse Spawn Zone #001")))
@@ -1437,6 +1455,47 @@ function warehouse.Minakh:OnAfterCaptured(From, Event, To, Coalition, Country)
     warehouse.Minakh:__Save(1950,nil,"WarehouseMinakh")    
     end
 end
+function warehouse.Palmyra:OnAfterCaptured(From, Event, To, Coalition, Country)
+  if Coalition==coalition.side.BLUE then
+    MESSAGE:New("We have captured Minakh Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToBlue()
+    warehouse.Palmyra:__Save(10,nil,"WarehousePalmyra")
+    warehouse.Palmyra:__AddRequest(900,warehouse.Palmyra,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 3,
+    WAREHOUSE.TransportType.SELFPROPELLED)
+    warehouse.Palmyra:__AddRequest(900,warehouse.Palmyra,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV M2A1", 2,
+    WAREHOUSE.TransportType.SELFPROPELLED)
+    warehouse.Palmyra:__AddRequest(900,warehouse.Palmyra,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply AAA Vulcan", 4,
+    WAREHOUSE.TransportType.SELFPROPELLED)
+    warehouse.Palmyra:__AddRequest(1800,warehouse.Palmyra,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM Avenger", 4,
+    WAREHOUSE.TransportType.SELFPROPELLED)
+    warehouse.Palmyra:__AddRequest(1800,warehouse.Palmyra,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM Hawk", 2,
+    WAREHOUSE.TransportType.SELFPROPELLED)
+    warehouse.Palmyra:__Save(1950,nil,"WarehousePalmyra")    
+  elseif Coalition==coalition.side.RED then
+    MESSAGE:New("We have captured Palmyra Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToRed()
+    warehouse.Palmyra:__Save(10,nil,"WarehousePalmyra")
+    warehouse.Palmyra:__AddRequest(900,warehouse.Palmyra,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 3,
+    WAREHOUSE.TransportType.SELFPROPELLED)
+    warehouse.Palmyra:__AddRequest(900,warehouse.Palmyra,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV BMP-3", 2,
+    WAREHOUSE.TransportType.SELFPROPELLED)
+    warehouse.Palmyra:__AddRequest(900,warehouse.Palmyra,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply AAA Shilka", 4,
+    WAREHOUSE.TransportType.SELFPROPELLED)
+    warehouse.Palmyra:__AddRequest(1800,warehouse.Palmyra,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-13", 4,
+    WAREHOUSE.TransportType.SELFPROPELLED)
+    warehouse.Palmyra:__AddRequest(1800,warehouse.Palmyra,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 2,
+    WAREHOUSE.TransportType.SELFPROPELLED)
+    warehouse.Palmyra:__Save(1950,nil,"WarehousePalmyra")    
+    end
+end
 function warehouse.QabrasSitt:OnAfterCaptured(From, Event, To, Coalition, Country)
   if Coalition==coalition.side.BLUE then
     MESSAGE:New("We have captured Qabr as Sitt Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToBlue()
@@ -1712,6 +1771,7 @@ warehouse.MarjRuhayyil:__Save(3780,nil,"WarehouseMarjRuhayyil")
 warehouse.Megiddo:__Save(3790,nil,"WarehouseMegiddo")
 warehouse.Mezzeh:__Save(3795,nil,"WarehouseMezzeh")
 warehouse.Minakh:__Save(3800,nil,"WarehouseMinakh")
+warehouse.Palmyra:__Save(3800,nil,"WarehousePalmyra")
 warehouse.QabrasSitt:__Save(3810,nil,"WarehouseQabrasSitt")
 warehouse.RamatDavid:__Save(3820,nil,"WarehouseRamatDavid")
 warehouse.Rayak:__Save(3830,nil,"WarehouseRayak")

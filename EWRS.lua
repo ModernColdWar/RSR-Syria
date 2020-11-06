@@ -55,8 +55,8 @@ ewrs.disableMessageWhenNoThreats = true -- disables message when no threats are 
 ewrs.useImprovedDetectionLogic = true --this makes the messages more realistic. If the radar doesn't know the type or distance to the detected threat, it will be reflected in the picture report / BRA message
 ewrs.onDemand = true --Setting to true will disable the automated messages to everyone and will add an F10 menu to get picture / BRA message.
 ewrs.maxThreatDisplay = 1 -- Max amounts of threats to display on picture report (0 will display all)
-ewrs.allowBogeyDope = false -- Allows pilots to request a bogey dope even with the automated messages running. It will display only the cloest threat, and will always reference the players own aircraft.
-ewrs.allowFriendlyPicture = false -- Allows pilots to request picture of friendly aircraft
+ewrs.allowBogeyDope = true -- Allows pilots to request a bogey dope even with the automated messages running. It will display only the cloest threat, and will always reference the players own aircraft.
+ewrs.allowFriendlyPicture = true -- Allows pilots to request picture of friendly aircraft
 ewrs.maxFriendlyDisplay = 0 -- Limits the amount of friendly aircraft shown on friendly picture
 
 --[[
@@ -112,7 +112,7 @@ ewrs.acCategories = { --Have I left anything out? Please let me know if I have
 [ "F-15C"          ] = ewrs.ATTACK ,
 [ "F-5E-3"		   ] = ewrs.ATTACK	,
 [ "FW-190D9"       ] = ewrs.ATTACK  ,
-[ "F-86F Sabre"	   ] = ewrs.FIGHTER ,
+[ "F-86F Sabre"	   ] = ewrs.ATTACK ,
 [ "Hawk"           ] = ewrs.ATTACK  ,
 [ "Ka-50"          ] = ewrs.HELO    ,
 [ "L-39C"		   ] = ewrs.ATTACK	,

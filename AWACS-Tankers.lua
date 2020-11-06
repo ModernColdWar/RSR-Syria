@@ -4,7 +4,7 @@
 -- Spawns
 ---Objects to be spawned with attributes set
 Spawn_Blue_AWACs = SPAWN:NewWithAlias("AWACS Blue","Magic 1-1")
-    :InitLimit(1,0)
+    :InitLimit(1,4)
     :InitKeepUnitNames(true)
     :OnSpawnGroup(
       function(Magic_11)
@@ -14,7 +14,7 @@ Spawn_Blue_AWACs = SPAWN:NewWithAlias("AWACS Blue","Magic 1-1")
     --:SpawnScheduled(30,0.5)
 
 Spawn_Blue_TankerBasket = SPAWN:NewWithAlias("Tanker Basket Blue","Texaco 1-1")
-    :InitLimit(1,0)
+    :InitLimit(1,2)
     :InitKeepUnitNames(true)
     :OnSpawnGroup(
       function(Texaco_11)
@@ -24,7 +24,7 @@ Spawn_Blue_TankerBasket = SPAWN:NewWithAlias("Tanker Basket Blue","Texaco 1-1")
     --:SpawnScheduled(30,0.5)
 
 Spawn_Blue_TankerBoom = SPAWN:NewWithAlias("Tanker Boom Blue","Texaco 2-1")
-    :InitLimit(1,0)
+    :InitLimit(1,2)
     :InitKeepUnitNames(true)
     :OnSpawnGroup(
       function(Texaco_21)
@@ -36,7 +36,7 @@ Spawn_Blue_TankerBoom = SPAWN:NewWithAlias("Tanker Boom Blue","Texaco 2-1")
 
 
 Spawn_Red_AWACs = SPAWN:NewWithAlias("AWACS Red","Overlord 1-1")
-    :InitLimit(1,0)
+    :InitLimit(1,4)
     :InitKeepUnitNames(true)
     :OnSpawnGroup(
       function(Overlord_11)
@@ -45,7 +45,7 @@ Spawn_Red_AWACs = SPAWN:NewWithAlias("AWACS Red","Overlord 1-1")
       end)
 
 Spawn_Red_TankerBasket = SPAWN:NewWithAlias("Tanker Basket Red","Shell 1-1")
-    :InitLimit(1,0)
+    :InitLimit(1,2)
     :InitKeepUnitNames(true)
     :OnSpawnGroup(
       function(Shell_11)
@@ -55,7 +55,7 @@ Spawn_Red_TankerBasket = SPAWN:NewWithAlias("Tanker Basket Red","Shell 1-1")
     --:SpawnScheduled(30,0.5)
 
 Spawn_Red_TankerBoom = SPAWN:NewWithAlias("Tanker Boom Red","Shell 2-1")
-    :InitLimit(1,0)
+    :InitLimit(1,2)
     :InitKeepUnitNames(true)
     :OnSpawnGroup(
       function(Shell_21)
