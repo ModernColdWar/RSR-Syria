@@ -2,9 +2,9 @@ BlueHQ = GROUP:FindByName( "Blue HQ" )
 RedHQ = GROUP:FindByName( "Red HQ" )
 
 BlueCommandCenter = COMMANDCENTER
-  :New( BlueHQ, "Allied Command" )
+  :New( BlueHQ, "Blue Command" )
 RedCommandCenter = COMMANDCENTER
-  :New( RedHQ, "Allied Command" )
+  :New( RedHQ, "Red Command" )
 
 BlueRecceSetGroup = SET_GROUP:New():FilterCoalitions("blue"):FilterPrefixes( {"Pontiac 1"} ):FilterStart()
 RedRecceSetGroup = SET_GROUP:New():FilterCoalitions("red"):FilterPrefixes( {"Pontiac 6"} ):FilterStart()
