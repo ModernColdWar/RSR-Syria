@@ -42,8 +42,8 @@ ctld.enableSmokeDrop = true -- if false, helis and c-130 will not be able to dro
 
 ctld.maxExtractDistance = 125 -- max distance from vehicle to troops to allow a group extraction
 ctld.maximumDistanceLogistic = 200 -- max distance from vehicle to logistics to allow a loading or spawning operation
-ctld.maximumSearchDistance = 1000 -- max distance for troops to search for enemy
-ctld.maximumMoveDistance = 500 -- max distance for troops to move from drop point if no enemy is nearby
+ctld.maximumSearchDistance = 2000 -- max distance for troops to search for enemy
+ctld.maximumMoveDistance = 0 -- max distance for troops to move from drop point if no enemy is nearby
 
 ctld.minimumDeployDistance = 800 -- minimum distance from a friendly pickup zone where you can deploy a crate
 
@@ -55,7 +55,7 @@ ctld.fastRopeMaximumHeight = 18.28 -- in meters which is 60 ft max fast rope (no
 ctld.vehiclesForTransportRED = { "BRDM-2", "BTR_D" } -- vehicles to load onto Il-76 - Alternatives {"Strela-1 9P31","BMP-1"}
 ctld.vehiclesForTransportBLUE = { "M1045 HMMWV TOW", "M1043 HMMWV Armament" } -- vehicles to load onto c130 - Alternatives {"M1128 Stryker MGS","M1097 Avenger"}
 
-ctld.aaLaunchers = 6 -- controls how many launchers to add to the kub/buk when its spawned.
+ctld.aaLaunchers = 4 -- controls how many launchers to add to the kub/buk when its spawned.
 ctld.hawkLaunchers = 6 -- controls how many launchers to add to the hawk when its spawned.
 
 ctld.spawnRPGWithCoalition = true --spawns a friendly RPG unit with Coalition forces
@@ -74,7 +74,7 @@ ctld.troopPickupAtFOB = true -- if true, troops can also be picked up at a creat
 
 ctld.buildTimeFOB = 60 --time in seconds for the FOB to be built
 
-ctld.crateWaitTime = 15 -- time in seconds to wait before you can spawn another crate
+ctld.crateWaitTime = 5 -- time in seconds to wait before you can spawn another crate
 
 ctld.forceCrateToBeMoved = false -- a crate must be picked up at least once and moved before it can be unpacked. Helps to reduce crate spam
 
@@ -794,9 +794,9 @@ ctld.vehicleTransportEnabled = {
 ctld.unitLoadLimits = {
 
     -- Remove the -- below to turn on options
-    -- ["SA342Mistral"] = 4,
-    -- ["SA342L"] = 4,
-    -- ["SA342M"] = 4,
+    -- ["SA342Mistral"] = 1,
+     --["SA342L"] = 1,
+     --["SA342M"] = 1,
 
 }
 
@@ -819,8 +819,9 @@ ctld.unitActions = {
 
     -- Remove the -- below to turn on options
     -- ["SA342Mistral"] = {crates=true, troops=true},
-    -- ["SA342L"] = {crates=false, troops=true},
-    -- ["SA342M"] = {crates=false, troops=true},
+    --["SA342L"] = {crates=false, troops=true},
+    --["SA342M"] = {crates=false, troops=true},
+	--["Ka-50"] = {crates=false, troops=false},
 
 }
 
@@ -835,9 +836,9 @@ ctld.unitActions = {
 -- You can also add an optional coalition side to limit the group to one side
 -- for the side - 2 is BLUE and 1 is RED
 ctld.loadableGroups = {
-    {name = "Standard Group", inf = 2, mg = 1, at = 1 }, -- will make a loadable group with 5 infantry, 2 MGs and 2 anti-tank for both coalitions
-    {name = "Anti Air", inf = 2, aa = 2  },
-    {name = "Anti Tank", inf = 2, at = 2  },
+    {name = "Standard Group", inf = 3, mg = 1, at = 1 }, -- will make a loadable group with 5 infantry, 2 MGs and 2 anti-tank for both coalitions
+    {name = "Anti Air", inf = 1, aa = 2  },
+    {name = "Anti Tank", inf = 1, at = 4  },
     {name = "Mortar Squad", mortar = 6 },
 --    {name = "Recon", inf = 1 },
     -- {name = "Mortar Squad Red", inf = 2, mortar = 5, side =1 }, --would make a group loadable by RED only
@@ -878,6 +879,8 @@ ctld.spawnableCrates = {
     },
     ["Artillery"] = {
 		--Red
+		{ weight = 1000, desc = "Bofors 40mm AAA", unit = "bofors40", side = 1, cratesRequired = 1, unitQuantity = 2, internal = 1 },
+		{ weight = 1001, desc = "Flak 18 AAA Battery", unit = "flak18", side = 1, cratesRequired = 1, unitQuantity = 2, internal = 1 },
         { weight = 840, desc = "ZSU-23-4 Shilka", unit = "ZSU-23-4 Shilka", side = 1, cratesRequired = 1, unitQuantity = 2, internal = 0 },
         --{ weight = 841, desc = "ZU-23 on Ural", unit = "Ural-375 ZU-23", side = 1, cratesRequired = 1, unitQuantity = 2, internal = 0 },
         { weight = 890, desc = "2S9 Nona", unit = "2S9 Nona", side = 1, cratesRequired = 1, unitQuantity = 2, internal = 0 },
@@ -888,6 +891,8 @@ ctld.spawnableCrates = {
         { weight = 920, desc = "Scud-B", unit = "Scud_B", side = 1, cratesRequired = 5, unitQuantity = 1, internal = 0 },		
 		--Blue
         --{ weight = 850, desc = "M163 Vulcan", unit = "Vulcan", side = 2, cratesRequired = 1, unitQuantity = 2, internal = 0 },
+		{ weight = 1002, desc = "Bofors 40mm AAA", unit = "bofors40", side = 2, cratesRequired = 1, unitQuantity = 2, internal = 1 },
+		{ weight = 1001, desc = "Flak 18 AAA Battery", unit = "flak18", side = 2, cratesRequired = 1, unitQuantity = 2, internal = 1 },
         { weight = 895, desc = "SpGH DANA", unit = "SpGH_Dana", side = 2, cratesRequired = 1, internal = 0 },
         { weight = 896, desc = "M-109", unit = "M-109", side = 2, cratesRequired = 1, internal = 0 },
         { weight = 897, desc = "MLRS", unit = "MLRS", side = 2, cratesRequired = 2, unitQuantity = 2, internal = 0 },
@@ -1742,7 +1747,14 @@ end
 --- Tells CTLD What multipart AA Systems there are and what parts they need
 -- A New system added here also needs the launcher added
 ctld.AASystemTemplate = {
-
+	{
+        name = "Flak 18 AAA Battery",
+        count = 1,
+        parts = {
+            {name = "flak18", desc = "Flak 18 AAA Battery", launcher = true},         
+        },
+        repair = "Flak 18 Repair",
+    },	
     {
         name = "HAWK AA System",
         count = 4,
@@ -2385,7 +2397,7 @@ function ctld.generateTroopTypes(_side, _countOrTemplate, _country)
             if _side == 2 then
                 _troops = ctld.insertIntoTroopsArray("Stinger manpad", _countOrTemplate.aa, _troops)
             else
-                _troops = ctld.insertIntoTroopsArray("SA-18 Igla manpad", _countOrTemplate.aa, _troops)
+                _troops = ctld.insertIntoTroopsArray("SA-18 Igla-S manpad", _countOrTemplate.aa, _troops)
             end
         end
 
