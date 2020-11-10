@@ -43,12 +43,12 @@ limitations[5] = {
 }
 limitations[6] = {
   WP_NAME = "AIM_54A_Mk60",
-  QTY = 36,
+  QTY = 0,
   DISPLAY_NAME = "AIM 54A-Mk60"
 }
 limitations[7] = {
   WP_NAME = "AIM_54C_Mk47",
-  QTY = 36,
+  QTY = 0,
   DISPLAY_NAME = "AIM 54C-Mk47"
 }
 limitations[8] = {
