@@ -1196,7 +1196,7 @@ function csar.checkDisabledAircraftStatus(_args)
 
             -- -1 for lives as we use 1 to indicate out of lives!
 --            local _text = string.format("CSAR ACTIVE! \n\nYou have " .. (_lives - 1) .. " lives remaining. Make sure you eject!")
-            local _text = string.format("Welcome to RSR! Check briefing for Discord and other important info.\n\nCSAR ACTIVE! \n\nYou have " .. (_lives - 1) .. " lives remaining. Make sure you eject!\n\nMission Restarts at 0000-0600-1200-1800 Eastern Standard.\n\nWeapon Restrictions are enabled Check F10 for more info.")
+            local _text = string.format("Welcome to RSR! Check briefing for Discord and other important info.\n\nCSAR ACTIVE! \n\nYou have " .. (_lives - 1) .. " lives remaining. Make sure you eject!\n\nMission Restarts at 0000-0600-1200-1800 Eastern Standard.\n\nWeapon Restrictions are enabled Check F10 for more info.\n\nAIM54C MK47 and AIM54A MK60 are unavailable until fixed.")
             csar.displayMessageToSAR(_unit, _text, 20, true)
 
             return
