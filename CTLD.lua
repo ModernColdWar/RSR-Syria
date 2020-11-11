@@ -42,7 +42,7 @@ ctld.enableSmokeDrop = true -- if false, helis and c-130 will not be able to dro
 
 ctld.maxExtractDistance = 125 -- max distance from vehicle to troops to allow a group extraction
 ctld.maximumDistanceLogistic = 200 -- max distance from vehicle to logistics to allow a loading or spawning operation
-ctld.maximumSearchDistance = 2000 -- max distance for troops to search for enemy
+ctld.maximumSearchDistance = 3000 -- max distance for troops to search for enemy
 ctld.maximumMoveDistance = 0 -- max distance for troops to move from drop point if no enemy is nearby
 
 ctld.minimumDeployDistance = 800 -- minimum distance from a friendly pickup zone where you can deploy a crate
@@ -795,8 +795,8 @@ ctld.unitLoadLimits = {
 
     -- Remove the -- below to turn on options
     -- ["SA342Mistral"] = 1,
-     --["SA342L"] = 1,
-     --["SA342M"] = 1,
+     ["SA342L"] = 1,
+     ["SA342M"] = 1,
 
 }
 
@@ -819,9 +819,9 @@ ctld.unitActions = {
 
     -- Remove the -- below to turn on options
     -- ["SA342Mistral"] = {crates=true, troops=true},
-    --["SA342L"] = {crates=false, troops=true},
-    --["SA342M"] = {crates=false, troops=true},
-	--["Ka-50"] = {crates=false, troops=false},
+    ["SA342L"] = {crates=false, troops=true},
+    ["SA342M"] = {crates=false, troops=true},
+	["Ka-50"] = {crates=true, troops=false},
 
 }
 
