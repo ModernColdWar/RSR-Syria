@@ -2,6 +2,25 @@
 -- Date Created: 04 Nov 2020
 -- Same principle used to spawn UAVs, but going to spawn Tankers and AWACs
 -- Spawns
+
+BlueAWACs_EventHandler = EVENTHANDLER:New()
+BlueAWACs_EventHandler:HandleEvent( EVENTS.Birth )
+
+function BlueAWACs_EventHandler:OnEventBirth( EventData )
+  if EventData.IniDCSGroupName == 'Magic 1-1#001' then 
+  MESSAGE:New("AWACs has been spawned, Blue Team has 3 remaining AWACs",10):ToBlue()
+  elseif EventData.IniDCSGroupName == 'Magic 1-1#002' then
+  MESSAGE:New("AWACs has been spawned, Blue Team has 2 remaining AWACs",10):ToBlue()
+  elseif EventData.IniDCSGroupName == 'Magic 1-1#003' then
+  MESSAGE:New("AWACs has been spawned, Blue Team has 1 remaining AWACs",10):ToBlue()
+  elseif EventData.IniDCSGroupName == 'Magic 1-1#004' then
+  MESSAGE:New("AWACs has been spawned, Blue Team has no remaining AWACs",10):ToBlue()
+  else
+  --nothing
+  end
+end
+
+
 ---Objects to be spawned with attributes set
 Spawn_Blue_AWACs = SPAWN:NewWithAlias("AWACS Blue","Magic 1-1")
     :InitLimit(1,4)
@@ -13,6 +32,19 @@ Spawn_Blue_AWACs = SPAWN:NewWithAlias("AWACS Blue","Magic 1-1")
       end)
     --:SpawnScheduled(30,0.5)
 
+BlueTanker1_EventHandler = EVENTHANDLER:New()
+BlueTanker1_EventHandler:HandleEvent( EVENTS.Birth )
+
+function BlueTanker1_EventHandler:OnEventBirth( EventData )
+  if EventData.IniDCSGroupName == 'Texaco 1-1#001' then 
+  MESSAGE:New("Basket Tanker has been spawned, Blue Team has 1 remaining Basket Tanker",10):ToBlue()
+  elseif EventData.IniDCSGroupName == 'Texaco 1-1#002' then
+  MESSAGE:New("Basket Tanker has been spawned, Blue Team has no remaining Basket Tankers",10):ToBlue()
+  else
+  --nothing
+  end
+end
+
 Spawn_Blue_TankerBasket = SPAWN:NewWithAlias("Tanker Basket Blue","Texaco 1-1")
     :InitLimit(1,2)
     :InitKeepUnitNames(true)
@@ -22,6 +54,19 @@ Spawn_Blue_TankerBasket = SPAWN:NewWithAlias("Tanker Basket Blue","Texaco 1-1")
         MESSAGE:New("Texaco 1-1 (Basket) is on station contact on channel 142.000 MHz",25,"Texaco 1-1"):ToBlue()
       end)
     --:SpawnScheduled(30,0.5)
+
+BlueTanker2_EventHandler = EVENTHANDLER:New()
+BlueTanker2_EventHandler:HandleEvent( EVENTS.Birth )
+
+function BlueTanker2_EventHandler:OnEventBirth( EventData )
+  if EventData.IniDCSGroupName == 'Texaco 2-1#001' then 
+  MESSAGE:New("Boom Tanker has been spawned, Blue Team has 1 remaining Boom Tanker",10):ToBlue()
+  elseif EventData.IniDCSGroupName == 'Texaco 2-1#002' then
+  MESSAGE:New("Boom Tanker has been spawned, Blue Team has no remaining Boom Tankers",10):ToBlue()
+  else
+  --nothing
+  end
+end
 
 Spawn_Blue_TankerBoom = SPAWN:NewWithAlias("Tanker Boom Blue","Texaco 2-1")
     :InitLimit(1,2)
@@ -34,6 +79,22 @@ Spawn_Blue_TankerBoom = SPAWN:NewWithAlias("Tanker Boom Blue","Texaco 2-1")
       end)
     --:SpawnScheduled(30,0.5)
 
+RedAWACs_EventHandler = EVENTHANDLER:New()
+RedAWACs_EventHandler:HandleEvent( EVENTS.Birth )
+
+function RedAWACs_EventHandler:OnEventBirth( EventData )
+  if EventData.IniDCSGroupName == 'Overlord 1-1#001' then 
+  MESSAGE:New("AWACs has been spawned, Red Team has 3 remaining AWACs",10):ToRed()
+  elseif EventData.IniDCSGroupName == 'Overlord 1-1#002' then
+  MESSAGE:New("AWACs has been spawned, Red Team has 2 remaining AWACs",10):ToRed()
+  elseif EventData.IniDCSGroupName == 'Overlord 1-1#003' then
+  MESSAGE:New("AWACs has been spawned, Red Team has 1 remaining AWACs",10):ToRed()
+  elseif EventData.IniDCSGroupName == 'Overlord 1-1#004' then
+  MESSAGE:New("AWACs has been spawned, Red Team has no remaining AWACs",10):ToRed()
+  else
+  --nothing
+  end
+end
 
 Spawn_Red_AWACs = SPAWN:NewWithAlias("AWACS Red","Overlord 1-1")
     :InitLimit(1,4)
@@ -44,6 +105,19 @@ Spawn_Red_AWACs = SPAWN:NewWithAlias("AWACS Red","Overlord 1-1")
         MESSAGE:New("Overlord 1-1 is on station contact on channel 121.000 MHz",25,"Overlord 1-1"):ToRed()
       end)
 
+RedTanker1_EventHandler = EVENTHANDLER:New()
+RedTanker1_EventHandler:HandleEvent( EVENTS.Birth )
+
+function RedTanker1_EventHandler:OnEventBirth( EventData )
+  if EventData.IniDCSGroupName == 'Shell 1-1#001' then 
+  MESSAGE:New("Basket Tanker has been spawned, Red Team has 1 remaining Basket Tanker",10):ToRed()
+  elseif EventData.IniDCSGroupName == 'Shell 1-1#002' then
+  MESSAGE:New("Basket Tanker has been spawned, Red Team has no remaining Basket Tankers",10):ToRed()
+  else
+  --nothing
+  end
+end
+
 Spawn_Red_TankerBasket = SPAWN:NewWithAlias("Tanker Basket Red","Shell 1-1")
     :InitLimit(1,2)
     :InitKeepUnitNames(true)
@@ -53,6 +127,19 @@ Spawn_Red_TankerBasket = SPAWN:NewWithAlias("Tanker Basket Red","Shell 1-1")
         MESSAGE:New("Shell 1-1 (Basket) is on station contact on channel 142.000 MHz",25,"Shell 1-1"):ToRed()
       end)
     --:SpawnScheduled(30,0.5)
+
+RedTanker2_EventHandler = EVENTHANDLER:New()
+RedTanker2_EventHandler:HandleEvent( EVENTS.Birth )
+
+function RedTanker2_EventHandler:OnEventBirth( EventData )
+  if EventData.IniDCSGroupName == 'Shell 2-1#001' then 
+  MESSAGE:New("Boom Tanker has been spawned, Red Team has 1 remaining Boom Tanker",10):ToRed()
+  elseif EventData.IniDCSGroupName == 'Shell 2-1#002' then
+  MESSAGE:New("Boom Tanker has been spawned, Red Team has no remaining Boom Tankers",10):ToRed()
+  else
+  --nothing
+  end
+end
 
 Spawn_Red_TankerBoom = SPAWN:NewWithAlias("Tanker Boom Red","Shell 2-1")
     :InitLimit(1,2)
