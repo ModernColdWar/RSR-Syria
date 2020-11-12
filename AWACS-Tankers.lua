@@ -3,6 +3,7 @@
 -- Same principle used to spawn UAVs, but going to spawn Tankers and AWACs
 -- Spawns
 
+--- Event Handler
 BlueAWACs_EventHandler = EVENTHANDLER:New()
 BlueAWACs_EventHandler:HandleEvent( EVENTS.Birth )
 
@@ -32,6 +33,7 @@ Spawn_Blue_AWACs = SPAWN:NewWithAlias("AWACS Blue","Magic 1-1")
       end)
     --:SpawnScheduled(30,0.5)
 
+--- Event Handler
 BlueTanker1_EventHandler = EVENTHANDLER:New()
 BlueTanker1_EventHandler:HandleEvent( EVENTS.Birth )
 
@@ -51,10 +53,14 @@ Spawn_Blue_TankerBasket = SPAWN:NewWithAlias("Tanker Basket Blue","Texaco 1-1")
     :OnSpawnGroup(
       function(Texaco_11)
         Texaco_11:CommandSetCallsign(1, 2)
+        Texaco_11:TaskOrbitCircle(5000, 600)
+        Texaco_11:ComandSetFrequency(142.000)
+        Texaco_11:EnRouteTaskTanker()
         MESSAGE:New("Texaco 1-1 (Basket) is on station contact on channel 142.000 MHz",25,"Texaco 1-1"):ToBlue()
       end)
     --:SpawnScheduled(30,0.5)
 
+--- Event Handler
 BlueTanker2_EventHandler = EVENTHANDLER:New()
 BlueTanker2_EventHandler:HandleEvent( EVENTS.Birth )
 
@@ -74,11 +80,14 @@ Spawn_Blue_TankerBoom = SPAWN:NewWithAlias("Tanker Boom Blue","Texaco 2-1")
     :OnSpawnGroup(
       function(Texaco_21)
         Texaco_21:CommandSetCallsign(1, 2)
-        Texaco_21:CommandSetFrequency(141.000)
+        Texaco_21:TaskOrbitCircle(5000, 600)
+        Texaco_21:ComandSetFrequency(141.000)
+        Texaco_21:EnRouteTaskTanker()
         MESSAGE:New("Texaco 2-1 (Boom) is on station contact on channel 141.000 MHz",25,"Texaco 2-1"):ToBlue()
       end)
     --:SpawnScheduled(30,0.5)
 
+--- Event Handler
 RedAWACs_EventHandler = EVENTHANDLER:New()
 RedAWACs_EventHandler:HandleEvent( EVENTS.Birth )
 
@@ -105,14 +114,15 @@ Spawn_Red_AWACs = SPAWN:NewWithAlias("AWACS Red","Overlord 1-1")
         MESSAGE:New("Overlord 1-1 is on station contact on channel 121.000 MHz",25,"Overlord 1-1"):ToRed()
       end)
 
+--- Event Handler
 RedTanker1_EventHandler = EVENTHANDLER:New()
 RedTanker1_EventHandler:HandleEvent( EVENTS.Birth )
 
 function RedTanker1_EventHandler:OnEventBirth( EventData )
   if EventData.IniDCSGroupName == 'Shell 1-1#001' then 
-  MESSAGE:New("Basket Tanker has been spawned, Red Team has 1 remaining Basket Tanker",10):ToRed()
+  MESSAGE:New("Shell 1-1 (Basket) is on station contact on channel 142.000 MHz /n Red Team has 1 remaining Basket Tanker",10):ToRed()
   elseif EventData.IniDCSGroupName == 'Shell 1-1#002' then
-  MESSAGE:New("Basket Tanker has been spawned, Red Team has no remaining Basket Tankers",10):ToRed()
+  MESSAGE:New("Shell 1-1 (Basket) is on station contact on channel 142.000 MHz /n Red Team has no remaining Basket Tankers",10):ToRed()
   else
   --nothing
   end
@@ -124,18 +134,21 @@ Spawn_Red_TankerBasket = SPAWN:NewWithAlias("Tanker Basket Red","Shell 1-1")
     :OnSpawnGroup(
       function(Shell_11)
         Shell_11:CommandSetCallsign(3, 1)
-        MESSAGE:New("Shell 1-1 (Basket) is on station contact on channel 142.000 MHz",25,"Shell 1-1"):ToRed()
+        Shell_11:TaskOrbitCircle(5000, 600)
+        Shell_11:ComandSetFrequency(142.000)
+        Shell_11:EnRouteTaskTanker()
       end)
     --:SpawnScheduled(30,0.5)
 
+--- Event Handler
 RedTanker2_EventHandler = EVENTHANDLER:New()
 RedTanker2_EventHandler:HandleEvent( EVENTS.Birth )
 
 function RedTanker2_EventHandler:OnEventBirth( EventData )
   if EventData.IniDCSGroupName == 'Shell 2-1#001' then 
-  MESSAGE:New("Boom Tanker has been spawned, Red Team has 1 remaining Boom Tanker",10):ToRed()
+  MESSAGE:New("Shell 2-1 (Boom) is on station contact on channel 141.000 MHz /n Red Team has 1 remaining Boom Tanker",10):ToRed()
   elseif EventData.IniDCSGroupName == 'Shell 2-1#002' then
-  MESSAGE:New("Boom Tanker has been spawned, Red Team has no remaining Boom Tankers",10):ToRed()
+  MESSAGE:New("Shell 2-1 (Boom) is on station contact on channel 141.000 MHz /n Red Team has no remaining Boom Tankers",10):ToRed()
   else
   --nothing
   end
@@ -147,7 +160,9 @@ Spawn_Red_TankerBoom = SPAWN:NewWithAlias("Tanker Boom Red","Shell 2-1")
     :OnSpawnGroup(
       function(Shell_21)
         Shell_21:CommandSetCallsign(3, 2)
-        MESSAGE:New("Shell 2-1 (Boom) is on station contact on channel 141.000 MHz",25,"Shell 2-1"):ToRed()
+        Shell_21:TaskOrbitCircle(4000, 600)
+        Shell_21:ComandSetFrequency(141.000)
+        Shell_21:EnRouteTaskTanker()
       end)
     --:SpawnScheduled(30,0.5)
               
