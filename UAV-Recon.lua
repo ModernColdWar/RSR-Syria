@@ -3,35 +3,38 @@
 -- Date Created: 03 Nov 2020
 -- Trying to spawn a UAV, then spawn it based on Client Helo position, then wrap it into a F10 menu option to be called by clients in 
 -- Helos
+--- Event Handler
 BlueUAV_EventHandler = EVENTHANDLER:New()
 BlueUAV_EventHandler:HandleEvent( EVENTS.Birth )
 
 function BlueUAV_EventHandler:OnEventBirth( EventData )
-  if EventData.IniDCSGroupName == 'Pontiac 1-1#001' then -- can get the number if you watch events like INFO    TERRAIN: lObjectFire::lObjectFire for building id=87883834
-  MESSAGE:New("A UAV has been spawned, Blue Team has 3 remaining UAVs",10):ToBlue()
+  if EventData.IniDCSGroupName == 'Pontiac 1-1#001' then 
+  MESSAGE:New("Pontiac 1-1 is on station contact on channel 133.000 MHz /n Blue Team has 3 remaining UAVs",10):ToBlue()
   elseif EventData.IniDCSGroupName == 'Pontiac 1-1#002' then
-  MESSAGE:New("A UAV has been spawned, Blue Team has 2 remaining UAVs",10):ToBlue()
+  MESSAGE:New("Pontiac 1-1 is on station contact on channel 133.000 MHz /n Blue Team has 2 remaining UAVs",10):ToBlue()
   elseif EventData.IniDCSGroupName == 'Pontiac 1-1#003' then
-  MESSAGE:New("A UAV has been spawned, Blue Team has 1 remaining UAVs",10):ToBlue()
+  MESSAGE:New("Pontiac 1-1 is on station contact on channel 133.000 MHz /n Blue Team has 1 remaining UAVs",10):ToBlue()
   elseif EventData.IniDCSGroupName == 'Pontiac 1-1#004' then
-  MESSAGE:New("A UAV has been spawned, Blue Team has no remaining UAVs",10):ToBlue()
+  MESSAGE:New("Pontiac 1-1 is on station contact on channel 133.000 MHz /n Blue Team has no remaining UAVs",10):ToBlue()
   else
   --nothing
   end
 end
 
+--- Event Handler
 RedUAV_EventHandler = EVENTHANDLER:New()
 RedUAV_EventHandler:HandleEvent( EVENTS.Birth )
 
+--Function to weed through birth events for the UAV Spawn
 function RedUAV_EventHandler:OnEventBirth( EventData )
-  if EventData.IniDCSGroupName == 'Pontiac 6-1#001' then -- can get the number if you watch events like INFO    TERRAIN: lObjectFire::lObjectFire for building id=87883834
-  MESSAGE:New("A UAV has been spawned, Red Team has 3 remaining UAVs",10):ToRed()
+  if EventData.IniDCSGroupName == 'Pontiac 6-1#001' then 
+  MESSAGE:New("Pontiac 6-1 is on station contact on channel 133.000 MHz/n Red Team has 3 remaining UAVs",10):ToRed()
   elseif EventData.IniDCSGroupName == 'Pontiac 6-1#002' then
-  MESSAGE:New("A UAV has been spawned, Red Team has 2 remaining UAVs",10):ToRed()
+  MESSAGE:New("Pontiac 6-1 is on station contact on channel 133.000 MHz /n Red Team has 2 remaining UAVs",10):ToRed()
   elseif EventData.IniDCSGroupName == 'Pontiac 6-1#003' then
-  MESSAGE:New("A UAV has been spawned, Red Team has 1 remaining UAVs",10):ToRed()
+  MESSAGE:New("Pontiac 6-1 is on station contact on channel 133.000 MHz /n Red Team has 1 remaining UAVs",10):ToRed()
   elseif EventData.IniDCSGroupName == 'Pontiac 6-1#004' then
-  MESSAGE:New("A UAV has been spawned, Red Team has no remaining UAVs",10):ToRed()
+  MESSAGE:New("Pontiac 6-1 is on station contact on channel 133.000 MHz /n Red Team has no remaining UAVs",10):ToRed()
   else
   --nothing
   end
@@ -41,29 +44,18 @@ Spawn_Blue_UAV = SPAWN:NewWithAlias("Blue UAV-Recon-FAC","Pontiac 1-1")
     :InitLimit(2,6)
     :OnSpawnGroup(function(Pontiac_11)
       Pontiac_11:CommandSetCallsign(8, 1)
-      MESSAGE:New("Pontiac 1-1 is on station contact on channel 133.000 MHz",25,"Pontiac 1-1"):ToBlue()
+      Pontiac_11:TaskOrbitCircle(3000, 160)
+      Pontiac_11:ComandSetFrequency(133.000)
       end)
     --:SpawnScheduled(30,0.5)
     
---- Event Handler
---Function to weed through birth events for the UAV Spawn
-
---[[UAVLimit = 4
-function Spawn_Blue_UAV:InitUnControlled(UnControlled)_OnBirth( EventData )
-  if EventData.IniDCSGroupName == 'Pontiac 6-1#001' then 
-    env.info("UAV Spawned")
-    MESSAGE:New("Test UAV Spawn Message"):ToAll()    
-    else
-    --ignore
-    end
-end
-Spawn_Blue_UAV:HandleEvent( EVENTS.Birth )--]]
-
 Spawn_Red_UAV = SPAWN:NewWithAlias("Red UAV-Recon-FAC","Pontiac 6-1")
     :InitLimit(2,6)
     :InitKeepUnitNames(true)
     :OnSpawnGroup(function(Pontiac_61)
       Pontiac_61:CommandSetCallsign(8, 6)
+      Pontiac_61:TaskOrbitCircle(3000, 160)
+      Pontiac_61:ComandSetFrequency(133.000)
       MESSAGE:New("Pontiac 6-1 is on station contact on channel 133.000 MHz",25,"Pontiac 6-1"):ToRed()end)
           
 ----Function to actually spawn the UAV from the players nose      
