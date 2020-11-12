@@ -9,13 +9,13 @@ BlueAWACs_EventHandler:HandleEvent( EVENTS.Birth )
 
 function BlueAWACs_EventHandler:OnEventBirth( EventData )
   if EventData.IniDCSGroupName == 'Magic 1-1#001' then 
-  MESSAGE:New("AWACs has been spawned, Blue Team has 3 remaining AWACs",10):ToBlue()
+  MESSAGE:New("Magic 1-1 is on station contact on channel 251.000 MHz \nBlue Team has 3 remaining AWACs",10):ToBlue()
   elseif EventData.IniDCSGroupName == 'Magic 1-1#002' then
-  MESSAGE:New("AWACs has been spawned, Blue Team has 2 remaining AWACs",10):ToBlue()
+  MESSAGE:New("Magic 1-1 is on station contact on channel 251.000 MHz \nBlue Team has 2 remaining AWACs",10):ToBlue()
   elseif EventData.IniDCSGroupName == 'Magic 1-1#003' then
-  MESSAGE:New("AWACs has been spawned, Blue Team has 1 remaining AWACs",10):ToBlue()
+  MESSAGE:New("Magic 1-1 is on station contact on channel 251.000 MHz \nBlue Team has 1 remaining AWACs",10):ToBlue()
   elseif EventData.IniDCSGroupName == 'Magic 1-1#004' then
-  MESSAGE:New("AWACs has been spawned, Blue Team has no remaining AWACs",10):ToBlue()
+  MESSAGE:New("Magic 1-1 is on station contact on channel 251.000 MHz \nBlue Team has no remaining AWACs",10):ToBlue()
   else
   --nothing
   end
@@ -29,7 +29,9 @@ Spawn_Blue_AWACs = SPAWN:NewWithAlias("AWACS Blue","Magic 1-1")
     :OnSpawnGroup(
       function(Magic_11)
         Magic_11:CommandSetCallsign(2, 1)
-        MESSAGE:New("Magic 1-1 is on station contact on channel 251.000 MHz",25,"Magic 1-1"):ToBlue()                
+        Magic_11:TaskOrbitCircle(7000, 700)
+        Magic_11:ComandSetFrequency(251.000)
+        Magic_11:EnRouteTaskAWACS()
       end)
     --:SpawnScheduled(30,0.5)
 
@@ -39,9 +41,9 @@ BlueTanker1_EventHandler:HandleEvent( EVENTS.Birth )
 
 function BlueTanker1_EventHandler:OnEventBirth( EventData )
   if EventData.IniDCSGroupName == 'Texaco 1-1#001' then 
-  MESSAGE:New("Basket Tanker has been spawned, Blue Team has 1 remaining Basket Tanker",10):ToBlue()
+  MESSAGE:New("Texaco 1-1 (Basket) is on station contact on channel 142.000 MHz \nBlue Team has 1 remaining Basket Tanker",10):ToBlue()
   elseif EventData.IniDCSGroupName == 'Texaco 1-1#002' then
-  MESSAGE:New("Basket Tanker has been spawned, Blue Team has no remaining Basket Tankers",10):ToBlue()
+  MESSAGE:New("Texaco 1-1 (Basket) is on station contact on channel 142.000 MHz \nBlue Team has no remaining Basket Tankers",10):ToBlue()
   else
   --nothing
   end
@@ -56,7 +58,6 @@ Spawn_Blue_TankerBasket = SPAWN:NewWithAlias("Tanker Basket Blue","Texaco 1-1")
         Texaco_11:TaskOrbitCircle(5000, 600)
         Texaco_11:ComandSetFrequency(142.000)
         Texaco_11:EnRouteTaskTanker()
-        MESSAGE:New("Texaco 1-1 (Basket) is on station contact on channel 142.000 MHz",25,"Texaco 1-1"):ToBlue()
       end)
     --:SpawnScheduled(30,0.5)
 
@@ -66,9 +67,9 @@ BlueTanker2_EventHandler:HandleEvent( EVENTS.Birth )
 
 function BlueTanker2_EventHandler:OnEventBirth( EventData )
   if EventData.IniDCSGroupName == 'Texaco 2-1#001' then 
-  MESSAGE:New("Boom Tanker has been spawned, Blue Team has 1 remaining Boom Tanker",10):ToBlue()
+  MESSAGE:New("Texaco 2-1 (Boom) is on station contact on channel 141.000 MHz \nBlue Team has 1 remaining Boom Tanker",10):ToBlue()
   elseif EventData.IniDCSGroupName == 'Texaco 2-1#002' then
-  MESSAGE:New("Boom Tanker has been spawned, Blue Team has no remaining Boom Tankers",10):ToBlue()
+  MESSAGE:New("Texaco 2-1 (Boom) is on station contact on channel 141.000 MHz \nBlue Team has no remaining Boom Tankers",10):ToBlue()
   else
   --nothing
   end
@@ -83,7 +84,6 @@ Spawn_Blue_TankerBoom = SPAWN:NewWithAlias("Tanker Boom Blue","Texaco 2-1")
         Texaco_21:TaskOrbitCircle(5000, 600)
         Texaco_21:ComandSetFrequency(141.000)
         Texaco_21:EnRouteTaskTanker()
-        MESSAGE:New("Texaco 2-1 (Boom) is on station contact on channel 141.000 MHz",25,"Texaco 2-1"):ToBlue()
       end)
     --:SpawnScheduled(30,0.5)
 
@@ -93,13 +93,13 @@ RedAWACs_EventHandler:HandleEvent( EVENTS.Birth )
 
 function RedAWACs_EventHandler:OnEventBirth( EventData )
   if EventData.IniDCSGroupName == 'Overlord 1-1#001' then 
-  MESSAGE:New("AWACs has been spawned, Red Team has 3 remaining AWACs",10):ToRed()
+  MESSAGE:New("Overlord 1-1 is on station contact on channel 121.000 MHz \nRed Team has 3 remaining AWACs",10):ToRed()
   elseif EventData.IniDCSGroupName == 'Overlord 1-1#002' then
-  MESSAGE:New("AWACs has been spawned, Red Team has 2 remaining AWACs",10):ToRed()
+  MESSAGE:New("Overlord 1-1 is on station contact on channel 121.000 MHz \nRed Team has 2 remaining AWACs",10):ToRed()
   elseif EventData.IniDCSGroupName == 'Overlord 1-1#003' then
-  MESSAGE:New("AWACs has been spawned, Red Team has 1 remaining AWACs",10):ToRed()
+  MESSAGE:New("Overlord 1-1 is on station contact on channel 121.000 MHz \nRed Team has 1 remaining AWACs",10):ToRed()
   elseif EventData.IniDCSGroupName == 'Overlord 1-1#004' then
-  MESSAGE:New("AWACs has been spawned, Red Team has no remaining AWACs",10):ToRed()
+  MESSAGE:New("Overlord 1-1 is on station contact on channel 121.000 MHz \nRed Team has no remaining AWACs",10):ToRed()
   else
   --nothing
   end
@@ -111,7 +111,9 @@ Spawn_Red_AWACs = SPAWN:NewWithAlias("AWACS Red","Overlord 1-1")
     :OnSpawnGroup(
       function(Overlord_11)
         Overlord_11:CommandSetCallsign(1, 1)
-        MESSAGE:New("Overlord 1-1 is on station contact on channel 121.000 MHz",25,"Overlord 1-1"):ToRed()
+        Overlord_11:TaskOrbitCircle(7000, 700)
+        Overlord_11:ComandSetFrequency(121.000)
+        Overlord_11:EnRouteTaskAWACS()
       end)
 
 --- Event Handler
@@ -120,9 +122,9 @@ RedTanker1_EventHandler:HandleEvent( EVENTS.Birth )
 
 function RedTanker1_EventHandler:OnEventBirth( EventData )
   if EventData.IniDCSGroupName == 'Shell 1-1#001' then 
-  MESSAGE:New("Shell 1-1 (Basket) is on station contact on channel 142.000 MHz /n Red Team has 1 remaining Basket Tanker",10):ToRed()
+  MESSAGE:New("Shell 1-1 (Basket) is on station contact on channel 142.000 MHz \nRed Team has 1 remaining Basket Tanker",10):ToRed()
   elseif EventData.IniDCSGroupName == 'Shell 1-1#002' then
-  MESSAGE:New("Shell 1-1 (Basket) is on station contact on channel 142.000 MHz /n Red Team has no remaining Basket Tankers",10):ToRed()
+  MESSAGE:New("Shell 1-1 (Basket) is on station contact on channel 142.000 MHz \nRed Team has no remaining Basket Tankers",10):ToRed()
   else
   --nothing
   end
@@ -146,9 +148,9 @@ RedTanker2_EventHandler:HandleEvent( EVENTS.Birth )
 
 function RedTanker2_EventHandler:OnEventBirth( EventData )
   if EventData.IniDCSGroupName == 'Shell 2-1#001' then 
-  MESSAGE:New("Shell 2-1 (Boom) is on station contact on channel 141.000 MHz /n Red Team has 1 remaining Boom Tanker",10):ToRed()
+  MESSAGE:New("Shell 2-1 (Boom) is on station contact on channel 141.000 MHz \nRed Team has 1 remaining Boom Tanker",10):ToRed()
   elseif EventData.IniDCSGroupName == 'Shell 2-1#002' then
-  MESSAGE:New("Shell 2-1 (Boom) is on station contact on channel 141.000 MHz /n Red Team has no remaining Boom Tankers",10):ToRed()
+  MESSAGE:New("Shell 2-1 (Boom) is on station contact on channel 141.000 MHz \nRed Team has no remaining Boom Tankers",10):ToRed()
   else
   --nothing
   end

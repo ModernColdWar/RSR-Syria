@@ -9,13 +9,13 @@ BlueUAV_EventHandler:HandleEvent( EVENTS.Birth )
 
 function BlueUAV_EventHandler:OnEventBirth( EventData )
   if EventData.IniDCSGroupName == 'Pontiac 1-1#001' then 
-  MESSAGE:New("Pontiac 1-1 is on station contact on channel 133.000 MHz /n Blue Team has 3 remaining UAVs",10):ToBlue()
+  MESSAGE:New("Pontiac 1-1 is on station contact on channel 133.000 MHz \nBlue Team has 3 remaining UAVs",10):ToBlue()
   elseif EventData.IniDCSGroupName == 'Pontiac 1-1#002' then
-  MESSAGE:New("Pontiac 1-1 is on station contact on channel 133.000 MHz /n Blue Team has 2 remaining UAVs",10):ToBlue()
+  MESSAGE:New("Pontiac 1-1 is on station contact on channel 133.000 MHz \nBlue Team has 2 remaining UAVs",10):ToBlue()
   elseif EventData.IniDCSGroupName == 'Pontiac 1-1#003' then
-  MESSAGE:New("Pontiac 1-1 is on station contact on channel 133.000 MHz /n Blue Team has 1 remaining UAVs",10):ToBlue()
+  MESSAGE:New("Pontiac 1-1 is on station contact on channel 133.000 MHz \nBlue Team has 1 remaining UAVs",10):ToBlue()
   elseif EventData.IniDCSGroupName == 'Pontiac 1-1#004' then
-  MESSAGE:New("Pontiac 1-1 is on station contact on channel 133.000 MHz /n Blue Team has no remaining UAVs",10):ToBlue()
+  MESSAGE:New("Pontiac 1-1 is on station contact on channel 133.000 MHz \nBlue Team has no remaining UAVs",10):ToBlue()
   else
   --nothing
   end
@@ -28,13 +28,13 @@ RedUAV_EventHandler:HandleEvent( EVENTS.Birth )
 --Function to weed through birth events for the UAV Spawn
 function RedUAV_EventHandler:OnEventBirth( EventData )
   if EventData.IniDCSGroupName == 'Pontiac 6-1#001' then 
-  MESSAGE:New("Pontiac 6-1 is on station contact on channel 133.000 MHz/n Red Team has 3 remaining UAVs",10):ToRed()
+  MESSAGE:New("Pontiac 6-1 is on station contact on channel 133.000 MHz \nRed Team has 3 remaining UAVs",10):ToRed()
   elseif EventData.IniDCSGroupName == 'Pontiac 6-1#002' then
-  MESSAGE:New("Pontiac 6-1 is on station contact on channel 133.000 MHz /n Red Team has 2 remaining UAVs",10):ToRed()
+  MESSAGE:New("Pontiac 6-1 is on station contact on channel 133.000 MHz \nRed Team has 2 remaining UAVs",10):ToRed()
   elseif EventData.IniDCSGroupName == 'Pontiac 6-1#003' then
-  MESSAGE:New("Pontiac 6-1 is on station contact on channel 133.000 MHz /n Red Team has 1 remaining UAVs",10):ToRed()
+  MESSAGE:New("Pontiac 6-1 is on station contact on channel 133.000 MHz \nRed Team has 1 remaining UAVs",10):ToRed()
   elseif EventData.IniDCSGroupName == 'Pontiac 6-1#004' then
-  MESSAGE:New("Pontiac 6-1 is on station contact on channel 133.000 MHz /n Red Team has no remaining UAVs",10):ToRed()
+  MESSAGE:New("Pontiac 6-1 is on station contact on channel 133.000 MHz \nRed Team has no remaining UAVs",10):ToRed()
   else
   --nothing
   end
