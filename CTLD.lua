@@ -983,7 +983,7 @@ ctld.spawnableCrates = {
         { weight = 874, desc = "Hawk Launcher", unit = "Hawk ln", side = 2, internal = 0 },
         { weight = 875, desc = "Hawk Search Radar", unit = "Hawk sr", side = 2, internal = 0 },
         { weight = 876, desc = "Hawk Track Radar", unit = "Hawk tr", side = 2, internal = 0 },
-        { weight = 877, desc = "Hawk PCP", unit = "Hawk pcp", side = 2, internal = 0 }, -- Remove this if on 1.2		
+--        { weight = 877, desc = "Hawk PCP", unit = "Hawk pcp", side = 2, internal = 0 }, -- Remove this if on 1.2		
     },
 	["Long Range SAMs"] = {
         { weight = 868, desc = "SA-2 Launcher", unit = "S_75M_Volhov", side = 1, internal = 0 },
@@ -1822,7 +1822,7 @@ ctld.AASystemTemplate = {
             {name = "Hawk ln", desc = "HAWK Launcher", launcher = true},
             {name = "Hawk tr", desc = "HAWK Track Radar"},
             {name = "Hawk sr", desc = "HAWK Search Radar"},
-            {name = "Hawk pcp", desc = "HAWK PCP"},
+--            {name = "Hawk pcp", desc = "HAWK PCP"},
         },
         repair = "HAWK Repair",
 		systemType = "MR",		  
