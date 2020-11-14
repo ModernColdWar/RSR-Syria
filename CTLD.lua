@@ -118,8 +118,8 @@ ctld.JTAC_dropEnabled = true -- allow JTAC Crate spawn from F10 menu
 
 ctld.JTAC_maxDistance = 10000 -- How far a JTAC can "see" in meters (with Line of Sight)
 
-ctld.JTAC_smokeOn_RED = false -- enables marking of target with smoke for RED forces
-ctld.JTAC_smokeOn_BLUE = false -- enables marking of target with smoke for BLUE forces
+ctld.JTAC_smokeOn_RED = true -- enables marking of target with smoke for RED forces
+ctld.JTAC_smokeOn_BLUE = true -- enables marking of target with smoke for BLUE forces
 
 ctld.JTAC_smokeColour_RED = 4 -- RED side smoke colour -- Green = 0 , Red = 1, White = 2, Orange = 3, Blue = 4
 ctld.JTAC_smokeColour_BLUE = 1 -- BLUE side smoke colour -- Green = 0 , Red = 1, White = 2, Orange = 3, Blue = 4
@@ -965,12 +965,13 @@ ctld.spawnableCrates = {
 --		    { weight = 626, desc = "PATRIOT Repair", unit = "PATRIOT Repair", side = 2, internal = 1 },
         { weight = 627, desc = "Early Warning Radar", unit = "1L13 EWR", internal = 0 },
         { weight = 922, desc = "FOB Crate - Large (internal)", unit = "FOB", internal = 1 }, -- Builds a FOB! 
-        
+        { weight = 820, desc = "T-55 (Recon)", unit = "T-55", side = 1, cratesRequired = 1, unitQuantity = 1, internal = 1 },   
+        { weight = 830, desc = "Leopard 1A3 (Recon)", unit = "Leopard1A3", side = 2, cratesRequired = 1, unitQuantity = 1, internal = 1 },        
     },
 --[[    
     ["Internal Cargo"] = {
---        { weight = 820, desc = "T-55 (Recon)", unit = "T-55", side = 1, cratesRequired = 1, unitQuantity = 1, internal = 1 },		
---		    { weight = 830, desc = "Leopard 1A3 (Recon)", unit = "Leopard1A3", side = 2, cratesRequired = 1, unitQuantity = 1, internal = 1 },
+        { weight = 820, desc = "T-55 (Recon)", unit = "T-55", side = 1, cratesRequired = 1, unitQuantity = 1, internal = 1 },		
+		    { weight = 830, desc = "Leopard 1A3 (Recon)", unit = "Leopard1A3", side = 2, cratesRequired = 1, unitQuantity = 1, internal = 1 },
 		    { weight = 501, desc = "JTAC - HMMWV", unit = "Hummer", side = 2, cratesRequired = 1, internal = 1 }, 
         { weight = 502, desc = "JTAC - Tigr", unit = "Tigr_233036", side = 1, cratesRequired = 1, internal = 1 }, 
         { weight = 922, desc = "FOB Crate - Large", unit = "FOB", internal = 1 }, -- Builds a FOB!         
@@ -980,8 +981,8 @@ ctld.spawnableCrates = {
 
 -- if the unit is on this list, it will be made into a JTAC when deployed
 ctld.jtacUnitTypes = {
-    "Tigr_233036", "Hummer" -- there are some wierd encoding issues so if you write SKP-11 it wont match as the - sign is encoded 
---    "Tigr_233036", "Hummer", "T-55", "Leopard1A3" -- there are some wierd encoding issues so if you write SKP-11 it wont match as the - sign is encoded differently...
+--    "Tigr_233036", "Hummer" -- there are some wierd encoding issues so if you write SKP-11 it wont match as the - sign is encoded 
+    "Tigr_233036", "Hummer", "T-55", "Leopard1A3" -- there are some wierd encoding issues so if you write SKP-11 it wont match as the - sign is encoded differently...
 }
 
 
@@ -2110,7 +2111,7 @@ local _crateType = ctld.crateLookupTable[tostring(_args[2])]
         return
             end
 
---[[
+
             if ctld.isJTACUnitType(_crateType.unit) then
 
                 local _limitHit = false
@@ -2135,7 +2136,7 @@ local _crateType = ctld.crateLookupTable[tostring(_args[2])]
                     return
                 end
             end
---]]
+
             local _position = _heli:getPosition()
 
             -- check crate spam
@@ -3561,7 +3562,7 @@ function ctld.unpackCrates(_arguments)
 
                     trigger.action.outTextForCoalition(_heli:getCoalition(), ctld.getPlayerNameOrType(_heli) .. " successfully deployed " .. _crate.details.desc .. " to the field", 10)
 
---[[
+
                     if ctld.isJTACUnitType(_crate.details.unit) and ctld.JTAC_dropEnabled then
 
                         local _code = table.remove(ctld.jtacGeneratedLaserCodes, 1)
@@ -3570,7 +3571,7 @@ function ctld.unpackCrates(_arguments)
 
                         ctld.JTACAutoLase(_spawnedGroups:getName(), _code) --(_jtacGroupName, _laserCode, _smoke, _lock, _colour)
                     end
-					--]]
+					
                 end
 
             else
@@ -4578,7 +4579,7 @@ function ctld.unpackMultiCrate(_heli, _nearestCrate, _nearbyCrates)
 
         trigger.action.outTextForCoalition(_heli:getCoalition(), _txt, 10)
 
---[[		
+		
 		if ctld.isJTACUnitType(_nearestCrate.details.unit) and ctld.JTAC_dropEnabled then
             local _code = table.remove(ctld.jtacGeneratedLaserCodes, 1)
             --put to the end
@@ -4586,7 +4587,7 @@ function ctld.unpackMultiCrate(_heli, _nearestCrate, _nearbyCrates)
 			ctld.setJTACInvisible(_spawnedGroup, ctld.JTAC_invisible)
             ctld.JTACAutoLase(_spawnedGroup:getName(), _code) --(_jtacGroupName, _laserCode, _smoke, _lock, _colour)
         end
---]]
+
     else
 
         local _txt = string.format("Cannot build %s!\n\nIt requires %d crates and there are %d \n\nOr the crates are not within 300m of each other", _nearestCrate.details.desc, _nearestCrate.details.cratesRequired, #_nearbyMultiCrates)
@@ -5571,13 +5572,13 @@ function ctld.addF10MenuOptions()
             -- get all RED players
             ctld.addRadioListCommand(1)
         end
---        if ctld.JTAC_jtacStatusF10 then
---            -- get all BLUE players
---            ctld.addJTACRadioCommand(2)
---
---            -- get all RED players
---            ctld.addJTACRadioCommand(1)
---        end
+        if ctld.JTAC_jtacStatusF10 then
+            -- get all BLUE players
+            ctld.addJTACRadioCommand(2)
+
+            -- get all RED players
+            ctld.addJTACRadioCommand(1)
+        end
     end)
     if (not status) then
         env.error(string.format("Error adding f10 to other players: %s", error), false)
@@ -5606,15 +5607,15 @@ function ctld.addRadioListCommand(_side)
     end
 end
 
---function ctld.addJTACRadioCommand(_side)
+function ctld.addJTACRadioCommand(_side)
 --
---    local _players = coalition.getPlayers(_side)
+    local _players = coalition.getPlayers(_side)
 --
---    if _players ~= nil then
+    if _players ~= nil then
 --
---        for _, _playerUnit in pairs(_players) do
+        for _, _playerUnit in pairs(_players) do
 --
---            local _groupId = ctld.getGroupId(_playerUnit)
+            local _groupId = ctld.getGroupId(_playerUnit)
 --
 --            if _groupId then
 --                --   env.info("adding command for "..index)
@@ -5625,21 +5626,21 @@ end
 --                    -- env.info("Added command for " .. index)
 --                end
 --            end
-----[[
---            if _groupId and not ctld.JTAL then
---				-- Ironwulf2000 modified for AutoLase script 
---                --   env.info("adding command for "..index)
---                if ctld.jtacRadioAdded[tostring(_groupId)] == nil then
---                    -- env.info("about command for "..index)
---                    missionCommands.addCommandForGroup(_groupId, "JTAC Status", nil, ctld.getJTACStatus, { _playerUnit:getName() })
---                    ctld.jtacRadioAdded[tostring(_groupId)] = true
---                    -- env.info("Added command for " .. index)
---                end
---            end
-----]]
---        end
---    end
---end
+
+            if _groupId and not ctld.JTAL then
+				-- Ironwulf2000 modified for AutoLase script 
+                --   env.info("adding command for "..index)
+                if ctld.jtacRadioAdded[tostring(_groupId)] == nil then
+                    -- env.info("about command for "..index)
+                    missionCommands.addCommandForGroup(_groupId, "JTAC Status", nil, ctld.getJTACStatus, { _playerUnit:getName() })
+                    ctld.jtacRadioAdded[tostring(_groupId)] = true
+                    -- env.info("Added command for " .. index)
+                end
+            end
+
+        end
+    end
+end
 
 function ctld.getGroupId(_unit)
 
@@ -5682,13 +5683,13 @@ ctld.jtacLaserPointCodes = {}
 
 function ctld.JTACAutoLase(_jtacGroupName, _laserCode, _smoke, _lock, _colour)
 
---[[
+
 if ctld.JTAL then 
 		-- use the JTAL module instead - handy for servers already using AutoLase script in other areas, to keep things unified.
 		JTACAutoLase(_jtacGroupName, _laserCode, _smoke, _lock, _colour) 
 		return
 end
---]]
+
     if ctld.jtacStop[_jtacGroupName] == true then
         ctld.jtacStop[_jtacGroupName] = nil -- allow it to be started again
         ctld.cleanupJTAC(_jtacGroupName)
