@@ -42,22 +42,20 @@ end
 ---Objects to be spawned with attributes set
 Spawn_Blue_UAV = SPAWN:NewWithAlias("Blue UAV-Recon-FAC","Pontiac 1-1")
     :InitLimit(2,6)
-    :OnSpawnGroup(function(Pontiac_11)
-      Pontiac_11:CommandSetCallsign(8, 1)
-      Pontiac_11:TaskOrbitCircle(2000, 160)
-      Pontiac_11:ComandSetFrequency(133.000)
+    :InitKeepUnitNames(true)
+    :OnSpawnGroup(function(SpawnedGroup)
+      ctld.JTACAutoLase(SpawnedGroup.GroupName, 1687)
       end)
     --:SpawnScheduled(30,0.5)
     
 Spawn_Red_UAV = SPAWN:NewWithAlias("Red UAV-Recon-FAC","Pontiac 6-1")
     :InitLimit(2,6)
     :InitKeepUnitNames(true)
-    :OnSpawnGroup(function(Pontiac_61)
-      Pontiac_61:CommandSetCallsign(8, 6)
-      Pontiac_61:TaskOrbitCircle(2000, 160)
-      Pontiac_61:ComandSetFrequency(133.000)
+    :OnSpawnGroup(function(SpawnedGroup)
+      ctld.JTACAutoLase(SpawnedGroup.GroupName, 1688)
       end)
-          
+
+                    
 ----Function to actually spawn the UAV from the players nose      
 function BlueUAV(group,rng)
   local range = rng * 1852
