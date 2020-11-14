@@ -132,12 +132,11 @@ ctld.location_DMS = false -- shows coordinates as Degrees Minutes Seconds instea
 
 ctld.JTAC_lock = "all" -- "vehicle" OR "troop" OR "all" forces JTAC to only lock vehicles or troops or all ground units
 
---[[
 ctld.JTAC_invisible = false -- JTAC units are invisible to enemy AI
-ctld.JTAC_startLaserCode = 1611 -- starting Laser Code for JTACs
+--ctld.JTAC_startLaserCode = 1611 -- starting Laser Code for JTACs
 ctld.JTAC_BDA = true -- set true to get Coalition BDA (target destroyed) messages from JTAC(s)
 ctld.JTAC_targetNotifications = true -- set true to get Coalition notifications of new JTAC targets
---]]
+
 -- ***************** Pickup, dropoff and waypoint zones *****************
 
 -- Available colors (anything else like "none" disables smoke): "green", "red", "white", "orange", "blue", "none",
@@ -5883,12 +5882,12 @@ end
             -- store current target for easy lookup
             ctld.jtacCurrentTargets[_jtacGroupName] = { name = _enemyUnit:getName(), unitType = _enemyUnit:getTypeName(), unitId = _enemyUnit:getID() }
 --            ctld.jtacCurrentTargets[_jtacGroupName] = { name = _enemyUnit:getName(), unitType = _enemyUnit:getTypeName(), unitId = _enemyUnit:getID(), smoke = _colour }
---[[
+
 --            ctld.notifyCoalition(_jtacGroupName .. " lasing new target " .. _enemyUnit:getTypeName() .. '. CODE: ' .. _laserCode .. ctld.getPositionString(_enemyUnit), 10, _jtacUnit:getCoalition())
 			if ctld.JTAC_targetNotifications then
 				ctld.notifyCoalition(_jtacGroupName .. " lasing new target " .. _enemyUnit:getTypeName() .. '. CODE: ' .. _laserCode .. ctld.getPositionString(_enemyUnit), 10, _jtacUnit:getCoalition())
 			end 
---]]
+
  -- create smoke
             if _smoke == true then
 
