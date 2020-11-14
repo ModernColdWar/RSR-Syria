@@ -62,46 +62,41 @@ limitations[9] = {
    DISPLAY_NAME = "RN-28"
 }
 limitations[10] = {
-   WP_NAME = "SD-10",
-   QTY = 24,
-   DISPLAY_NAME = "SD-10"
-}
-limitations[11] = {
    WP_NAME = "weapons.missiles.AGM_154",
    QTY = 20,
    DISPLAY_NAME = "AGM-154C"
 }
-limitations[12] = {
+limitations[11] = {
    WP_NAME = "weapons.missiles.GB-6",
    QTY = 20,
    DISPLAY_NAME = "GB-6"
 }
-limitations[13] = {
+limitations[12] = {
    WP_NAME = "weapons.missiles.GB-6-HE",
    QTY = 20,
    DISPLAY_NAME = "GB-6-HE"
 }
-limitations[14] = {
+limitations[13] = {
    WP_NAME = "weapons.missiles.GB-6-SFW",
    QTY = 20,
    DISPLAY_NAME = "GB-6-SFW"
 }
-limitations[15] = {
+limitations[14] = {
    WP_NAME = "weapons.bombs.GBU_31",
    QTY = 20,
    DISPLAY_NAME = "GBU-31"
 }
-limitations[16] = {
+limitations[15] = {
    WP_NAME = "weapons.bombs.GBU_31_V_3B",
    QTY = 20,
    DISPLAY_NAME = "GBU-31(V)3/B"
 }
-limitations[17] = {
+limitations[16] = {
    WP_NAME = "weapons.bombs.GBU_38",
    QTY = 20,
    DISPLAY_NAME = "GBU-38"
 }
-limitations[18] = {
+limitations[17] = {
    WP_NAME = "weapons.missiles.LD-10",
    QTY = 20,
    DISPLAY_NAME = "LD-10"
