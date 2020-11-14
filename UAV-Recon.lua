@@ -9,13 +9,13 @@ BlueUAV_EventHandler:HandleEvent( EVENTS.Birth )
 
 function BlueUAV_EventHandler:OnEventBirth( EventData )
   if EventData.IniDCSGroupName == 'Pontiac 1-1#001' then 
-  MESSAGE:New("Pontiac 1-1 is on station contact on channel 133.000 MHz \nBlue Team has 3 remaining UAVs",10):ToBlue()
+  MESSAGE:New("Pontiac 1-1 is on station contact on channel 133.000 MHz \nBlue Team has 3 remaining recon planes",10):ToBlue()
   elseif EventData.IniDCSGroupName == 'Pontiac 1-1#002' then
-  MESSAGE:New("Pontiac 1-1 is on station contact on channel 133.000 MHz \nBlue Team has 2 remaining UAVs",10):ToBlue()
+  MESSAGE:New("Pontiac 1-1 is on station contact on channel 133.000 MHz \nBlue Team has 2 remaining recon planes",10):ToBlue()
   elseif EventData.IniDCSGroupName == 'Pontiac 1-1#003' then
-  MESSAGE:New("Pontiac 1-1 is on station contact on channel 133.000 MHz \nBlue Team has 1 remaining UAVs",10):ToBlue()
+  MESSAGE:New("Pontiac 1-1 is on station contact on channel 133.000 MHz \nBlue Team has 1 remaining recon planes",10):ToBlue()
   elseif EventData.IniDCSGroupName == 'Pontiac 1-1#004' then
-  MESSAGE:New("Pontiac 1-1 is on station contact on channel 133.000 MHz \nBlue Team has no remaining UAVs",10):ToBlue()
+  MESSAGE:New("Pontiac 1-1 is on station contact on channel 133.000 MHz \nBlue Team has no remaining recon planes",10):ToBlue()
   else
   --nothing
   end
@@ -28,13 +28,13 @@ RedUAV_EventHandler:HandleEvent( EVENTS.Birth )
 --Function to weed through birth events for the UAV Spawn
 function RedUAV_EventHandler:OnEventBirth( EventData )
   if EventData.IniDCSGroupName == 'Pontiac 6-1#001' then 
-  MESSAGE:New("Pontiac 6-1 is on station contact on channel 133.000 MHz \nRed Team has 3 remaining UAVs",10):ToRed()
+  MESSAGE:New("Pontiac 6-1 is on station contact on channel 133.000 MHz \nRed Team has 3 remaining recon planes",10):ToRed()
   elseif EventData.IniDCSGroupName == 'Pontiac 6-1#002' then
-  MESSAGE:New("Pontiac 6-1 is on station contact on channel 133.000 MHz \nRed Team has 2 remaining UAVs",10):ToRed()
+  MESSAGE:New("Pontiac 6-1 is on station contact on channel 133.000 MHz \nRed Team has 2 remaining recon planes",10):ToRed()
   elseif EventData.IniDCSGroupName == 'Pontiac 6-1#003' then
-  MESSAGE:New("Pontiac 6-1 is on station contact on channel 133.000 MHz \nRed Team has 1 remaining UAVs",10):ToRed()
+  MESSAGE:New("Pontiac 6-1 is on station contact on channel 133.000 MHz \nRed Team has 1 remaining recon planes",10):ToRed()
   elseif EventData.IniDCSGroupName == 'Pontiac 6-1#004' then
-  MESSAGE:New("Pontiac 6-1 is on station contact on channel 133.000 MHz \nRed Team has no remaining UAVs",10):ToRed()
+  MESSAGE:New("Pontiac 6-1 is on station contact on channel 133.000 MHz \nRed Team has no remaining recon planes",10):ToRed()
   else
   --nothing
   end
@@ -89,7 +89,7 @@ local function UAV_MENU()
             ----Main Menu
             BlueSpawnRECON = MENU_GROUP:New( BlueMenuGroup, "RECON" )
             ---- Sub Menu
-            BlueSpawnRECONmenu = MENU_GROUP:New( BlueMenuGroup, "Spawn MQ-9 Recon UAV", BlueSpawnRECON)
+            BlueSpawnRECONmenu = MENU_GROUP:New( BlueMenuGroup, "Spawn Recon Plane", BlueSpawnRECON)
             ---- Command for the sub Menu the number on the end is the argument for the command (the rng) for the function
             BlueSpawnRECONrng1 = MENU_GROUP_COMMAND:New( BlueMenuGroup, "1 nmi", BlueSpawnRECON, BlueUAV, BlueMenuGroup, 1)
             BlueSpawnRECONrng5 = MENU_GROUP_COMMAND:New( BlueMenuGroup, "5 nmi", BlueSpawnRECON, BlueUAV, BlueMenuGroup, 5)
@@ -112,7 +112,7 @@ local function UAV_MENU2()
             ----Main Menu
             RedSpawnRECON2 = MENU_GROUP:New( RedMenuGroup, "RECON" )
             ---- Sub Menu
-            SpawnRECONmenu = MENU_GROUP:New( RedMenuGroup, "Spawn MQ-9 Recon UAV", RedSpawnRECON2)
+            SpawnRECONmenu = MENU_GROUP:New( RedMenuGroup, "Spawn Recon Plane", RedSpawnRECON2)
             ---- Command for the sub Menu the number on the end is the argument for the command (the rng) for the function
             RedSpawnRECONrng1 = MENU_GROUP_COMMAND:New( RedMenuGroup, "1 nmi", RedSpawnRECON2, RedUAV, RedMenuGroup, 1)
             RedSpawnRECONrng5 = MENU_GROUP_COMMAND:New( RedMenuGroup, "5 nmi", RedSpawnRECON2, RedUAV, RedMenuGroup, 5)
