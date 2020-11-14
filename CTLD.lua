@@ -666,7 +666,7 @@ ctld.transportPilotNames = {
 	"Qabr as Sitt Red Cargo-6-1",
 	"Qabr as Sitt Red Cargo-7-1",
 	"Qabr as Sitt Red Cargo-8-1",
-  "Qabr as Sitt Red Cargo-8-1",
+  "Qabr as Sitt Red Cargo-9-1",
 	"Ramat David Blue Cargo-1",
 	"Ramat David Blue Cargo-2-1",
 	"Ramat David Blue Cargo-3-1",
@@ -711,7 +711,7 @@ ctld.transportPilotNames = {
 	"Rene Mouawad Blue Cargo-6-1",
 	"Rene Mouawad Blue Cargo-7-1",
 	"Rene Mouawad Blue Cargo-8-1",
-  "Rene Mouawad Blue Cargo-8-1",
+  "Rene Mouawad Blue Cargo-9-1",
 	"Rene Mouawad Red Cargo-1",
 	"Rene Mouawad Red Cargo-2-1",
 	"Rene Mouawad Red Cargo-3-1",
@@ -1022,8 +1022,8 @@ ctld.spawnableCrates = {
 --		    { weight = 626, desc = "PATRIOT Repair", unit = "PATRIOT Repair", side = 2, internal = 1 },
         { weight = 627, desc = "Early Warning Radar", unit = "1L13 EWR", internal = 0 },
         { weight = 922, desc = "FOB Crate - Large (internal)", unit = "FOB", internal = 1 }, -- Builds a FOB! 
-        { weight = 820, desc = "T-55 (Recon)", unit = "T-55", side = 1, cratesRequired = 1, unitQuantity = 1, internal = 1 },   
-        { weight = 830, desc = "Leopard 1A3 (Recon)", unit = "Leopard1A3", side = 2, cratesRequired = 1, unitQuantity = 1, internal = 1 },        
+        { weight = 820, desc = "T-55 (Recon)", unit = "T-55", side = 1, cratesRequired = 1, internal = 1 },   
+        { weight = 830, desc = "Leopard 1A3 (Recon)", unit = "Leopard1A3", side = 2, cratesRequired = 1, internal = 1 },        
     },
 --[[    
     ["Internal Cargo"] = {
@@ -5358,7 +5358,7 @@ function ctld.getCargoUnloadPoint(_heli, _offset)
   elseif _heli:getTypeName() == "TF-51D" then
     return ctld.getPointAtXOclock(_heli, 12, 20)
 	else -- in case of unit we havent thought of yet
-		return ctld.getPointAt12Oclock(_heli_, _offset)
+		return ctld.getPointAt12Oclock(_heli, _offset)
 	end
 end
 
