@@ -116,7 +116,8 @@ ctld.JTAC_LIMIT_BLUE = 10 -- max number of JTAC Crates for the BLUE Side
 
 ctld.JTAC_dropEnabled = true -- allow JTAC Crate spawn from F10 menu
 
-ctld.JTAC_maxDistance = 10000 -- How far a JTAC can "see" in meters (with Line of Sight)
+ctld.JTAC_maxDistance = 14800 -- How far a JTAC can "see" in meters (with Line of Sight)
+--14.8km is equal to the max laser range in DCS of 8nm
 
 ctld.JTAC_smokeOn_RED = true -- enables marking of target with smoke for RED forces
 ctld.JTAC_smokeOn_BLUE = true -- enables marking of target with smoke for BLUE forces
@@ -132,12 +133,11 @@ ctld.location_DMS = false -- shows coordinates as Degrees Minutes Seconds instea
 
 ctld.JTAC_lock = "all" -- "vehicle" OR "troop" OR "all" forces JTAC to only lock vehicles or troops or all ground units
 
---[[
 ctld.JTAC_invisible = false -- JTAC units are invisible to enemy AI
-ctld.JTAC_startLaserCode = 1611 -- starting Laser Code for JTACs
+--ctld.JTAC_startLaserCode = 1611 -- starting Laser Code for JTACs
 ctld.JTAC_BDA = true -- set true to get Coalition BDA (target destroyed) messages from JTAC(s)
 ctld.JTAC_targetNotifications = true -- set true to get Coalition notifications of new JTAC targets
---]]
+
 -- ***************** Pickup, dropoff and waypoint zones *****************
 
 -- Available colors (anything else like "none" disables smoke): "green", "red", "white", "orange", "blue", "none",
@@ -5883,12 +5883,12 @@ end
             -- store current target for easy lookup
             ctld.jtacCurrentTargets[_jtacGroupName] = { name = _enemyUnit:getName(), unitType = _enemyUnit:getTypeName(), unitId = _enemyUnit:getID() }
 --            ctld.jtacCurrentTargets[_jtacGroupName] = { name = _enemyUnit:getName(), unitType = _enemyUnit:getTypeName(), unitId = _enemyUnit:getID(), smoke = _colour }
---[[
+
 --            ctld.notifyCoalition(_jtacGroupName .. " lasing new target " .. _enemyUnit:getTypeName() .. '. CODE: ' .. _laserCode .. ctld.getPositionString(_enemyUnit), 10, _jtacUnit:getCoalition())
 			if ctld.JTAC_targetNotifications then
 				ctld.notifyCoalition(_jtacGroupName .. " lasing new target " .. _enemyUnit:getTypeName() .. '. CODE: ' .. _laserCode .. ctld.getPositionString(_enemyUnit), 10, _jtacUnit:getCoalition())
 			end 
---]]
+
  -- create smoke
             if _smoke == true then
 
