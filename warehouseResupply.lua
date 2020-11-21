@@ -18,6 +18,7 @@ end
 ----Defines the warehouses
 --the string is the name in the mission editor
 warehouse.AbualDuhur=WAREHOUSE:New(STATIC:FindByName("Abu al-Duhur Warehouse"))
+warehouse.AdanaSakirpasa=WAREHOUSE:New(STATIC:FindByName("Adana Sakirpasa Warehouse"))
 warehouse.AlDumayr=WAREHOUSE:New(STATIC:FindByName("Al-Dumayr Warehouse"))
 warehouse.Aleppo=WAREHOUSE:New(STATIC:FindByName("Aleppo Warehouse"))
 warehouse.AlQusayr=WAREHOUSE:New(STATIC:FindByName("Al Qusayr Warehouse"))
@@ -25,6 +26,8 @@ warehouse.AnNasiriyah=WAREHOUSE:New(STATIC:FindByName("An Nasiriyah Warehouse"))
 warehouse.BasselAlAssad=WAREHOUSE:New(STATIC:FindByName("Bassel Al-Assad Warehouse"))
 warehouse.BeirutRaficHariri=WAREHOUSE:New(STATIC:FindByName("Beirut-Rafic Hariri Warehouse"))
 warehouse.Damascus=WAREHOUSE:New(STATIC:FindByName("Damascus Warehouse"))
+warehouse.EynShemer=WAREHOUSE:New(STATIC:FindByName("Eyn Shemer Warehouse"))
+warehouse.Haifa=WAREHOUSE:New(STATIC:FindByName("Haifa Warehouse"))
 warehouse.Hama=WAREHOUSE:New(STATIC:FindByName("Hama Warehouse"))
 warehouse.Hatay=WAREHOUSE:New(STATIC:FindByName("Hatay Warehouse"))
 warehouse.Incirlik=WAREHOUSE:New(STATIC:FindByName("Incirlik Warehouse"))
@@ -44,6 +47,7 @@ warehouse.QabrasSitt=WAREHOUSE:New(STATIC:FindByName("Qabr as Sitt Warehouse"))
 warehouse.RamatDavid=WAREHOUSE:New(STATIC:FindByName("Ramat David Warehouse"))
 warehouse.Rayak=WAREHOUSE:New(STATIC:FindByName("Rayak Warehouse"))
 warehouse.ReneMouawad=WAREHOUSE:New(STATIC:FindByName("Rene Mouawad Warehouse"))
+warehouse.Tabqa=WAREHOUSE:New(STATIC:FindByName("Tabqa Warehouse"))
 warehouse.Taftanaz=WAREHOUSE:New(STATIC:FindByName("Taftanaz Warehouse"))
 warehouse.WujahAlHajar=WAREHOUSE:New(STATIC:FindByName("Wujah Al Hajar Warehouse"))
 
@@ -52,6 +56,7 @@ warehouse.WujahAlHajar=WAREHOUSE:New(STATIC:FindByName("Wujah Al Hajar Warehouse
 if file_exists("WarehouseAleppo") then --Script has been run before, so we need to load the save
   env.info("Existing warehouse, loading from File.")
   warehouse.AbualDuhur:Load(nil,"WarehouseAbualDuhur")
+  warehouse.AdanaSakirpasa:Load(nil,"WarehouseAdanaSakirpasa")
   warehouse.AlDumayr:Load(nil,"WarehouseAlDumayr")
   warehouse.Aleppo:Load(nil,"WarehouseAleppo")
   warehouse.AlQusayr:Load(nil,"WarehouseAlQusayr")
@@ -59,6 +64,8 @@ if file_exists("WarehouseAleppo") then --Script has been run before, so we need 
   warehouse.BasselAlAssad:Load(nil,"WarehouseBasselAlAssad")
   warehouse.BeirutRaficHariri:Load(nil,"WarehouseBeirutRaficHariri")
   warehouse.Damascus:Load(nil,"WarehouseDamascus")
+  warehouse.EynShemer:Load(nil,"WarehouseEynShemer")
+  warehouse.Haifa:Load(nil,"WarehouseHaifa")
   warehouse.Hama:Load(nil,"WarehouseHama")
   warehouse.Hatay:Load(nil,"WarehouseHatay")
   warehouse.Incirlik:Load(nil,"WarehouseIncirlik")
@@ -78,11 +85,14 @@ if file_exists("WarehouseAleppo") then --Script has been run before, so we need 
   warehouse.RamatDavid:Load(nil,"WarehouseRamatDavid")
   warehouse.Rayak:Load(nil,"WarehouseRayak")
   warehouse.ReneMouawad:Load(nil,"WarehouseReneMouawad")
+  warehouse.Tabqa:Load(nil,"WarehouseTabqa")
   warehouse.Taftanaz:Load(nil,"WarehouseTaftanaz")
   warehouse.WujahAlHajar:Load(nil,"WarehouseWujahAlHajar")
   --Starts the warehouses after load
   warehouse.AbualDuhur:Start()
   warehouse.AbualDuhur:SetRespawnAfterDestroyed(1800)
+  warehouse.AdanaSakirpasa:Start()
+  warehouse.AdanaSakirpasa:SetRespawnAfterDestroyed(1800)
   warehouse.AlDumayr:Start()
   warehouse.AlDumayr:SetRespawnAfterDestroyed(1800)
   warehouse.Aleppo:Start()
@@ -97,6 +107,10 @@ if file_exists("WarehouseAleppo") then --Script has been run before, so we need 
   warehouse.BeirutRaficHariri:SetRespawnAfterDestroyed(1800)
   warehouse.Damascus:Start()
   warehouse.Damascus:SetRespawnAfterDestroyed(1800)
+  warehouse.EynShemer:Start()
+  warehouse.EynShemer:SetRespawnAfterDestroyed(1800)
+  warehouse.Haifa:Start()
+  warehouse.Haifa:SetRespawnAfterDestroyed(1800)
   warehouse.Hama:Start()
   warehouse.Hama:SetRespawnAfterDestroyed(1800)
   warehouse.Hatay:Start()
@@ -135,13 +149,18 @@ if file_exists("WarehouseAleppo") then --Script has been run before, so we need 
   warehouse.Rayak:SetRespawnAfterDestroyed(1800)
   warehouse.ReneMouawad:Start()
   warehouse.ReneMouawad:SetRespawnAfterDestroyed(1800)
+  warehouse.Tabqa:Start()
+  warehouse.Tabqa:SetRespawnAfterDestroyed(1800)
   warehouse.Taftanaz:Start()
   warehouse.Taftanaz:SetRespawnAfterDestroyed(1800)
   warehouse.WujahAlHajar:Start()
   warehouse.WujahAlHajar:SetRespawnAfterDestroyed(1800)
   else  
   --Fresh Campaign starts warehouses, and loads assets
+  warehouse.AbualDuhur:Start()
   warehouse.AbualDuhur:SetRespawnAfterDestroyed(1800)
+  warehouse.AdanaSakirpasa:Start()
+  warehouse.AdanaSakirpasa:SetRespawnAfterDestroyed(1800)
   warehouse.AlDumayr:Start()
   warehouse.AlDumayr:SetRespawnAfterDestroyed(1800)
   warehouse.Aleppo:Start()
@@ -156,6 +175,10 @@ if file_exists("WarehouseAleppo") then --Script has been run before, so we need 
   warehouse.BeirutRaficHariri:SetRespawnAfterDestroyed(1800)
   warehouse.Damascus:Start()
   warehouse.Damascus:SetRespawnAfterDestroyed(1800)
+  warehouse.EynShemer:Start()
+  warehouse.EynShemer:SetRespawnAfterDestroyed(1800)
+  warehouse.Haifa:Start()
+  warehouse.Haifa:SetRespawnAfterDestroyed(1800)
   warehouse.Hama:Start()
   warehouse.Hama:SetRespawnAfterDestroyed(1800)
   warehouse.Hatay:Start()
@@ -194,6 +217,8 @@ if file_exists("WarehouseAleppo") then --Script has been run before, so we need 
   warehouse.Rayak:SetRespawnAfterDestroyed(1800)
   warehouse.ReneMouawad:Start()
   warehouse.ReneMouawad:SetRespawnAfterDestroyed(1800)
+  warehouse.Tabqa:Start()
+  warehouse.Tabqa:SetRespawnAfterDestroyed(1800)
   warehouse.Taftanaz:Start()
   warehouse.Taftanaz:SetRespawnAfterDestroyed(1800)
   warehouse.WujahAlHajar:Start()
@@ -211,6 +236,17 @@ if file_exists("WarehouseAleppo") then --Script has been run before, so we need 
   warehouse.AbualDuhur:AddAsset("Resupply SAM Avenger", 40) --Counted as SAM in stock
   warehouse.AbualDuhur:AddAsset("Resupply SAM Hawk", 20)    --Counted as SAM in stock
   --warehouse.AbualDuhur:AddAsset("Red C-130", 2, nil, 1777000, nil, 10000)  
+  warehouse.AdanaSakirpasa:AddAsset("Resupply MBT T72B", 30)    --counted as tank  in stock
+  warehouse.AdanaSakirpasa:AddAsset("Resupply IFV BMP-3", 20)   --counted as APC in stock
+  warehouse.AdanaSakirpasa:AddAsset("Resupply AAA Shilka", 40)  --counted as AAA in stock
+  warehouse.AdanaSakirpasa:AddAsset("Resupply SAM SA-13", 40)   --Counted as SAM in stock
+  warehouse.AdanaSakirpasa:AddAsset("Resupply SAM SA-11", 20)   --Counted as SAM in stock
+  warehouse.AdanaSakirpasa:AddAsset("Resupply MBT Merkava", 30) --Counted as tank  in stock
+  warehouse.AdanaSakirpasa:AddAsset("Resupply IFV M2A1", 20)    --Counted as APC in stock
+  warehouse.AdanaSakirpasa:AddAsset("Resupply AAA Vulcan", 40)  --counted as AAA in stock
+  warehouse.AdanaSakirpasa:AddAsset("Resupply SAM Avenger", 40) --Counted as SAM in stock
+  warehouse.AdanaSakirpasa:AddAsset("Resupply SAM Hawk", 20)    --Counted as SAM in stock
+  --warehouse.AdanaSakirpasa:AddAsset("Red C-130", 2, nil, 1777000, nil, 10000)  
   warehouse.AlDumayr:AddAsset("Resupply MBT T72B", 30)    --counted as tank  in stock
   warehouse.AlDumayr:AddAsset("Resupply IFV BMP-3", 20)   --counted as APC in stock
   warehouse.AlDumayr:AddAsset("Resupply AAA Shilka", 40)  --counted as AAA in stock
@@ -288,6 +324,28 @@ if file_exists("WarehouseAleppo") then --Script has been run before, so we need 
   warehouse.Damascus:AddAsset("Resupply SAM Avenger", 40) --Counted as SAM in stock
   warehouse.Damascus:AddAsset("Resupply SAM Hawk", 20)    --Counted as SAM in stock
   --warehouse.Damascus:AddAsset("Red C-130", 2, nil, 1777000, nil, 10000)
+  warehouse.EynShemer:AddAsset("Resupply MBT T72B", 30)    --counted as tank  in stock
+  warehouse.EynShemer:AddAsset("Resupply IFV BMP-3", 20)   --counted as APC in stock
+  warehouse.EynShemer:AddAsset("Resupply AAA Shilka", 40)  --counted as AAA in stock
+  warehouse.EynShemer:AddAsset("Resupply SAM SA-13", 40)   --Counted as SAM in stock
+  warehouse.EynShemer:AddAsset("Resupply SAM SA-11", 20)   --Counted as SAM in stock
+  warehouse.EynShemer:AddAsset("Resupply MBT Merkava", 30) --Counted as tank  in stock
+  warehouse.EynShemer:AddAsset("Resupply IFV M2A1", 20)    --Counted as APC in stock
+  warehouse.EynShemer:AddAsset("Resupply AAA Vulcan", 40)  --counted as AAA in stock
+  warehouse.EynShemer:AddAsset("Resupply SAM Avenger", 40) --Counted as SAM in stock
+  warehouse.EynShemer:AddAsset("Resupply SAM Hawk", 20)    --Counted as SAM in stock
+  --warehouse.EynShemer:AddAsset("Red C-130", 2, nil, 1777000, nil, 10000)
+  warehouse.Haifa:AddAsset("Resupply MBT T72B", 30)    --counted as tank  in stock
+  warehouse.Haifa:AddAsset("Resupply IFV BMP-3", 20)   --counted as APC in stock
+  warehouse.Haifa:AddAsset("Resupply AAA Shilka", 40)  --counted as AAA in stock
+  warehouse.Haifa:AddAsset("Resupply SAM SA-13", 40)   --Counted as SAM in stock
+  warehouse.Haifa:AddAsset("Resupply SAM SA-11", 20)   --Counted as SAM in stock
+  warehouse.Haifa:AddAsset("Resupply MBT Merkava", 30) --Counted as tank  in stock
+  warehouse.Haifa:AddAsset("Resupply IFV M2A1", 20)    --Counted as APC in stock
+  warehouse.Haifa:AddAsset("Resupply AAA Vulcan", 40)  --counted as AAA in stock
+  warehouse.Haifa:AddAsset("Resupply SAM Avenger", 40) --Counted as SAM in stock
+  warehouse.Haifa:AddAsset("Resupply SAM Hawk", 20)    --Counted as SAM in stock
+  --warehouse.Haifa:AddAsset("Red C-130", 2, nil, 1777000, nil, 10000)
   warehouse.Hama:AddAsset("Resupply MBT T72B", 30)    --counted as tank  in stock
   warehouse.Hama:AddAsset("Resupply IFV BMP-3", 20)   --counted as APC in stock
   warehouse.Hama:AddAsset("Resupply AAA Shilka", 40)  --counted as AAA in stock
@@ -497,6 +555,17 @@ if file_exists("WarehouseAleppo") then --Script has been run before, so we need 
   warehouse.ReneMouawad:AddAsset("Resupply SAM Avenger", 40) --Counted as SAM in stock
   warehouse.ReneMouawad:AddAsset("Resupply SAM Hawk", 20)    --Counted as SAM in stock
   --warehouse.ReneMouawad:AddAsset("Red C-130", 2, nil, 1777000, nil, 10000)  warehouse.KiryatShmona
+  warehouse.Tabqa:AddAsset("Resupply MBT T72B", 30)    --counted as tank  in stock
+  warehouse.Tabqa:AddAsset("Resupply IFV BMP-3", 20)   --counted as APC in stock
+  warehouse.Tabqa:AddAsset("Resupply AAA Shilka", 40)  --counted as AAA in stock
+  warehouse.Tabqa:AddAsset("Resupply SAM SA-13", 40)   --Counted as SAM in stock
+  warehouse.Tabqa:AddAsset("Resupply SAM SA-11", 20)   --Counted as SAM in stock
+  warehouse.Tabqa:AddAsset("Resupply MBT Merkava", 30) --Counted as tank  in stock
+  warehouse.Tabqa:AddAsset("Resupply IFV M2A1", 20)    --Counted as APC in stock
+  warehouse.Tabqa:AddAsset("Resupply AAA Vulcan", 40)  --counted as AAA in stock
+  warehouse.Tabqa:AddAsset("Resupply SAM Avenger", 40) --Counted as SAM in stock
+  warehouse.Tabqa:AddAsset("Resupply SAM Hawk", 20)    --Counted as SAM in stock
+  --warehouse.Tabqa:AddAsset("Red C-130", 2, nil, 1777000, nil, 10000)  warehouse.KiryatShmona
   warehouse.Taftanaz:AddAsset("Resupply MBT T72B", 30)    --counted as tank  in stock
   warehouse.Taftanaz:AddAsset("Resupply IFV BMP-3", 20)   --counted as APC in stock
   warehouse.Taftanaz:AddAsset("Resupply AAA Shilka", 40)  --counted as AAA in stock
@@ -523,6 +592,7 @@ end
 
 ----Set Spawn Zones for the warehouses
 warehouse.AbualDuhur:SetSpawnZone(ZONE_POLYGON:New("Abu al-Duhur Warehouse Spawn Zone #001", GROUP:FindByName("Abu al-Duhur Warehouse Spawn Zone #001")))
+warehouse.AdanaSakirpasa:SetSpawnZone(ZONE_POLYGON:New("Adana Sakirpasa Warehouse Spawn Zone #001", GROUP:FindByName("Adana Sakirpasa Warehouse Spawn Zone #001")))
 warehouse.AlDumayr:SetSpawnZone(ZONE_POLYGON:New("Al-Dumayr Warehouse Spawn Zone #001", GROUP:FindByName("Al-Dumayr Warehouse Spawn Zone #001")))
 warehouse.Aleppo:SetSpawnZone(ZONE_POLYGON:New("Aleppo Warehouse Spawn Zone #001", GROUP:FindByName("Aleppo Warehouse Spawn Zone #001")))
 warehouse.AlQusayr:SetSpawnZone(ZONE_POLYGON:New("Al Qusayr Warehouse Spawn Zone #001", GROUP:FindByName("Al Qusayr Warehouse Spawn Zone #001")))
@@ -530,6 +600,8 @@ warehouse.AnNasiriyah:SetSpawnZone(ZONE_POLYGON:New("An Nasiriyah Warehouse Spaw
 warehouse.BasselAlAssad:SetSpawnZone(ZONE_POLYGON:New("Bassel Al-Assad Warehouse Spawn Zone #001", GROUP:FindByName("Bassel Al-Assad Warehouse Spawn Zone #001")))
 warehouse.BeirutRaficHariri:SetSpawnZone(ZONE_POLYGON:New("Beirut-Rafic Hariri Warehouse Spawn Zone #001", GROUP:FindByName("Beirut-Rafic Hariri Warehouse Spawn Zone #001")))
 warehouse.Damascus:SetSpawnZone(ZONE_POLYGON:New("Damascus Warehouse Spawn Zone #001", GROUP:FindByName("Damascus Warehouse Spawn Zone #001")))
+warehouse.EynShemer:SetSpawnZone(ZONE_POLYGON:New("Eyn Shemer Warehouse Spawn Zone #001", GROUP:FindByName("Eyn Shemer Warehouse Spawn Zone #001")))
+warehouse.Haifa:SetSpawnZone(ZONE_POLYGON:New("Haifa Warehouse Spawn Zone #001", GROUP:FindByName("Haifa Warehouse Spawn Zone #001")))
 warehouse.Hama:SetSpawnZone(ZONE_POLYGON:New("Hama Warehouse Spawn Zone #001", GROUP:FindByName("Hama Warehouse Spawn Zone #001")))
 warehouse.Hatay:SetSpawnZone(ZONE_POLYGON:New("Hatay Warehouse Spawn Zone #001", GROUP:FindByName("Hatay Warehouse Spawn Zone #001")))
 warehouse.Incirlik:SetSpawnZone(ZONE_POLYGON:New("Incirlik Warehouse Spawn Zone #001", GROUP:FindByName("Incirlik Warehouse Spawn Zone #001")))
@@ -549,6 +621,7 @@ warehouse.QabrasSitt:SetSpawnZone(ZONE_POLYGON:New("Qabr as Sitt Warehouse Spawn
 warehouse.RamatDavid:SetSpawnZone(ZONE_POLYGON:New("Ramat David Warehouse Spawn Zone #001", GROUP:FindByName("Ramat David Warehouse Spawn Zone #001")))
 warehouse.Rayak:SetSpawnZone(ZONE_POLYGON:New("Rayak Warehouse Spawn Zone #001", GROUP:FindByName("Rayak Warehouse Spawn Zone #001")))
 warehouse.ReneMouawad:SetSpawnZone(ZONE_POLYGON:New("Rene Mouawad Warehouse Spawn Zone #001", GROUP:FindByName("Rene Mouawad Warehouse Spawn Zone #001")))
+warehouse.Tabqa:SetSpawnZone(ZONE_POLYGON:New("Tabqa Warehouse Spawn Zone #001", GROUP:FindByName("Tabqa Warehouse Spawn Zone #001")))
 warehouse.Taftanaz:SetSpawnZone(ZONE_POLYGON:New("Taftanaz Warehouse Spawn Zone #001", GROUP:FindByName("Taftanaz Warehouse Spawn Zone #001")))
 warehouse.WujahAlHajar:SetSpawnZone(ZONE_POLYGON:New("Wujah Al Hajar Warehouse Spawn Zone #001", GROUP:FindByName("Wujah Al Hajar Warehouse Spawn Zone #001")))
 
@@ -558,7 +631,7 @@ function warehouse.AbualDuhur:OnAfterCaptured(From, Event, To, Coalition, Countr
     MESSAGE:New("We have captured Abu al-Duhur Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToBlue()
     warehouse.AbualDuhur:__Save(10,nil,"WarehouseAbualDuhur")
     warehouse.AbualDuhur:__AddRequest(900,warehouse.AbualDuhur,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.AbualDuhur:__AddRequest(900,warehouse.AbualDuhur,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV M2A1", 2,
@@ -577,7 +650,7 @@ function warehouse.AbualDuhur:OnAfterCaptured(From, Event, To, Coalition, Countr
     MESSAGE:New("We have captured Abu al-Duhur Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToRed()
     warehouse.AbualDuhur:__Save(10,nil,"WarehouseAbualDuhur")
     warehouse.AbualDuhur:__AddRequest(900,warehouse.AbualDuhur,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.AbualDuhur:__AddRequest(900,warehouse.AbualDuhur,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV BMP-3", 2,
@@ -589,9 +662,50 @@ function warehouse.AbualDuhur:OnAfterCaptured(From, Event, To, Coalition, Countr
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-13", 4,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.AbualDuhur:__AddRequest(1800,warehouse.AbualDuhur,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 2,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 1,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.AbualDuhur:__Save(1950,nil,"WarehouseAbualDuhur")    
+    end
+end
+function warehouse.AdanaSakirpasa:OnAfterCaptured(From, Event, To, Coalition, Country)
+  if Coalition==coalition.side.BLUE then
+    MESSAGE:New("We have captured Abu al-Duhur Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToBlue()
+    warehouse.AdanaSakirpasa:__Save(10,nil,"WarehouseAdanaSakirpasa")
+    warehouse.AdanaSakirpasa:__AddRequest(900,warehouse.AdanaSakirpasa,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 2,
+    WAREHOUSE.TransportType.SELFPROPELLED)
+    warehouse.AdanaSakirpasa:__AddRequest(900,warehouse.AdanaSakirpasa,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV M2A1", 2,
+    WAREHOUSE.TransportType.SELFPROPELLED)
+    warehouse.AdanaSakirpasa:__AddRequest(900,warehouse.AdanaSakirpasa,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply AAA Vulcan", 4,
+    WAREHOUSE.TransportType.SELFPROPELLED)
+    warehouse.AdanaSakirpasa:__AddRequest(1800,warehouse.AdanaSakirpasa,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM Avenger", 4,
+    WAREHOUSE.TransportType.SELFPROPELLED)
+    warehouse.AdanaSakirpasa:__AddRequest(1800,warehouse.AdanaSakirpasa,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM Hawk", 2,
+    WAREHOUSE.TransportType.SELFPROPELLED)
+    warehouse.AdanaSakirpasa:__Save(1950,nil,"WarehouseAdanaSakirpasa")    
+  elseif Coalition==coalition.side.RED then
+    MESSAGE:New("We have captured Abu al-Duhur Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToRed()
+    warehouse.AdanaSakirpasa:__Save(10,nil,"WarehouseAdanaSakirpasa")
+    warehouse.AdanaSakirpasa:__AddRequest(900,warehouse.AdanaSakirpasa,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 2,
+    WAREHOUSE.TransportType.SELFPROPELLED)
+    warehouse.AdanaSakirpasa:__AddRequest(900,warehouse.AdanaSakirpasa,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV BMP-3", 2,
+    WAREHOUSE.TransportType.SELFPROPELLED)
+    warehouse.AdanaSakirpasa:__AddRequest(900,warehouse.AdanaSakirpasa,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply AAA Shilka", 4,
+    WAREHOUSE.TransportType.SELFPROPELLED)
+    warehouse.AdanaSakirpasa:__AddRequest(1800,warehouse.AdanaSakirpasa,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-13", 4,
+    WAREHOUSE.TransportType.SELFPROPELLED)
+    warehouse.AdanaSakirpasa:__AddRequest(1800,warehouse.AdanaSakirpasa,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 1,
+    WAREHOUSE.TransportType.SELFPROPELLED)
+    warehouse.AdanaSakirpasa:__Save(1950,nil,"WarehouseAdanaSakirpasa")    
     end
 end
 function warehouse.AlDumayr:OnAfterCaptured(From, Event, To, Coalition, Country)
@@ -599,7 +713,7 @@ function warehouse.AlDumayr:OnAfterCaptured(From, Event, To, Coalition, Country)
     MESSAGE:New("We have captured Al Dumayr Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToBlue()
     warehouse.AlDumayr:__Save(10,nil,"WarehouseAlDumayr")
     warehouse.AlDumayr:__AddRequest(900,warehouse.AlDumayr,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.AlDumayr:__AddRequest(900,warehouse.AlDumayr,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV M2A1", 2,
@@ -618,7 +732,7 @@ function warehouse.AlDumayr:OnAfterCaptured(From, Event, To, Coalition, Country)
     MESSAGE:New("We have captured Al Dumayr Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToRed()
     warehouse.AlDumayr:__Save(10,nil,"WarehouseAlDumayr")
     warehouse.AlDumayr:__AddRequest(900,warehouse.AlDumayr,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.AlDumayr:__AddRequest(900,warehouse.AlDumayr,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV BMP-3", 2,
@@ -630,7 +744,7 @@ function warehouse.AlDumayr:OnAfterCaptured(From, Event, To, Coalition, Country)
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-13", 4,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.AlDumayr:__AddRequest(1800,warehouse.AlDumayr,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 2,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 1,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.AlDumayr:__Save(1950,nil,"WarehouseAlDumayr")    
     end
@@ -640,7 +754,7 @@ function warehouse.Aleppo:OnAfterCaptured(From, Event, To, Coalition, Country)
     MESSAGE:New("We have captured Aleppo Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToBlue()
     warehouse.Aleppo:__Save(10,nil,"WarehouseAleppo")
     warehouse.Aleppo:__AddRequest(900,warehouse.Aleppo,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Aleppo:__AddRequest(900,warehouse.Aleppo,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV M2A1", 2,
@@ -659,7 +773,7 @@ function warehouse.Aleppo:OnAfterCaptured(From, Event, To, Coalition, Country)
     MESSAGE:New("We have captured Aleppo Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToRed()
     warehouse.Aleppo:__Save(10,nil,"WarehouseAleppo")
     warehouse.Aleppo:__AddRequest(900,warehouse.Aleppo,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Aleppo:__AddRequest(900,warehouse.Aleppo,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV BMP-3", 2,
@@ -671,7 +785,7 @@ function warehouse.Aleppo:OnAfterCaptured(From, Event, To, Coalition, Country)
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-13", 4,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Aleppo:__AddRequest(1800,warehouse.Aleppo,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 2,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 1,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Aleppo:__Save(1950,nil,"WarehouseAleppo")    
     end
@@ -681,7 +795,7 @@ function warehouse.AlQusayr:OnAfterCaptured(From, Event, To, Coalition, Country)
     MESSAGE:New("We have captured Al-Qusayr Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToBlue()
     warehouse.AlQusayr:__Save(10,nil,"WarehouseAlQusayr")
     warehouse.AlQusayr:__AddRequest(900,warehouse.AlQusayr,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.AlQusayr:__AddRequest(900,warehouse.AlQusayr,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV M2A1", 2,
@@ -700,7 +814,7 @@ function warehouse.AlQusayr:OnAfterCaptured(From, Event, To, Coalition, Country)
     MESSAGE:New("We have captured Al-Qusayr Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToRed()
     warehouse.AlQusayr:__Save(10,nil,"WarehouseAlQusayr")
     warehouse.AlQusayr:__AddRequest(900,warehouse.AlQusayr,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.AlQusayr:__AddRequest(900,warehouse.AlQusayr,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV BMP-3", 2,
@@ -712,7 +826,7 @@ function warehouse.AlQusayr:OnAfterCaptured(From, Event, To, Coalition, Country)
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-13", 4,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.AlQusayr:__AddRequest(1800,warehouse.AlQusayr,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 2,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 1,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.AlQusayr:__Save(1950,nil,"WarehouseAlQusayr")    
     end
@@ -722,7 +836,7 @@ function warehouse.AnNasiriyah:OnAfterCaptured(From, Event, To, Coalition, Count
     MESSAGE:New("We have captured An Nasiriyah Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToBlue()
     warehouse.AnNasiriyah:__Save(10,nil,"WarehouseAnNasiriyah")
     warehouse.AnNasiriyah:__AddRequest(900,warehouse.AnNasiriyah,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.AnNasiriyah:__AddRequest(900,warehouse.AnNasiriyah,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV M2A1", 2,
@@ -741,7 +855,7 @@ function warehouse.AnNasiriyah:OnAfterCaptured(From, Event, To, Coalition, Count
     MESSAGE:New("We have captured An Nasiriyah Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToRed()
     warehouse.AnNasiriyah:__Save(10,nil,"WarehouseAnNasiriyah")
     warehouse.AnNasiriyah:__AddRequest(900,warehouse.AnNasiriyah,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.AnNasiriyah:__AddRequest(900,warehouse.AnNasiriyah,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV BMP-3", 2,
@@ -753,7 +867,7 @@ function warehouse.AnNasiriyah:OnAfterCaptured(From, Event, To, Coalition, Count
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-13", 4,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.AnNasiriyah:__AddRequest(1800,warehouse.AnNasiriyah,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 2,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 1,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.AnNasiriyah:__Save(1950,nil,"WarehouseAnNasiriyah")    
     end
@@ -763,7 +877,7 @@ function warehouse.BasselAlAssad:OnAfterCaptured(From, Event, To, Coalition, Cou
     MESSAGE:New("We have captured Bassel Al-Assad Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToBlue()
     warehouse.BasselAlAssad:__Save(10,nil,"WarehouseBasselAlAssad")
     warehouse.BasselAlAssad:__AddRequest(900,warehouse.BasselAlAssad,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.BasselAlAssad:__AddRequest(900,warehouse.BasselAlAssad,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV M2A1", 2,
@@ -782,7 +896,7 @@ function warehouse.BasselAlAssad:OnAfterCaptured(From, Event, To, Coalition, Cou
     MESSAGE:New("We have captured Bassel Al-Assad Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToRed()
     warehouse.BasselAlAssad:__Save(10,nil,"WarehouseBasselAlAssad")
     warehouse.BasselAlAssad:__AddRequest(900,warehouse.BasselAlAssad,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.BasselAlAssad:__AddRequest(900,warehouse.BasselAlAssad,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV BMP-3", 2,
@@ -794,7 +908,7 @@ function warehouse.BasselAlAssad:OnAfterCaptured(From, Event, To, Coalition, Cou
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-13", 4,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.BasselAlAssad:__AddRequest(1800,warehouse.BasselAlAssad,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 2,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 1,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.BasselAlAssad:__Save(1950,nil,"WarehouseBasselAlAssad")    
     end
@@ -804,7 +918,7 @@ function warehouse.BeirutRaficHariri:OnAfterCaptured(From, Event, To, Coalition,
     MESSAGE:New("We have captured Beirut-Rafic Hariri Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToBlue()
     warehouse.BeirutRaficHariri:__Save(10,nil,"WarehouseBeirutRaficHariri")
     warehouse.BeirutRaficHariri:__AddRequest(900,warehouse.BeirutRaficHariri,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.BeirutRaficHariri:__AddRequest(900,warehouse.BeirutRaficHariri,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV M2A1", 2,
@@ -823,7 +937,7 @@ function warehouse.BeirutRaficHariri:OnAfterCaptured(From, Event, To, Coalition,
     MESSAGE:New("We have captured Beirut-Rafic Hariri Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToRed()
     warehouse.BeirutRaficHariri:__Save(10,nil,"WarehouseBeirutRaficHariri")
     warehouse.BeirutRaficHariri:__AddRequest(900,warehouse.BeirutRaficHariri,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.BeirutRaficHariri:__AddRequest(900,warehouse.BeirutRaficHariri,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV BMP-3", 2,
@@ -835,7 +949,7 @@ function warehouse.BeirutRaficHariri:OnAfterCaptured(From, Event, To, Coalition,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-13", 4,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.BeirutRaficHariri:__AddRequest(1800,warehouse.BeirutRaficHariri,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 2,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 1,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.BeirutRaficHariri:__Save(1950,nil,"WarehouseBeirutRaficHariri")    
     end
@@ -845,7 +959,7 @@ function warehouse.Damascus:OnAfterCaptured(From, Event, To, Coalition, Country)
     MESSAGE:New("We have captured Damascus Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToBlue()
     warehouse.Damascus:__Save(10,nil,"WarehouseDamascus")
     warehouse.Damascus:__AddRequest(900,warehouse.Damascus,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Damascus:__AddRequest(900,warehouse.Damascus,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV M2A1", 2,
@@ -864,7 +978,7 @@ function warehouse.Damascus:OnAfterCaptured(From, Event, To, Coalition, Country)
     MESSAGE:New("We have captured Damascus Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToRed()
     warehouse.Damascus:__Save(10,nil,"WarehouseDamascus")
     warehouse.Damascus:__AddRequest(900,warehouse.Damascus,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Damascus:__AddRequest(900,warehouse.Damascus,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV BMP-3", 2,
@@ -876,9 +990,91 @@ function warehouse.Damascus:OnAfterCaptured(From, Event, To, Coalition, Country)
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-13", 4,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Damascus:__AddRequest(1800,warehouse.Damascus,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 2,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 1,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Damascus:__Save(1950,nil,"WarehouseDamascus")    
+    end
+end
+function warehouse.EynShemer:OnAfterCaptured(From, Event, To, Coalition, Country)
+  if Coalition==coalition.side.BLUE then
+    MESSAGE:New("We have captured Eyn Shemer Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToBlue()
+    warehouse.EynShemer:__Save(10,nil,"WarehouseEynShemer")
+    warehouse.Hama:__AddRequest(900,warehouse.Hama,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 2,
+    WAREHOUSE.TransportType.SELFPROPELLED)
+    warehouse.EynShemer:__AddRequest(900,warehouse.EynShemer,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV M2A1", 2,
+    WAREHOUSE.TransportType.SELFPROPELLED)
+    warehouse.EynShemer:__AddRequest(900,warehouse.EynShemer,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply AAA Vulcan", 4,
+    WAREHOUSE.TransportType.SELFPROPELLED)
+    warehouse.EynShemer:__AddRequest(1800,warehouse.EynShemer,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM Avenger", 4,
+    WAREHOUSE.TransportType.SELFPROPELLED)
+    warehouse.EynShemer:__AddRequest(1800,warehouse.EynShemer,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM Hawk", 2,
+    WAREHOUSE.TransportType.SELFPROPELLED)
+    warehouse.EynShemer:__Save(1950,nil,"WarehouseEynShemer")    
+  elseif Coalition==coalition.side.RED then
+    MESSAGE:New("We have captured Eyn Shemer Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToRed()
+    warehouse.EynShemer:__Save(10,nil,"WarehouseEynShemer")
+    warehouse.EynShemer:__AddRequest(900,warehouse.EynShemer,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 2,
+    WAREHOUSE.TransportType.SELFPROPELLED)
+    warehouse.EynShemer:__AddRequest(900,warehouse.EynShemer,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV BMP-3", 2,
+    WAREHOUSE.TransportType.SELFPROPELLED)
+    warehouse.EynShemer:__AddRequest(900,warehouse.EynShemer,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply AAA Shilka", 4,
+    WAREHOUSE.TransportType.SELFPROPELLED)
+    warehouse.EynShemer:__AddRequest(1800,warehouse.EynShemer,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-13", 4,
+    WAREHOUSE.TransportType.SELFPROPELLED)
+    warehouse.EynShemer:__AddRequest(1800,warehouse.EynShemer,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 1,
+    WAREHOUSE.TransportType.SELFPROPELLED)
+    warehouse.EynShemer:__Save(1950,nil,"WarehouseEynShemer")    
+    end
+end
+function warehouse.Haifa:OnAfterCaptured(From, Event, To, Coalition, Country)
+  if Coalition==coalition.side.BLUE then
+    MESSAGE:New("We have captured Haifa Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToBlue()
+    warehouse.Haifa:__Save(10,nil,"WarehouseHaifa")
+    warehouse.Hama:__AddRequest(900,warehouse.Hama,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 2,
+    WAREHOUSE.TransportType.SELFPROPELLED)
+    warehouse.Haifa:__AddRequest(900,warehouse.Haifa,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV M2A1", 2,
+    WAREHOUSE.TransportType.SELFPROPELLED)
+    warehouse.Haifa:__AddRequest(900,warehouse.Haifa,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply AAA Vulcan", 4,
+    WAREHOUSE.TransportType.SELFPROPELLED)
+    warehouse.Haifa:__AddRequest(1800,warehouse.Haifa,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM Avenger", 4,
+    WAREHOUSE.TransportType.SELFPROPELLED)
+    warehouse.Haifa:__AddRequest(1800,warehouse.Haifa,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM Hawk", 2,
+    WAREHOUSE.TransportType.SELFPROPELLED)
+    warehouse.Haifa:__Save(1950,nil,"WarehouseHaifa")    
+  elseif Coalition==coalition.side.RED then
+    MESSAGE:New("We have captured Haifa Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToRed()
+    warehouse.Haifa:__Save(10,nil,"WarehouseHaifa")
+    warehouse.Haifa:__AddRequest(900,warehouse.Haifa,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 2,
+    WAREHOUSE.TransportType.SELFPROPELLED)
+    warehouse.Haifa:__AddRequest(900,warehouse.Haifa,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV BMP-3", 2,
+    WAREHOUSE.TransportType.SELFPROPELLED)
+    warehouse.Haifa:__AddRequest(900,warehouse.Haifa,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply AAA Shilka", 4,
+    WAREHOUSE.TransportType.SELFPROPELLED)
+    warehouse.Haifa:__AddRequest(1800,warehouse.Haifa,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-13", 4,
+    WAREHOUSE.TransportType.SELFPROPELLED)
+    warehouse.Haifa:__AddRequest(1800,warehouse.Haifa,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 1,
+    WAREHOUSE.TransportType.SELFPROPELLED)
+    warehouse.Haifa:__Save(1950,nil,"WarehouseHaifa")    
     end
 end
 function warehouse.Hama:OnAfterCaptured(From, Event, To, Coalition, Country)
@@ -886,7 +1082,7 @@ function warehouse.Hama:OnAfterCaptured(From, Event, To, Coalition, Country)
     MESSAGE:New("We have captured Hama Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToBlue()
     warehouse.Hama:__Save(10,nil,"WarehouseHama")
     warehouse.Hama:__AddRequest(900,warehouse.Hama,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Hama:__AddRequest(900,warehouse.Hama,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV M2A1", 2,
@@ -905,7 +1101,7 @@ function warehouse.Hama:OnAfterCaptured(From, Event, To, Coalition, Country)
     MESSAGE:New("We have captured Hama Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToRed()
     warehouse.Hama:__Save(10,nil,"WarehouseHama")
     warehouse.Hama:__AddRequest(900,warehouse.Hama,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Hama:__AddRequest(900,warehouse.Hama,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV BMP-3", 2,
@@ -917,7 +1113,7 @@ function warehouse.Hama:OnAfterCaptured(From, Event, To, Coalition, Country)
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-13", 4,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Hama:__AddRequest(1800,warehouse.Hama,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 2,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 1,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Hama:__Save(1950,nil,"WarehouseHama")    
     end
@@ -927,7 +1123,7 @@ function warehouse.Hatay:OnAfterCaptured(From, Event, To, Coalition, Country)
     MESSAGE:New("We have captured Hatay Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToBlue()
     warehouse.Hatay:__Save(10,nil,"WarehouseHatay")
     warehouse.Hatay:__AddRequest(900,warehouse.Hatay,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Hatay:__AddRequest(900,warehouse.Hatay,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV M2A1", 2,
@@ -946,7 +1142,7 @@ function warehouse.Hatay:OnAfterCaptured(From, Event, To, Coalition, Country)
     MESSAGE:New("We have captured Hatay Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToRed()
     warehouse.Hatay:__Save(10,nil,"WarehouseHatay")
     warehouse.Hatay:__AddRequest(900,warehouse.Hatay,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Hatay:__AddRequest(900,warehouse.Hatay,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV BMP-3", 2,
@@ -958,7 +1154,7 @@ function warehouse.Hatay:OnAfterCaptured(From, Event, To, Coalition, Country)
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-13", 4,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Hatay:__AddRequest(1800,warehouse.Hatay,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 2,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 1,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Hatay:__Save(1950,nil,"WarehouseHatay")    
     end
@@ -968,7 +1164,7 @@ function warehouse.Incirlik:OnAfterCaptured(From, Event, To, Coalition, Country)
     MESSAGE:New("We have captured Incirlik Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToBlue()
     warehouse.Incirlik:__Save(10,nil,"WarehouseIncirlik")
     warehouse.Incirlik:__AddRequest(900,warehouse.Incirlik,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Incirlik:__AddRequest(900,warehouse.Incirlik,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV M2A1", 2,
@@ -987,7 +1183,7 @@ function warehouse.Incirlik:OnAfterCaptured(From, Event, To, Coalition, Country)
     MESSAGE:New("We have captured Incirlik Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToRed()
     warehouse.Incirlik:__Save(10,nil,"WarehouseIncirlik")
     warehouse.Incirlik:__AddRequest(900,warehouse.Incirlik,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Incirlik:__AddRequest(900,warehouse.Incirlik,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV BMP-3", 2,
@@ -999,7 +1195,7 @@ function warehouse.Incirlik:OnAfterCaptured(From, Event, To, Coalition, Country)
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-13", 4,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Incirlik:__AddRequest(1800,warehouse.Incirlik,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 2,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 1,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Incirlik:__Save(1950,nil,"WarehouseIncirlik")    
     end
@@ -1009,7 +1205,7 @@ function warehouse.Jirah:OnAfterCaptured(From, Event, To, Coalition, Country)
     MESSAGE:New("We have captured Jirah Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToBlue()
     warehouse.Jirah:__Save(10,nil,"WarehouseJirah")
     warehouse.Jirah:__AddRequest(900,warehouse.Jirah,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Jirah:__AddRequest(900,warehouse.Jirah,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV M2A1", 2,
@@ -1028,7 +1224,7 @@ function warehouse.Jirah:OnAfterCaptured(From, Event, To, Coalition, Country)
     MESSAGE:New("We have captured Jirah Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToRed()
     warehouse.Jirah:__Save(10,nil,"WarehouseJirah")
     warehouse.Jirah:__AddRequest(900,warehouse.Jirah,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Jirah:__AddRequest(900,warehouse.Jirah,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV BMP-3", 2,
@@ -1040,7 +1236,7 @@ function warehouse.Jirah:OnAfterCaptured(From, Event, To, Coalition, Country)
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-13", 4,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Jirah:__AddRequest(1800,warehouse.Jirah,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 2,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 1,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Jirah:__Save(1950,nil,"WarehouseJirah")    
     end
@@ -1050,7 +1246,7 @@ function warehouse.Khalkhalah:OnAfterCaptured(From, Event, To, Coalition, Countr
     MESSAGE:New("We have captured Khalkhalah Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToBlue()
     warehouse.Khalkhalah:__Save(10,nil,"WarehouseKhalkhalah")
     warehouse.Khalkhalah:__AddRequest(900,warehouse.Khalkhalah,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Khalkhalah:__AddRequest(900,warehouse.Khalkhalah,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV M2A1", 2,
@@ -1069,7 +1265,7 @@ function warehouse.Khalkhalah:OnAfterCaptured(From, Event, To, Coalition, Countr
     MESSAGE:New("We have captured Khalkhalah Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToRed()
     warehouse.Khalkhalah:__Save(10,nil,"WarehouseKhalkhalah")
     warehouse.Khalkhalah:__AddRequest(900,warehouse.Khalkhalah,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Khalkhalah:__AddRequest(900,warehouse.Khalkhalah,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV BMP-3", 2,
@@ -1081,7 +1277,7 @@ function warehouse.Khalkhalah:OnAfterCaptured(From, Event, To, Coalition, Countr
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-13", 4,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Khalkhalah:__AddRequest(1800,warehouse.Khalkhalah,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 2,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 1,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Khalkhalah:__Save(1950,nil,"WarehouseKhalkhalah")    
     end
@@ -1091,7 +1287,7 @@ function warehouse.KingHusseinAirCollege:OnAfterCaptured(From, Event, To, Coalit
     MESSAGE:New("We have captured King Hussein Air College Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToBlue()
     warehouse.KingHusseinAirCollege:__Save(10,nil,"WarehouseKingHusseinAirCollege")
     warehouse.KingHusseinAirCollege:__AddRequest(900,warehouse.KingHusseinAirCollege,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.KingHusseinAirCollege:__AddRequest(900,warehouse.KingHusseinAirCollege,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV M2A1", 2,
@@ -1110,7 +1306,7 @@ function warehouse.KingHusseinAirCollege:OnAfterCaptured(From, Event, To, Coalit
     MESSAGE:New("We have captured King Hussein Air College Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToRed()
     warehouse.KingHusseinAirCollege:__Save(10,nil,"WarehouseKingHusseinAirCollege")
     warehouse.KingHusseinAirCollege:__AddRequest(900,warehouse.KingHusseinAirCollege,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.KingHusseinAirCollege:__AddRequest(900,warehouse.KingHusseinAirCollege,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV BMP-3", 2,
@@ -1122,7 +1318,7 @@ function warehouse.KingHusseinAirCollege:OnAfterCaptured(From, Event, To, Coalit
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-13", 4,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.KingHusseinAirCollege:__AddRequest(1800,warehouse.KingHusseinAirCollege,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 2,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 1,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.KingHusseinAirCollege:__Save(1950,nil,"WarehouseKingHusseinAirCollege")    
     end
@@ -1132,7 +1328,7 @@ function warehouse.KiryatShmona:OnAfterCaptured(From, Event, To, Coalition, Coun
     MESSAGE:New("We have captured Kiryat Shmona Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToBlue()
     warehouse.KiryatShmona:__Save(10,nil,"WarehouseKiryatShmona")
     warehouse.KiryatShmona:__AddRequest(900,warehouse.KiryatShmona,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.KiryatShmona:__AddRequest(900,warehouse.KiryatShmona,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV M2A1", 2,
@@ -1151,7 +1347,7 @@ function warehouse.KiryatShmona:OnAfterCaptured(From, Event, To, Coalition, Coun
     MESSAGE:New("We have captured Kiryat Shmona Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToRed()
     warehouse.KiryatShmona:__Save(10,nil,"WarehouseKiryatShmona")
     warehouse.KiryatShmona:__AddRequest(900,warehouse.KiryatShmona,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.KiryatShmona:__AddRequest(900,warehouse.KiryatShmona,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV BMP-3", 2,
@@ -1163,7 +1359,7 @@ function warehouse.KiryatShmona:OnAfterCaptured(From, Event, To, Coalition, Coun
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-13", 4,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.KiryatShmona:__AddRequest(1800,warehouse.KiryatShmona,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 2,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 1,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.KiryatShmona:__Save(1950,nil,"WarehouseKiryatShmona")    
     end
@@ -1173,7 +1369,7 @@ function warehouse.Kuweires:OnAfterCaptured(From, Event, To, Coalition, Country)
     MESSAGE:New("We have captured Kuweires Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToBlue()
     warehouse.Kuweires:__Save(10,nil,"WarehouseKuweires")
     warehouse.Kuweires:__AddRequest(900,warehouse.Kuweires,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Kuweires:__AddRequest(900,warehouse.Kuweires,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV M2A1", 2,
@@ -1192,7 +1388,7 @@ function warehouse.Kuweires:OnAfterCaptured(From, Event, To, Coalition, Country)
     MESSAGE:New("We have captured Kuweires Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToRed()
     warehouse.Kuweires:__Save(10,nil,"WarehouseKuweires")
     warehouse.Kuweires:__AddRequest(900,warehouse.Kuweires,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Kuweires:__AddRequest(900,warehouse.Kuweires,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV BMP-3", 2,
@@ -1204,7 +1400,7 @@ function warehouse.Kuweires:OnAfterCaptured(From, Event, To, Coalition, Country)
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-13", 4,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Kuweires:__AddRequest(1800,warehouse.Kuweires,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 2,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 1,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Kuweires:__Save(1950,nil,"WarehouseKuweires")    
     end
@@ -1214,7 +1410,7 @@ function warehouse.MarjasSultanNorth:OnAfterCaptured(From, Event, To, Coalition,
     MESSAGE:New("We have captured Marj as Sultan North Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToBlue()
     warehouse.MarjasSultanNorth:__Save(10,nil,"WarehouseMarjasSultanNorth")
     warehouse.MarjasSultanNorth:__AddRequest(900,warehouse.MarjasSultanNorth,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.MarjasSultanNorth:__AddRequest(900,warehouse.MarjasSultanNorth,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV M2A1", 2,
@@ -1233,7 +1429,7 @@ function warehouse.MarjasSultanNorth:OnAfterCaptured(From, Event, To, Coalition,
     MESSAGE:New("We have captured Marj as Sultan North Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToRed()
     warehouse.MarjasSultanNorth:__Save(10,nil,"WarehouseMarjasSultanNorth")
     warehouse.MarjasSultanNorth:__AddRequest(900,warehouse.MarjasSultanNorth,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.MarjasSultanNorth:__AddRequest(900,warehouse.MarjasSultanNorth,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV BMP-3", 2,
@@ -1245,7 +1441,7 @@ function warehouse.MarjasSultanNorth:OnAfterCaptured(From, Event, To, Coalition,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-13", 4,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.MarjasSultanNorth:__AddRequest(1800,warehouse.MarjasSultanNorth,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 2,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 1,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.MarjasSultanNorth:__Save(1950,nil,"WarehouseMarjasSultanNorth")    
     end
@@ -1255,7 +1451,7 @@ function warehouse.MarjasSultanSouth:OnAfterCaptured(From, Event, To, Coalition,
     MESSAGE:New("We have captured Marj as Sultan South Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToBlue()
     warehouse.MarjasSultanSouth:__Save(10,nil,"WarehouseMarjasSultanSouth")
     warehouse.MarjasSultanSouth:__AddRequest(900,warehouse.MarjasSultanSouth,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.MarjasSultanSouth:__AddRequest(900,warehouse.MarjasSultanSouth,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV M2A1", 2,
@@ -1274,7 +1470,7 @@ function warehouse.MarjasSultanSouth:OnAfterCaptured(From, Event, To, Coalition,
     MESSAGE:New("We have captured Marj as Sultan South Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToRed()
     warehouse.MarjasSultanSouth:__Save(10,nil,"WarehouseMarjasSultanSouth")
     warehouse.MarjasSultanSouth:__AddRequest(900,warehouse.MarjasSultanSouth,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.MarjasSultanSouth:__AddRequest(900,warehouse.MarjasSultanSouth,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV BMP-3", 2,
@@ -1286,7 +1482,7 @@ function warehouse.MarjasSultanSouth:OnAfterCaptured(From, Event, To, Coalition,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-13", 4,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.MarjasSultanSouth:__AddRequest(1800,warehouse.MarjasSultanSouth,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 2,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 1,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.MarjasSultanSouth:__Save(1950,nil,"WarehouseMarjasSultanSouth")    
     end
@@ -1296,7 +1492,7 @@ function warehouse.MarjRuhayyil:OnAfterCaptured(From, Event, To, Coalition, Coun
     MESSAGE:New("We have captured Marj Ruhayyil Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToBlue()
     warehouse.MarjRuhayyil:__Save(10,nil,"WarehouseMarjRuhayyil")
     warehouse.MarjRuhayyil:__AddRequest(900,warehouse.MarjRuhayyil,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.MarjRuhayyil:__AddRequest(900,warehouse.MarjRuhayyil,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV M2A1", 2,
@@ -1315,7 +1511,7 @@ function warehouse.MarjRuhayyil:OnAfterCaptured(From, Event, To, Coalition, Coun
     MESSAGE:New("We have captured Marj Ruhayyil Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToRed()
     warehouse.MarjRuhayyil:__Save(10,nil,"WarehouseMarjRuhayyil")
     warehouse.MarjRuhayyil:__AddRequest(900,warehouse.MarjRuhayyil,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.MarjRuhayyil:__AddRequest(900,warehouse.MarjRuhayyil,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV BMP-3", 2,
@@ -1327,7 +1523,7 @@ function warehouse.MarjRuhayyil:OnAfterCaptured(From, Event, To, Coalition, Coun
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-13", 4,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.MarjRuhayyil:__AddRequest(1800,warehouse.MarjRuhayyil,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 2,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 1,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.MarjRuhayyil:__Save(1950,nil,"WarehouseMarjRuhayyil")    
     end
@@ -1337,7 +1533,7 @@ function warehouse.Megiddo:OnAfterCaptured(From, Event, To, Coalition, Country)
     MESSAGE:New("We have captured Megiddo Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToBlue()
     warehouse.Megiddo:__Save(10,nil,"WarehouseMegiddo")
     warehouse.Megiddo:__AddRequest(900,warehouse.Megiddo,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Megiddo:__AddRequest(900,warehouse.Megiddo,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV M2A1", 2,
@@ -1356,7 +1552,7 @@ function warehouse.Megiddo:OnAfterCaptured(From, Event, To, Coalition, Country)
     MESSAGE:New("We have captured Megiddo Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToRed()
     warehouse.Megiddo:__Save(10,nil,"WarehouseMegiddo")
     warehouse.Megiddo:__AddRequest(900,warehouse.Megiddo,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Megiddo:__AddRequest(900,warehouse.Megiddo,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV BMP-3", 2,
@@ -1368,7 +1564,7 @@ function warehouse.Megiddo:OnAfterCaptured(From, Event, To, Coalition, Country)
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-13", 4,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Megiddo:__AddRequest(1800,warehouse.Megiddo,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 2,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 1,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Megiddo:__Save(1950,nil,"WarehouseMegiddo")    
     end
@@ -1378,7 +1574,7 @@ function warehouse.Mezzeh:OnAfterCaptured(From, Event, To, Coalition, Country)
     MESSAGE:New("We have captured Mezzeh Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToBlue()
     warehouse.Mezzeh:__Save(10,nil,"WarehouseMezzeh")
     warehouse.Mezzeh:__AddRequest(900,warehouse.Mezzeh,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Mezzeh:__AddRequest(900,warehouse.Mezzeh,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV M2A1", 2,
@@ -1397,7 +1593,7 @@ function warehouse.Mezzeh:OnAfterCaptured(From, Event, To, Coalition, Country)
     MESSAGE:New("We have captured Mezzeh Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToRed()
     warehouse.Mezzeh:__Save(10,nil,"WarehouseMezzeh")
     warehouse.Mezzeh:__AddRequest(900,warehouse.Mezzeh,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Mezzeh:__AddRequest(900,warehouse.Mezzeh,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV BMP-3", 2,
@@ -1409,7 +1605,7 @@ function warehouse.Mezzeh:OnAfterCaptured(From, Event, To, Coalition, Country)
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-13", 4,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Mezzeh:__AddRequest(1800,warehouse.Mezzeh,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 2,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 1,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Mezzeh:__Save(1950,nil,"WarehouseMezzeh")    
     end
@@ -1419,7 +1615,7 @@ function warehouse.Minakh:OnAfterCaptured(From, Event, To, Coalition, Country)
     MESSAGE:New("We have captured Minakh Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToBlue()
     warehouse.Minakh:__Save(10,nil,"WarehouseMinakh")
     warehouse.Minakh:__AddRequest(900,warehouse.Minakh,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Minakh:__AddRequest(900,warehouse.Minakh,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV M2A1", 2,
@@ -1438,7 +1634,7 @@ function warehouse.Minakh:OnAfterCaptured(From, Event, To, Coalition, Country)
     MESSAGE:New("We have captured Minakh Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToRed()
     warehouse.Minakh:__Save(10,nil,"WarehouseMinakh")
     warehouse.Minakh:__AddRequest(900,warehouse.Minakh,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Minakh:__AddRequest(900,warehouse.Minakh,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV BMP-3", 2,
@@ -1450,7 +1646,7 @@ function warehouse.Minakh:OnAfterCaptured(From, Event, To, Coalition, Country)
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-13", 4,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Minakh:__AddRequest(1800,warehouse.Minakh,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 2,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 1,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Minakh:__Save(1950,nil,"WarehouseMinakh")    
     end
@@ -1460,7 +1656,7 @@ function warehouse.Palmyra:OnAfterCaptured(From, Event, To, Coalition, Country)
     MESSAGE:New("We have captured Minakh Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToBlue()
     warehouse.Palmyra:__Save(10,nil,"WarehousePalmyra")
     warehouse.Palmyra:__AddRequest(900,warehouse.Palmyra,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Palmyra:__AddRequest(900,warehouse.Palmyra,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV M2A1", 2,
@@ -1479,7 +1675,7 @@ function warehouse.Palmyra:OnAfterCaptured(From, Event, To, Coalition, Country)
     MESSAGE:New("We have captured Palmyra Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToRed()
     warehouse.Palmyra:__Save(10,nil,"WarehousePalmyra")
     warehouse.Palmyra:__AddRequest(900,warehouse.Palmyra,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Palmyra:__AddRequest(900,warehouse.Palmyra,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV BMP-3", 2,
@@ -1491,7 +1687,7 @@ function warehouse.Palmyra:OnAfterCaptured(From, Event, To, Coalition, Country)
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-13", 4,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Palmyra:__AddRequest(1800,warehouse.Palmyra,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 2,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 1,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Palmyra:__Save(1950,nil,"WarehousePalmyra")    
     end
@@ -1501,7 +1697,7 @@ function warehouse.QabrasSitt:OnAfterCaptured(From, Event, To, Coalition, Countr
     MESSAGE:New("We have captured Qabr as Sitt Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToBlue()
     warehouse.QabrasSitt:__Save(10,nil,"WarehouseQabrasSitt")
     warehouse.QabrasSitt:__AddRequest(900,warehouse.QabrasSitt,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.QabrasSitt:__AddRequest(900,warehouse.QabrasSitt,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV M2A1", 2,
@@ -1520,7 +1716,7 @@ function warehouse.QabrasSitt:OnAfterCaptured(From, Event, To, Coalition, Countr
     MESSAGE:New("We have captured Qabr as Sitt Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToRed()
     warehouse.QabrasSitt:__Save(10,nil,"WarehouseQabrasSitt")
     warehouse.QabrasSitt:__AddRequest(900,warehouse.QabrasSitt,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.QabrasSitt:__AddRequest(900,warehouse.QabrasSitt,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV BMP-3", 2,
@@ -1532,7 +1728,7 @@ function warehouse.QabrasSitt:OnAfterCaptured(From, Event, To, Coalition, Countr
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-13", 4,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.QabrasSitt:__AddRequest(1800,warehouse.QabrasSitt,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 2,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 1,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.QabrasSitt:__Save(1950,nil,"WarehouseQabrasSitt")    
     end
@@ -1542,7 +1738,7 @@ function warehouse.RamatDavid:OnAfterCaptured(From, Event, To, Coalition, Countr
     MESSAGE:New("We have captured Ramat David Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToBlue()
     warehouse.RamatDavid:__Save(10,nil,"WarehouseRamatDavid")
     warehouse.RamatDavid:__AddRequest(900,warehouse.RamatDavid,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.RamatDavid:__AddRequest(900,warehouse.RamatDavid,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV M2A1", 2,
@@ -1561,7 +1757,7 @@ function warehouse.RamatDavid:OnAfterCaptured(From, Event, To, Coalition, Countr
     MESSAGE:New("We have captured Ramat David Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToRed()
     warehouse.RamatDavid:__Save(10,nil,"WarehouseRamatDavid")
     warehouse.RamatDavid:__AddRequest(900,warehouse.RamatDavid,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.RamatDavid:__AddRequest(900,warehouse.RamatDavid,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV BMP-3", 2,
@@ -1573,7 +1769,7 @@ function warehouse.RamatDavid:OnAfterCaptured(From, Event, To, Coalition, Countr
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-13", 4,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.RamatDavid:__AddRequest(1800,warehouse.RamatDavid,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 2,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 1,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.RamatDavid:__Save(1950,nil,"WarehouseRamatDavid")    
     end
@@ -1583,7 +1779,7 @@ function warehouse.Rayak:OnAfterCaptured(From, Event, To, Coalition, Country)
     MESSAGE:New("We have captured Rayak Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToBlue()
     warehouse.Rayak:__Save(10,nil,"WarehouseRayak")
     warehouse.Rayak:__AddRequest(900,warehouse.Rayak,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Rayak:__AddRequest(900,warehouse.Rayak,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV M2A1", 2,
@@ -1602,7 +1798,7 @@ function warehouse.Rayak:OnAfterCaptured(From, Event, To, Coalition, Country)
     MESSAGE:New("We have captured Rayak Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToRed()
     warehouse.Rayak:__Save(10,nil,"WarehouseRayak")
     warehouse.Rayak:__AddRequest(900,warehouse.Rayak,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Rayak:__AddRequest(900,warehouse.Rayak,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV BMP-3", 2,
@@ -1614,7 +1810,7 @@ function warehouse.Rayak:OnAfterCaptured(From, Event, To, Coalition, Country)
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-13", 4,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Rayak:__AddRequest(1800,warehouse.Rayak,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 2,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 1,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Rayak:__Save(1950,nil,"WarehouseRayak")    
     end
@@ -1624,7 +1820,7 @@ function warehouse.ReneMouawad:OnAfterCaptured(From, Event, To, Coalition, Count
     MESSAGE:New("We have captured Rene Mouawad Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToBlue()
     warehouse.ReneMouawad:__Save(10,nil,"WarehouseReneMouawad")
     warehouse.ReneMouawad:__AddRequest(900,warehouse.ReneMouawad,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.ReneMouawad:__AddRequest(900,warehouse.ReneMouawad,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV M2A1", 2,
@@ -1643,7 +1839,7 @@ function warehouse.ReneMouawad:OnAfterCaptured(From, Event, To, Coalition, Count
     MESSAGE:New("We have captured Rene Mouawad Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToRed()
     warehouse.ReneMouawad:__Save(10,nil,"WarehouseReneMouawad")
     warehouse.ReneMouawad:__AddRequest(900,warehouse.ReneMouawad,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.ReneMouawad:__AddRequest(900,warehouse.ReneMouawad,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV BMP-3", 2,
@@ -1655,9 +1851,50 @@ function warehouse.ReneMouawad:OnAfterCaptured(From, Event, To, Coalition, Count
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-13", 4,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.ReneMouawad:__AddRequest(1800,warehouse.ReneMouawad,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 2,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 1,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.ReneMouawad:__Save(1950,nil,"WarehouseReneMouawad")    
+    end
+end
+function warehouse.Tabqa:OnAfterCaptured(From, Event, To, Coalition, Country)
+  if Coalition==coalition.side.BLUE then
+    MESSAGE:New("We have captured Tabqa Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToBlue()
+    warehouse.Tabqa:__Save(10,nil,"WarehouseTabqa")
+    warehouse.Tabqa:__AddRequest(900,warehouse.Tabqa,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 2,
+    WAREHOUSE.TransportType.SELFPROPELLED)
+    warehouse.Tabqa:__AddRequest(900,warehouse.Tabqa,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV M2A1", 2,
+    WAREHOUSE.TransportType.SELFPROPELLED)
+    warehouse.Tabqa:__AddRequest(900,warehouse.Tabqa,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply AAA Vulcan", 4,
+    WAREHOUSE.TransportType.SELFPROPELLED)
+    warehouse.Tabqa:__AddRequest(1800,warehouse.Tabqa,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM Avenger", 4,
+    WAREHOUSE.TransportType.SELFPROPELLED)
+    warehouse.Tabqa:__AddRequest(1800,warehouse.Tabqa,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM Hawk", 2,
+    WAREHOUSE.TransportType.SELFPROPELLED)
+    warehouse.Tabqa:__Save(1950,nil,"WarehouseTabqa")    
+  elseif Coalition==coalition.side.RED then
+    MESSAGE:New("We have captured Tabqa Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToRed()
+    warehouse.Tabqa:__Save(10,nil,"WarehouseTabqa")
+    warehouse.Tabqa:__AddRequest(900,warehouse.Tabqa,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 2,
+    WAREHOUSE.TransportType.SELFPROPELLED)
+    warehouse.Tabqa:__AddRequest(900,warehouse.Tabqa,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV BMP-3", 2,
+    WAREHOUSE.TransportType.SELFPROPELLED)
+    warehouse.Tabqa:__AddRequest(900,warehouse.Tabqa,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply AAA Shilka", 4,
+    WAREHOUSE.TransportType.SELFPROPELLED)
+    warehouse.Tabqa:__AddRequest(1800,warehouse.Tabqa,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-13", 4,
+    WAREHOUSE.TransportType.SELFPROPELLED)
+    warehouse.Tabqa:__AddRequest(1800,warehouse.Tabqa,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 1,
+    WAREHOUSE.TransportType.SELFPROPELLED)
+    warehouse.Tabqa:__Save(1950,nil,"WarehouseTabqa")    
     end
 end
 function warehouse.Taftanaz:OnAfterCaptured(From, Event, To, Coalition, Country)
@@ -1665,7 +1902,7 @@ function warehouse.Taftanaz:OnAfterCaptured(From, Event, To, Coalition, Country)
     MESSAGE:New("We have captured Taftanaz Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToBlue()
     warehouse.Taftanaz:__Save(10,nil,"WarehouseTaftanaz")
     warehouse.Taftanaz:__AddRequest(900,warehouse.Taftanaz,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Taftanaz:__AddRequest(900,warehouse.Taftanaz,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV M2A1", 2,
@@ -1684,7 +1921,7 @@ function warehouse.Taftanaz:OnAfterCaptured(From, Event, To, Coalition, Country)
     MESSAGE:New("We have captured Taftanaz Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToRed()
     warehouse.Taftanaz:__Save(10,nil,"WarehouseTaftanaz")
     warehouse.Taftanaz:__AddRequest(900,warehouse.Taftanaz,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Taftanaz:__AddRequest(900,warehouse.Taftanaz,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV BMP-3", 2,
@@ -1696,7 +1933,7 @@ function warehouse.Taftanaz:OnAfterCaptured(From, Event, To, Coalition, Country)
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-13", 4,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Taftanaz:__AddRequest(1800,warehouse.Taftanaz,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 2,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 1,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.Taftanaz:__Save(1950,nil,"WarehouseTaftanaz")    
     end
@@ -1706,7 +1943,7 @@ function warehouse.WujahAlHajar:OnAfterCaptured(From, Event, To, Coalition, Coun
     MESSAGE:New("We have captured Wujah Al Hajar Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToBlue()
     warehouse.WujahAlHajar:__Save(10,nil,"WarehouseWujahAlHajar")
     warehouse.WujahAlHajar:__AddRequest(900,warehouse.WujahAlHajar,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT Merkava", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.WujahAlHajar:__AddRequest(900,warehouse.WujahAlHajar,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV M2A1", 2,
@@ -1725,7 +1962,7 @@ function warehouse.WujahAlHajar:OnAfterCaptured(From, Event, To, Coalition, Coun
     MESSAGE:New("We have captured Wujah Al Hajar Warehouse, Quick Reaction Force enroute ETA 15 min, follow forces in 30 minutes.",25,"Allies:"):ToRed()
     warehouse.WujahAlHajar:__Save(10,nil,"WarehouseWujahAlHajar")
     warehouse.WujahAlHajar:__AddRequest(900,warehouse.WujahAlHajar,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 3,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply MBT T72B", 2,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.WujahAlHajar:__AddRequest(900,warehouse.WujahAlHajar,
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply IFV BMP-3", 2,
@@ -1737,7 +1974,7 @@ function warehouse.WujahAlHajar:OnAfterCaptured(From, Event, To, Coalition, Coun
     WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-13", 4,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.WujahAlHajar:__AddRequest(1800,warehouse.WujahAlHajar,
-    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 2,
+    WAREHOUSE.Descriptor.GROUPNAME, "Resupply SAM SA-11", 1,
     WAREHOUSE.TransportType.SELFPROPELLED)
     warehouse.WujahAlHajar:__Save(1950,nil,"WarehouseWujahAlHajar")    
     end
@@ -1749,6 +1986,7 @@ end
 --warehouse.Minakh:__Save(delay,path,filename)
 
 warehouse.AbualDuhur:__Save(3600,nil,"WarehouseAbualDuhur")
+warehouse.AdanaSakirpasa:__Save(3600,nil,"WarehouseAdanaSakirpasa")
 warehouse.AlDumayr:__Save(3610,nil,"WarehouseAlDumayr")
 warehouse.Aleppo:__Save(3620,nil,"WarehouseAleppo")
 warehouse.AlQusayr:__Save(3630,nil,"WarehouseAlQusayr")
@@ -1757,6 +1995,8 @@ warehouse.AnNasiriyah:__Save(3650,nil,"WarehouseAnNasiriyah")
 warehouse.BasselAlAssad:__Save(3660,nil,"WarehouseBasselAlAssad")
 warehouse.BeirutRaficHariri:__Save(3670,nil,"WarehouseBeirutRaficHariri")
 warehouse.Damascus:__Save(3675,nil,"WarehouseDamascus")
+warehouse.EynShemer:__Save(3680,nil,"WarehouseEynShemer")
+warehouse.Haifa:__Save(3680,nil,"WarehouseHaifa")
 warehouse.Hama:__Save(3680,nil,"WarehouseHama")
 warehouse.Hatay:__Save(3690,nil,"WarehouseHatay")
 warehouse.Incirlik:__Save(3700,nil,"WarehouseIncirlik")
@@ -1776,5 +2016,6 @@ warehouse.QabrasSitt:__Save(3810,nil,"WarehouseQabrasSitt")
 warehouse.RamatDavid:__Save(3820,nil,"WarehouseRamatDavid")
 warehouse.Rayak:__Save(3830,nil,"WarehouseRayak")
 warehouse.ReneMouawad:__Save(3840,nil,"WarehouseReneMouawad")
+warehouse.Tabqa:__Save(3850,nil,"WarehouseTabqa")
 warehouse.Taftanaz:__Save(3850,nil,"WarehouseTaftanaz")
 warehouse.WujahAlHajar:__Save(3860,nil,"WarehouseWujahAlHajar")

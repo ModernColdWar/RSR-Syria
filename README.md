@@ -1,4 +1,7 @@
-# RSR-Syria
+# Red Storm Rising
+
+A persistent PvP mission for DCS world.
+
 ## Installation
 
  1. From your install folder (not saved games), open `Scripts/MissionScripting.lua`

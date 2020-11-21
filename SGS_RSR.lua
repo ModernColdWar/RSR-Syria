@@ -32,7 +32,7 @@
  --route, only for the original route it recieved from the Mission Editor. Therefore a DCS limitation.
  -----------------------------------
  --Configurable for user:
- SaveScheduleUnits=300 --how many seconds between each check of all the units.
+ SaveScheduleUnits=60 --how many seconds between each check of all the units.
  -----------------------------------
  --Do not edit below here
  -----------------------------------
@@ -105,9 +105,11 @@ env.info("Loaded Simple Group Saving, by Pikey, 2018, version " .. version)
 
 if file_exists("SaveUnits_RSR.lua") then --Script has been run before, so we need to load the save
   env.info("Existing database, loading from File.")
---  AllGroups = SET_GROUP:New():FilterCategories("ground"):FilterActive(true):FilterStart()
+  --AllGroups = SET_GROUP:New():FilterCategories("ground"):FilterActive(true):FilterStart()
   --AllGroups = SET_GROUP:New():FilterPrefixes( "Re-enforcements " ):FilterActive(true):FilterStart()
-  AllGroups = SET_GROUP:New():FilterPrefixes( {"Red Start","Blue Start", "CTLD_", "Resupply "} ):FilterActive(true):FilterStart()
+  --AllGroups = SET_GROUP:New():FilterPrefixes( {"Re-enforcements ", "CTLD"} ):FilterActive(true):FilterStart()
+  AllGroups = SET_GROUP:New():FilterPrefixes( {"Red Start","Blue Start", "Resupply "} ):FilterActive(true):FilterStart()
+  
   
     AllGroups:ForEachGroup(function (grp)
       grp:Destroy()
@@ -171,12 +173,13 @@ else --Save File does not exist we start a fresh table, no spawns needed
   SaveUnits_RSR={}
 --  AllGroups = SET_GROUP:New():FilterCategories("ground"):FilterActive(true):FilterStart()
 --  AllGroups = SET_GROUP:New():FilterPrefixes( {"SAM", "MBT", "APC", "IFV"} ):FilterActive(true):FilterStart()
-  AllGroups = SET_GROUP:New()
-    :FilterPrefixes( {"Red Start", "Blue Start", "CTLD_", "Resupply "} )
+--  AllGroups = SET_GROUP:New()
+--    :FilterPrefixes( {"Re-enforcements ", "CTLD"} )
  --   :FilterPrefixes( {"Re-enforcements "} )
 --    :FilterPrefixes( {"Re-enforcements ", "Blue Campaign Start ", "Red Campaign Start "} )
 --    :FilterActive(true)
-   :FilterStart()
+--    :FilterStart()
+  AllGroups = SET_GROUP:New():FilterPrefixes( {"Red Start","Blue Start", "Resupply "} ):FilterActive(true):FilterStart()
 
 
 --BlueTransportGroups = SET_GROUP:New()

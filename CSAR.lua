@@ -6,577 +6,24 @@
 --      0 - No Limit - NO Aircraft disabling or pilot lives
 --      1 - Disable Aircraft when its down - Timeout to reenable aircraft
 --      2 - Disable Aircraft for Pilot when he's shot down -- timeout to reenable pilot for aircraft
---      3 - Pilot Life Limit - No Aircraft Disabling 
+--      3 - Pilot Life Limit - No Aircraft Disabling
+-- luacheck: no max line length
+local ctldUtils = require("ctldUtils")
+local missionUtils = require("missionUtils")
+local spatialUtils = require("spatialUtils")
+local utils = require("utils")
+local rsrConfig = require("RSR_config")
 
 csar = {}
 
 -- SETTINGS FOR MISSION DESIGNER vvvvvvvvvvvvvvvvvv
-csar.csarUnits = {
-	"Abu al-Duhur Blue Cargo-1",
-	"Abu al-Duhur Blue Cargo-2-1",
-	"Abu al-Duhur Blue Cargo-3-1",
-	"Abu al-Duhur Blue Cargo-4-1",
-	"Abu al-Duhur Blue Cargo-5-1",
-	"Abu al-Duhur Blue Cargo-6-1",
-	"Abu al-Duhur Blue Cargo-7-1",
-	"Abu al-Duhur Blue Cargo-8-1",
-	"Abu al-Duhur Red Cargo-1",
-	"Abu al-Duhur Red Cargo-2-1",
-	"Abu al-Duhur Red Cargo-3-1",
-	"Abu al-Duhur Red Cargo-4-1",
-	"Abu al-Duhur Red Cargo-5-1",
-	"Abu al-Duhur Red Cargo-6-1",
-	"Abu al-Duhur Red Cargo-7-1",
-	"Abu al-Duhur Red Cargo-8-1",	
-	"Al Qusayr Blue Cargo-1",
-	"Al Qusayr Blue Cargo-2-1",
-	"Al Qusayr Blue Cargo-3-1",
-	"Al Qusayr Blue Cargo-4-1",
-	"Al Qusayr Blue Cargo-5-1",
-	"Al Qusayr Blue Cargo-6-1",
-	"Al Qusayr Blue Cargo-7-1",
-	"Al Qusayr Blue Cargo-8-1",
-	"Al Qusayr Red Cargo-1",
-	"Al Qusayr Red Cargo-2-1",
-	"Al Qusayr Red Cargo-3-1",
-	"Al Qusayr Red Cargo-4-1",
-	"Al Qusayr Red Cargo-5-1",
-	"Al Qusayr Red Cargo-6-1",
-	"Al Qusayr Red Cargo-7-1",
-	"Al Qusayr Red Cargo-8-1",
-	"Al-Dumayr Blue Cargo-1",
-	"Al-Dumayr Blue Cargo-2-1",
-	"Al-Dumayr Blue Cargo-3-1",
-	"Al-Dumayr Blue Cargo-4-1",
-	"Al-Dumayr Blue Cargo-5-1",
-	"Al-Dumayr Blue Cargo-6-1",
-	"Al-Dumayr Blue Cargo-7-1",
-	"Al-Dumayr Blue Cargo-8-1",
-	"Al-Dumayr Red Cargo-1",
-	"Al-Dumayr Red Cargo-2-1",
-	"Al-Dumayr Red Cargo-3-1",
-	"Al-Dumayr Red Cargo-4-1",
-	"Al-Dumayr Red Cargo-5-1",
-	"Al-Dumayr Red Cargo-6-1",
-	"Al-Dumayr Red Cargo-7-1",
-	"Al-Dumayr Red Cargo-8-1",
-	"Aleppo Blue Cargo-1",
-	"Aleppo Blue Cargo-2-1",
-	"Aleppo Blue Cargo-3-1",
-	"Aleppo Blue Cargo-4-1",
-	"Aleppo Blue Cargo-5-1",
-	"Aleppo Blue Cargo-6-1",
-	"Aleppo Blue Cargo-7-1",
-	"Aleppo Blue Cargo-8-1",
-	"Aleppo Red Cargo-1",
-	"Aleppo Red Cargo-2-1",
-	"Aleppo Red Cargo-3-1",
-	"Aleppo Red Cargo-4-1",
-	"Aleppo Red Cargo-5-1",
-	"Aleppo Red Cargo-6-1",
-	"Aleppo Red Cargo-7-1",
-	"Aleppo Red Cargo-8-1",
-	"An Nasiriyah Blue Cargo-1",
-	"An Nasiriyah Blue Cargo-2-1",
-	"An Nasiriyah Blue Cargo-3-1",
-	"An Nasiriyah Blue Cargo-4-1",
-	"An Nasiriyah Blue Cargo-5-1",
-	"An Nasiriyah Blue Cargo-6-1",
-	"An Nasiriyah Blue Cargo-7-1",
-	"An Nasiriyah Blue Cargo-8-1",
-	"An Nasiriyah Red Cargo-1",
-	"An Nasiriyah Red Cargo-2-1",
-	"An Nasiriyah Red Cargo-3-1",
-	"An Nasiriyah Red Cargo-4-1",
-	"An Nasiriyah Red Cargo-5-1",
-	"An Nasiriyah Red Cargo-6-1",
-	"An Nasiriyah Red Cargo-7-1",
-	"An Nasiriyah Red Cargo-8-1",
-	"Bassel Al-Assad Blue Cargo-1",
-	"Bassel Al-Assad Blue Cargo-2-1",
-	"Bassel Al-Assad Blue Cargo-3-1",
-	"Bassel Al-Assad Blue Cargo-4-1",
-	"Bassel Al-Assad Blue Cargo-5-1",
-	"Bassel Al-Assad Blue Cargo-6-1",
-	"Bassel Al-Assad Blue Cargo-7-1",
-	"Bassel Al-Assad Blue Cargo-8-1",
-	"Bassel Al-Assad Red Cargo-1",
-	"Bassel Al-Assad Red Cargo-2-1",
-	"Bassel Al-Assad Red Cargo-3-1",
-	"Bassel Al-Assad Red Cargo-4-1",
-	"Bassel Al-Assad Red Cargo-5-1",
-	"Bassel Al-Assad Red Cargo-6-1",
-	"Bassel Al-Assad Red Cargo-7-1",
-	"Bassel Al-Assad Red Cargo-8-1",
-	"Beirut-Rafic Hariri Blue Cargo-1",
-	"Beirut-Rafic Hariri Blue Cargo-2-1",
-	"Beirut-Rafic Hariri Blue Cargo-3-1",
-	"Beirut-Rafic Hariri Blue Cargo-4-1",
-	"Beirut-Rafic Hariri Blue Cargo-5-1",
-	"Beirut-Rafic Hariri Blue Cargo-6-1",
-	"Beirut-Rafic Hariri Blue Cargo-7-1",
-	"Beirut-Rafic Hariri Blue Cargo-8-1",
-	"Beirut-Rafic Hariri Red Cargo-1",
-	"Beirut-Rafic Hariri Red Cargo-2-1",
-	"Beirut-Rafic Hariri Red Cargo-3-1",
-	"Beirut-Rafic Hariri Red Cargo-4-1",
-	"Beirut-Rafic Hariri Red Cargo-5-1",
-	"Beirut-Rafic Hariri Red Cargo-6-1",
-	"Beirut-Rafic Hariri Red Cargo-7-1",
-	"Beirut-Rafic Hariri Red Cargo-8-1",
-	"Damascus Blue Cargo-1",
-	"Damascus Blue Cargo-2-1",
-	"Damascus Blue Cargo-3-1",
-	"Damascus Blue Cargo-4-1",
-	"Damascus Blue Cargo-5-1",
-	"Damascus Blue Cargo-6-1",
-	"Damascus Blue Cargo-7-1",
-	"Damascus Blue Cargo-8-1",
-	"Damascus Red Cargo-1",
-	"Damascus Red Cargo-2-1",
-	"Damascus Red Cargo-3-1",
-	"Damascus Red Cargo-4-1",
-	"Damascus Red Cargo-5-1",
-	"Damascus Red Cargo-6-1",
-	"Damascus Red Cargo-7-1",
-	"Damascus Red Cargo-8-1",
-	"Hama Blue Cargo-1",
-	"Hama Blue Cargo-2-1",
-	"Hama Blue Cargo-3-1",
-	"Hama Blue Cargo-4-1",
-	"Hama Blue Cargo-5-1",
-	"Hama Blue Cargo-6-1",
-	"Hama Blue Cargo-7-1",
-	"Hama Blue Cargo-8-1",
-	"Hama Red Cargo-1",
-	"Hama Red Cargo-2-1",
-	"Hama Red Cargo-3-1",
-	"Hama Red Cargo-4-1",
-	"Hama Red Cargo-5-1",
-	"Hama Red Cargo-6-1",
-	"Hama Red Cargo-7-1",
-	"Hama Red Cargo-8-1",
-	"Hatay Blue Cargo-1",
-	"Hatay Blue Cargo-2-1",
-	"Hatay Blue Cargo-3-1",
-	"Hatay Blue Cargo-4-1",
-	"Hatay Blue Cargo-5-1",
-	"Hatay Blue Cargo-6-1",
-	"Hatay Blue Cargo-7-1",
-	"Hatay Blue Cargo-8-1",
-	"Hatay Red Cargo-1",
-	"Hatay Red Cargo-2-1",
-	"Hatay Red Cargo-3-1",
-	"Hatay Red Cargo-4-1",
-	"Hatay Red Cargo-5-1",
-	"Hatay Red Cargo-6-1",
-	"Hatay Red Cargo-7-1",
-	"Hatay Red Cargo-8-1",
-	"Incirlik Blue Cargo-1",
-	"Incirlik Blue Cargo-2-1",
-	"Incirlik Blue Cargo-3-1",
-	"Incirlik Blue Cargo-4-1",
-	"Incirlik Blue Cargo-5-1",
-	"Incirlik Blue Cargo-6-1",
-	"Incirlik Blue Cargo-7-1",
-	"Incirlik Blue Cargo-8-1",
-	"Incirlik Red Cargo-1",
-	"Incirlik Red Cargo-2-1",
-	"Incirlik Red Cargo-3-1",
-	"Incirlik Red Cargo-4-1",
-	"Incirlik Red Cargo-5-1",
-	"Incirlik Red Cargo-6-1",
-	"Incirlik Red Cargo-7-1",
-	"Incirlik Red Cargo-8-1",
-	"Jirah Blue Cargo-1",
-	"Jirah Blue Cargo-2-1",
-	"Jirah Blue Cargo-3-1",
-	"Jirah Blue Cargo-4-1",
-	"Jirah Blue Cargo-5-1",
-	"Jirah Blue Cargo-6-1",
-	"Jirah Blue Cargo-7-1",
-	"Jirah Blue Cargo-8-1",
-	"Jirah Red Cargo-1",
-	"Jirah Red Cargo-2-1",
-	"Jirah Red Cargo-3-1",
-	"Jirah Red Cargo-4-1",
-	"Jirah Red Cargo-5-1",
-	"Jirah Red Cargo-6-1",
-	"Jirah Red Cargo-7-1",
-	"Jirah Red Cargo-8-1",
-	"Khalkalah Blue Cargo-1",
-	"Khalkalah Blue Cargo-2-1",
-	"Khalkalah Blue Cargo-3-1",
-	"Khalkalah Blue Cargo-4-1",
-	"Khalkalah Blue Cargo-5-1",
-	"Khalkalah Blue Cargo-6-1",
-	"Khalkalah Blue Cargo-7-1",
-	"Khalkalah Blue Cargo-8-1",
-	"Khalkhalah Red Cargo-1",
-	"Khalkhalah Red Cargo-2-1",
-	"Khalkhalah Red Cargo-3-1",
-	"Khalkhalah Red Cargo-4-1",
-	"Khalkhalah Red Cargo-5-1",
-	"Khalkhalah Red Cargo-6-1",
-	"Khalkhalah Red Cargo-7-1",
-	"Khalkhalah Red Cargo-8-1",
-	"King Hussein Air College Blue Cargo-1",
-	"King Hussein Air College Blue Cargo-2-1",
-	"King Hussein Air College Blue Cargo-3-1",
-	"King Hussein Air College Blue Cargo-4-1",
-	"King Hussein Air College Blue Cargo-5-1",
-	"King Hussein Air College Blue Cargo-6-1",
-	"King Hussein Air College Blue Cargo-7-1",
-	"King Hussein Air College Blue Cargo-8-1",
-	"King Hussein Air College Red Cargo-1",
-	"King Hussein Air College Red Cargo-2-1",
-	"King Hussein Air College Red Cargo-3-1",
-	"King Hussein Air College Red Cargo-4-1",
-	"King Hussein Air College Red Cargo-5-1",
-	"King Hussein Air College Red Cargo-6-1",
-	"King Hussein Air College Red Cargo-7-1",
-	"King Hussein Air College Red Cargo-8-1",
-	"Kiryat Blue Cargo-1",
-	"Kiryat Blue Cargo-2-1",
-	"Kiryat Blue Cargo-3-1",
-	"Kiryat Blue Cargo-4-1",
-	"Kiryat Blue Cargo-5-1",
-	"Kiryat Blue Cargo-6-1",
-	"Kiryat Blue Cargo-7-1",
-	"Kiryat Blue Cargo-8-1",
-	"Kiryat Red Cargo-1",
-	"Kiryat Red Cargo-2-1",
-	"Kiryat Red Cargo-3-1",
-	"Kiryat Red Cargo-4-1",
-	"Kiryat Red Cargo-5-1",
-	"Kiryat Red Cargo-6-1",
-	"Kiryat Red Cargo-7-1",
-	"Kiryat Red Cargo-8-1",
-	"Kuweires Blue Cargo-1",
-	"Kuweires Blue Cargo-2-1",
-	"Kuweires Blue Cargo-3-1",
-	"Kuweires Blue Cargo-4-1",
-	"Kuweires Blue Cargo-5-1",
-	"Kuweires Blue Cargo-6-1",
-	"Kuweires Blue Cargo-7-1",
-	"Kuweires Blue Cargo-8-1",
-	"Kuweires Red Cargo-1",
-	"Kuweires Red Cargo-2-1",
-	"Kuweires Red Cargo-3-1",
-	"Kuweires Red Cargo-4-1",
-	"Kuweires Red Cargo-5-1",
-	"Kuweires Red Cargo-6-1",
-	"Kuweires Red Cargo-7-1",
-	"Kuweires Red Cargo-8-1",
-	"Marj as Sultan North Blue Cargo-1",
-	"Marj as Sultan North Blue Cargo-2-1",
-	"Marj as Sultan North Blue Cargo-3-1",
-	"Marj as Sultan North Blue Cargo-4-1",
-	"Marj as Sultan North Blue Cargo-5-1",
-	"Marj as Sultan North Blue Cargo-6-1",
-	"Marj as Sultan North Blue Cargo-7-1",
-	"Marj as Sultan North Blue Cargo-8-1",
-	"Marj as Sultan North Red Cargo-1",
-	"Marj as Sultan North Red Cargo-2-1",
-	"Marj as Sultan North Red Cargo-3-1",
-	"Marj as Sultan North Red Cargo-4-1",
-	"Marj as Sultan North Red Cargo-5-1",
-	"Marj as Sultan North Red Cargo-6-1",
-	"Marj as Sultan North Red Cargo-7-1",
-	"Marj as Sultan North Red Cargo-8-1",
-	"Marj as Sultan South Blue Cargo-1",
-	"Marj as Sultan South Blue Cargo-2-1",
-	"Marj as Sultan South Blue Cargo-3-1",
-	"Marj as Sultan South Blue Cargo-4-1",
-	"Marj as Sultan South Blue Cargo-5-1",
-	"Marj as Sultan South Blue Cargo-6-1",
-	"Marj as Sultan South Blue Cargo-7-1",
-	"Marj as Sultan South Blue Cargo-8-1",
-	"Marj as Sultan South Red Cargo-1",
-	"Marj as Sultan South Red Cargo-2-1",
-	"Marj as Sultan South Red Cargo-3-1",
-	"Marj as Sultan South Red Cargo-4-1",
-	"Marj as Sultan South Red Cargo-5-1",
-	"Marj as Sultan South Red Cargo-6-1",
-	"Marj as Sultan South Red Cargo-7-1",
-	"Marj as Sultan South Red Cargo-8-1",
-	"Marj Ruhayyil Blue Cargo-1",
-	"Marj Ruhayyil Blue Cargo-2-1",
-	"Marj Ruhayyil Blue Cargo-3-1",
-	"Marj Ruhayyil Blue Cargo-4-1",
-	"Marj Ruhayyil Blue Cargo-5-1",
-	"Marj Ruhayyil Blue Cargo-6-1",
-	"Marj Ruhayyil Blue Cargo-7-1",
-	"Marj Ruhayyil Blue Cargo-8-1",
-	"Marj Ruhayyil Red Cargo-1",
-	"Marj Ruhayyil Red Cargo-2-1",
-	"Marj Ruhayyil Red Cargo-3-1",
-	"Marj Ruhayyil Red Cargo-4-1",
-	"Marj Ruhayyil Red Cargo-5-1",
-	"Marj Ruhayyil Red Cargo-6-1",
-	"Marj Ruhayyil Red Cargo-7-1",
-	"Marj Ruhayyil Red Cargo-8-1",
-	"Megiddo Blue Cargo-1",
-	"Megiddo Blue Cargo-2-1",
-	"Megiddo Blue Cargo-3-1",
-	"Megiddo Blue Cargo-4-1",
-	"Megiddo Blue Cargo-5-1",
-	"Megiddo Blue Cargo-6-1",
-	"Megiddo Blue Cargo-7-1",
-	"Megiddo Blue Cargo-8-1",
-	"Megiddo Red Cargo-1",
-	"Megiddo Red Cargo-2-1",
-	"Megiddo Red Cargo-3-1",
-	"Megiddo Red Cargo-4-1",
-	"Megiddo Red Cargo-5-1",
-	"Megiddo Red Cargo-6-1",
-	"Megiddo Red Cargo-7-1",
-	"Megiddo Red Cargo-8-1",
-	"Mezzeh Blue Cargo-1",
-	"Mezzeh Blue Cargo-2-1",
-	"Mezzeh Blue Cargo-3-1",
-	"Mezzeh Blue Cargo-4-1",
-	"Mezzeh Blue Cargo-5-1",
-	"Mezzeh Blue Cargo-6-1",
-	"Mezzeh Blue Cargo-7-1",
-	"Mezzeh Blue Cargo-8-1",
-	"Mezzeh Red Cargo-1",
-	"Mezzeh Red Cargo-2-1",
-	"Mezzeh Red Cargo-3-1",
-	"Mezzeh Red Cargo-4-1",
-	"Mezzeh Red Cargo-5-1",
-	"Mezzeh Red Cargo-6-1",
-	"Mezzeh Red Cargo-7-1",
-	"Mezzeh Red Cargo-8-1",
-	"Minakh Blue Cargo-1",
-	"Minakh Blue Cargo-2-1",
-	"Minakh Blue Cargo-3-1",
-	"Minakh Blue Cargo-4-1",
-	"Minakh Blue Cargo-5-1",
-	"Minakh Blue Cargo-6-1",
-	"Minakh Blue Cargo-7-1",
-	"Minakh Blue Cargo-8-1",
-	"Minakh Red Cargo-1",
-	"Minakh Red Cargo-2-1",
-	"Minakh Red Cargo-3-1",
-	"Minakh Red Cargo-4-1",
-	"Minakh Red Cargo-5-1",
-	"Minakh Red Cargo-6-1",
-	"Minakh Red Cargo-7-1",
-	"Minakh Red Cargo-8-1",
-	"Qabr as Sitt Blue Cargo-1",
-	"Qabr as Sitt Blue Cargo-2-1",
-	"Qabr as Sitt Blue Cargo-3-1",
-	"Qabr as Sitt Blue Cargo-4-1",
-	"Qabr as Sitt Blue Cargo-5-1",
-	"Qabr as Sitt Blue Cargo-6-1",
-	"Qabr as Sitt Blue Cargo-7-1",
-	"Qabr as Sitt Blue Cargo-8-1",
-	"Qabr as Sitt Red Cargo-1",
-	"Qabr as Sitt Red Cargo-2-1",
-	"Qabr as Sitt Red Cargo-3-1",
-	"Qabr as Sitt Red Cargo-4-1",
-	"Qabr as Sitt Red Cargo-5-1",
-	"Qabr as Sitt Red Cargo-6-1",
-	"Qabr as Sitt Red Cargo-7-1",
-	"Qabr as Sitt Red Cargo-8-1",
-	"Ramat David Blue Cargo-1",
-	"Ramat David Blue Cargo-2-1",
-	"Ramat David Blue Cargo-3-1",
-	"Ramat David Blue Cargo-4-1",
-	"Ramat David Blue Cargo-5-1",
-	"Ramat David Blue Cargo-6-1",
-	"Ramat David Blue Cargo-7-1",
-	"Ramat David Blue Cargo-8-1",
-	"Ramat David Red Cargo-1",
-	"Ramat David Red Cargo-2-1",
-	"Ramat David Red Cargo-3-1",
-	"Ramat David Red Cargo-4-1",
-	"Ramat David Red Cargo-5-1",
-	"Ramat David Red Cargo-6-1",
-	"Ramat David Red Cargo-7-1",
-	"Ramat David Red Cargo-8-1",
-	"Rayak Blue Cargo-1",
-	"Rayak Blue Cargo-2-1",
-	"Rayak Blue Cargo-3-1",
-	"Rayak Blue Cargo-4-1",
-	"Rayak Blue Cargo-5-1",
-	"Rayak Blue Cargo-6-1",
-	"Rayak Blue Cargo-7-1",
-	"Rayak Blue Cargo-8-1",
-	"Rayak Red Cargo-1",
-	"Rayak Red Cargo-2-1",
-	"Rayak Red Cargo-3-1",
-	"Rayak Red Cargo-4-1",
-	"Rayak Red Cargo-5-1",
-	"Rayak Red Cargo-6-1",
-	"Rayak Red Cargo-7-1",
-	"Rayak Red Cargo-8-1",
-	"Rene Mouawad Blue Cargo-1",
-	"Rene Mouawad Blue Cargo-2-1",
-	"Rene Mouawad Blue Cargo-3-1",
-	"Rene Mouawad Blue Cargo-4-1",
-	"Rene Mouawad Blue Cargo-5-1",
-	"Rene Mouawad Blue Cargo-6-1",
-	"Rene Mouawad Blue Cargo-7-1",
-	"Rene Mouawad Blue Cargo-8-1",
-	"Rene Mouawad Red Cargo-1",
-	"Rene Mouawad Red Cargo-2-1",
-	"Rene Mouawad Red Cargo-3-1",
-	"Rene Mouawad Red Cargo-4-1",
-	"Rene Mouawad Red Cargo-5-1",
-	"Rene Mouawad Red Cargo-6-1",
-	"Rene Mouawad Red Cargo-7-1",
-	"Rene Mouawad Red Cargo-8-1",
-	"Taftanaz Blue Cargo-1",
-	"Taftanaz Blue Cargo-2-1",
-	"Taftanaz Blue Cargo-3-1",
-	"Taftanaz Blue Cargo-4-1",
-	"Taftanaz Blue Cargo-5-1",
-	"Taftanaz Blue Cargo-6-1",
-	"Taftanaz Blue Cargo-7-1",
-	"Taftanaz Blue Cargo-8-1",
-	"Taftanaz Red Cargo-1",
-	"Taftanaz Red Cargo-2-1",
-	"Taftanaz Red Cargo-3-1",
-	"Taftanaz Red Cargo-4-1",
-	"Taftanaz Red Cargo-5-1",
-	"Taftanaz Red Cargo-6-1",
-	"Taftanaz Red Cargo-7-1",
-	"Taftanaz Red Cargo-8-1",
-	"Wujah Al Hajar Blue Cargo-1",
-	"Wujah Al Hajar Blue Cargo-2-1",
-	"Wujah Al Hajar Blue Cargo-3-1",
-	"Wujah Al Hajar Blue Cargo-4-1",
-	"Wujah Al Hajar Blue Cargo-5-1",
-	"Wujah Al Hajar Blue Cargo-6-1",
-	"Wujah Al Hajar Blue Cargo-7-1",
-	"Wujah Al Hajar Blue Cargo-8-1",
-	"Wujah Al Hajar Red Cargo-1",
-	"Wujah Al Hajar Red Cargo-2-1",
-	"Wujah Al Hajar Red Cargo-3-1",
-	"Wujah Al Hajar Red Cargo-4-1",
-	"Wujah Al Hajar Red Cargo-5-1",
-	"Wujah Al Hajar Red Cargo-6-1",
-	"Wujah Al Hajar Red Cargo-7-1",
-	"Wujah Al Hajar Red Cargo-8-1",
+csar.csarUnits = ctldUtils.getTransportPilotNames(env.mission) -- List of all the MEDEVAC _UNIT NAMES_ (the line where it says "Pilot" in the ME)!
 
-    "helicargo1",
-    "helicargo2",
-    "helicargo3",
-    "helicargo4",
-    "helicargo5",
-    "helicargo6",
-    "helicargo7",
-    "helicargo8",
-    "helicargo9",
-    "helicargo10",
+-- The units that serve as MASH for the blue side
+csar.bluemash = {}
 
-    "helicargo11",
-    "helicargo12",
-    "helicargo13",
-    "helicargo14",
-    "helicargo15",
-    "helicargo16",
-    "helicargo17",
-    "helicargo18",
-    "helicargo19",
-    "helicargo20",
-
-    "helicargo21",
-    "helicargo22",
-    "helicargo23",
-    "helicargo24",
-    "helicargo25",
-
-    "MEDEVAC #1",
-    "MEDEVAC #2",
-    "MEDEVAC #3",
-    "MEDEVAC #4",
-    "MEDEVAC #5",
-    "MEDEVAC #6",
-    "MEDEVAC #7",
-    "MEDEVAC #8",
-    "MEDEVAC #9",
-    "MEDEVAC #10",
-    "MEDEVAC #11",
-    "MEDEVAC #12",
-    "MEDEVAC #13",
-    "MEDEVAC #14",
-    "MEDEVAC #15",
-    "MEDEVAC #16",
-
-    "MEDEVAC RED #1",
-    "MEDEVAC RED #2",
-    "MEDEVAC RED #3",
-    "MEDEVAC RED #4",
-    "MEDEVAC RED #5",
-    "MEDEVAC RED #6",
-    "MEDEVAC RED #7",
-    "MEDEVAC RED #8",
-    "MEDEVAC RED #9",
-    "MEDEVAC RED #10",
-    "MEDEVAC RED #11",
-    "MEDEVAC RED #12",
-    "MEDEVAC RED #13",
-    "MEDEVAC RED #14",
-    "MEDEVAC RED #15",
-    "MEDEVAC RED #16",
-    "MEDEVAC RED #17",
-    "MEDEVAC RED #18",
-    "MEDEVAC RED #19",
-    "MEDEVAC RED #20",
-    "MEDEVAC RED #21",
-
-    "MEDEVAC BLUE #1",
-    "MEDEVAC BLUE #2",
-    "MEDEVAC BLUE #3",
-    "MEDEVAC BLUE #4",
-    "MEDEVAC BLUE #5",
-    "MEDEVAC BLUE #6",
-    "MEDEVAC BLUE #7",
-    "MEDEVAC BLUE #8",
-    "MEDEVAC BLUE #9",
-    "MEDEVAC BLUE #10",
-    "MEDEVAC BLUE #11",
-    "MEDEVAC BLUE #12",
-    "MEDEVAC BLUE #13",
-    "MEDEVAC BLUE #14",
-    "MEDEVAC BLUE #15",
-    "MEDEVAC BLUE #16",
-    "MEDEVAC BLUE #17",
-    "MEDEVAC BLUE #18",
-    "MEDEVAC BLUE #19",
-    "MEDEVAC BLUE #20",
-    "MEDEVAC BLUE #21",
-} -- List of all the MEDEVAC _UNIT NAMES_ (the line where it says "Pilot" in the ME)!
-
-csar.bluemash = {
-    "BlueMASH #1",
-    "BlueMASH #2",
-    "BlueMASH #3",
-    "BlueMASH #4",
-    "BlueMASH #5",
-    "BlueMASH #6",
-    "BlueMASH #7",
-    "BlueMASH #8",
-    "BlueMASH #9",
-    "BlueMASH #10"
-} -- The unit that serves as MASH for the blue side
-
-csar.redmash = {
-    "RedMASH #1",
-    "RedMASH #2",
-    "RedMASH #3",
-    "RedMASH #4",
-    "RedMASH #5",
-    "RedMASH #6",
-    "RedMASH #7",
-    "RedMASH #8",
-    "RedMASH #9",
-    "RedMASH #10"
-} -- The unit that serves as MASH for the red side
-
+-- The units that serve as MASH for the red side
+csar.redmash = {}
 
 csar.csarMode = 3
 
@@ -585,8 +32,11 @@ csar.csarMode = 3
 --      2 - Disable Aircraft for Pilot when he's shot down -- timeout to reenable pilot for aircraft
 --      3 - Pilot Life Limit - No Aircraft Disabling -- timeout to reset lives?
 
-csar.maxLives = 8 -- Maximum pilot lives
-
+--csar.maxLives = 12 -- Maximum pilot lives
+--[[
+Lives are now set based on mission duration
+--]]
+csar.maxLives = rsrConfig.maxLives
 csar.countCSARCrash = false -- If you set to true, pilot lives count for CSAR and CSAR aircraft will count.
 
 csar.reenableIfCSARCrashes = true -- If a CSAR heli crashes, the pilots are counted as rescued anyway. Set to false to Stop this
@@ -594,7 +44,7 @@ csar.reenableIfCSARCrashes = true -- If a CSAR heli crashes, the pilots are coun
 -- - I recommend you leave the option on below IF USING MODE 1 otherwise the
 -- aircraft will be disabled for the duration of the mission
 csar.disableAircraftTimeout = true -- Allow aircraft to be used after 20 minutes if the pilot isnt rescued
-csar.disableTimeoutTime = 20 -- Time in minutes for TIMEOUT
+csar.disableTimeoutTime = 240 -- Time in minutes for TIMEOUT; not relevant for csarMode = 3
 
 csar.destructionHeight = 150 -- height in meters an aircraft will be destroyed at if the aircraft is disabled
 
@@ -604,7 +54,7 @@ csar.enableForRED = true -- enable for red side
 
 csar.enableForBLUE = true -- enable for blue side
 
-csar.enableSlotBlocking = true -- if set to true, you need to put the csarSlotBlockGameGUI.lua
+csar.enableSlotBlocking = false -- if set to true, you need to put the csarSlotBlockGameGUI.lua
 -- in C:/Users/<YOUR USERNAME>/DCS/Scripts for 1.5 or C:/Users/<YOUR USERNAME>/DCS.openalpha/Scripts for 2.0
 -- For missions using FLAGS and this script, the CSAR flags will NOT interfere with your mission :)
 
@@ -613,20 +63,22 @@ csar.redsmokecolor = 1 -- Color of smokemarker for red side, 0 is green, 1 is re
 
 csar.requestdelay = 2 -- Time in seconds before the survivors will request Medevac
 
-csar.coordtype = 3 -- Use Lat/Long DDM (0), Lat/Long DMS (1), MGRS (2), Bullseye imperial (3) or Bullseye metric (4) for coordinates.
+csar.coordtype = 1 -- Use Lat/Long DDM (0), Lat/Long DMS (1), MGRS (2), Bullseye imperial (3) or Bullseye metric (4) for coordinates.
 csar.coordaccuracy = 1 -- Precision of the reported coordinates, see MIST-docs at http://wiki.hoggit.us/view/GetMGRSString
 -- only applies to _non_ bullseye coords
 
-csar.immortalcrew = true -- Set to true to make wounded crew immortal
-csar.invisiblecrew = true -- Set to true to make wounded crew insvisible
+csar.immortalcrew = false -- Set to true to make wounded crew immortal
+csar.invisiblecrew = false -- Set to true to make wounded crew insvisible
 
 csar.messageTime = 30 -- Time to show the intial wounded message for in seconds
 
-csar.loadDistance = 100 -- configure distance for pilot to get in helicopter in meters.
+csar.loadDistance = 60 -- configure distance for pilot to get in helicopter in meters.
 
 csar.radioSound = "beacon.ogg" -- the name of the sound file to use for the Pilot radio beacons. If this isnt added to the mission BEACONS WONT WORK!
 
 csar.allowFARPRescue = true --allows pilot to be rescued by landing at a FARP or Airbase
+
+csar.enemyBaseCaptureDistance = 20000 -- minimum distance in m from enemy base to allow CSAR mission spawn (otherwise pilot captured!)
 
 -- SETTINGS FOR MISSION DESIGNER ^^^^^^^^^^^^^^^^^^^*
 
@@ -640,7 +92,7 @@ csar.allowFARPRescue = true --allows pilot to be rescued by landing at a FARP or
 --
 function csar.resetAllPilotLives()
 
-    for x, _pilot in pairs(csar.pilotLives) do
+    for _, _pilot in pairs(csar.pilotLives) do
 
         trigger.action.setUserFlag("CSAR_PILOT" .. _pilot:gsub('%W', ''), csar.maxLives + 1)
     end
@@ -706,71 +158,87 @@ function csar.tableLength(T)
         return 0
     end
 
-
     local count = 0
-    for _ in pairs(T) do count = count + 1 end
+    for _ in pairs(T) do
+        count = count + 1
+    end
     return count
 end
 
 function csar.pilotsOnboard(_heliName)
     local count = 0
     if csar.inTransitGroups[_heliName] then
-        for _, _group in pairs(csar.inTransitGroups[_heliName]) do
+        for _, _ in pairs(csar.inTransitGroups[_heliName]) do
             count = count + 1
         end
     end
     return count
 end
 
+function csar.tooCloseToEnemyBase(_unit)
+    local point = _unit:getPoint()
+    local position = { x = point.x, y = point.z }
+    local unitSideName = utils.getSideName(_unit:getCoalition())
+    if spatialUtils.closestBaseIsEnemyAndWithinRange(position, unitSideName, csar.enemyBaseCaptureDistance) then
+        local nearestBase, _ = spatialUtils.findNearestBase(position)
+        local message = string.format("Mayday, mayday, mayday!  %s was shot down; captured by enemy forces at %s",
+                _unit:getTypeName(), nearestBase)
+        trigger.action.outTextForCoalition(_unit:getCoalition(), message, 10)
+        return true
+    else
+        return false
+    end
+end
+
 -- Handles all world events
 csar.eventHandler = {}
-function csar.eventHandler:onEvent(_event)
+-- luacheck: push no unused
+function csar.eventHandler:onEvent(event)
     local status, err = pcall(function(_event)
 
         if _event == nil or _event.initiator == nil then
             return false
 
-        elseif _event.id == 3 then -- taken offf
+        elseif _event.id == world.event.S_EVENT_TAKEOFF then
 
-        if _event.initiator:getName() then
-            csar.takenOff[_event.initiator:getName()] = true
-        end
+            if _event.initiator:getName() then
+                csar.takenOff[_event.initiator:getName()] = true
+            end
 
-        return true
-        elseif _event.id == 15 then --player entered unit
+            return true
+        elseif _event.id == world.event.S_EVENT_BIRTH then
+            --player entered unit
 
-        if _event.initiator:getName() then
-            csar.takenOff[_event.initiator:getName()] = nil
-        end
+            if _event.initiator:getName() then
+                csar.takenOff[_event.initiator:getName()] = nil
+            end
 
-        -- if its a sar heli, re-add check status script
-        for _, _heliName in pairs(csar.csarUnits) do
+            -- if its a sar heli, re-add check status script
+            for _, _heliName in pairs(csar.csarUnits) do
 
-            if _heliName == _event.initiator:getName() then
-                -- add back the status script
-                for _woundedName, _groupInfo in pairs(csar.woundedGroups) do
+                if _heliName == _event.initiator:getName() then
+                    -- add back the status script
+                    for _woundedName, _groupInfo in pairs(csar.woundedGroups) do
 
-                    if _groupInfo.side == _event.initiator:getCoalition() then
+                        if _groupInfo.side == _event.initiator:getCoalition() then
 
-                        --env.info(string.format("Schedule Respawn %s %s",_heliName,_woundedName))
-                        -- queue up script
-                        -- Schedule timer to check when to pop smoke
-                        timer.scheduleFunction(csar.checkWoundedGroupStatus, { _heliName, _woundedName }, timer.getTime() + 5)
+                            --env.info(string.format("Schedule Respawn %s %s",_heliName,_woundedName))
+                            -- queue up script
+                            -- Schedule timer to check when to pop smoke
+                            timer.scheduleFunction(csar.checkWoundedGroupStatus, { _heliName, _woundedName }, timer.getTime() + 5)
+                        end
                     end
                 end
             end
-        end
+            -- FIXME: below is raising errors
+            if _event.initiator:getName() and _event.initiator.getPlayerName ~= nil and _event.initiator:getPlayerName() then
+                env.info("Checking Unit - " .. _event.initiator:getName())
+                csar.checkDisabledAircraftStatus({ _event.initiator:getName(), _event.initiator:getPlayerName() })
+            end
 
-        if _event.initiator:getName() and _event.initiator:getPlayerName() then
+            return true
 
-            env.info("Checking Unit - " .. _event.initiator:getName())
-            csar.checkDisabledAircraftStatus({ _event.initiator:getName(), _event.initiator:getPlayerName() })
-        end
-
-        return true
-
-        elseif (_event.id == 9) then
-            -- Pilot dead
+        elseif _event.id == world.event.S_EVENT_PILOT_DEAD then
 
             env.info("Event unit - Pilot Dead")
 
@@ -796,8 +264,9 @@ function csar.eventHandler:onEvent(_event)
                 if csar.doubleEjection(_unit) then
                     return
                 end
-
-                trigger.action.outTextForCoalition(_unit:getCoalition(), "MAYDAY MAYDAY! " .. _unit:getTypeName() .. " shot down. No Chute!", 10)
+                local message = "Mayday, mayday, mayday!  " .. _unit:getTypeName() .. " was shot down; no chute spotted"
+                --trigger.action.outTextForCoalition(_unit:getCoalition(), message, 10)
+                env.info(message)
                 csar.handleEjectOrCrash(_unit, true)
             else
                 env.info("Pilot Hasnt taken off, ignore")
@@ -812,41 +281,51 @@ function csar.eventHandler:onEvent(_event)
             local _unit = _event.initiator
 
             if _unit == nil then
+                env.warning("No unit found for ejection event")
                 return -- error!
             end
 
             local _coalition = _unit:getCoalition()
 
             if _coalition == 1 and not csar.enableForRED then
+                env.info("Ignoring ejection as not enabled for red")
                 return --ignore!
             end
 
             if _coalition == 2 and not csar.enableForBLUE then
+                env.info("Ignoring ejection as not enabled for blue")
                 return --ignore!
             end
 
             -- TODO catch ejection on runway?
 
             if csar.enableForAI == false and _unit:getPlayerName() == nil then
-
+                env.info("Ignoring ejection as getPlayerName is nil")
                 return
             end
 
             if csar.takenOff[_event.initiator:getName()] ~= true and not _unit:inAir() then
-                env.info("Pilot Hasnt taken off, ignore")
+                env.info("Pilot hasn't taken off, ignoring")
                 return -- give up, pilot hasnt taken off
             end
 
             if csar.doubleEjection(_unit) then
+                env.info("Double ejection")
                 return
             end
 
+            if csar.tooCloseToEnemyBase(_unit) then
+                csar.handleEjectOrCrash(_unit, true)
+                return true
+            end
 
-
+            env.info("Spawning CSAR group")
             local _spawnedGroup = csar.spawnGroup(_unit)
             csar.addSpecialParametersToGroup(_spawnedGroup)
 
-            trigger.action.outTextForCoalition(_unit:getCoalition(), "MAYDAY MAYDAY! " .. _unit:getTypeName() .. " shot down. Chute Spotted!", 10)
+            local message = "Mayday, mayday, mayday!  " .. _unit:getTypeName() .. " was shot down; chute spotted"
+            trigger.action.outTextForCoalition(_unit:getCoalition(), message, 10)
+            env.info(message)
 
             local _freq = csar.generateADFFrequency()
 
@@ -909,11 +388,12 @@ function csar.eventHandler:onEvent(_event)
 
             return true
         end
-    end, _event)
+    end, event)
     if (not status) then
         env.error(string.format("Error while handling event %s", err), false)
     end
 end
+-- luacheck: pop
 
 csar.lastCrash = {}
 
@@ -964,56 +444,58 @@ function csar.handleEjectOrCrash(_unit, _crashed)
             env.info("Unit Disabled: " .. _unit:getName() .. " ID:" .. _unit:getID())
         end
 
-    elseif csar.csarMode == 2 then -- disable aircraft for pilot
+    elseif csar.csarMode == 2 then
+        -- disable aircraft for pilot
 
-    --csar.pilotDisabled
-    if _unit:getPlayerName() ~= nil and csar.pilotDisabled[_unit:getPlayerName() .. "_" .. _unit:getName()] == nil then
+        --csar.pilotDisabled
+        if _unit:getPlayerName() ~= nil and csar.pilotDisabled[_unit:getPlayerName() .. "_" .. _unit:getName()] == nil then
 
-        if csar.countCSARCrash == false then
-            for _, _heliName in pairs(csar.csarUnits) do
+            if csar.countCSARCrash == false then
+                for _, _heliName in pairs(csar.csarUnits) do
 
-                if _unit:getName() == _heliName then
-                    -- IGNORE Crashed CSAR
-                    return
+                    if _unit:getName() == _heliName then
+                        -- IGNORE Crashed CSAR
+                        return
+                    end
                 end
             end
+
+            csar.pilotDisabled[_unit:getPlayerName() .. "_" .. _unit:getName()] = { timeout = (csar.disableTimeoutTime * 60) + timer.getTime(), desc = "", noPilot = true, unitId = _unit:getID(), player = _unit:getPlayerName(), name = _unit:getName() }
+
+            -- disable aircraft
+
+            -- strip special characters from name gsub('%W','')
+            trigger.action.setUserFlag("CSAR_AIRCRAFT" .. _unit:getPlayerName():gsub('%W', '') .. "_" .. _unit:getID(), 100)
+
+            env.info("Unit Disabled for player : " .. _unit:getName())
         end
 
-        csar.pilotDisabled[_unit:getPlayerName() .. "_" .. _unit:getName()] = { timeout = (csar.disableTimeoutTime * 60) + timer.getTime(), desc = "", noPilot = true, unitId = _unit:getID(), player = _unit:getPlayerName(), name = _unit:getName() }
+    elseif csar.csarMode == 3 then
+        -- No Disable - Just reduce player lives
 
-        -- disable aircraft
+        --csar.pilotDisabled
+        if _unit:getPlayerName() ~= nil then
 
-        -- strip special characters from name gsub('%W','')
-        trigger.action.setUserFlag("CSAR_AIRCRAFT" .. _unit:getPlayerName():gsub('%W', '') .. "_" .. _unit:getID(), 100)
+            if csar.countCSARCrash == false then
+                for _, _heliName in pairs(csar.csarUnits) do
 
-        env.info("Unit Disabled for player : " .. _unit:getName())
-    end
-
-    elseif csar.csarMode == 3 then -- No Disable - Just reduce player lives
-
-    --csar.pilotDisabled
-    if _unit:getPlayerName() ~= nil then
-
-        if csar.countCSARCrash == false then
-            for _, _heliName in pairs(csar.csarUnits) do
-
-                if _unit:getName() == _heliName then
-                    -- IGNORE Crashed CSAR
-                    return
+                    if _unit:getName() == _heliName then
+                        -- IGNORE Crashed CSAR
+                        return
+                    end
                 end
             end
+
+            local _lives = csar.pilotLives[_unit:getPlayerName()]
+
+            if _lives == nil then
+                _lives = csar.maxLives + 1 --plus 1 because we'll use flag set to 1 to indicate NO MORE LIVES
+            end
+
+            csar.pilotLives[_unit:getPlayerName()] = _lives - 1
+            env.info("Setting lives for " .. _unit:getPlayerName() .. " to " .. _lives - 2)
+            trigger.action.setUserFlag("CSAR_PILOT" .. _unit:getPlayerName():gsub('%W', ''), _lives - 1)
         end
-
-        local _lives = csar.pilotLives[_unit:getPlayerName()]
-
-        if _lives == nil then
-            _lives = csar.maxLives + 1 --plus 1 because we'll use flag set to 1 to indicate NO MORE LIVES
-        end
-
-        csar.pilotLives[_unit:getPlayerName()] = _lives - 1
-
-        trigger.action.setUserFlag("CSAR_PILOT" .. _unit:getPlayerName():gsub('%W', ''), _lives - 1)
-    end
     end
 end
 
@@ -1032,39 +514,39 @@ function csar.enableAircraft(_name, _playerName)
             trigger.action.setUserFlag("CSAR_AIRCRAFT" .. _details.unitId, 0)
         end
 
-    elseif csar.csarMode == 2 and _playerName ~= nil then -- enable aircraft for pilot
+    elseif csar.csarMode == 2 and _playerName ~= nil then
+        -- enable aircraft for pilot
 
-    local _details = csar.pilotDisabled[_playerName .. "_" .. _name]
+        local _details = csar.pilotDisabled[_playerName .. "_" .. _name]
 
-    if _details ~= nil then
-        csar.pilotDisabled[_playerName .. "_" .. _name] = nil
+        if _details ~= nil then
+            csar.pilotDisabled[_playerName .. "_" .. _name] = nil
 
-        trigger.action.setUserFlag("CSAR_AIRCRAFT" .. _playerName:gsub('%W', '') .. "_" .. _details.unitId, 0)
-    end
-
-    elseif csar.csarMode == 3 and _playerName ~= nil then -- No Disable - Just reduce player lives
-
-    -- give back life
-
-    local _lives = csar.pilotLives[_playerName]
-
-    if _lives == nil then
-        _lives = csar.maxLives + 1 --plus 1 because we'll use flag set to 1 to indicate NO MORE LIVES
-    else
-        _lives = _lives + 1 -- give back live!
-
-        if csar.maxLives + 1 <= _lives then
-            _lives = csar.maxLives + 1 --plus 1 because we'll use flag set to 1 to indicate NO MORE LIVES
+            trigger.action.setUserFlag("CSAR_AIRCRAFT" .. _playerName:gsub('%W', '') .. "_" .. _details.unitId, 0)
         end
-    end
 
-    csar.pilotLives[_playerName] = _lives
+    elseif csar.csarMode == 3 and _playerName ~= nil then
+        -- No Disable - Just reduce player lives
 
-    trigger.action.setUserFlag("CSAR_PILOT" .. _playerName:gsub('%W', ''), _lives)
+        -- give back life
+
+        local _lives = csar.pilotLives[_playerName]
+
+        if _lives == nil then
+            _lives = csar.maxLives + 1 --plus 1 because we'll use flag set to 1 to indicate NO MORE LIVES
+        else
+            _lives = _lives + 1 -- give back live!
+
+            if csar.maxLives + 1 <= _lives then
+                _lives = csar.maxLives + 1 --plus 1 because we'll use flag set to 1 to indicate NO MORE LIVES
+            end
+        end
+
+        csar.pilotLives[_playerName] = _lives
+
+        trigger.action.setUserFlag("CSAR_PILOT" .. _playerName:gsub('%W', ''), _lives)
     end
 end
-
-
 
 function csar.reactivateAircraft()
 
@@ -1081,17 +563,19 @@ function csar.reactivateAircraft()
             end
         end
 
-    elseif csar.csarMode == 2 then -- disable aircraft for pilot
+    elseif csar.csarMode == 2 then
+        -- disable aircraft for pilot
 
-    for _key, _details in pairs(csar.pilotDisabled) do
+        for _, _details in pairs(csar.pilotDisabled) do
 
-        if timer.getTime() >= _details.timeout then
+            if timer.getTime() >= _details.timeout then
 
-            csar.enableAircraft(_details.name, _details.player)
+                csar.enableAircraft(_details.name, _details.player)
+            end
         end
-    end
 
-    elseif csar.csarMode == 3 then -- No Disable - Just reduce player lives
+        --elseif csar.csarMode == 3 then
+        -- No Disable - Just reduce player lives
     end
 end
 
@@ -1144,79 +628,95 @@ function csar.checkDisabledAircraftStatus(_args)
             end
 
 
+        elseif csar.csarMode == 2 then
+            -- disable aircraft for pilot
 
-        elseif csar.csarMode == 2 then -- disable aircraft for pilot
+            local _details = csar.pilotDisabled[_unit:getPlayerName() .. "_" .. _unit:getName()]
 
-        local _details = csar.pilotDisabled[_unit:getPlayerName() .. "_" .. _unit:getName()]
+            if _details ~= nil then
 
-        if _details ~= nil then
+                local _time = _details.timeout - timer.getTime()
 
-            local _time = _details.timeout - timer.getTime()
+                if _details.noPilot then
 
-            if _details.noPilot then
+                    if csar.disableAircraftTimeout then
 
-                if csar.disableAircraftTimeout then
+                        local _text = string.format("This aircraft cannot be flow as the pilot was killed in a crash. Reinforcements in %.2dM,%.2dS\n\nIt will be DESTROYED on takeoff!", (_time / 60), _time % 60)
 
-                    local _text = string.format("This aircraft cannot be flow as the pilot was killed in a crash. Reinforcements in %.2dM,%.2dS\n\nIt will be DESTROYED on takeoff!", (_time / 60), _time % 60)
-
-                    --display message,
-                    csar.displayMessageToSAR(_unit, _text, 10, true)
+                        --display message,
+                        csar.displayMessageToSAR(_unit, _text, 10, true)
+                    else
+                        --display message,
+                        csar.displayMessageToSAR(_unit, "This aircraft cannot be flown again as the pilot was killed in a crash\n\nIt will be DESTROYED on takeoff!", 10, true)
+                    end
                 else
-                    --display message,
-                    csar.displayMessageToSAR(_unit, "This aircraft cannot be flown again as the pilot was killed in a crash\n\nIt will be DESTROYED on takeoff!", 10, true)
+                    if csar.disableAircraftTimeout then
+                        --display message,
+                        csar.displayMessageToSAR(_unit, _details.desc .. " needs to be rescued or reinforcements arrive before this aircraft can be flown again! Reinforcements in " .. string.format("%.2dM,%.2d", (_time / 60), _time % 60) .. "\n\nIt will be DESTROYED on takeoff!", 10, true)
+                    else
+                        --display message,
+                        csar.displayMessageToSAR(_unit, _details.desc .. " needs to be rescued before this aircraft can be flown again!\n\nIt will be DESTROYED on takeoff!", 10, true)
+                    end
                 end
-            else
-                if csar.disableAircraftTimeout then
-                    --display message,
-                    csar.displayMessageToSAR(_unit, _details.desc .. " needs to be rescued or reinforcements arrive before this aircraft can be flown again! Reinforcements in " .. string.format("%.2dM,%.2d", (_time / 60), _time % 60) .. "\n\nIt will be DESTROYED on takeoff!", 10, true)
+
+                if csar.destroyUnit(_unit) then
+                    return --plane destroyed
                 else
-                    --display message,
-                    csar.displayMessageToSAR(_unit, _details.desc .. " needs to be rescued before this aircraft can be flown again!\n\nIt will be DESTROYED on takeoff!", 10, true)
+                    --check again in 10 seconds
+                    timer.scheduleFunction(csar.checkDisabledAircraftStatus, _args, timer.getTime() + 10)
                 end
             end
 
-            if csar.destroyUnit(_unit) then
-                return --plane destroyed
+
+        elseif csar.csarMode == 3 then
+            -- No Disable - Just reduce player lives
+
+            local _lives = csar.pilotLives[_unit:getPlayerName()]
+
+            if _lives == nil or _lives > 1 then
+
+                if _lives == nil then
+                    _lives = csar.maxLives + 1
+                end
+
+                -- -1 for lives as we use 1 to indicate out of lives!
+                local _text = string.format("CSAR ACTIVE! \n\nYou have " .. (_lives - 1) .. " lives remaining. Make sure you eject! This way you can be rescued by a friend or yourself to regain the life.\n\nSome weapons are limited; check F10 menu for more information")
+
+                csar.displayMessageToSAR(_unit, _text, 20, true)
+
+                return
+
             else
-                --check again in 10 seconds
-                timer.scheduleFunction(csar.checkDisabledAircraftStatus, _args, timer.getTime() + 10)
+                if missionUtils.isTransportType(_unit:getTypeName()) then
+                    -- no lives restriction for CSAR units
+                    return
+                end
+                local _text = string.format("You have run out of LIVES! Lives will be reset on mission restart or when your pilot is rescued.\n\nThis aircraft will be DESTROYED on takeoff! (Helicopters are exempt)")
+
+                --display message,
+                csar.displayMessageToSAR(_unit, _text, 10, true)
+
+                if csar.destroyUnit(_unit) then
+                    return --plane destroyed
+                else
+                    --check again in 10 seconds
+                    --TODO: can we increase the interval between checks?
+                    timer.scheduleFunction(csar.checkDisabledAircraftStatus, _args, timer.getTime() + 10)
+                end
             end
-        end
-
-
-        elseif csar.csarMode == 3 then -- No Disable - Just reduce player lives
-
-        local _lives = csar.pilotLives[_unit:getPlayerName()]
-
-        if _lives == nil or _lives > 1 then
-
-            if _lives == nil then
-                _lives = csar.maxLives + 1
-            end
-
-            -- -1 for lives as we use 1 to indicate out of lives!
---            local _text = string.format("CSAR ACTIVE! \n\nYou have " .. (_lives - 1) .. " lives remaining. Make sure you eject!")
-            local _text = string.format("Welcome to RSR! Check briefing for Discord and other important info.\n\nCSAR ACTIVE! \n\nYou have " .. (_lives - 1) .. " lives remaining. Make sure you eject!\n\nMission Restarts at 0000-0600-1200-1800 Eastern Standard.\n\nWeapon Restrictions are enabled Check F10 for more info.\n\nAIM54C MK47 and AIM54A MK60 are unavailable until fixed.")
-            csar.displayMessageToSAR(_unit, _text, 20, true)
-
-            return
-
-        else
-
-            local _text = string.format("You have run out of LIVES! Lives will be reset on mission restart or when your pilot is rescued.\n\nThis aircraft will be DESTROYED on takeoff!")
-
-            --display message,
-            csar.displayMessageToSAR(_unit, _text, 10, true)
-
-            if csar.destroyUnit(_unit) then
-                return --plane destroyed
-            else
-                --check again in 10 seconds
-                timer.scheduleFunction(csar.checkDisabledAircraftStatus, _args, timer.getTime() + 10)
-            end
-        end
         end
     end
+end
+
+function csar.getLivesLeft(playerName)
+    if csar.csarMode ~= 3 then
+        return nil
+    end
+    local _lives = csar.pilotLives[playerName]
+    if _lives == nil then
+        _lives = csar.maxLives + 1
+    end
+    return _lives - 1
 end
 
 function csar.destroyUnit(_unit)
@@ -1339,7 +839,6 @@ function csar.spawnGroup(_deadUnit)
     return _spawnedGroup
 end
 
-
 function csar.createUnit(_x, _y, _heading, _type)
 
     local _id = mist.getNextUnitId();
@@ -1368,19 +867,18 @@ function csar.initSARForPilot(_downedGroup, _freq)
 
     local
     _text = string.format("%s requests SAR at %s, beacon at %.2f KHz",
-        _leader:getName(), _coordinatesText, _freq / 1000)
-
-    local _randPercent = math.random(1, 100)
+            _leader:getName(), _coordinatesText, _freq / 1000)
+    env.info("Setting up CSAR: " .. _text)
 
     -- Loop through all the medevac units
-    for x, _heliName in pairs(csar.csarUnits) do
+    for _, _heliName in pairs(csar.csarUnits) do
         local _status, _err = pcall(function(_args)
             local _unitName = _args[1]
             local _woundedSide = _args[2]
             local _medevacText = _args[3]
-            local _leaderPos = _args[4]
+            local _ = _args[4] -- _leaderPos
             local _groupName = _args[5]
-            local _group = _args[6]
+            local _ = _args[6] -- _group
 
             local _heli = csar.getSARHeli(_unitName)
 
@@ -1397,7 +895,7 @@ function csar.initSARForPilot(_downedGroup, _freq)
                     -- Schedule timer to check when to pop smoke
                     timer.scheduleFunction(csar.checkWoundedGroupStatus, { _unitName, _groupName }, timer.getTime() + 1)
                 end
-            else
+                --else
                 --env.warning(string.format("Medevac unit %s not active", _heliName), false)
 
                 -- Schedule timer for Dead unit so when the unit respawns he can still pickup units
@@ -1492,24 +990,21 @@ function csar.pickupUnit(_heliUnit, _pilotName, _woundedGroup, _woundedGroupName
 
     -- GET IN!
     local _heliName = _heliUnit:getName()
-    local _groups = csar.inTransitGroups[_heliName]
     local _unitsInHelicopter = csar.pilotsOnboard(_heliName)
 
     -- init table if there is none for this helicopter
-    if not _groups then
+    if not csar.inTransitGroups[_heliName] then
         csar.inTransitGroups[_heliName] = {}
-        _groups = csar.inTransitGroups[_heliName]
     end
 
     -- if the heli can't pick them up, show a message and return
     if _unitsInHelicopter + 1 > csar.max_units then
         csar.displayMessageToSAR(_heliUnit, string.format("%s, %s. We're already crammed with %d guys! Sorry!",
-            _pilotName, _heliName, _unitsInHelicopter, _unitsInHelicopter), 10)
+                _pilotName, _heliName, _unitsInHelicopter, _unitsInHelicopter), 10)
         return true
     end
 
-    csar.inTransitGroups[_heliName][_woundedGroupName] =
-    {
+    csar.inTransitGroups[_heliName][_woundedGroupName] = {
         originalUnit = csar.woundedGroups[_woundedGroupName].originalUnit,
         woundedGroup = _woundedGroupName,
         side = _heliUnit:getCoalition(),
@@ -1522,11 +1017,11 @@ function csar.pickupUnit(_heliUnit, _pilotName, _woundedGroup, _woundedGroupName
     csar.displayMessageToSAR(_heliUnit, string.format("%s: %s I'm in! Get to the MASH ASAP! ", _heliName, _pilotName), 10)
 
     timer.scheduleFunction(csar.scheduledSARFlight,
-        {
-            heliName = _heliUnit:getName(),
-            groupName = _woundedGroupName
-        },
-        timer.getTime() + 1)
+            {
+                heliName = _heliUnit:getName(),
+                groupName = _woundedGroupName
+            },
+            timer.getTime() + 1)
 
     return true
 end
@@ -1539,8 +1034,6 @@ function csar.checkCloseWoundedGroup(_distance, _heliUnit, _heliName, _woundedGr
     local _lookupKeyHeli = _heliUnit:getID() .. "_" .. _woundedLeader:getID() --lookup key for message state tracking
 
     local _pilotName = csar.woundedGroups[_woundedGroupName].desc
-
-    local _woundedCount = 1
 
     local _reset = true
 
@@ -1618,8 +1111,6 @@ function csar.checkCloseWoundedGroup(_distance, _heliUnit, _heliName, _woundedGr
     return true
 end
 
-
-
 function csar.checkGroupNotKIA(_woundedGroup, _woundedGroupName, _heliUnit, _heliName)
 
     -- check if unit has died or been picked up
@@ -1661,8 +1152,7 @@ function csar.checkGroupNotKIA(_woundedGroup, _woundedGroupName, _heliUnit, _hel
     return true
 end
 
-
-function csar.scheduledSARFlight(_args)
+function csar.scheduledSARFlight(args)
 
     local _status, _err = pcall(function(_args)
 
@@ -1697,7 +1187,6 @@ function csar.scheduledSARFlight(_args)
             return
         end
 
-
         local _dist = csar.getClosetMASH(_heliUnit)
 
         if _dist == -1 then
@@ -1720,12 +1209,12 @@ function csar.scheduledSARFlight(_args)
         -- end
         --queue up
         timer.scheduleFunction(csar.scheduledSARFlight,
-            {
-                heliName = _heliUnit:getName(),
-                groupName = _woundedGroupName
-            },
-            timer.getTime() + 1)
-    end, _args)
+                {
+                    heliName = _heliUnit:getName(),
+                    groupName = _woundedGroupName
+                },
+                timer.getTime() + 1)
+    end, args)
     if (not _status) then
         env.error(string.format("Error in scheduledSARFlight\n\n%s", _err))
     end
@@ -1754,7 +1243,6 @@ function csar.rescuePilots(_heliUnit)
     -- env.info("Rescued")
 end
 
-
 function csar.getSARHeli(_unitName)
 
     local _heli = Unit.getByName(_unitName)
@@ -1769,8 +1257,8 @@ end
 
 
 -- Displays a request for medivac
-function csar.delayedHelpMessage(_args)
-    local status, err = pcall(function(_args)
+function csar.delayedHelpMessage(args)
+    local status, _ = pcall(function(_args)
         local _heliName = _args[1]
         local _text = _args[2]
         local _injuredGroupName = _args[3]
@@ -1779,7 +1267,6 @@ function csar.delayedHelpMessage(_args)
 
         if _heli ~= nil and #csar.getWoundedGroup(_injuredGroupName) > 0 then
             csar.displayMessageToSAR(_heli, _text, csar.messageTime)
-
 
             local _groupId = csar.getGroupId(_heli)
 
@@ -1790,7 +1277,7 @@ function csar.delayedHelpMessage(_args)
         else
             env.info("No Active Heli or Group DEAD")
         end
-    end, _args)
+    end, args)
 
     if (not status) then
         env.error(string.format("Error in delayedHelpMessage "))
@@ -1812,7 +1299,7 @@ function csar.displayMessageToSAR(_unit, _text, _time, _clear)
     end
 end
 
-function csar.getWoundedGroup(_groupName)
+function csar.getWoundedGroup(groupName)
     local _status, _result = pcall(function(_groupName)
 
         local _woundedGroup = {}
@@ -1826,7 +1313,7 @@ function csar.getWoundedGroup(_groupName)
         end
 
         return _woundedGroup
-    end, _groupName)
+    end, groupName)
 
     if (_status) then
         return _result
@@ -1835,7 +1322,6 @@ function csar.getWoundedGroup(_groupName)
         return {} --return empty table
     end
 end
-
 
 function csar.convertGroupToTable(_group)
 
@@ -1855,24 +1341,26 @@ function csar.getPositionOfWounded(_woundedGroup)
 
     local _woundedTable = csar.convertGroupToTable(_woundedGroup)
 
-    local _coordinatesText = ""
-    if csar.coordtype == 0 then -- Lat/Long DMTM
-    _coordinatesText = string.format("%s", mist.getLLString({ units = _woundedTable, acc = csar.coordaccuracy, DMS = 0 }))
+    if csar.coordtype == 0 then
+        -- Lat/Long DMTM
+        return string.format("%s", mist.getLLString({ units = _woundedTable, acc = csar.coordaccuracy, DMS = 0 }))
 
-    elseif csar.coordtype == 1 then -- Lat/Long DMS
-    _coordinatesText = string.format("%s", mist.getLLString({ units = _woundedTable, acc = csar.coordaccuracy, DMS = 1 }))
+    elseif csar.coordtype == 1 then
+        -- Lat/Long DMS
+        return string.format("%s", mist.getLLString({ units = _woundedTable, acc = csar.coordaccuracy, DMS = 1 }))
 
-    elseif csar.coordtype == 2 then -- MGRS
-    _coordinatesText = string.format("%s", mist.getMGRSString({ units = _woundedTable, acc = csar.coordaccuracy }))
+    elseif csar.coordtype == 2 then
+        -- MGRS
+        return string.format("%s", mist.getMGRSString({ units = _woundedTable, acc = csar.coordaccuracy }))
 
-    elseif csar.coordtype == 3 then -- Bullseye Imperial
-    _coordinatesText = string.format("bullseye %s", mist.getBRString({ units = _woundedTable, ref = coalition.getMainRefPoint(_woundedGroup:getCoalition()), alt = 0 }))
+    elseif csar.coordtype == 3 then
+        -- Bullseye Imperial
+        return string.format("bullseye %s", mist.getBRString({ units = _woundedTable, ref = coalition.getMainRefPoint(_woundedGroup:getCoalition()), alt = 0 }))
 
-    else -- Bullseye Metric --(medevac.coordtype == 4)
-    _coordinatesText = string.format("bullseye %s", mist.getBRString({ units = _woundedTable, ref = coalition.getMainRefPoint(_woundedGroup:getCoalition()), alt = 0, metric = 1 }))
+    else
+        -- Bullseye Metric --(medevac.coordtype == 4)
+        return string.format("bullseye %s", mist.getBRString({ units = _woundedTable, ref = coalition.getMainRefPoint(_woundedGroup:getCoalition()), alt = 0, metric = 1 }))
     end
-
-    return _coordinatesText
 end
 
 -- Displays all active MEDEVACS/SAR
@@ -1916,14 +1404,12 @@ function csar.displayActiveSAR(_unitName)
     csar.displayMessageToSAR(_heli, _msg, 20)
 end
 
-
 function csar.getClosetDownedPilot(_heli)
 
     local _side = _heli:getCoalition()
 
     local _closetGroup = nil
     local _shortestDistance = -1
-    local _distance = 0
     local _closetGroupInfo = nil
 
     for _woundedName, _groupInfo in pairs(csar.woundedGroups) do
@@ -1933,7 +1419,7 @@ function csar.getClosetDownedPilot(_heli)
         -- check group exists and not moving to someone else
         if #_tempWounded > 0 and (_tempWounded[1]:getCoalition() == _side) then
 
-            _distance = csar.getDistance(_heli:getPoint(), _tempWounded[1]:getPoint())
+            local _distance = csar.getDistance(_heli:getPoint(), _tempWounded[1]:getPoint())
 
             if _distance ~= nil and (_shortestDistance == -1 or _distance < _shortestDistance) then
 
@@ -1982,8 +1468,6 @@ function csar.displayToAllSAR(_message, _side, _ignore)
             if _ignore == nil or _ignore ~= _unitName then
                 csar.displayMessageToSAR(_unit, _message, 10)
             end
-        else
-            -- env.info(string.format("unit nil %s",_unitName))
         end
     end
 end
@@ -1997,7 +1481,6 @@ function csar.getClosetMASH(_heli)
     end
 
     local _shortestDistance = -1
-    local _distance = 0
 
     for _, _mashName in pairs(_mashes) do
 
@@ -2005,7 +1488,7 @@ function csar.getClosetMASH(_heli)
 
         if _mashUnit ~= nil and _mashUnit:isActive() and _mashUnit:getLife() > 0 then
 
-            _distance = csar.getDistance(_heli:getPoint(), _mashUnit:getPoint())
+            local _distance = csar.getDistance(_heli:getPoint(), _mashUnit:getPoint())
 
             if _distance ~= nil and (_shortestDistance == -1 or _distance < _shortestDistance) then
 
@@ -2051,8 +1534,9 @@ end
 function csar.addMedevacMenuItem()
     -- Loop through all Medevac units
 
+    --[[commented out because this is added as a menu item in birthEventHandler.lua
     timer.scheduleFunction(csar.addMedevacMenuItem, nil, timer.getTime() + 5)
-
+  --]]
     for _, _unitName in pairs(csar.csarUnits) do
 
         local _unit = csar.getSARHeli(_unitName)
@@ -2087,6 +1571,7 @@ end
 
 --get distance in meters assuming a Flat world
 function csar.getDistance(_point1, _point2)
+    --mr: duplicate function to ctld.getDistance
 
     local xUnit = _point1.x
     local yUnit = _point1.z
@@ -2167,7 +1652,6 @@ function csar.generateVHFrequencies()
                 break
             end
         end
-
 
         if _found == false then
             table.insert(csar.freeVHFFrequencies, _start)
@@ -2276,10 +1760,12 @@ function csar.getClockDirection(_heli, _crate)
 end
 
 function csar.getGroupId(_unit)
-
-    local _unitDB = mist.DBs.unitsById[tonumber(_unit:getID())]
-    if _unitDB ~= nil and _unitDB.groupId then
-        return _unitDB.groupId
+    local Unit = UNIT:Find(_unit)
+    if Unit ~= nil then
+        local Group = Unit:GetGroup()
+        if Group ~= nil then
+            return Group:GetID()
+        end
     end
 
     return nil
@@ -2287,8 +1773,11 @@ end
 
 csar.generateVHFrequencies()
 
+--[[
+Commented out the medevac menu is populated in the birthEventHandler
 -- Schedule timer to add radio item
 timer.scheduleFunction(csar.addMedevacMenuItem, nil, timer.getTime() + 5)
+--]]
 
 if csar.disableAircraftTimeout then
     -- Schedule timer to reactivate things
