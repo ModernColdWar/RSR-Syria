@@ -87,8 +87,8 @@ This is used to restrict availability to just these types
 ewrs.enabledAircraftTypes = {
     ["A-10A"] = true,
     ["A-10C"] = true,
+    ["A-10C_2"] = true,
     ["AJS37"] = true,
-    ["AV8BNA"] = true,
     ["AV8BNA"] = true,
     ["Bf-109K-4"] = true,
     ["C-101CC"] = true,
