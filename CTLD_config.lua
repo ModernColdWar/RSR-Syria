@@ -666,13 +666,12 @@ ctld.AASystemTemplate = {
     },
     {
         name = "Hawk SAM System",
---        count = 4,
-        count = 3,
+        count = 4,
         parts = {
             { name = "Hawk ln", desc = "Hawk Launcher", launcher = true },
             { name = "Hawk tr", desc = "Hawk Track Radar" },
             { name = "Hawk sr", desc = "Hawk Search Radar" },
---            { name = "Hawk pcp", desc = "Hawk PCP" },
+            { name = "Hawk pcp", desc = "Hawk PCP" },
         },
         repair = "Hawk Repair",
         systemType = "MR",
