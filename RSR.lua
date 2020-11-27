@@ -44,6 +44,7 @@ local UAV_Recon = require("UAV_Recon")
 local botBases = require("botBases")
 require("weaponManager")
 require("EWRS_OPM")
+--require("botBases")
 
 slotBlocker.onMissionStart()
 baseCapturedHandler.register()

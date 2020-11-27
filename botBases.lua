@@ -44,4 +44,6 @@ function CheckStatus(arg1,time)
    update()
    return time + 300
 end
+
+CheckStatus(1,timer.getTime())
 timer.scheduleFunction(CheckStatus, 1, timer.getTime() + 300)
