@@ -1,5 +1,4 @@
 # RSR-Syria
--# Red Storm Rising
 
 A persistent PvP mission for DCS world.
 
@@ -14,9 +13,10 @@ A persistent PvP mission for DCS world.
   --require = nil
   --loadlib = nil
 ```
- 3. Clone this repository: from your `Saved Games\DCS\Scripts` folder run `git clone https://github.com/ModernColdWar/RedStormRising.git RSR`.  This should create a folder named `RSR` and in the end it should look like `Saved Games\DCS\Scripts\RSR`
- 4. Update your mission file to include a `DO SCRIPT` trigger to run `dofile(lfs.writedir() .. [[Scripts\RSR\RSR.lua]])` Or Download the latest mission file in use <a href="https://github.com/ModernColdWar/Miz-Files">Mission Files</a>
- 5. Follow the steps on the [Developer Setup wiki page](https://github.com/ModernColdWar/RedStormRising/wiki/DeveloperSetup).
+ 3. Clone this repository: from your `Saved Games\DCS\Scripts` folder run `git clone https://github.com/ModernColdWar/RSR-Syria.git RSR`.  This should create a folder named `RSR` and in the end it should look like `Saved Games\DCS\Scripts\RSR`
+ 4. If you are new to github, and don't understand how to do step 3, you can download the files in a zip, then place the RSR folder and Hooks folders into your `Saved Games\DCS\Scripts`.
+ 5. Update your mission file to include a `DO SCRIPT` trigger to run `dofile(lfs.writedir() .. [[Scripts\RSR\RSR.lua]])` Or Download the latest mission file in use <a href="https://github.com/ModernColdWar/Miz-Files">Mission Files</a>
+ 6. Follow the steps on the [Developer Setup wiki page](https://github.com/ModernColdWar/RedStormRising/wiki/DeveloperSetup).
 
 ## <a href="https://github.com/ModernColdWar/RedStormRising">LUA files</a>
 The RSR/RedStormRising repository contains all the lua files required to run the mission. Once tested, submited and approved they are sent to the server and loaded. All the scripts are loaded through the RSR.lua 
