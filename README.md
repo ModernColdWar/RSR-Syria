@@ -20,15 +20,15 @@ A persistent PvP mission for DCS world.
 
 ## <a href="https://github.com/ModernColdWar/RedStormRising">LUA files</a>
 The RSR/RedStormRising repository contains all the lua files required to run the mission. Once tested, submited and approved they are sent to the server and loaded. All the scripts are loaded through the RSR.lua 
-### <a href="https://github.com/ModernColdWar/RSR-Syria/blob/main/RSR/AWACS-Tankers.lua">AWACS-Tankers.lua</a>
-The <a href="https://github.com/ModernColdWar/RSR-Syria/blob/main/RSR/AWACS-Tankers.lua">AWACS-Tankers.lua</a> Contains moose snippets that generate an F10 menu to allow aircraft to call in AWACS and Tankers into the mission. 
+### <a href="https://github.com/ModernColdWar/RSR-Syria/blob/main/RSR/AWACS_Tankers.lua">AWACS-Tankers.lua</a>
+The <a href="https://github.com/ModernColdWar/RSR-Syria/blob/main/RSR/AWACS_Tankers.lua">AWACS-Tankers.lua</a> Contains moose snippets that generate an F10 menu to allow aircraft to call in AWACS and Tankers into the mission. 
 ### <a href="https://github.com/ModernColdWar/RSR-Syria/blob/main/RSR/CSAR.lua">CSAR.lua</a>
 The <a href="https://github.com/ModernColdWar/RSR-Syria/blob/main/RSR/CSAR.lua">CSAR.lua</a> script allows for downed pilots to be recovered, and thier life returned. We also use the CSAR script to manage pilots lifes on a per restart basis.
 ### <a href="https://github.com/ModernColdWar/RSR-Syria/blob/main/RSR/EWRS.lua">EWRS.lua</a>
-### <a href="https://github.com/ModernColdWar/RSR-Syria/blob/main/RSR/JTAC-Designate.lua">JTAC-Designate.lua</a>
+### <a href="https://github.com/ModernColdWar/RSR-Syria/blob/main/RSR/JTAC_Designate.lua">JTAC-Designate.lua</a>
 ### <a href="https://github.com/ModernColdWar/RSR-Syria/blob/main/RSR/Moose.lua">Moose.lua</a>
 ### <a href="https://github.com/ModernColdWar/RSR-Syria/blob/main/RSR/SGS_RSR.lua">SGS_RSR.lua</a>
-### <a href="https://github.com/ModernColdWar/RSR-Syria/blob/main/RSR/UAV-Recon.lua">UAV-Recon.lua</a>
+### <a href="https://github.com/ModernColdWar/RSR-Syria/blob/main/RSR/UAV_Recon.lua">UAV-Recon.lua</a>
 ### <a href="https://github.com/ModernColdWar/RSR-Syria/blob/main/RSR/WeaponManager.lua">WeaponManager.lua</a>
 ### <a href="https://github.com/ModernColdWar/RSR-Syria/blob/main/RSR/mist_4_4_90.lua">mist_4_4_90.lua</a>
 ### <a href="https://github.com/ModernColdWar/RSR-Syria/blob/main/RSR/warehouseResupply.lua">warehouseResupply.lua</a>
