@@ -14,7 +14,7 @@ A persistent PvP mission for DCS world.
   --loadlib = nil
 ```
  3. Clone this repository: from your `Saved Games\DCS\Scripts` folder run `git clone https://github.com/ModernColdWar/RedStormRising.git RSR`.  This should create a folder named `RSR` and in the end it should look like `Saved Games\DCS\Scripts\RSR`
- 4. Update your mission file to include a `DO SCRIPT` trigger to run `dofile(lfs.writedir() .. [[Scripts\RSR\RSR.lua]])`
+ 4. Update your mission file to include a `DO SCRIPT` trigger to run `dofile(lfs.writedir() .. [[Scripts\RSR\RSR.lua]])` Or Download the latest mission file in use <a href="https://github.com/ModernColdWar/Miz-Files">Mission Files</a>
  5. Follow the steps on the [Developer Setup wiki page](https://github.com/ModernColdWar/RedStormRising/wiki/DeveloperSetup).
 
 ## <a href="https://github.com/ModernColdWar/RedStormRising">LUA files</a>
