@@ -393,7 +393,7 @@ ctld.transportTypes = {
 -- {name = "Mortar Squad Red", inf = 2, mortar = 5, side =1 }, --would make a group loadable by RED only
 ctld.loadableGroupsHelis = {
     { name = "Infantry Squad: \n    5 x AK/M4, 2 x MGs", inf = 5, mg = 2 }, 
-    { name = "Infantry Platoon [Mi-8]: \n    12 x AK/M4, 4 x MGs", inf = 12, mg = 4 },
+    { name = "Infantry Platoon [Mi-8]: \n    10 x AK/M4, 4 x MGs, 2 x AT", inf = 10, mg = 4, at = 2 },
     { name = "Anti-Air Squad: \n    2 x MANPAD", aa = 2 },
     { name = "Anti-Tank Squad: \n    2 x AK/M4, 4 x AT", inf = 2, at = 4 },
     { name = "Artillery Squad: \n    6 x Mortar", mortar = 6 },
@@ -586,6 +586,7 @@ ctld.spawnableCrates = {
         { weight = 877, desc = "SpGH DANA", unit = "SpGH_Dana", side = 2, cratesRequired = 1, internal = 0 },
         { weight = 878, desc = "M-109", unit = "M-109", side = 2, cratesRequired = 1, internal = 0 },
         { weight = 879, desc = "MLRS", unit = "MLRS", side = 2, cratesRequired = 3, unitQuantity = 2, internal = 0 },
+        { weight = 900, desc = "MLRS Grad", unit = "Grad-URAL", side = 2, cratesRequired = 3, unitQuantity = 2, internal = 0 },
     },
   ["Support"] = {
         { weight = 880, desc = "SA-2 Repair", unit = "SA-2 Repair", side = 1, internal = 0 },
