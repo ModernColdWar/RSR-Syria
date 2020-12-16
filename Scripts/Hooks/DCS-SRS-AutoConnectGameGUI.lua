@@ -12,22 +12,22 @@ SRSAuto.SERVER_SRS_HOST = "srs.redstormrising.net:5002"
 SRSAuto.SERVER_SEND_AUTO_CONNECT = true -- set to false to disable auto connect or just remove this file
 
 ---- SRS CHAT COMMANDS ----
-SRSAuto.CHAT_COMMANDS_ENABLED = false -- if true type -freq, -freqs or -frequencies in ALL chat in multilayer to see the frequencies
+SRSAuto.CHAT_COMMANDS_ENABLED = true -- if true type -freq, -freqs or -frequencies in ALL chat in multilayer to see the frequencies
 
 SRSAuto.SRS_FREQUENCIES = {
-    ["red"] = "Frequencies are in the briefing (Alt+B by default)", -- edit this to the red frequency list
-    ["blue"] = "Frequencies are in the briefing (Alt+B by default)", -- edit this to the blue frequency list
-    ["neutral"] = "" -- edit this to the spectator frequency list
+    ["red"] = "GCI-AWACS: 121.000\\\nEWR:124.000\\\nBasket Tanker 141.000\\\nBoom Tanker 142.000", -- edit this to the red frequency list
+    ["blue"] = "GCI-AWACS: 251.000\\\nEWR:124.000\\\nBasket Tanker 141.000\\\nBoom Tanker 142.000\\\nRecovery Tanker 143.000", -- edit this to the blue frequency list
+    ["neutral"] = "", -- edit this to the spectator frequency list
 }
 
 ---- SRS NUDGE MESSAGE ----
-SRSAuto.SRS_NUDGE_ENABLED = false -- set to true to enable the message below
-SRSAuto.SRS_NUDGE_TIME = 600 -- SECONDS between messages to non connected SRS users
-SRSAuto.SRS_MESSAGE_TIME = 30 -- SECONDS to show the message for
+SRSAuto.SRS_NUDGE_ENABLED = true -- set to true to enable the message below
+SRSAuto.SRS_NUDGE_TIME = 1200 -- SECONDS between messages to non connected SRS users
+SRSAuto.SRS_MESSAGE_TIME = 10 -- SECONDS to show the message for
 SRSAuto.SRS_NUDGE_PATH = "C:\\Program Files\\DCS-SimpleRadio-Standalone\\clients-list.json" -- path to SERVER JSON EXPORT - enable Auto Export List on the server
 --- EDIT the message below to change what is said to users - DONT USE QUOTES - either single or double due to the injection into SRS it'll fail
 --- Newlines must be escaped like so: \\\n with 3 backslashes
-SRSAuto.SRS_NUDGE_MESSAGE = "****** DCS IS BETTER WITH COMMS - USE SRS ******\\\n\\\nMake sure to install DCS SimpleRadio Standalone - SRS - free and easy to install. \\\n\\\nSRS gives you VOIP Comms with other players through your aircrafts own radios. This will help you to be more effective, find enemies and wingmen, or call in support \\\n\\\n Google: DCS SimpleRadio Standalone \\\n\\\nGood comms and teamwork will help YOU and your team win! "
+SRSAuto.SRS_NUDGE_MESSAGE = "Red Storm Rising (RSR) Syria - Slot load times vary by client setup, we have seen it take upwards of a couple of minutes for the client to load into the mission. ONCE YOU SELECT A SLOT YOU WILL BE SIDE LOCKED UNTIL MISSION RESTART (every 8 Hours)\\\n\\\n****** DCS IS BETTER WITH COMMS - PLEASE USE SRS AND/OR DISCORD (https://discord.gg/NRvtGax) ******\\\n\\\nComms with other players will help you to be more effective, find enemies and wingmen, or call in support \\\n\\\nGood comms and teamwork will help YOU and your team win! "
 
 
 -- DO NOT EDIT BELOW HERE --

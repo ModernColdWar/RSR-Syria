@@ -1,16 +1,20 @@
 cfg = 
 {
     ["current"] = 2,
-    ["description"] = "WELCOME to RSR-Syria, **Slot load times vary by client setup, we have seen it take upwards of a couple of minutes for the client to load into the mission** As of 04 December 2020. RSR is hosting a PvP mission of the Syria Dynamic Campaign.\
+    ["description"] = "Red Storm Rising (RSR) Syria - Slot load times vary by client setup, we have seen it take upwards of a couple of minutes for the client to load into the mission. ONCE YOU SELECT A SLOT YOU WILL BE SIDE LOCKED UNTIL MISSION RESTART (every 8 Hours). At campaign start - Red starts with all bases in Syria, Blue starts with Bases in Turkey, Jordan, and Lebanon. The objective of the campaign is for one side to capture all the other sides bases. Communication is critical and Discord or SRS is highly encouraged. Ask where you are needed and those currently on will tell you where you can join the fight.\
 \
 Change Log:\
 *DCS 2.5.6.58125 Open Beta\
-*Miz 1.0.6\
-*Fixed the Coalition for Red F-16s and JF-17s\
-*Fixed the Frequency and Callsigns for Red and Blue Tankers\
-*Updated Briefing, Kneeboard Briefing, and Kneeboard Map\
+*Miz 1.0.8\
+*Fixed patriot bug, well fixed where all units will spawn either NE/SE/SW/NW dependent on the heading of the spawning helo. \
+*Recon Menu name changed from MQ-9 to MQ-1. \
+*Respawn time of warehouses changed from 1800 seconds to 3600 seconds should alloww more time to strike it if lost, extending time to retake it. \
+*Changed the JTAC and Logistics/FOB crate to say internal in F10 menu. \
+*More M2000 spawns added. \
+*Reduced number of IR sams on resupply\
+*Added messages stating who spawned in the spawnable assets\
 \
-RSR-East is hosted in North Carolina and RSR-West is hosted in California. Currently RSR-East is the primary server and RSR-West is the Test, Development, and Evaluation server. Please join us on the RSR Discord linked in the mission briefing.",
+RSR-East is hosted in North Carolina and RSR-West is hosted in California. Currently RSR-East is the primary server and RSR-West is the Test, Development, and Evaluation server. Please join us on the RSR Discord https://discord.gg/NRvtGax.",
     ["require_pure_textures"] = true,
     ["advanced"] = 
     {
@@ -43,7 +47,7 @@ RSR-East is hosted in North Carolina and RSR-West is hosted in California. Curre
     ["password"] = "",
     ["missionList"] = 
     {
-        [1] = "C:\\Users\\RSRAdmin\\Saved Games\\DCS.openbeta_server\\Missions\\RSR_Dynamic_PvP_SYRIA-1.0.6.miz",
+        [1] = "C:\\Users\\RSRAdmin\\Saved Games\\DCS.openbeta_server\\Missions\\RSR_Dynamic_PvP_SYRIA-1.0.8.miz",
     }, -- end of ["missionList"]
     ["name"] = "Red Storm Rising - | RSR |",
     ["listShuffle"] = false,

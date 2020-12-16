@@ -105,7 +105,7 @@ ctld.hoverTime = 4 -- Time to hold hover above a crate for loading in seconds
 
 ctld.AASystemLimitRED = 20 -- Red side limit
 
-ctld.AASystemLimitBLUE = 30 -- Blue side limit
+ctld.AASystemLimitBLUE = 20 -- Blue side limit
 
 ctld.aaSRLaunchers = 3 -- controls how many launchers to add to Short Range Missile systems when spawned.
 ctld.aaMRLaunchers = 4 -- controls how many launchers to add to Medium Range Missile systems when spawned.
@@ -541,12 +541,16 @@ ctld.spawnableCrates = {
 ------------------------------------------------------------
     -- Hawk System
         { weight = 851, desc = "Hawk Launcher", unit = "Hawk ln", side = 2, internal = 0 },
-        { weight = 852, desc = "Hawk Search Radar (internal)", unit = "Hawk sr", side = 2, internal = 1 },
+        { weight = 852, desc = "Hawk Search Radar", unit = "Hawk sr", side = 2, internal = 0 },
         { weight = 853, desc = "Hawk Track Radar", unit = "Hawk tr", side = 2, internal = 0 },
         { weight = 854, desc = "Hawk PCP", unit = "Hawk pcp", side = 2, internal = 0 }, -- Remove this if on 1.2
     -- Roland System
         { weight = 855, desc = "Roland Launcher", unit = "Roland ADS", side = 2, internal = 0 },
         { weight = 856, desc = "Roland Radar", unit = "Roland Radar", side = 2, internal = 0 },
+    -- Blue Buk system
+        { weight = 892, desc = "Buk Launcher", unit = "SA-11 Buk LN 9A310M1", side = 2, internal = 0 },
+        { weight = 893, desc = "Buk Search Radar", unit = "SA-11 Buk SR 9S18M1", side = 2, internal = 0 },
+        { weight = 894, desc = "Buk CC Radar", unit = "SA-11 Buk CC 9S470M1", side = 2, internal = 0 },
     },
   
   ["Long Range SAM"] = {
@@ -555,7 +559,7 @@ ctld.spawnableCrates = {
         { weight = 858, desc = "SA-2 Search Radar", unit = "p-19 s-125 sr", side = 1, internal = 0 },
         { weight = 859, desc = "SA-2 Track Radar", unit = "SNR_75V", side = 1, internal = 0 },    
     -- Patriot
-        { weight = 860, desc = "Patriot EPP (internal)", unit = "Patriot EPP", side = 2, internal = 1 },
+        { weight = 860, desc = "Patriot EPP", unit = "Patriot EPP", side = 2, internal = 0 },
         { weight = 861, desc = "Patriot STR", unit = "Patriot str", side = 2, internal = 0 },
         { weight = 862, desc = "Patriot CP", unit = "Patriot cp", side = 2, internal = 0 },
         { weight = 863, desc = "Patriot AMG", unit = "Patriot AMG", side = 2, internal = 0},
@@ -589,23 +593,20 @@ ctld.spawnableCrates = {
         { weight = 882, desc = "SA-10 Repair", unit = "SA-10 Repair", side = 1, internal = 0 },
         { weight = 883, desc = "Kub Repair", unit = "Kub Repair", side = 1, internal = 0 },
         { weight = 884, desc = "Buk Repair", unit = "Buk Repair", side = 1, internal = 0 },
-        { weight = 885, desc = "GAZ - JTAC", unit = "Tigr_233036", side = 1, cratesRequired = 1, internal = 1 }, -- used as jtac and unarmed, not on the crate list if JTAC is disabled
 
         { weight = 886, desc = "Hawk Repair", unit = "Hawk Repair", side = 2, internal = 0 },
         { weight = 887, desc = "Roland Repair", unit = "Roland Repair", side = 2, internal = 0 },
         { weight = 888, desc = "Patriot repair", unit = "Patriot repair", side = 2, internal = 0 },
-        { weight = 889, desc = "HMMWV - JTAC", unit = "Hummer", side = 2, cratesRequired = 1, internal = 1 }, -- used as jtac and unarmed, not on the crate list if JTAC is disabled
 
         { weight = 890, desc = "Early Warning Radar", unit = "1L13 EWR", internal = 0 },
-        { weight = 891, desc = "Logistics Centre", unit = "LogisticsCentre", internal = 1 },
         
     },
---[[
+
     ["Internal Cargo"] = {
-        { weight = 501, desc = "HMMWV - JTAC", unit = "Hummer", side = 2, cratesRequired = 1, internal = 1 }, -- used as jtac and unarmed, not on the crate list if JTAC is disabled
-        { weight = 502, desc = "GAZ - JTAC", unit = "Tigr_233036", side = 1, cratesRequired = 1, internal = 1 }, -- used as jtac and unarmed, not on the crate list if JTAC is disabled
-        { weight = 503, desc = "Logistics Centre", unit = "LogisticsCentre", internal = 1 },
-    },--]]
+        { weight = 885, desc = "GAZ - JTAC", unit = "Tigr_233036", side = 1, cratesRequired = 1, internal = 1 }, -- used as jtac and unarmed, not on the crate list if JTAC is disabled
+        { weight = 889, desc = "HMMWV - JTAC", unit = "Hummer", side = 2, cratesRequired = 1, internal = 1 }, -- used as jtac and unarmed, not on the crate list if JTAC is disabled
+        { weight = 891, desc = "FOB/Logistics Repair", unit = "LogisticsCentre", internal = 1 },
+    },
 }
 
 ctld.internalCratesOnly = ctld.spawnableCrates["Internal Cargo"]
@@ -628,6 +629,7 @@ ctld.AASystemTemplate = {
     --    repair = "HQ-7 Repair",
     --    systemType = "SR",
     --},
+ --[[
     {
         name = "Flak 18 AAA Battery",
         count = 1,
@@ -636,7 +638,7 @@ ctld.AASystemTemplate = {
         },
         repair = "Flak 18 Repair",
     },  
-    
+--]]    
     {
         name = "Roland SAM System",
         count = 2,
@@ -713,7 +715,7 @@ ctld.AASystemTemplate = {
       { name = "S-300PS 5P85D ln", desc = "S-300PS 5P85D ln", launcher = true },
       { name = "S-300PS 54K6 cp", desc = "S-300PS 54K6 cp" },
       { name = "S-300PS 40B6M tr", desc = "S-300PS 40B6M tr" },
-      { name = "S-300PS 5P85C ln", desc = "S-300PS 5P85C ln", launcher = true },
+      { name = "S-300PS 5P85C ln", desc = "S-300PS 5P85C ln" },
     },
     repair = "SA-10 Repair",
     systemType = "SR",

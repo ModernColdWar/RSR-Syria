@@ -16,7 +16,6 @@ M.sidelock.red = {}
 
 local function checkCoalition(r_slot)
     for _,v in pairs(M.sidelock.redslots.ucid) do
-
     end
 end
 
@@ -196,8 +195,11 @@ M.tacCmdrUcids = {
 	"43009af9ad72caf2a3ff31396bed074f", -- eagle eye added by Enigma
 	"227452caa05504df807333d5dd09bc0b", -- Yuri 1-1 LC added by Enigma
 	"b16eeca6d0d79081bc423e9f5f0fac66", -- =DDCS=AnarchyZG by Enigma
+    "19a63038083a850f99b41e013344f0ad", -- Samsung added by Wildcat
 }
 
+M.fwdObsUcids = {}
+M.obsUcids = {}
 -- These values must match what's in RSR\slotBlocker.lua
 M.slotEnabled = 1
 M.slotDisabled = 99 -- flags default to 0 if not set, so don't use 0 for disabled!
@@ -231,11 +233,22 @@ local function isGameMasterSlot(unitRole)
 end
 
 local function isTacCmdrSlot(unitRole)
-    return unitRole == "artillery_commander" or unitRole == "forward_observer" or unitRole == "observer"
+--    return unitRole == "artillery_commander" or unitRole == "forward_observer" or unitRole == "observer"
+    return unitRole == "artillery_commander"
 end
 
+local function isFwdObs(unitRole)
+    return unitRole == "forward_observer"
+end
+
+local function isObs(unitRole)
+	return unitRole == "observer"
+end
+
+
 local function isNonAircraftSlot(unitRole)
-    return unitRole ~= nil and isGameMasterSlot(unitRole) or isTacCmdrSlot(unitRole)
+--    return unitRole ~= nil and isGameMasterSlot(unitRole) or isTacCmdrSlot(unitRole)
+    return unitRole ~= nil and isGameMasterSlot(unitRole) or isTacCmdrSlot(unitRole) or isFwdObs(unitRole) or isObs(unitRole)
 end
 
 local function logNonAircraftSlot(playerId, playerName, playerUcid, unitRole, allowed)
@@ -243,7 +256,7 @@ local function logNonAircraftSlot(playerId, playerName, playerUcid, unitRole, al
         log("Allowing " .. playerName .. " into " .. unitRole .. " slot (UCID " .. playerUcid .. ")")
     else
         log("Rejecting " .. playerName .. " from " .. unitRole .. " slot (UCID " .. playerUcid .. ")")
-        net.send_chat_to("*** Sorry, you are not allowed into the " .. unitRole .. " slots.  If you want access to these slots, please contact us on Discord (linked in the briefing) ***", playerId)
+        net.send_chat_to("*** Sorry, you are not allowed into the " .. unitRole .. " slots.  Access to Tactical Commander slots must be requested on Discord (https://discord.gg/NRvtGax)\\\nAccess to JTAC\Operator slot is available to all***", playerId)
     end
 end
 
@@ -290,6 +303,7 @@ function M.onPlayerTryChangeSlot(playerId, side, slotId)
                 else
                     net.log("!! sidelocker - player not on any side. adding entry")
                     table.insert(M.sidelock.red, playerUcid)
+                    table.insert(M.fwdObsUcids, playerUcid)
                 end
             end
         end
@@ -315,6 +329,7 @@ function M.onPlayerTryChangeSlot(playerId, side, slotId)
                 else
                     net.log("!! sidelocker - player not on any side. adding entry")
                     table.insert(M.sidelock.blue, playerUcid)
+                    table.insert(M.fwdObsUcids, playerUcid)
                 end
             end
         end
@@ -324,10 +339,18 @@ function M.onPlayerTryChangeSlot(playerId, side, slotId)
             logNonAircraftSlot(playerId, playerName, playerUcid, unitRole, allowedIntoGameMaster)
 
             return allowedIntoGameMaster
-        else
+        elseif isTacCmdrSlot(unitRole) then
             local allowedIntoTacCmdr = isUcidAllowed(playerUcid, M.gameMasterUcids) or isUcidAllowed(playerUcid, M.tacCmdrUcids)
             logNonAircraftSlot(playerId, playerName, playerUcid, unitRole, allowedIntoTacCmdr)
             return allowedIntoTacCmdr
+        elseif isFwdObs(unitRole) then
+            local allowedIntoFwdObs = isUcidAllowed(playerUcid, M.gameMasterUcids) or isUcidAllowed(playerUcid, M.tacCmdrUcids) or isUcidAllowed(playerUcid, M.fwdObsUcids)
+            logNonAircraftSlot(playerId, playerName, playerUcid, unitRole, allowedIntoFwdObs)
+            return allowedIntoFwdObs
+        elseif isObs(unitRole) then
+            local allowedIntoObs = isUcidAllowed(playerUcid, M.gameMasterUcids) or isUcidAllowed(playerUcid, M.tacCmdrUcids) or isUcidAllowed(playerUcid, M.fwdObsUcids) or isUcidAllowed(playerUcid, M.obsUcids)
+            logNonAircraftSlot(playerId, playerName, playerUcid, unitRole, allowedIntoObs)
+            return allowedIntoObs
         end
     end
 
@@ -368,6 +391,7 @@ function M.onPlayerTryChangeSlot(playerId, side, slotId)
             if onBlue == false then
                 net.log("!! sidelocker- player was not any list! adding them to red")
                 table.insert(M.sidelock.red, playerUcid)
+                table.insert(M.fwdObsUcids, playerUcid)
             end
         end
     end
@@ -398,6 +422,7 @@ function M.onPlayerTryChangeSlot(playerId, side, slotId)
             if onRed == false then
                 net.log("!! sidelocker- player was not any list! adding them to blue")
                 table.insert(M.sidelock.blue, playerUcid)
+                table.insert(M.fwdObsUcids, playerUcid)
             end
         end
     end

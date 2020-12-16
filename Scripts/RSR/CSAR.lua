@@ -78,7 +78,7 @@ csar.radioSound = "beacon.ogg" -- the name of the sound file to use for the Pilo
 
 csar.allowFARPRescue = true --allows pilot to be rescued by landing at a FARP or Airbase
 
-csar.enemyBaseCaptureDistance = 20000 -- minimum distance in m from enemy base to allow CSAR mission spawn (otherwise pilot captured!)
+csar.enemyBaseCaptureDistance = 10000 -- minimum distance in m from enemy base to allow CSAR mission spawn (otherwise pilot captured!)
 
 -- SETTINGS FOR MISSION DESIGNER ^^^^^^^^^^^^^^^^^^^*
 

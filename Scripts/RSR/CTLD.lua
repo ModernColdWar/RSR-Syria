@@ -1793,7 +1793,7 @@ function ctld.loadUnloadLogisticsCrate(_args)
                 (_aircraftSideName == _nearestLogisticsCentreSideName) then
 
             -- { desc = "Logistics Centre crate", internal = 1, unit = "LogisticsCentre", weight = 503, baseOfOrigin = "MM75" }
-            local _crateDetails = ctld.crateLookupTable[tostring(503)]
+            local _crateDetails = ctld.crateLookupTable[tostring(891)]
             _crateDetails.baseOfOrigin = _nearestLogisticsCentreBaseNameOrFOBgrid
             ctld.inTransitLogisticsCentreCrates[_aircraft:getName()] = _crateDetails
 
@@ -3176,7 +3176,7 @@ function ctld.unpackCrates(_arguments)
 
                 if not ctld.isLogisticsCentreAliveAt(_crateBaseOfOrigin) then
                     local _azToCrate = ctld.getCompassBearing(_aircraft:getPoint(), _crate.crateUnit:getPoint())
-                    ctld.displayMessageToGroup(_aircraft, "WARNING: " .. "Supplying logisitics centre at " .. _crateBaseOfOrigin .. " for crate (" .. _azToCrate .. "," .. _crate.dist .. "m) destroyed.  Unable to unpack crate.", 20)
+                    ctld.displayMessageToGroup(_aircraft, "WARNING: Supplying logisitics centre at " .. _crateBaseOfOrigin .. " for crate (" .. _azToCrate .. "," .. _crate.dist .. "m) destroyed.  Unable to unpack crate.", 20)
                     return
                 end
 
@@ -4369,7 +4369,7 @@ function ctld.unpackAASystem(_heli, _nearestCrate, _nearbyCrates, _aaSystemTempl
     env.info("Active: " .. _activeLaunchers .. " Allowed: " .. _allowed)
 
     if _activeLaunchers + 1 > _allowed then
-        trigger.action.outTextForCoalition(_heli:getCoalition(), "[TEAM] " .. "Out of parts for AA Systems. Current limit is " .. _allowed .. " \n", 10)
+        trigger.action.outTextForCoalition(_heli:getCoalition(), "[TEAM] " .. "Out of parts for AA Systems. Current limit is " .. _allowed .. " \n", 20)
         return
     end
 
@@ -4627,42 +4627,70 @@ end
 
 function ctld.spawnCrateGroup(_heli, _positions, _types, _unitQuantity)
     _unitQuantity = _unitQuantity or 1
-
     local _id = ctld.getNextGroupId()
-
     local _playerName = ctld.getPlayerNameOrType(_heli)
     local _groupName = 'CTLD_' .. _types[1] .. '_' .. _id .. ' (' .. _playerName .. ')' -- encountered some issues with using "type #number" on some servers
-
     log:info("_playerName: $1, _groupName: $2", _playerName, _groupName)
-
     local _group = {
         ["visible"] = false,
         -- ["groupId"] = _id,
         ["hidden"] = false,
         ["units"] = {},
-        --        ["y"] = _positions[1].z,
-        --        ["x"] = _positions[1].x,
+--                ["y"] = _positions[1].z,
+--                ["x"] = _positions[1].x,
         ["name"] = _groupName,
         ["playerCanDrive"] = true,
         ["task"] = {},
     }
-
     if #_positions == 1 then
         for _i = 1, _unitQuantity do
             local _unitId = ctld.getNextUnitId()
             local _details = { type = _types[1], unitId = _unitId, name = string.format("Unpacked %s #%i", _types[1], _unitId) }
-            local _offset = (_i - 1) * 40 + 10
-            _group.units[_i] = ctld.createUnit(_positions[1].x + _offset, _positions[1].z + _offset, 120, _details)
+--            local _offset = (_i - 1) * 40 + 10
+--            local _offset = (_i - 1) * 10 + 10
+            local _playerHeading = mist.getHeading(_heli)
+--[[
+Heading is definately output in radians
+--]]
+            local _point = _playerHeading * 180 / math.pi
+            if _point <= 90 then
+              _angle = 45
+            elseif _point >= 90 and _point <= 180 then
+              _angle = 90
+            elseif _point >= 180 and _point <= 270 then
+              _angle = 135
+            elseif _point >= 270 then
+              _angle = 225
+            end 
+--            trigger.action.outText("DEBUG: _angle is " .. _angle, 10)
+--            trigger.action.outText("DEBUG: _oClockDirection is " .. _clockdirection, 10)
+--            trigger.action.outText("DEBUG: _playerHeading is " .. _playerHeading, 10)
+--            trigger.action.outText("DEBUG: _point is " .. _point, 10)
+            local _offset = (_i - 1) * 5 + 5
+            --Local _offset offsets multiple spawns, so they don't spawn on top of each other
+--            _group.units[_i] = ctld.createUnit(_positions[1].x + _offset, _positions[1].z + _offset, 120, _details)
+            _group.units[_i] = ctld.createUnit(_positions[1].x + _offset, _positions[1].z + _offset, _angle, _details)
         end
-
     else
-
         for _i, _pos in ipairs(_positions) do
-
             local _unitId = ctld.getNextUnitId()
             local _details = { type = _types[_i], unitId = _unitId, name = string.format("Unpacked %s #%i", _types[_i], _unitId) }
-
-            _group.units[_i] = ctld.createUnit(_pos.x + 5, _pos.z + 5, 120, _details)
+            local _playerHeading = mist.getHeading(_heli)
+--[[
+Heading is definately output in radians
+--]]
+            local _point = _playerHeading * 180 / math.pi
+            if _point <= 90 then
+              _angle = 45
+            elseif _point >= 90 and _point <= 180 then
+              _angle = 90
+            elseif _point >= 180 and _point <= 270 then
+              _angle = 135
+            elseif _point >= 270 then
+              _angle = 225
+            end 
+--            _group.units[_i] = ctld.createUnit(_pos.x + 5, _pos.z + 5, 120, _details)
+            _group.units[_i] = ctld.createUnit(_pos.x + 5, _pos.z + 5, _angle, _details)
         end
     end
 
@@ -4740,9 +4768,11 @@ function ctld.spawnDroppedGroup(_point, _details, _spawnBehind, _maxSearch, _for
         local _xOffset = math.cos(_angle) * -30
         local _yOffset = math.sin(_angle) * -30
 
+
         for _i, _detail in ipairs(_details.units) do
             _group.units[_i] = ctld.createUnit(_pos.x + (_xOffset + 10 * _i), _pos.z + (_yOffset + 10 * _i), _angle, _detail)
         end
+
     end
 
     --switch to MIST
@@ -4896,19 +4926,52 @@ function ctld.findNearestGroup(_heli, _groups)
     end
 end
 
-function ctld.createUnit(_x, _y, _angle, _details)
+function ctld.createUnit(_x, _y, _angle, _details) 
+--function ctld.createUnit(_x, _y, _angle, _details, _nearbyCrate) 
+--    local _heli = ctld.getTransportUnit()
+--
+--      if _heli == nil then
+--        return -- no heli!
+--      end
+
+--    local _currentCrate = ctld.inTransitSlingLoadCrates[_heli:getName()]
+    
+--  local _heli = ctld.getTransportUnit()
+--  local _angle = math.atan2(_position.x.z, _position.x.x)
+--  local _azToCrate = ctld.getCompassBearing(_heli:getPoint(), _nearbyCrate.crateUnit:getPoint())
+         
+--  ctld.getPointAt12Oclock(_heli, _offset)
+--  local _point = ctld.getPointAt12Oclock(_heli, 1)
+--  local _crate = ctld.getClosestCrate(_aircraft, _crates)
+
+--    local _playerHeading = mist.getHeading(_heli) -- the rest of the code determines the 'o'clock' bearing of the missile relative to the helicopter
+--    local _crates = ctld.getCratesAndDistance(_heli)
+--    local _crate = ctld.getClosestCrate(_heli, _crates)
+--    local _clockdirection = ctld.getClockDirection(_heli, _crate.crateUnit)  
+--    local _point = _clockdirection()  
+--  if _point <= 3 then
+--    _angle = 45
+--  elseif _point >= 3 and _point <= 6 then
+--    _angle = 135
+--  elseif _point >= 6 and _point <= 9 then
+--    _angle = 225
+--  elseif _point >= 9 and _point <= 12 then
+--    _angle = 315
+--  end 
 
     local _newUnit = {
         ["y"] = _y,
         ["type"] = _details.type,
         ["name"] = _details.name,
-        --  ["unitId"] = _details.unitId,
+--        ["unitId"] = _details.unitId,
         ["heading"] = _angle,
+--        ["heading"] = _azToCrate,
+--        ["heading"] = 90,
+--        ["heading"] = _playerHeading + 1,
         ["playerCanDrive"] = true,
         ["skill"] = "Excellent",
         ["x"] = _x,
     }
-
     return _newUnit
 end
 
