@@ -1533,7 +1533,7 @@ function ctld.generateTroopTypes(_side, _countOrTemplate, _country)
 
         if _countOrTemplate.inf then
             if _side == 2 then
-                _troops = ctld.insertIntoTroopsArray("Soldier M4", _countOrTemplate.inf, _troops)
+                _troops = ctld.insertIntoTroopsArray("Soldier M4 GRG", _countOrTemplate.inf, _troops)
             else
                 _troops = ctld.insertIntoTroopsArray("Infantry AK", _countOrTemplate.inf, _troops)
             end
@@ -1558,7 +1558,7 @@ function ctld.generateTroopTypes(_side, _countOrTemplate, _country)
             local _unitType = "Soldier AK"
 
             if _side == 2 then
-                _unitType = "Soldier M4"
+                _unitType = "Soldier M4 GRG"
 
                 if _i <= 5 and ctld.spawnStinger then
                     _unitType = "Stinger manpad"
@@ -1736,7 +1736,7 @@ function ctld.loadUnloadLogisticsCrate(_args)
         (c) if _inBaseZoneAndRSRrepairRadius = false, and _inFOBexclusionZone = then, then too far for base for repair AND too close for deployable
     --]]
 
-    local _RSRradius = 10000 -- RSRbaseCaptureZones FARP zones 5km in MIZ, most RSRbaseCaptureZones Airbase zones 10km in MIZ
+    local _RSRradius = 5000 -- RSRbaseCaptureZones FARP zones 5km in MIZ, most RSRbaseCaptureZones Airbase zones 10km in MIZ
     if _baseType == "Airbase" then
         _RSRradius = ctld.maximumDistFromAirbaseToRepair -- 5km
     elseif _baseType == "FARP" then
@@ -2021,7 +2021,7 @@ function ctld.loadUnloadJTACcrate(_args)
         (c) if _inBaseZoneAndRSRrepairRadius = false, and _inFOBexclusionZone = then, then too far for base for repair AND too close for deployable
     --]]
 
-    local _RSRradius = 10000 -- RSRbaseCaptureZones FARP zones 5km in MIZ, most RSRbaseCaptureZones Airbase zones 10km in MIZ
+    local _RSRradius = 5000 -- RSRbaseCaptureZones FARP zones 5km in MIZ, most RSRbaseCaptureZones Airbase zones 10km in MIZ
     if _baseType == "Airbase" then
         _RSRradius = ctld.maximumDistFromAirbaseToRepair -- 5km
     elseif _baseType == "FARP" then
@@ -3313,7 +3313,7 @@ function ctld.unpackLogisticsCentreCrates(_crates, _aircraft)
         _buildTime = 1 --reduce build time for airbase/FARP as it's a repair + avoids problems with potentially multiple logistics centres! --unnecessary
     end
 
-    local _RSRradius = 10000 -- RSRbaseCaptureZones FARP zones 5km in MIZ, most RSRbaseCaptureZones Airbase zones 10km in MIZ
+    local _RSRradius = 5000 -- RSRbaseCaptureZones FARP zones 5km in MIZ, most RSRbaseCaptureZones Airbase zones 10km in MIZ
     if _baseType == "Airbase" then
         _RSRradius = ctld.maximumDistFromAirbaseToRepair -- 5km
     elseif _baseType == "FARP" then
@@ -3572,7 +3572,7 @@ function ctld.unloadInternalCrate (_args)
             (c) if _inBaseZoneAndRSRrepairRadius = false, and _inFOBexclusionZone = true, then too far for base for repair AND too close for deployable FOB
         --]]
 
-        local _RSRradius = 10000 -- RSRbaseCaptureZones FARP zones 5km in MIZ, most RSRbaseCaptureZones Airbase zones 10km in MIZ
+        local _RSRradius = 5000 -- RSRbaseCaptureZones FARP zones 5km in MIZ, most RSRbaseCaptureZones Airbase zones 10km in MIZ
         if _baseType == "Airbase" then
             _RSRradius = ctld.maximumDistFromAirbaseToRepair -- 5km
         elseif _baseType == "FARP" then
@@ -5118,7 +5118,7 @@ function ctld.baseProximity(_aircraft)
     log:info("ctld.baseProximity: _closestBaseSideDist: $1, _baseType: $2", _closestBaseSideDist, _baseType)
 
     -- determine type of base
-    local _RSRradius = 10000 -- RSRbaseCaptureZones FARP zones 5km in MIZ, most RSRbaseCaptureZones Airbase zones 10km in MIZ
+    local _RSRradius = 5000 -- RSRbaseCaptureZones FARP zones 5km in MIZ, most RSRbaseCaptureZones Airbase zones 10km in MIZ
     if _baseType == "Airbase" then
         _RSRradius = ctld.maximumDistFromAirbaseToRepair -- 5km
     elseif _baseType == "FARP" then

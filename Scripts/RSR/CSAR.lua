@@ -44,7 +44,7 @@ csar.reenableIfCSARCrashes = true -- If a CSAR heli crashes, the pilots are coun
 -- - I recommend you leave the option on below IF USING MODE 1 otherwise the
 -- aircraft will be disabled for the duration of the mission
 csar.disableAircraftTimeout = true -- Allow aircraft to be used after 20 minutes if the pilot isnt rescued
-csar.disableTimeoutTime = 240 -- Time in minutes for TIMEOUT; not relevant for csarMode = 3
+csar.disableTimeoutTime = 120 -- Time in minutes for TIMEOUT; not relevant for csarMode = 3
 
 csar.destructionHeight = 150 -- height in meters an aircraft will be destroyed at if the aircraft is disabled
 
@@ -54,7 +54,7 @@ csar.enableForRED = true -- enable for red side
 
 csar.enableForBLUE = true -- enable for blue side
 
-csar.enableSlotBlocking = false -- if set to true, you need to put the csarSlotBlockGameGUI.lua
+csar.enableSlotBlocking = true -- if set to true, you need to put the csarSlotBlockGameGUI.lua
 -- in C:/Users/<YOUR USERNAME>/DCS/Scripts for 1.5 or C:/Users/<YOUR USERNAME>/DCS.openalpha/Scripts for 2.0
 -- For missions using FLAGS and this script, the CSAR flags will NOT interfere with your mission :)
 
@@ -630,7 +630,6 @@ function csar.checkDisabledAircraftStatus(_args)
 
         elseif csar.csarMode == 2 then
             -- disable aircraft for pilot
-
             local _details = csar.pilotDisabled[_unit:getPlayerName() .. "_" .. _unit:getName()]
 
             if _details ~= nil then
@@ -641,7 +640,7 @@ function csar.checkDisabledAircraftStatus(_args)
 
                     if csar.disableAircraftTimeout then
 
-                        local _text = string.format("This aircraft cannot be flow as the pilot was killed in a crash. Reinforcements in %.2dM,%.2dS\n\nIt will be DESTROYED on takeoff!", (_time / 60), _time % 60)
+                        local _text = string.format("This aircraft cannot be flown as the pilot was killed in a crash. Reinforcements in %.2dM,%.2dS\n\nIt will be DESTROYED on takeoff!", (_time / 60), _time % 60)
 
                         --display message,
                         csar.displayMessageToSAR(_unit, _text, 10, true)
@@ -665,6 +664,10 @@ function csar.checkDisabledAircraftStatus(_args)
                     --check again in 10 seconds
                     timer.scheduleFunction(csar.checkDisabledAircraftStatus, _args, timer.getTime() + 10)
                 end
+            else
+                local _text = string.format("CSAR ACTIVE! This slot will be locked for you for 2 hours if you die. If you eject, access to the slot can be regained upon rescue of the downed pilot.\n\n***Not Applicable for the following:***\nHelicopters and Transports\nMiG-21\nF-5")
+                --display message,
+                csar.displayMessageToSAR(_unit, _text, 20, true)
             end
 
 

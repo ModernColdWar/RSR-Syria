@@ -108,7 +108,7 @@ if file_exists("SaveUnits_RSR.lua") then --Script has been run before, so we nee
   --AllGroups = SET_GROUP:New():FilterCategories("ground"):FilterActive(true):FilterStart()
   --AllGroups = SET_GROUP:New():FilterPrefixes( "Re-enforcements " ):FilterActive(true):FilterStart()
   --AllGroups = SET_GROUP:New():FilterPrefixes( {"Re-enforcements ", "CTLD"} ):FilterActive(true):FilterStart()
-  AllGroups = SET_GROUP:New():FilterPrefixes( {"Red Start","Blue Start", "Resupply ", " Convoy", "Dropped Group "} ):FilterActive(true):FilterStart()
+  AllGroups = SET_GROUP:New():FilterPrefixes( {"Re-enforcements", "Red Start","Blue Start", "Resupply ", " Convoy", "Dropped Group ","CTLD"} ):FilterActive(true):FilterStart()
   
   
     AllGroups:ForEachGroup(function (grp)
@@ -150,12 +150,11 @@ groupData =
     ["tasks"] = {}, -- end of ["tasks"]
     ["uncontrollable"] = false,
     ["task"] = "Ground Nothing",
-    --["taskSelected"] = true,
-    --["route"] = 
-    --{ 
-    --["spans"] = {},
-    --["points"]= {}
-    -- },-- end of ["spans"] 
+--    ["taskSelected"] = true,
+--    ["route"] = { 
+--      ["spans"] = {},
+--      ["points"]= {},
+--      },-- end of ["spans"] 
     --["groupId"] = 9000 + _count,
     ["hidden"] = false,
     ["units"] = units,
@@ -171,15 +170,15 @@ groupData =
 
 else --Save File does not exist we start a fresh table, no spawns needed
   SaveUnits_RSR={}
---  AllGroups = SET_GROUP:New():FilterCategories("ground"):FilterActive(true):FilterStart()
---  AllGroups = SET_GROUP:New():FilterPrefixes( {"SAM", "MBT", "APC", "IFV"} ):FilterActive(true):FilterStart()
---  AllGroups = SET_GROUP:New()
---    :FilterPrefixes( {"Re-enforcements ", "CTLD"} )
- --   :FilterPrefixes( {"Re-enforcements "} )
---    :FilterPrefixes( {"Re-enforcements ", "Blue Campaign Start ", "Red Campaign Start "} )
---    :FilterActive(true)
---    :FilterStart()
-  AllGroups = SET_GROUP:New():FilterPrefixes( {"Red Start","Blue Start", "Resupply ", " Convoy", "Dropped Group "} ):FilterActive(true):FilterStart()
+  --AllGroups = SET_GROUP:New():FilterCategories("ground"):FilterActive(true):FilterStart()
+  --AllGroups = SET_GROUP:New():FilterPrefixes( {"SAM", "MBT", "APC", "IFV"} ):FilterActive(true):FilterStart()
+  --AllGroups = SET_GROUP:New()
+    --:FilterPrefixes( {"Re-enforcements ", "CTLD"} )
+    --:FilterPrefixes( {"Re-enforcements "} )
+    --:FilterPrefixes( {"Re-enforcements ", "Blue Campaign Start ", "Red Campaign Start "} )
+    --:FilterActive(true)
+    --:FilterStart()
+  AllGroups = SET_GROUP:New():FilterPrefixes( {"Re-enforcements", "Red Start","Blue Start", "Resupply ", " Convoy", "Dropped Group ","CTLD"} ):FilterActive(true):FilterStart()
 
 
 --BlueTransportGroups = SET_GROUP:New()
@@ -206,7 +205,7 @@ local tmpTable =
     ["type"]=grp:GetUnit(i):GetTypeName(),
     ["transportable"]=true,
     ["unitID"]=grp:GetUnit(i):GetID(),
-    ["skill"]="Average",
+    ["skill"]="Excellent",
     ["y"]=grp:GetUnit(i):GetVec2().y,
     ["x"]=grp:GetUnit(i):GetVec2().x,
     ["name"]=grp:GetUnit(i):GetName(),

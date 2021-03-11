@@ -5,7 +5,7 @@ local M = {}
 
 -- From https://wiki.hoggitworld.com/view/Category:Terrain_Information
 M.airbases = {
-    --[[Caucasus = {
+    Caucuses = {
         [12] = "Anapa-Vityazevo",
         [13] = "Krasnodar-Center",
         [14] = "Novorossiysk",
@@ -27,8 +27,8 @@ M.airbases = {
         [30] = "Soganlug",
         [31] = "Vaziani",
         [32] = "Beslan",
-    }--]]	
-    Syria = {
+    }	
+--[[    Syria = {
   	    [1] = "Abu al-Duhur", 
       	[2] = "Adana Sakirpasa", 
       	[3] = "Al Qusayr", 
@@ -62,7 +62,7 @@ M.airbases = {
       	[37] = "Tabqa", 
       	[38] = "Taftanaz", 
       	[40] = "Wujah Al Hajar",
-	}
+	}]]--
 }
 function M.loadMission(missionDir)
     print("Loading mission from " .. missionDir)
@@ -175,6 +175,9 @@ local transportTypes = {
     ----
     "MiG-15bis",
     "F-86F Sabre",
+	"MiG-21Bis",
+	"MiG-19P",
+	"F-5E-3",
     ----
     "TF-51D",
     "Bf-109K-4",

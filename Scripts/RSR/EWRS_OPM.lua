@@ -110,6 +110,7 @@ ewrs.enabledAircraftTypes = {
     ["P-51D-30-NA"] = true,
     ["SA342L"] = true,
     ["SA342M"] = true,
+    ["SA342Mistral"] = true,
     ["Su-25T"] = true,
     ["TF-51D"] = true,
     ["UH-1H"] = true,

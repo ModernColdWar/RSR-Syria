@@ -23,8 +23,8 @@ rsrConfig.baseDefenceActivationRadiusAirbase = 5000
 rsrConfig.baseDefenceActivationRadiusFARP = 2500
 
 -- restart schedule
-rsrConfig.firstRestartHour = 4 --this is UTC...apperently this is local machine time, setting it to 0100, had the server restart time calling at eastern.
-rsrConfig.missionDurationInHours = 8
+rsrConfig.firstRestartHour = 2 --this is UTC...apperently this is local machine time, setting it to 0100, had the server restart time calling at eastern.
+rsrConfig.missionDurationInHours = 6
 rsrConfig.restartHours = utils.getRestartHours(rsrConfig.firstRestartHour, rsrConfig.missionDurationInHours)
 
 -- life points configuration
@@ -41,6 +41,6 @@ rsrConfig.restartWarningMinutes = { 60, 45, 30, 20, 15, 10, 5, 3, 1 } -- times i
 rsrConfig.hitMessageDelay = 30
 
 -- staging bases that never change side, never have logisitics centres and cannot be distinguished from FARP helipads
-rsrConfig.stagingBases = { "RedStagingPoint" }
+rsrConfig.stagingBases = { "RedStagingPoint", "BlueStagingPoint" }
 
 return rsrConfig
