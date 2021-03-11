@@ -22,12 +22,12 @@ SRSAuto.SRS_FREQUENCIES = {
 
 ---- SRS NUDGE MESSAGE ----
 SRSAuto.SRS_NUDGE_ENABLED = true -- set to true to enable the message below
-SRSAuto.SRS_NUDGE_TIME = 1200 -- SECONDS between messages to non connected SRS users
-SRSAuto.SRS_MESSAGE_TIME = 10 -- SECONDS to show the message for
+SRSAuto.SRS_NUDGE_TIME = 3600 -- SECONDS between messages to non connected SRS users
+SRSAuto.SRS_MESSAGE_TIME = 15 -- SECONDS to show the message for
 SRSAuto.SRS_NUDGE_PATH = "C:\\Program Files\\DCS-SimpleRadio-Standalone\\clients-list.json" -- path to SERVER JSON EXPORT - enable Auto Export List on the server
 --- EDIT the message below to change what is said to users - DONT USE QUOTES - either single or double due to the injection into SRS it'll fail
 --- Newlines must be escaped like so: \\\n with 3 backslashes
-SRSAuto.SRS_NUDGE_MESSAGE = "Red Storm Rising (RSR) Syria - Slot load times vary by client setup, we have seen it take upwards of a couple of minutes for the client to load into the mission. ONCE YOU SELECT A SLOT YOU WILL BE SIDE LOCKED UNTIL MISSION RESTART (every 8 Hours)\\\n\\\n****** DCS IS BETTER WITH COMMS - PLEASE USE SRS AND/OR DISCORD (https://discord.gg/NRvtGax) ******\\\n\\\nComms with other players will help you to be more effective, find enemies and wingmen, or call in support \\\n\\\nGood comms and teamwork will help YOU and your team win! "
+SRSAuto.SRS_NUDGE_MESSAGE = "Red Storm Rising (RSR) Syria - Slot load times vary by client setup, we have seen it take upwards of a couple of minutes for the client to load into the mission. ONCE YOU SELECT A SLOT YOU WILL BE SIDE LOCKED UNTIL MISSION RESTART (every 6 Hours)\\\n\\\n****** DCS IS BETTER WITH COMMS - PLEASE USE SRS AND/OR DISCORD (https://discord.gg/NRvtGax) ******\\\n\\\nComms with other players will help you to be more effective, find enemies and wingmen, or call in support \\\n\\\nGood comms and teamwork will help YOU and your team win! "
 
 
 -- DO NOT EDIT BELOW HERE --
